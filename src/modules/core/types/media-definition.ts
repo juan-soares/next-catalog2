@@ -1,20 +1,22 @@
-import { MediaFamily } from "../constants/media-family";
+import { ContentCapability, MediaGroup, TabType } from "../constants";
 
 export type MediaDefinition = {
   id: string;
-  slug: string;
-  label: string;
-  family: MediaFamily;
-  tabs: string[];
-  filters: string[];
 
-  itemStructure: {
-    hasSeasons?: boolean;
-    hasEpisodes?: boolean;
-    hasVolumes?: boolean;
-    hasTracks?: boolean;
+  identity: {
+    slug: string;
+    label: string;
+    group: MediaGroup;
   };
 
+  ui: {
+    tabs: TabType[];
+    filters: string[];
+  };
+
+  content: {
+    capabilities: ContentCapability[];
+  };
   createdAt: Date;
   updatedAt: Date;
 };

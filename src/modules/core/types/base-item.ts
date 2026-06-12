@@ -1,9 +1,9 @@
-import { MediaFamily } from "../constants/media-family";
+import type { MediaGroup } from "../constants/media-groups";
 
 export type BaseItem = {
   id: string;
   type: string; // ex: "Anime", "Livro", etc
-  family: MediaFamily;
+  group: MediaGroup;
   title: string;
   slug: string;
   description?: string;
