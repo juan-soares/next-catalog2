@@ -1,24 +1,20 @@
-/* "Quais blocos aparecem na página dependendo das capabilities” */
-
-import { ContentCapability, TabType } from "../constants";
-import { CAPABILITY_TAB_MAP } from "../mappings";
+import { ContentCapability } from "../constants";
+import type { TabContent } from "../types/tab-content";
+import { resolveTabs } from "../helpers/content-engine";
 
 export type PageSection = {
   id: string;
-  tab: TabType;
+  key: string;
 };
 
 export function buildPageSections(
   capabilities: ContentCapability[],
+  customTabs: TabContent[] = [],
 ): PageSection[] {
-  const tabs = capabilities
-    .map((cap) => CAPABILITY_TAB_MAP[cap])
-    .filter(Boolean) as TabType[];
+  const tabs = resolveTabs(capabilities, customTabs);
 
-  const uniqueTabs = [...new Set(tabs)];
-
-  return uniqueTabs.map((tab) => ({
+  return tabs.map((tab) => ({
     id: tab,
-    tab,
+    key: tab,
   }));
 }

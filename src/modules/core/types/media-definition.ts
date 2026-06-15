@@ -1,4 +1,5 @@
-import { ContentCapability, MediaGroup, TabType } from "../constants";
+import { ContentCapability, MediaGroup } from "../constants";
+import type { TabContent } from "./tab-content";
 
 export type MediaDefinition = {
   id: string;
@@ -10,13 +11,14 @@ export type MediaDefinition = {
   };
 
   ui: {
-    tabs: TabType[];
     filters: string[];
   };
 
   content: {
     capabilities: ContentCapability[];
+    tabs?: TabContent[];
   };
+
   createdAt: Date;
   updatedAt: Date;
 };

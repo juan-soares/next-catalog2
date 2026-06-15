@@ -1,16 +1,32 @@
-import { ContentCapability, TabType } from "../constants";
-import { CAPABILITY_TAB_MAP } from "../mappings";
+import { ContentCapability, DEFAULT_TABS } from "../constants";
+import { TabContent } from "../types";
 
-/**
- * Converte capabilities em tabs reais da UI
- */
-export function resolveTabsFromCapabilities(
+const CAPABILITY_TAB_MAP: Partial<Record<ContentCapability, string>> = {
+  seasons: "seasons",
+  episodes: "episodes",
+  ovas: "seasons",
+
+  volumes: "volumes",
+  chapters: "chapters",
+
+  downloads: "downloads",
+  gallery: "gallery",
+  lyrics: "lyrics",
+  tracks: "tracks",
+};
+
+export function resolveTabs(
   capabilities: ContentCapability[],
-): TabType[] {
-  const tabs = capabilities
-    .map((cap) => CAPABILITY_TAB_MAP[cap])
-    .filter(Boolean) as TabType[];
+  customTabs: TabContent[] = [],
+): string[] {
+  const defaultTabs = DEFAULT_TABS;
 
-  // remove duplicados
-  return [...new Set(tabs)];
+  const capabilityTabs = capabilities.flatMap((cap) => {
+    const tab = CAPABILITY_TAB_MAP[cap];
+    return tab ? [tab] : [];
+  });
+
+  const custom = customTabs.map((t) => t.key);
+
+  return [...new Set([...defaultTabs, ...capabilityTabs, ...custom])];
 }
