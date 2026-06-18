@@ -1,5 +1,6 @@
-import { ContentCapability, MediaGroup } from "../constants";
+import { MediaGroup } from "../constants";
 import type { TabContent } from "./tab-content";
+import type { MediaContentStructure } from "./media-content-structure";
 
 export type MediaDefinition = {
   id: string;
@@ -15,7 +16,7 @@ export type MediaDefinition = {
   };
 
   content: {
-    capabilities: ContentCapability[];
+    structures: MediaContentStructure[];
     tabs?: TabContent[];
   };
 

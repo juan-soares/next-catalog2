@@ -1,32 +1,25 @@
-import { ContentCapability, DEFAULT_TABS } from "../constants";
-import { TabContent } from "../types";
+import { CONTENT_STRUCTURE_REGISTRY, ContentStructureKey } from "../registries";
+import type { MediaContentStructure } from "../types";
 
-const CAPABILITY_TAB_MAP: Partial<Record<ContentCapability, string>> = {
-  seasons: "seasons",
-  episodes: "episodes",
-  ovas: "seasons",
+/**
+ * Resolve uma estrutura de conteúdo em runtime
+ */
 
-  volumes: "volumes",
-  chapters: "chapters",
+export function resolveContentStructure(structures: MediaContentStructure[]) {
+  return structures.map((structure) => {
+    const key = structure.key as ContentStructureKey;
 
-  downloads: "downloads",
-  gallery: "gallery",
-  lyrics: "lyrics",
-  tracks: "tracks",
-};
+    const factory = CONTENT_STRUCTURE_REGISTRY[key];
 
-export function resolveTabs(
-  capabilities: ContentCapability[],
-  customTabs: TabContent[] = [],
-): string[] {
-  const defaultTabs = DEFAULT_TABS;
+    if (!factory) {
+      throw new Error(`Content structure not registered: ${structure.key}`);
+    }
 
-  const capabilityTabs = capabilities.flatMap((cap) => {
-    const tab = CAPABILITY_TAB_MAP[cap];
-    return tab ? [tab] : [];
+    return {
+      key,
+      label: structure.label,
+      order: structure.order,
+      instance: factory(),
+    };
   });
-
-  const custom = customTabs.map((t) => t.key);
-
-  return [...new Set([...defaultTabs, ...capabilityTabs, ...custom])];
 }
