@@ -1,8 +1,17 @@
-import { MediaType } from "../constants";
+/**
+ * Responsável por transformar um tipo de mídia em sua configuração de interface.
+ * Ele decide quais abas e estrutura serão usadas em cada tipo de conteúdo do CATFLIX.
+ * O sistema inteiro depende dessa função para montar a experiência do usuário.
+ */
+
+import { contentConfigMap } from "../registry";
+import type { MediaType } from "../constants";
+import type { TabType } from "../types/tab-type";
+import type { ContentStructure } from "../types/content-structure";
 
 export type ContentConfig = {
-  tabs: string[];
-  structure: string;
+  tabs: TabType[];
+  structure: ContentStructure;
   labels: {
     groupLabel: string;
     itemLabel: string;
@@ -10,43 +19,11 @@ export type ContentConfig = {
 };
 
 export function resolveContentConfig(mediaType: MediaType): ContentConfig {
-  switch (mediaType) {
-    case "anime":
-      return {
-        tabs: [
-          "overview",
-          "seasons",
-          "ovas",
-          "specials",
-          "gallery",
-          "files",
-          "franchise",
-        ],
-        structure: "season-based",
-        labels: {
-          groupLabel: "Temporada",
-          itemLabel: "Episódio",
-        },
-      };
+  const config = contentConfigMap[mediaType];
 
-    case "game":
-      return {
-        tabs: ["overview", "relations", "gallery", "files", "franchise"],
-        structure: "flat",
-        labels: {
-          groupLabel: "Expansão",
-          itemLabel: "Conteúdo",
-        },
-      };
-
-    default:
-      return {
-        tabs: ["overview", "gallery", "files", "franchise"],
-        structure: "flat",
-        labels: {
-          groupLabel: "Grupo",
-          itemLabel: "Item",
-        },
-      };
+  if (!config) {
+    throw new Error(`ContentConfig not found for MediaType: ${mediaType}`);
   }
+
+  return config;
 }
