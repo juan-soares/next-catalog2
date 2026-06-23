@@ -1,39 +1,57 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI!;
+/**
+ * Conexão global com o MongoDB usando Mongoose.
+ *
+ * Este arquivo é responsável apenas por infraestrutura:
+ * - abrir conexão com o MongoDB Atlas
+ * - reutilizar a mesma conexão (singleton)
+ * - garantir que a aplicação não crie múltiplas conexões
+ *
+ * Ele NÃO contém:
+ * - models
+ * - schemas
+ * - regras de negócio
+ * - lógica de domínio
+ */
 
-if (!MONGODB_URI) {
-  throw new Error("Missing MONGODB_URI");
-}
-
-declare global {
-  // eslint-disable-next-line no-var
-  var mongoose: {
-    conn: typeof mongoose | null;
-    promise: Promise<typeof mongoose> | null;
-  };
-}
-
-const globalWithMongoose = global as typeof globalThis & {
-  mongoose: {
-    conn: typeof mongoose | null;
-    promise: Promise<typeof mongoose> | null;
-  };
+// Cache global para evitar múltiplas conexões (especialmente no Next.js em dev/hot reload)
+type MongooseCache = {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
 };
 
-if (!globalWithMongoose.mongoose) {
-  globalWithMongoose.mongoose = { conn: null, promise: null };
-}
+const globalWithMongoose = globalThis as typeof globalThis & {
+  mongooseCache?: MongooseCache;
+};
 
-export async function connectDB() {
-  if (globalWithMongoose.mongoose.conn) {
-    return globalWithMongoose.mongoose.conn;
+const cache: MongooseCache = globalWithMongoose.mongooseCache ?? {
+  conn: null,
+  promise: null,
+};
+
+globalWithMongoose.mongooseCache = cache;
+
+/**
+ * Conecta ao MongoDB Atlas (lazy connection)
+ * Só executa a conexão quando chamado pela primeira vez.
+ */
+export async function connectToDatabase(): Promise<typeof mongoose> {
+  if (cache.conn) {
+    return cache.conn;
   }
 
-  if (!globalWithMongoose.mongoose.promise) {
-    globalWithMongoose.mongoose.promise = mongoose.connect(MONGODB_URI);
+  if (!process.env.MONGODB_URI) {
+    throw new Error("MONGODB_URI is not defined");
   }
 
-  globalWithMongoose.mongoose.conn = await globalWithMongoose.mongoose.promise;
-  return globalWithMongoose.mongoose.conn;
+  if (!cache.promise) {
+    cache.promise = mongoose.connect(process.env.MONGODB_URI, {
+      bufferCommands: false,
+    });
+  }
+
+  cache.conn = await cache.promise;
+
+  return cache.conn;
 }
