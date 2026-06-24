@@ -1,1 +1,1 @@
-export * from "./media-item";
+export * from "./media-item.service";
