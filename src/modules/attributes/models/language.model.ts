@@ -4,34 +4,40 @@ import mongoose, { Schema } from "mongoose";
  * Language (Attribute Global)
  *
  * Representa um idioma disponível no sistema CATFLIX.
- * Pode ser referenciado por qualquer MediaItem.
  *
- * Exemplo:
- * - Português (Brasil) -> PT-BR
- * - Inglês -> EN
+ * Idiomas podem ser reutilizados por qualquer conteúdo,
+ * permitindo organização, filtros e classificação consistentes.
+ *
+ * Exemplos:
+ * - Português (Brasil)
+ * - Inglês
+ * - Japonês
  */
 const LanguageSchema = new Schema(
   {
     /**
-     * Nome exibido na interface.
-     * Pode ser alterado livremente sem impactar referências.
+     * Nome exibido para o usuário.
      */
     label: {
       type: String,
       required: true,
+      trim: true,
     },
 
     /**
      * Código técnico do idioma.
-     * Usado para referência estável no sistema.
      *
-     * Exemplo:
-     * PT-BR, EN, JA
+     * Exemplos:
+     * PT-BR
+     * EN
+     * JA
      */
     code: {
       type: String,
       required: true,
       unique: true,
+      trim: true,
+      uppercase: true,
     },
   },
   {
@@ -40,7 +46,7 @@ const LanguageSchema = new Schema(
 );
 
 /**
- * Evita recriação do model no hot-reload do Next.js
+ * Evita recriação do model durante o hot reload do Next.js.
  */
 export const LanguageModel =
   mongoose.models.Language || mongoose.model("Language", LanguageSchema);

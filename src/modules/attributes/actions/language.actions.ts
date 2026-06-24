@@ -8,22 +8,27 @@ import {
 } from "../services";
 
 /**
- * Busca todos os idiomas
- * Usado por páginas e componentes do Next.js
+ * Camada de integração entre Next.js e o domínio Language.
+ *
+ * Recebe chamadas da interface e delega o trabalho para os Services.
+ */
+
+/**
+ * Busca todos os idiomas.
  */
 export async function getLanguagesAction() {
   return listLanguages();
 }
 
 /**
- * Busca idioma por ID
+ * Busca um idioma pelo ID.
  */
 export async function getLanguageByIdAction(id: string) {
   return findLanguageById(id);
 }
 
 /**
- * Cria novo idioma
+ * Cria um novo idioma.
  */
 export async function createLanguageAction(data: {
   label: string;
@@ -33,11 +38,14 @@ export async function createLanguageAction(data: {
 }
 
 /**
- * Atualiza idioma existente
+ * Atualiza um idioma existente.
  */
 export async function updateLanguageAction(
   id: string,
-  data: { label?: string; code?: string },
+  data: {
+    label?: string;
+    code?: string;
+  },
 ) {
   return editLanguage(id, data);
 }
