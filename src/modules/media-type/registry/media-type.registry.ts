@@ -8,8 +8,6 @@
 
 import { MediaType } from "../types";
 
-
-
 export const mediaTypeRegistry: Record<
   MediaType,
   { label: string; slug: string }

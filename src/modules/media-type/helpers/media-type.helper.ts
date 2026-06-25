@@ -1,22 +1,22 @@
 /**
- * MediaType helpers fornecem acesso padronizado e seguro
- * ao MediaTypeRegistry.
+ * MediaType helpers fornecem acesso padronizado às informações
+ * registradas para cada MediaType.
  *
- * Eles evitam acesso direto ao registry espalhado pelo sistema,
- * garantindo consistência e facilitando futuras mudanças estruturais.
+ * Essas funções evitam que consumidores precisem conhecer a estrutura
+ * interna do MediaTypeRegistry.
  */
 
 import { mediaTypeRegistry } from "../registry";
-import { MediaType } from "../types";
+import type { MediaType } from "../types";
 
-export function getMediaTypeRegistry(type: MediaType) {
-  return mediaTypeRegistry[type];
+export function getMediaTypeConfig(mediaType: MediaType) {
+  return mediaTypeRegistry[mediaType];
 }
 
-export function getMediaTypeLabel(type: MediaType) {
-  return mediaTypeRegistry[type].label;
+export function getMediaTypeLabel(mediaType: MediaType) {
+  return mediaTypeRegistry[mediaType].label;
 }
 
-export function getMediaTypeSlug(type: MediaType) {
-  return mediaTypeRegistry[type].slug;
+export function getMediaTypeSlug(mediaType: MediaType) {
+  return mediaTypeRegistry[mediaType].slug;
 }

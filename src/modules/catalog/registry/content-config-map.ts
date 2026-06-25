@@ -5,7 +5,7 @@
  */
 
 import type { MediaType } from "../constants";
-import type { ContentConfig } from "../engine/content-engine";
+import type { ContentConfig } from "../../catalog/engine/content-engine";
 
 import {
   seasonBasedPreset,

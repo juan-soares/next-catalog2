@@ -7,7 +7,7 @@
  * por MediaType individual.
  */
 
-import type { ContentConfig } from "../engine/content-engine";
+import type { ContentConfig } from "../../catalog/engine/content-engine";
 
 export const seasonBasedPreset: Omit<ContentConfig, "tabs"> = {
   structure: "season-based",
