@@ -1,7 +1,7 @@
 import styles from "./Header.module.css";
 import { Logo } from "@/components/ui";
 import { GlobalSearch } from "@/modules/global-search";
-import { MediaTypeNavbar } from "@/modules/media-type";
+import { MediaTypeNavbar } from "@/modules/media-types";
 import { UserSession } from "@/modules/auth";
 
 export default function Header() {

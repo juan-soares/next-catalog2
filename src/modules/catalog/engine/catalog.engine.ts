@@ -4,10 +4,9 @@
  * O sistema inteiro depende dessa função para montar a experiência do usuário.
  */
 
-import { contentConfigMap } from "../../core/registry";
-import type { MediaType } from "../../core/constants";
-import type { TabType } from "../types/tab-type";
-import type { ContentStructure } from "../types/content-structure";
+import { MediaType } from "@/modules/media-types/types";
+import { contentConfigMap } from "../registry";
+import { ContentStructure, TabType } from "../types";
 
 export type ContentConfig = {
   tabs: TabType[];
