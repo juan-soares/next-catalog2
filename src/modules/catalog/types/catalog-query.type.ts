@@ -5,8 +5,10 @@
  * É utilizado para transportar o estado da URL entre a página e os componentes do catálogo.
  */
 
+import { CatalogSort } from "./catalog-sort.type";
+
 export type CatalogQuery = {
   q?: string;
-  sort?: string;
+  sort?: CatalogSort;
   page?: string;
 };

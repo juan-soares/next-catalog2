@@ -30,5 +30,5 @@ export function buildCatalogUrl(params: Params): string {
 
   const queryString = searchParams.toString();
 
-  return queryString ? `?${queryString}` : "?";
+  return queryString ? `?${queryString}` : "";
 }
