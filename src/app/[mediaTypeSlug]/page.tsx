@@ -8,7 +8,7 @@
 import { notFound } from "next/navigation";
 import { findMediaTypeBySlug, getMediaTypeMeta } from "@/modules/media-types";
 import { CatalogSidebar } from "@/modules/catalog";
-import { CatalogQuery } from "@/modules/catalog/types";
+import { CatalogQuery, CatalogSort } from "@/modules/catalog/types";
 
 type Props = {
   params: Promise<{
@@ -16,6 +16,7 @@ type Props = {
   }>;
   searchParams: Promise<{
     q?: string;
+    sort?: CatalogSort;
   }>;
 };
 
