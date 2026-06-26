@@ -8,15 +8,20 @@
 import { notFound } from "next/navigation";
 import { findMediaTypeBySlug, getMediaTypeMeta } from "@/modules/media-types";
 import { CatalogSidebar } from "@/modules/catalog";
+import { CatalogQuery } from "@/modules/catalog/types";
 
 type Props = {
   params: Promise<{
     mediaTypeSlug: string;
   }>;
+  searchParams: Promise<{
+    q?: string;
+  }>;
 };
 
-export default async function MediaTypePage({ params }: Props) {
+export default async function MediaTypePage({ params, searchParams }: Props) {
   const { mediaTypeSlug } = await params;
+  const query: CatalogQuery = await searchParams;
 
   const mediaType = findMediaTypeBySlug(mediaTypeSlug);
 
@@ -29,7 +34,7 @@ export default async function MediaTypePage({ params }: Props) {
   return (
     <main>
       <h1>{label}</h1>
-      <CatalogSidebar />
+      <CatalogSidebar query={query} />
     </main>
   );
 }

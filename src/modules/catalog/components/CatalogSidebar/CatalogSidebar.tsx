@@ -1,12 +1,15 @@
 import styles from "./CatalogSidebar.module.css";
+import { CatalogQuery } from "../../types";
 import { CatalogSearchbar } from "../CatalogSearchbar";
 
-export default function CatalogSidebar() {
+type Props = {
+  query: CatalogQuery;
+};
+
+export default function CatalogSidebar({ query }: Props) {
   return (
     <aside className={styles.CatalogSidebar}>
-      <div>
-        <CatalogSearchbar />
-      </div>
+      <CatalogSearchbar query={query.q} />
     </aside>
   );
 }

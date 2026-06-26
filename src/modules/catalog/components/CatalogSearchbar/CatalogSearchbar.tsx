@@ -10,19 +10,19 @@
 
 type Props = {
   placeholder?: string;
-  defaultValue?: string;
+  query?: string;
 };
 
-export default function CatalogSearchBar({
+export default function CatalogSearchbar({
   placeholder = "Buscar...",
-  defaultValue = "",
+  query = "",
 }: Props) {
   return (
     <form method="GET">
       <input
-        type="text"
+        type="search"
         name="q"
-        defaultValue={defaultValue}
+        defaultValue={query}
         placeholder={placeholder}
       />
 

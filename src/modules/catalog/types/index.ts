@@ -1,2 +1,3 @@
-export * from "./content-structure";
-export * from "./tab-type";
+export * from "./catalog-query.type";
+export * from "./content-structure.type";
+export * from "./tab-type.type";
