@@ -1,34 +1,111 @@
 /**
- * MediaTypeRegistry é o registro central de mapeamento
- * entre MediaTypes e suas propriedades de sistema no CATFLIX.
+ * Registro central dos MediaTypes do CATFLIX.
  *
- * Ele conecta o domínio (MediaType) com informações estruturais
- * usadas por UI, routing e engines do sistema.
+ * Mapeia cada MediaType para sua definição estrutural,
+ * utilizada por rotas, navegação, engines e componentes.
+ *
+ * É a fonte oficial de informações derivadas de um MediaType.
  */
 
-import { MediaType } from "../types";
+import { MediaTypeDefinition } from "../types";
 
 export const mediaTypeRegistry: Record<
-  MediaType,
-  { label: string; slug: string }
+  MediaTypeDefinition["type"],
+  MediaTypeDefinition
 > = {
-  anime: { label: "Animes", slug: "animes" },
-  series: { label: "Séries", slug: "series" },
-  movie: { label: "Filmes", slug: "filmes" },
-  dorama: { label: "Doramas", slug: "doramas" },
-  ova: { label: "OVAs", slug: "ovas" },
+  anime: {
+    type: "anime",
+    label: "Animes",
+    slug: "animes",
+  },
 
-  book: { label: "Livros", slug: "livros" },
-  manga: { label: "Mangás", slug: "mangas" },
-  comic: { label: "Quadrinhos", slug: "quadrinhos" },
-  webtoon: { label: "Webtoons", slug: "webtoons" },
+  series: {
+    type: "series",
+    label: "Séries",
+    slug: "series",
+  },
 
-  music: { label: "Músicas", slug: "musicas" },
-  podcast: { label: "Podcasts", slug: "podcasts" },
-  audiobook: { label: "Audiolivros", slug: "audiolivros" },
+  movie: {
+    type: "movie",
+    label: "Filmes",
+    slug: "filmes",
+  },
 
-  game: { label: "Jogos Eletrônicos", slug: "jogos-eletronicos" },
-  "board-game": { label: "Jogos de Tabuleiro", slug: "jogos-de-tabuleiro" },
-  "card-game": { label: "Jogos de Cartas", slug: "jogos-de-cartas" },
-  rpg: { label: "RPGs", slug: "rpgs" },
+  dorama: {
+    type: "dorama",
+    label: "Doramas",
+    slug: "doramas",
+  },
+
+  ova: {
+    type: "ova",
+    label: "OVAs",
+    slug: "ovas",
+  },
+
+  book: {
+    type: "book",
+    label: "Livros",
+    slug: "livros",
+  },
+
+  manga: {
+    type: "manga",
+    label: "Mangás",
+    slug: "mangas",
+  },
+
+  comic: {
+    type: "comic",
+    label: "Quadrinhos",
+    slug: "quadrinhos",
+  },
+
+  webtoon: {
+    type: "webtoon",
+    label: "Webtoons",
+    slug: "webtoons",
+  },
+
+  music: {
+    type: "music",
+    label: "Músicas",
+    slug: "musicas",
+  },
+
+  podcast: {
+    type: "podcast",
+    label: "Podcasts",
+    slug: "podcasts",
+  },
+
+  audiobook: {
+    type: "audiobook",
+    label: "Audiolivros",
+    slug: "audiolivros",
+  },
+
+  game: {
+    type: "game",
+    label: "Jogos Eletrônicos",
+    slug: "jogos-eletronicos",
+  },
+
+  "board-game": {
+    type: "board-game",
+    label: "Jogos de Tabuleiro",
+    slug: "jogos-de-tabuleiro",
+  },
+
+  "card-game": {
+    type: "card-game",
+    label: "Jogos de Cartas",
+    slug: "jogos-de-cartas",
+  },
+
+  rpg: {
+    type: "rpg",
+    label: "RPGs",
+    slug: "rpgs",
+  },
 };

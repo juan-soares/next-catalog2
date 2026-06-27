@@ -2,39 +2,39 @@
  * Página responsável por exibir o catálogo de um MediaType.
  *
  * O MediaType é resolvido a partir do slug da URL.
- * Todas as demais informações da página derivam desse MediaType.
+ * O estado do catálogo é derivado dos parâmetros da URL
+ * por meio do Catalog Parser.
  */
 
 import { notFound } from "next/navigation";
-import { findMediaTypeBySlug, getMediaTypeMeta } from "@/modules/media-types";
-import { CatalogSidebar } from "@/modules/catalog";
-import { CatalogQuery, CatalogSort } from "@/modules/catalog/types";
+
+import { CatalogSidebar, parseCatalogQuery } from "@/modules/catalog";
+
+import { findMediaTypeBySlug } from "@/modules/media-types";
 
 type Props = {
   params: Promise<{
     mediaTypeSlug: string;
   }>;
-  searchParams: Promise<{
-    q?: string;
-    sort?: CatalogSort;
-  }>;
+
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
 export default async function MediaTypePage({ params, searchParams }: Props) {
   const { mediaTypeSlug } = await params;
-  const query: CatalogQuery = await searchParams;
 
-  const mediaType = findMediaTypeBySlug(mediaTypeSlug);
+  const mediaTypeDefinition = findMediaTypeBySlug(mediaTypeSlug);
 
-  if (!mediaType) {
+  if (!mediaTypeDefinition) {
     notFound();
   }
 
-  const { label } = getMediaTypeMeta(mediaType);
+  const query = parseCatalogQuery(await searchParams);
 
   return (
     <main>
-      <h1>{label}</h1>
+      <h1>{mediaTypeDefinition.label}</h1>
+
       <CatalogSidebar query={query} />
     </main>
   );

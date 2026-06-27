@@ -1,11 +1,14 @@
 /**
  * Define como cada tipo de mídia se comporta dentro do CATFLIX.
- * Aqui ficam as regras de navegação, estrutura e organização da interface.
- * O sistema usa isso para montar a experiência de cada tipo de conteúdo.
+ *
+ * Aqui ficam as regras de navegação, estrutura e organização
+ * da interface interna de cada tipo de conteúdo.
+ *
+ * O Content Engine utiliza essas definições para montar
+ * a experiência derivada de cada MediaType.
  */
 
-import type { MediaType } from "../constants";
-import type { ContentConfig } from "../../catalog/engine/content-engine";
+import type { MediaType } from "@/modules/media-types/types";
 
 import {
   seasonBasedPreset,
@@ -13,6 +16,7 @@ import {
   chapterPreset,
   trackPreset,
 } from "./content-config-presets";
+import { ContentConfig } from "../types";
 
 export const contentConfigMap: Record<MediaType, ContentConfig> = {
   anime: {

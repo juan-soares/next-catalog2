@@ -4,6 +4,9 @@
  * Implementação 100% server-driven.
  * Utiliza query string (?q=) via <form method="GET">.
  *
+ * Uma nova busca representa uma nova consulta do catálogo,
+ * portanto substitui o estado anterior da URL.
+ *
  * Não possui estado client-side e não depende de JavaScript
  * para funcionamento básico de busca.
  */

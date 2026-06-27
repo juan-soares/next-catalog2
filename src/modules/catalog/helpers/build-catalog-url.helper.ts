@@ -3,32 +3,38 @@
  *
  * Centraliza toda lógica de query string do catálogo,
  * incluindo busca, ordenação, paginação e filtros futuros.
+ *
+ * Recebe o estado completo do catálogo e transforma
+ * em uma URL válida.
  */
 
-import type { CatalogSort } from "../types";
+import type { CatalogQuery } from "../types";
 
-type Params = {
-  q?: string;
-  sort?: CatalogSort;
-  page?: string;
+type Params = CatalogQuery & {
+  pathname?: string;
 };
 
-export function buildCatalogUrl(params: Params): string {
+export function buildCatalogUrl({
+  q,
+  sort,
+  page,
+  pathname = "",
+}: Params): string {
   const searchParams = new URLSearchParams();
 
-  if (params.q) {
-    searchParams.set("q", params.q);
+  if (q) {
+    searchParams.set("q", q);
   }
 
-  if (params.sort) {
-    searchParams.set("sort", params.sort);
+  if (sort) {
+    searchParams.set("sort", sort);
   }
 
-  if (params.page) {
-    searchParams.set("page", params.page);
+  if (page) {
+    searchParams.set("page", page);
   }
 
   const queryString = searchParams.toString();
 
-  return queryString ? `?${queryString}` : "";
+  return queryString ? `${pathname}?${queryString}` : pathname;
 }
