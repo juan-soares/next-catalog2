@@ -8,11 +8,14 @@
 
 import styles from "./CatalogSidebar.module.css";
 
-import type { CatalogQuery } from "@/modules/catalog";
+import {
+  CatalogFilters,
+  getAllowedFilters,
+  CatalogSearchbar,
+  CatalogSortbar,
+  type CatalogQuery,
+} from "@/modules/catalog";
 import type { MediaTypeDefinition } from "@/modules/media-types";
-
-import { CatalogSearchbar } from "../CatalogSearchbar";
-import { CatalogSortbar } from "../CatalogSortbar";
 
 type Props = {
   query: CatalogQuery;
@@ -20,8 +23,11 @@ type Props = {
 };
 
 export default function CatalogSidebar({ query, mediaType }: Props) {
+  const filters = getAllowedFilters(mediaType.type);
+
   return (
     <aside className={styles.CatalogSidebar}>
+      <CatalogFilters query={query} filters={filters} />
       <CatalogSearchbar query={query.q} />
       <CatalogSortbar query={query} />
     </aside>

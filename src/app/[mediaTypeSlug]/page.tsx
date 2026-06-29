@@ -12,6 +12,7 @@ import {
   CatalogSidebar,
   parseCatalogQuery,
   catalogEngine,
+  getAllowedFilters,
 } from "@/modules/catalog";
 
 import { findMediaTypeBySlug } from "@/modules/media-types";
@@ -34,25 +35,23 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
   }
 
   const resolvedSearchParams = await searchParams;
+  const allowedFilters = getAllowedFilters(mediaTypeDefinition.type);
+  const query = parseCatalogQuery(resolvedSearchParams, allowedFilters);
 
-  /**
-   * IMPORTANTÍSSIMO:
-   * agora o parser precisa dos filtros do MediaType
-   */
-  const query = parseCatalogQuery(
-    resolvedSearchParams,
-    mediaTypeDefinition.filters ?? [],
-  );
-
-  const catalog = await catalogEngine({
+  /* const catalog = await catalogEngine({
     mediaType: mediaTypeDefinition,
     query,
   });
+  */
 
   return (
     <main>
       <h1>{mediaTypeDefinition.label}</h1>
+
       <CatalogSidebar query={query} mediaType={mediaTypeDefinition} />
+
+      {/* FUTURO */}
+      {/* <CatalogList items={catalog.items} /> */}
     </main>
   );
 }
