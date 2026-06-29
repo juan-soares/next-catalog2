@@ -1,18 +1,24 @@
 /**
  * Página responsável por exibir o catálogo de um MediaType.
  *
- * O MediaType é resolvido a partir do slug da URL.
- * O estado do catálogo é derivado dos parâmetros da URL
- * por meio do Catalog Parser + Catalog Engine.
+ * Fluxo:
+ * URL
+ *   ↓
+ * MediaType
+ *   ↓
+ * Catalog Parser
+ *   ↓
+ * Catalog Engine
+ *   ↓
+ * UI
  */
 
 import { notFound } from "next/navigation";
 
 import {
   CatalogSidebar,
-  parseCatalogQuery,
   catalogEngine,
-  getAllowedFilters,
+  parseCatalogQuery,
 } from "@/modules/catalog";
 
 import { findMediaTypeBySlug } from "@/modules/media-types";
@@ -28,30 +34,27 @@ type Props = {
 export default async function MediaTypePage({ params, searchParams }: Props) {
   const { mediaTypeSlug } = await params;
 
-  const mediaTypeDefinition = findMediaTypeBySlug(mediaTypeSlug);
+  const mediaType = findMediaTypeBySlug(mediaTypeSlug);
 
-  if (!mediaTypeDefinition) {
+  if (!mediaType) {
     notFound();
   }
 
-  const resolvedSearchParams = await searchParams;
-  const allowedFilters = getAllowedFilters(mediaTypeDefinition.type);
-  const query = parseCatalogQuery(resolvedSearchParams, allowedFilters);
+  const query = parseCatalogQuery(await searchParams, mediaType.filters);
 
-  /* const catalog = await catalogEngine({
-    mediaType: mediaTypeDefinition,
+  const catalog = await catalogEngine({
+    mediaType,
     query,
   });
-  */
 
   return (
     <main>
-      <h1>{mediaTypeDefinition.label}</h1>
+      <h1>{mediaType.label}</h1>
 
-      <CatalogSidebar query={query} mediaType={mediaTypeDefinition} />
+      <CatalogSidebar mediaType={mediaType} query={query} />
 
-      {/* FUTURO */}
-      {/* <CatalogList items={catalog.items} /> */}
+      {/* Em breve */}
+      {/* <CatalogGrid items={catalog.items} /> */}
     </main>
   );
 }

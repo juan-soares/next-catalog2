@@ -1,1 +1,1 @@
-export * from "./media-item.service";
+export * from "./get-media-item-by-slug";

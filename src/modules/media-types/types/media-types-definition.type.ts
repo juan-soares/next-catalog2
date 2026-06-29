@@ -6,6 +6,7 @@
  * oficial de comportamento do tipo de mídia.
  */
 
+import { CatalogFilterKey } from "@/modules/catalog";
 import { MediaType } from "./media-type.type";
 
 export type MediaTypeDefinition = {
@@ -32,5 +33,5 @@ export type MediaTypeDefinition = {
    * - definir filtros disponíveis na UI
    * - guiar construção de queries no repository
    */
-  filters: string[];
+  filters: CatalogFilterKey[];
 };

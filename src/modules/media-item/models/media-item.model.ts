@@ -1,24 +1,22 @@
-import mongoose from "mongoose";
+import { MediaType } from "@/modules/media-types";
 
-const MediaItemSchema = new mongoose.Schema(
-  {
-    title: { type: String, required: true },
-    slug: { type: String, required: true, unique: true },
+export type MediaItemDocument = {
+  title: string;
+  slug: string;
+  mediaType: MediaType;
+  franchiseId: string;
 
-    mediaType: { type: String, required: true },
+  description: string;
 
-    franchiseId: { type: String, required: true },
+  releaseYear?: number;
+  coverImage?: string;
+  bannerImage?: string;
+  rating?: number;
 
-    description: String,
-    releaseYear: Number,
+  attributes?: Record<string, string[]>;
 
-    coverImage: String,
-    bannerImage: String,
+  createdAt: Date;
+  updatedAt: Date;
+};
 
-    rating: Number,
-  },
-  { timestamps: true },
-);
-
-export const MediaItemModel =
-  mongoose.models.MediaItem || mongoose.model("MediaItem", MediaItemSchema);
+export type MediaItemModel = MediaItemDocument;

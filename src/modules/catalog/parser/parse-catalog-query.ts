@@ -2,15 +2,23 @@
  * Responsável por transformar os parâmetros da URL
  * em um CatalogQuery válido para o domínio do catálogo.
  *
- * Agora recebe filtros já resolvidos pelo MediaType,
- * via CatalogFilterDefinition[].
+ * O parser recebe as chaves de filtros permitidas para o
+ * MediaType atual e descarta qualquer parâmetro inválido.
  *
- * O Catalog não conhece registry nem MediaType internamente.
+ * Faz:
+ * - validar busca;
+ * - validar ordenação;
+ * - validar paginação;
+ * - validar filtros permitidos.
+ *
+ * Não faz:
+ * - consultar banco;
+ * - conhecer MediaTypeRegistry;
+ * - conhecer UI;
+ * - montar URLs.
  */
 
-import type { CatalogQuery, CatalogSort } from "../types";
-
-import type { CatalogFilterDefinition } from "../types/catalog-filter-definition.type";
+import type { CatalogFilterKey, CatalogQuery, CatalogSort } from "../types";
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -20,34 +28,28 @@ const VALID_SORTS: readonly CatalogSort[] = [
   "released",
 ] as const;
 
-/**
- * Agora recebe filtros já resolvidos pelo MediaType
- */
 export function parseCatalogQuery(
   searchParams: SearchParams,
-  allowedFilters: CatalogFilterDefinition[],
+  allowedFilters: readonly CatalogFilterKey[],
 ): CatalogQuery {
-  const allowedKeys = allowedFilters.map((f) => f.key);
-
   return {
     q: parseString(searchParams.q),
     sort: parseSort(searchParams.sort),
     page: parsePage(searchParams.page),
-    filters: parseFilters(searchParams, allowedKeys),
+    filters: parseFilters(searchParams, allowedFilters),
   };
 }
 
-/**
- * Filtra apenas chaves permitidas pelo MediaType
- */
 function parseFilters(
   searchParams: SearchParams,
-  allowedKeys: string[],
+  allowedFilters: readonly CatalogFilterKey[],
 ): Record<string, string[]> {
   const result: Record<string, string[]> = {};
 
   for (const key in searchParams) {
-    if (!allowedKeys.includes(key)) continue;
+    if (!allowedFilters.includes(key as CatalogFilterKey)) {
+      continue;
+    }
 
     const value = searchParams[key];
 
@@ -72,32 +74,39 @@ function parseFilters(
 }
 
 function parseString(value: string | string[] | undefined): string | undefined {
-  if (typeof value !== "string") return undefined;
+  if (typeof value !== "string") {
+    return undefined;
+  }
 
   const normalized = value.trim();
+
   return normalized.length > 0 ? normalized : undefined;
 }
 
 function parseSort(
   value: string | string[] | undefined,
 ): CatalogSort | undefined {
-  if (typeof value !== "string") return undefined;
+  if (typeof value !== "string") {
+    return undefined;
+  }
 
-  if (!VALID_SORTS.includes(value as CatalogSort)) return undefined;
+  if (!VALID_SORTS.includes(value as CatalogSort)) {
+    return undefined;
+  }
 
   return value as CatalogSort;
 }
 
-/**
- * IMPORTANTE:
- * page continua number (corrigindo erro anterior de tipagem)
- */
 function parsePage(value: string | string[] | undefined): number | undefined {
-  if (typeof value !== "string") return undefined;
+  if (typeof value !== "string") {
+    return undefined;
+  }
 
   const normalized = value.trim();
 
-  if (!/^\d+$/.test(normalized)) return undefined;
+  if (!/^\d+$/.test(normalized)) {
+    return undefined;
+  }
 
   return Number(normalized);
 }

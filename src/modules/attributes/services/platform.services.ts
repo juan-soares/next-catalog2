@@ -15,6 +15,7 @@ import {
  */
 export async function listPlatforms() {
   return getPlatforms();
+  
 }
 
 /**
