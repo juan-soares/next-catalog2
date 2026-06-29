@@ -3,12 +3,16 @@
  *
  * O MediaType é resolvido a partir do slug da URL.
  * O estado do catálogo é derivado dos parâmetros da URL
- * por meio do Catalog Parser.
+ * por meio do Catalog Parser + Catalog Engine.
  */
 
 import { notFound } from "next/navigation";
 
-import { CatalogSidebar, parseCatalogQuery } from "@/modules/catalog";
+import {
+  CatalogSidebar,
+  parseCatalogQuery,
+  catalogEngine,
+} from "@/modules/catalog";
 
 import { findMediaTypeBySlug } from "@/modules/media-types";
 
@@ -29,13 +33,26 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
     notFound();
   }
 
-  const query = parseCatalogQuery(await searchParams);
+  const resolvedSearchParams = await searchParams;
+
+  /**
+   * IMPORTANTÍSSIMO:
+   * agora o parser precisa dos filtros do MediaType
+   */
+  const query = parseCatalogQuery(
+    resolvedSearchParams,
+    mediaTypeDefinition.filters ?? [],
+  );
+
+  const catalog = await catalogEngine({
+    mediaType: mediaTypeDefinition,
+    query,
+  });
 
   return (
     <main>
       <h1>{mediaTypeDefinition.label}</h1>
-
-      <CatalogSidebar query={query} />
+      <CatalogSidebar query={query} mediaType={mediaTypeDefinition} />
     </main>
   );
 }

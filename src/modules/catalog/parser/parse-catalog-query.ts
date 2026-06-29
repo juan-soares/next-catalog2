@@ -2,19 +2,8 @@
  * Responsável por transformar os parâmetros da URL
  * em um CatalogQuery válido para o domínio do catálogo.
  *
- * Centraliza a validação e normalização dos parâmetros
- * recebidos pelo App Router, impedindo que outras camadas
- * conheçam a estrutura dos searchParams do Next.js.
- *
- * Faz:
- * - validar parâmetros conhecidos;
- * - normalizar valores;
- * - descartar valores inválidos.
- *
- * Não faz:
- * - consultar banco de dados;
- * - aplicar regras de negócio;
- * - montar URLs.
+ * Agora NÃO conhece MediaTypeRegistry.
+ * Apenas recebe os filtros permitidos já resolvidos.
  */
 
 import type { CatalogQuery, CatalogSort } from "../types";
@@ -27,44 +16,75 @@ const VALID_SORTS: readonly CatalogSort[] = [
   "released",
 ] as const;
 
-export function parseCatalogQuery(searchParams: SearchParams): CatalogQuery {
+/**
+ * Agora recebe diretamente os filtros permitidos
+ * pelo MediaType (já resolvido antes)
+ */
+export function parseCatalogQuery(
+  searchParams: SearchParams,
+  allowedFilters: string[],
+): CatalogQuery {
   return {
     q: parseString(searchParams.q),
     sort: parseSort(searchParams.sort),
     page: parsePage(searchParams.page),
+    filters: parseFilters(searchParams, allowedFilters),
   };
 }
 
-function parseString(value: string | string[] | undefined): string | undefined {
-  if (typeof value !== "string") {
-    return undefined;
+function parseFilters(
+  searchParams: SearchParams,
+  allowedFilters: string[],
+): Record<string, string[]> {
+  const result: Record<string, string[]> = {};
+
+  for (const key in searchParams) {
+    if (!allowedFilters.includes(key)) continue;
+
+    const value = searchParams[key];
+
+    if (typeof value === "string") {
+      const normalized = value.trim();
+      if (normalized.length > 0) {
+        result[key] = [normalized];
+      }
+    }
+
+    if (Array.isArray(value)) {
+      const normalized = value.map((v) => v.trim()).filter((v) => v.length > 0);
+
+      if (normalized.length > 0) {
+        result[key] = normalized;
+      }
+    }
   }
 
-  const normalized = value.trim();
+  return result;
+}
 
+function parseString(value: string | string[] | undefined): string | undefined {
+  if (typeof value !== "string") return undefined;
+
+  const normalized = value.trim();
   return normalized.length > 0 ? normalized : undefined;
 }
 
 function parseSort(
   value: string | string[] | undefined,
 ): CatalogSort | undefined {
-  if (typeof value !== "string") {
-    return undefined;
-  }
+  if (typeof value !== "string") return undefined;
 
-  if (!VALID_SORTS.includes(value as CatalogSort)) {
-    return undefined;
-  }
+  if (!VALID_SORTS.includes(value as CatalogSort)) return undefined;
 
   return value as CatalogSort;
 }
 
-function parsePage(value: string | string[] | undefined): string | undefined {
-  if (typeof value !== "string") {
-    return undefined;
-  }
+function parsePage(value: string | string[] | undefined): number | undefined {
+  if (typeof value !== "string") return undefined;
 
   const normalized = value.trim();
 
-  return /^\d+$/.test(normalized) ? normalized : undefined;
+  if (!/^\d+$/.test(normalized)) return undefined;
+
+  return Number(normalized);
 }

@@ -10,5 +10,7 @@ import { CatalogSort } from "./catalog-sort.type";
 export type CatalogQuery = {
   q?: string;
   sort?: CatalogSort;
-  page?: string;
+  page?: number;
+
+  filters?: Record<string, string[]>;
 };
