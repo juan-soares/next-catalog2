@@ -1,8 +1,5 @@
+import { getMediaTypeBySlug } from "@/modules/media-type/helpers";
 import { notFound } from "next/navigation";
-
-import { getMediaTypeDefinition } from "@/modules/media-types/helpers/get-media-type-definition.helper";
-import { parseCatalogQuery } from "@/modules/catalog/parser/parse-catalog-query";
-import { CatalogSidebar } from "@/modules/catalog/components/CatalogSidebar";
 
 type Props = {
   params: Promise<{
@@ -13,40 +10,15 @@ type Props = {
 };
 
 export default async function MediaTypePage({ params, searchParams }: Props) {
-  /**
-   * 1. Resolver params (Next moderno)
-   */
   const { mediaTypeSlug } = await params;
 
-  /**
-   * 2. Resolver MediaTypeDefinition
-   */
-  const definition = getMediaTypeDefinition(mediaTypeSlug);
+  const mediaType = getMediaTypeBySlug(mediaTypeSlug);
 
-  if (!definition) {
-    notFound();
-  }
+  if (!mediaType) return notFound();
 
-  /**
-   * 3. Parse da query baseado no MediaType
-   */
-  const query = parseCatalogQuery(searchParams, definition);
+  const { label } = mediaType;
 
-  /**
-   * 4. Buscar catálogo via definition
-   */
-  const catalog = await definition.catalog.getItems(query);
-
-  return (
-    <main>
-      <section>
-        <h1>{definition.label}</h1>
-        <CatalogSidebar filters={definition.catalog.filters} />
-
-        {catalog.items.map((item: any) => (
-          <div key={item.id}>{item.title}</div>
-        ))}
-      </section>
-    </main>
-  );
+  <div>
+    <h1>{label} </h1>
+  </div>;
 }
