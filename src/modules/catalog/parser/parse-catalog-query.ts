@@ -1,112 +1,60 @@
 /**
- * Responsável por transformar os parâmetros da URL
- * em um CatalogQuery válido para o domínio do catálogo.
+ * Parser responsável por transformar searchParams da URL
+ * em um CatalogQuery válido e seguro.
  *
- * O parser recebe as chaves de filtros permitidas para o
- * MediaType atual e descarta qualquer parâmetro inválido.
+ * Responsabilidade
+ * - Normalizar query da URL
+ * - Filtrar parâmetros inválidos com base no MediaTypeDefinition
+ * - Garantir que o CatalogQuery seja consistente
  *
- * Faz:
- * - validar busca;
- * - validar ordenação;
- * - validar paginação;
- * - validar filtros permitidos.
- *
- * Não faz:
- * - consultar banco;
- * - conhecer MediaTypeRegistry;
- * - conhecer UI;
- * - montar URLs.
+ * Não deve
+ * - Executar consultas
+ * - Conhecer MongoDB ou repositories
+ * - Retornar dados de catálogo
  */
 
-import type { CatalogFilterKey, CatalogQuery, CatalogSort } from "../types";
-
-type SearchParams = Record<string, string | string[] | undefined>;
-
-const VALID_SORTS: readonly CatalogSort[] = [
-  "alph",
-  "updated",
-  "released",
-] as const;
+import type { CatalogQuery } from "../types/catalog-query.type";
+import type { CatalogSort } from "../types/catalog-sort.type";
+import type { MediaTypeDefinition } from "../../media-types/types/media-types-definition.type";
 
 export function parseCatalogQuery(
-  searchParams: SearchParams,
-  allowedFilters: readonly CatalogFilterKey[],
+  searchParams: Record<string, string | string[] | undefined>,
+  definition: MediaTypeDefinition,
 ): CatalogQuery {
-  return {
-    q: parseString(searchParams.q),
-    sort: parseSort(searchParams.sort),
-    page: parsePage(searchParams.page),
-    filters: parseFilters(searchParams, allowedFilters),
-  };
-}
+  const q = typeof searchParams.q === "string" ? searchParams.q : undefined;
 
-function parseFilters(
-  searchParams: SearchParams,
-  allowedFilters: readonly CatalogFilterKey[],
-): Record<string, string[]> {
-  const result: Record<string, string[]> = {};
+  const page =
+    typeof searchParams.page === "string"
+      ? Number(searchParams.page)
+      : undefined;
 
-  for (const key in searchParams) {
-    if (!allowedFilters.includes(key as CatalogFilterKey)) {
-      continue;
-    }
+  const sort =
+    typeof searchParams.sort === "string"
+      ? (searchParams.sort as CatalogSort)
+      : undefined;
 
+  /**
+   * Filtragem baseada no MediaTypeDefinition
+   * (ESSENCIAL para evitar filtros inválidos)
+   */
+  const allowedFilterKeys = definition.catalog.filters.map(
+    (filter) => filter.key,
+  );
+
+  const filters: Record<string, string[]> = {};
+
+  for (const key of allowedFilterKeys) {
     const value = searchParams[key];
 
-    if (typeof value === "string") {
-      const normalized = value.trim();
+    if (!value) continue;
 
-      if (normalized.length > 0) {
-        result[key] = [normalized];
-      }
-    }
-
-    if (Array.isArray(value)) {
-      const normalized = value.map((v) => v.trim()).filter((v) => v.length > 0);
-
-      if (normalized.length > 0) {
-        result[key] = normalized;
-      }
-    }
+    filters[key] = Array.isArray(value) ? value : [value];
   }
 
-  return result;
-}
-
-function parseString(value: string | string[] | undefined): string | undefined {
-  if (typeof value !== "string") {
-    return undefined;
-  }
-
-  const normalized = value.trim();
-
-  return normalized.length > 0 ? normalized : undefined;
-}
-
-function parseSort(
-  value: string | string[] | undefined,
-): CatalogSort | undefined {
-  if (typeof value !== "string") {
-    return undefined;
-  }
-
-  if (!VALID_SORTS.includes(value as CatalogSort)) {
-    return undefined;
-  }
-
-  return value as CatalogSort;
-}
-
-function parsePage(value: string | string[] | undefined): number | undefined {
-  if (typeof value !== "string") {
-    return undefined;
-  }
-
-  const normalized = value.trim();
-
-  if (!/^\d+$/.test(normalized)) {
-    return undefined;
-  }
-
-  return Number(normalized);
+  return {
+    q,
+    page: Number.isNaN(page) ? undefined : page,
+    sort,
+    filters,
+  };
 }

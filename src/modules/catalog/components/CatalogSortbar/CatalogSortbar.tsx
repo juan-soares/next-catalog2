@@ -1,60 +1,45 @@
-/**
- * Barra de ordenação do catálogo.
- *
- * Responsável por alterar o parâmetro de ordenação
- * a partir do estado atual do catálogo recebido via URL.
- *
- * O componente preserva os parâmetros existentes através
- * do CatalogQuery e delega a construção da URL ao helper
- * central do domínio de catálogo.
- *
- * Não possui estado próprio.
- * Não executa consultas.
- */
+"use client";
 
-import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import type { CatalogQuery } from "@/modules/catalog";
-import { buildCatalogUrl } from "@/modules/catalog";
-
-import styles from "./CatalogSortbar.module.css";
+import type { CatalogSort } from "@/modules/catalog/types/catalog-sort.type";
 
 type Props = {
-  query: CatalogQuery;
+  options: {
+    default: CatalogSort;
+    options: CatalogSort[];
+  };
 };
 
-export default function CatalogSortbar({ query }: Props) {
+export function CatalogSortbar({ options }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  function setSort(sort: CatalogSort) {
+    const params = new URLSearchParams(searchParams.toString());
+
+    params.set("sort", sort);
+
+    router.push(`${pathname}?${params.toString()}`);
+  }
+
+  const currentSort =
+    (searchParams.get("sort") as CatalogSort) ?? options.default;
+
   return (
-    <nav className={styles.CatalogSortBar} aria-label="Ordenação do catálogo">
-      <Link
-        href={buildCatalogUrl({
-          ...query,
-          sort: "alph",
-        })}
-        data-active={query.sort === "alph"}
-      >
-        A–Z
-      </Link>
-
-      <Link
-        href={buildCatalogUrl({
-          ...query,
-          sort: "updated",
-        })}
-        data-active={query.sort === "updated"}
-      >
-        Recentes
-      </Link>
-
-      <Link
-        href={buildCatalogUrl({
-          ...query,
-          sort: "released",
-        })}
-        data-active={query.sort === "released"}
-      >
-        Lançamentos
-      </Link>
-    </nav>
+    <div>
+      {options.options.map((sort) => (
+        <button
+          key={sort}
+          onClick={() => setSort(sort)}
+          style={{
+            fontWeight: currentSort === sort ? "bold" : "normal",
+          }}
+        >
+          {sort}
+        </button>
+      ))}
+    </div>
   );
 }

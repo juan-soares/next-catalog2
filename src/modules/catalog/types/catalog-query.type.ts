@@ -1,15 +1,23 @@
 /**
- * Representa os parâmetros de consulta do catálogo.
+ * Representa a query de um catálogo derivada da URL.
  *
- * É a fonte de verdade para busca, ordenação, filtros e paginação do catálogo.
- * É utilizado para transportar o estado da URL entre a página e os componentes do catálogo.
+ * Responsabilidade
+ * - Representar estado puro da URL.
+ * - Ser consumido pelo parser e catalog.
+ *
+ * Não deve
+ * - Conter filtros resolvidos
+ * - Conter lógica de negócio
+ * - Conhecer MediaType ou UI
  */
 
-import { CatalogSort } from "./catalog-sort.type";
+import type { CatalogSort } from "./catalog-sort.type";
 
 export type CatalogQuery = {
   q?: string;
+
   sort?: CatalogSort;
+
   page?: number;
 
   filters?: Record<string, string[]>;

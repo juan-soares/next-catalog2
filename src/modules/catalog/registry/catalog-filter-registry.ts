@@ -1,4 +1,4 @@
-import type { CatalogFilterDefinition } from "../types/catalog-filter-definition.type";
+import type { CatalogFilterDefinition } from "../types/filter-definition.type";
 
 /**
  * Registry central de filtros disponíveis no sistema.

@@ -1,37 +1,48 @@
 /**
- * Representa a definição estrutural de um MediaType
- * dentro do CATFLIX.
+ * Define a estrutura de um MediaType dentro da aplicação.
  *
- * Esta definição é usada pelo registry como fonte
- * oficial de comportamento do tipo de mídia.
+ * Responsabilidade
+ * - Representar a definição completa de um tipo de mídia.
+ * - Centralizar a configuração utilizada pela aplicação para
+ *   construir páginas de catálogo e de detalhes.
+ * - Servir como fonte de verdade para o comportamento daquele
+ *   domínio (Animes, Filmes, Séries, etc.).
+ *
+ * Não deve
+ * - Conter dados provenientes do banco de dados.
+ * - Executar consultas ao banco de dados.
+ * - Conter regras específicas de interface.
+ * - Armazenar estado da aplicação.
  */
 
-import { CatalogFilterKey } from "@/modules/catalog";
-import { MediaType } from "./media-type.type";
+import type { CatalogDefinition } from "@/modules/catalog";
+import type { MediaItemDefinition } from "@/modules/media-item";
 
 export type MediaTypeDefinition = {
   /**
-   * Identificador interno do MediaType
-   */
-  type: MediaType;
-
-  /**
-   * Label exibido na interface
-   */
-  label: string;
-
-  /**
-   * Slug usado em rotas
+   * Identificador utilizado na URL.
+   *
+   * Exemplo:
+   * /animes
    */
   slug: string;
 
   /**
-   * Lista de filtros disponíveis para este MediaType
+   * Nome exibido para o usuário.
    *
-   * Esses filtros são usados pelo Catalog Engine para:
-   * - validar query params da URL
-   * - definir filtros disponíveis na UI
-   * - guiar construção de queries no repository
+   * Exemplo:
+   * Animes
    */
-  filters: CatalogFilterKey[];
+  label: string;
+
+  /**
+   * Define o comportamento da página de catálogo deste MediaType.
+   */
+  catalog: CatalogDefinition;
+
+  /**
+   * Define o comportamento da página de detalhes dos MediaItems
+   * pertencentes a este MediaType.
+   */
+  item: MediaItemDefinition;
 };

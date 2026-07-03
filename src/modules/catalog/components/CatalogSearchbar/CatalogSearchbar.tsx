@@ -1,35 +1,56 @@
 /**
- * Barra de busca do catálogo de MediaType.
+ * Sidebar do catálogo.
  *
- * Implementação 100% server-driven.
- * Utiliza query string (?q=) via <form method="GET">.
+ * Responsabilidade
+ * - Renderizar filtros dinamicamente com base no MediaTypeDefinition.
+ * - Sincronizar estado com URL (via query string).
  *
- * Uma nova busca representa uma nova consulta do catálogo,
- * portanto substitui o estado anterior da URL.
- *
- * Não possui estado client-side e não depende de JavaScript
- * para funcionamento básico de busca.
+ * Não deve
+ * - Conter regras de filtro.
+ * - Conhecer MediaTypes diretamente.
+ * - Decidir quais filtros existem.
  */
 
+"use client";
+
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+
+import type { MediaTypeDefinition } from "@/modules/media-types";
+import { FilterOptions } from "../CatalogFilterOption";
+
 type Props = {
-  placeholder?: string;
-  query?: string;
+  definition: MediaTypeDefinition;
 };
 
-export default function CatalogSearchbar({
-  placeholder = "Buscar...",
-  query = "",
-}: Props) {
-  return (
-    <form method="GET">
-      <input
-        type="search"
-        name="q"
-        defaultValue={query}
-        placeholder={placeholder}
-      />
+export function CatalogSidebar({ definition }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-      <button type="submit">Buscar</button>
-    </form>
+  function updateFilter(key: string, value: string) {
+    const params = new URLSearchParams(searchParams.toString());
+
+    const current = params.getAll(key);
+
+    if (current.includes(value)) {
+      params.delete(key);
+      current.filter((v) => v !== value).forEach((v) => params.append(key, v));
+    } else {
+      params.append(key, value);
+    }
+
+    router.push(`${pathname}?${params.toString()}`);
+  }
+
+  return (
+    <aside>
+      {definition.catalog.filters.map((filter) => (
+        <div key={filter.key} style={{ marginBottom: 16 }}>
+          <h4>{filter.label}</h4>
+
+          <FilterOptions filter={filter} onSelect={updateFilter} />
+        </div>
+      ))}
+    </aside>
   );
 }

@@ -1,60 +1,52 @@
-/**
- * Página responsável por exibir o catálogo de um MediaType.
- *
- * Fluxo:
- * URL
- *   ↓
- * MediaType
- *   ↓
- * Catalog Parser
- *   ↓
- * Catalog Engine
- *   ↓
- * UI
- */
-
 import { notFound } from "next/navigation";
 
-import {
-  CatalogSidebar,
-  catalogEngine,
-  parseCatalogQuery,
-} from "@/modules/catalog";
-
-import { findMediaTypeBySlug } from "@/modules/media-types";
+import { getMediaTypeDefinition } from "@/modules/media-types/helpers/get-media-type-definition.helper";
+import { parseCatalogQuery } from "@/modules/catalog/parser/parse-catalog-query";
+import { CatalogSidebar } from "@/modules/catalog/components/CatalogSidebar";
 
 type Props = {
   params: Promise<{
     mediaTypeSlug: string;
   }>;
 
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  searchParams: Record<string, string | string[] | undefined>;
 };
 
 export default async function MediaTypePage({ params, searchParams }: Props) {
+  /**
+   * 1. Resolver params (Next moderno)
+   */
   const { mediaTypeSlug } = await params;
 
-  const mediaType = findMediaTypeBySlug(mediaTypeSlug);
+  /**
+   * 2. Resolver MediaTypeDefinition
+   */
+  const definition = getMediaTypeDefinition(mediaTypeSlug);
 
-  if (!mediaType) {
+  if (!definition) {
     notFound();
   }
 
-  const query = parseCatalogQuery(await searchParams, mediaType.filters);
+  /**
+   * 3. Parse da query baseado no MediaType
+   */
+  const query = parseCatalogQuery(searchParams, definition);
 
-  const catalog = await catalogEngine({
-    mediaType,
-    query,
-  });
+  /**
+   * 4. Buscar catálogo via definition
+   */
+  const catalog = await definition.catalog.getItems(query);
 
   return (
     <main>
-      <h1>{mediaType.label}</h1>
+      <section>
+        <h1>{definition.label}</h1>
+        <CatalogSidebar filters={definition.catalog.filters} />
 
-      <CatalogSidebar mediaType={mediaType} query={query} />
-
-      {/* Em breve */}
-      {/* <CatalogGrid items={catalog.items} /> */}
+        {catalog.items.map((item: any) => (
+          <div key={item.id}>{item.title}</div>
+        ))}
+      </section>
     </main>
   );
 }

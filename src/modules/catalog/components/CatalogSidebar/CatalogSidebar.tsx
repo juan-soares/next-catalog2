@@ -1,35 +1,17 @@
-/**
- * Sidebar principal do catálogo.
- *
- * Distribui o estado atual do catálogo
- * e prepara espaço para filtros dinâmicos
- * baseados no MediaType.
- */
-
-import styles from "./CatalogSidebar.module.css";
-
-import {
-  CatalogFilters,
-  getAllowedFilters,
-  CatalogSearchbar,
-  CatalogSortbar,
-  type CatalogQuery,
-} from "@/modules/catalog";
-import type { MediaTypeDefinition } from "@/modules/media-types";
+import { FilterDefinition } from "../../types";
 
 type Props = {
-  query: CatalogQuery;
-  mediaType: MediaTypeDefinition;
+  filters: FilterDefinition[];
 };
 
-export default function CatalogSidebar({ query, mediaType }: Props) {
-  const filters = getAllowedFilters(mediaType.type);
-
+export function CatalogSidebar({ filters }: Props) {
   return (
-    <aside className={styles.CatalogSidebar}>
-      <CatalogFilters query={query} filters={filters} />
-      <CatalogSearchbar query={query.q} />
-      <CatalogSortbar query={query} />
+    <aside>
+      {filters.map((filter) => (
+        <div key={filter.key}>
+          <h4>{filter.label}</h4>
+        </div>
+      ))}
     </aside>
   );
 }

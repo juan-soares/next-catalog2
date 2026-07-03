@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import type { FilterDefinition } from "@/modules/catalog/types/filter-definition.type";
+import { useEffect, useState } from "react";
 
 type Props = {
   filter: FilterDefinition;

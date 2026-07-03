@@ -1,1 +1,1 @@
-export { default as CatalogSidebar } from "./CatalogSidebar"
+export * from "./CatalogSidebar"
