@@ -1,51 +1,72 @@
 /**
- * Parser responsável por transformar searchParams da URL
- * em um CatalogQuery válido e seguro.
+ * Catalog Query Parser
  *
- * Responsabilidade
- * - Normalizar query da URL
- * - Filtrar parâmetros inválidos com base no MediaTypeDefinition
- * - Garantir que o CatalogQuery seja consistente
+ * Converte searchParams da URL em CatalogQuery válido.
  *
- * Não deve
- * - Executar consultas
- * - Conhecer MongoDB ou repositories
- * - Retornar dados de catálogo
+ * Regras:
+ * - Não acessa banco
+ * - Não depende de registry
+ * - Apenas normaliza input
+ * - Filtra apenas keys permitidas pelo MediaType
  */
 
-import type { CatalogQuery } from "../types/catalog-query.type";
-import type { CatalogSort } from "../types/catalog-sort.type";
-import type { MediaTypeDefinition } from "../../media-types/types/media-types-definition.type";
+import type { CatalogQuery, CatalogSort } from "../types";
+
+import type { FilterDefinition } from "../types/filter-definition.type";
+
+type SearchParams = Record<string, string | string[] | undefined>;
 
 export function parseCatalogQuery(
-  searchParams: Record<string, string | string[] | undefined>,
-  definition: MediaTypeDefinition,
+  searchParams: SearchParams,
+  allowedFilters: FilterDefinition[] = [],
 ): CatalogQuery {
-  const q = typeof searchParams.q === "string" ? searchParams.q : undefined;
+  /**
+   * -----------------------
+   * SAFE FILTERS
+   * -----------------------
+   */
+  const safeFilters = Array.isArray(allowedFilters)
+    ? allowedFilters.filter(Boolean)
+    : [];
 
-  const page =
-    typeof searchParams.page === "string"
-      ? Number(searchParams.page)
-      : undefined;
-
-  const sort =
-    typeof searchParams.sort === "string"
-      ? (searchParams.sort as CatalogSort)
-      : undefined;
+  const allowedKeys = new Set(safeFilters.map((filter) => filter.key));
 
   /**
-   * Filtragem baseada no MediaTypeDefinition
-   * (ESSENCIAL para evitar filtros inválidos)
+   * -----------------------
+   * QUERY (q)
+   * -----------------------
    */
-  const allowedFilterKeys = definition.catalog.filters.map(
-    (filter) => filter.key,
-  );
+  const q = typeof searchParams.q === "string" ? searchParams.q : undefined;
 
+  /**
+   * -----------------------
+   * SORT
+   * -----------------------
+   */
+  const sort: CatalogSort =
+    typeof searchParams.sort === "string"
+      ? (searchParams.sort as CatalogSort)
+      : "updated";
+
+  /**
+   * -----------------------
+   * PAGE
+   * -----------------------
+   */
+  const page =
+    typeof searchParams.page === "string" ? Number(searchParams.page) : 1;
+
+  /**
+   * -----------------------
+   * FILTERS
+   * -----------------------
+   */
   const filters: Record<string, string[]> = {};
 
-  for (const key of allowedFilterKeys) {
-    const value = searchParams[key];
+  for (const key in searchParams) {
+    if (!allowedKeys.has(key)) continue;
 
+    const value = searchParams[key];
     if (!value) continue;
 
     filters[key] = Array.isArray(value) ? value : [value];
@@ -53,8 +74,8 @@ export function parseCatalogQuery(
 
   return {
     q,
-    page: Number.isNaN(page) ? undefined : page,
     sort,
+    page,
     filters,
   };
 }
