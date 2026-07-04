@@ -1,5 +1,6 @@
-import { getMediaTypeBySlug } from "@/modules/media-type/helpers";
 import { notFound } from "next/navigation";
+import { getMediaTypeBySlug } from "@/modules/media-type";
+import { CatalogSidebar, CatalogList, CatalogSortbar } from "@/modules/catalog";
 
 type Props = {
   params: Promise<{
@@ -9,13 +10,22 @@ type Props = {
   searchParams: Record<string, string | string[] | undefined>;
 };
 
-export default async function MediaTypePage({ params, searchParams }: Props) {
+export default async function MediaTypePage({ params }: Props) {
   const { mediaTypeSlug } = await params;
   const mediaType = getMediaTypeBySlug(mediaTypeSlug);
+
   if (!mediaType) return notFound();
+
   const { label } = mediaType;
 
-  <div>
-    <h1>{label}</h1>
-  </div>;
+  return (
+    <div>
+      <main>
+        <h1>{label}</h1>
+        <CatalogSidebar />
+        <CatalogSortbar />
+        <CatalogList />
+      </main>
+    </div>
+  );
 }
