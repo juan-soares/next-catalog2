@@ -19,7 +19,7 @@ import {
   CatalogSidebar,
   CatalogList,
   CatalogSortbar,
-  parseCatalogQuery,
+  convertSearchParamsToCatalogQuery,
 } from "@/modules/catalog";
 
 type Props = {
@@ -38,7 +38,7 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
 
   const { label } = mediaType;
 
-  const query = parseCatalogQuery(searchParams);
+  const query = convertSearchParamsToCatalogQuery(searchParams);
   const items = await mediaType.getItems(query);
 
   return (
