@@ -14,7 +14,7 @@
  */
 
 import { notFound } from "next/navigation";
-import { getMediaTypeBySlug } from "@/modules/media-type";
+import { CatalogItem, getMediaTypeBySlug } from "@/modules/media-type";
 import {
   CatalogSidebar,
   CatalogList,
@@ -27,25 +27,27 @@ type Props = {
     mediaTypeSlug: string;
   }>;
 
-  searchParams: Record<string, string | string[] | undefined>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
 
 export default async function MediaTypePage({ params, searchParams }: Props) {
   const { mediaTypeSlug } = await params;
-  const mediaType = getMediaTypeBySlug(mediaTypeSlug);
+  const resolvedSearchParams = await searchParams;
 
+  const mediaType = getMediaTypeBySlug(mediaTypeSlug);
   if (!mediaType) return notFound();
 
   const { label } = mediaType;
 
-  const query = convertSearchParamsToCatalogQuery(searchParams);
-  const items = await mediaType.getItems(query);
+  const query = convertSearchParamsToCatalogQuery(resolvedSearchParams);
+  //const items = await mediaType.getItems(query);
+  const items: CatalogItem[] = [];
 
   return (
     <div>
       <main>
         <h1>{label}</h1>
-        <CatalogSidebar />
+        <CatalogSidebar query={query} />
         <CatalogSortbar query={query} />
         <CatalogList items={items} />
       </main>

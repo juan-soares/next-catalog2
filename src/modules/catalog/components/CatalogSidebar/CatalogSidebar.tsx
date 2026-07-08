@@ -1,12 +1,15 @@
 import styles from "./CatalogSidebar.module.css";
 
-import { CatalogFilters } from "../CatalogFilters";
-import { CatalogSearch } from "../CatalogSearch";
+import { CatalogFilters, CatalogQuery, CatalogSearch } from "@/modules/catalog";
 
-export function CatalogSidebar() {
+export type Props = {
+  query: CatalogQuery;
+};
+
+export function CatalogSidebar({ query }: Props) {
   return (
     <aside className={styles.CatalogSidebar}>
-      <CatalogSearch />
+      <CatalogSearch query={query} />
       <CatalogFilters />
     </aside>
   );
