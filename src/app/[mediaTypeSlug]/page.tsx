@@ -40,14 +40,17 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
   const { label } = mediaType;
 
   const query = convertSearchParamsToCatalogQuery(resolvedSearchParams);
+
   //const items = await mediaType.getItems(query);
   const items: CatalogItem[] = [];
+
+  const filters = await mediaType.getFilters(query);
 
   return (
     <div>
       <main>
         <h1>{label}</h1>
-        <CatalogSidebar query={query} />
+        <CatalogSidebar query={query} filters={filters} />
         <CatalogSortbar query={query} />
         <CatalogList items={items} />
       </main>

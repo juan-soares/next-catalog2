@@ -31,7 +31,7 @@ export const animeRegistry: MediaType = {
         options: languages.map(({ label, id }) => ({
           label,
           value: id,
-          selected: query.language?.includes(id),
+          selected: query.filters?.language?.includes(id),
         })),
       },
 
@@ -41,7 +41,7 @@ export const animeRegistry: MediaType = {
         options: genres.map(({ label, id }) => ({
           label,
           value: id,
-          selected: query.genre?.includes(id),
+          selected: query.filters?.genre?.includes(id),
         })),
       },
     ];

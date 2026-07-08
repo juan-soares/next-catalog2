@@ -9,8 +9,8 @@
  * - Não renderiza UI.
  */
 
-import { Attributes } from "../registry";
-
-export async function listOptionsByAttribute(attribute: Attributes) {
+export async function listOptionsByAttribute(
+  attribute: Attributes,
+): Promise<AttributeOption[]> {
   return [];
 }

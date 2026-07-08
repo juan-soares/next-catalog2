@@ -28,4 +28,19 @@ export type CatalogQuery = {
    * Número da página solicitada para o catálogo.
    */
   page?: number;
+
+  /**
+   * Filtros aplicados ao catálogo.
+   *
+   * A chave representa o atributo.
+   * O array representa os valores selecionados.
+   *
+   * Exemplo:
+   *
+   * {
+   *   genre: ["action"],
+   *   language: ["ja"]
+   * }
+   */
+  filters?: Record<string, string[]>;
 };
