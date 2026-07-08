@@ -1,14 +1,16 @@
-export const SORT_OPTIONS = [
+import { SortOption } from "../types";
+
+export const SORT_OPTIONS: SortOption[] = [
   {
     label: "A-Z",
-    href: "alph",
+    value: "alph",
   },
   {
     label: "Recente",
-    href: "updated",
+    value: "updated",
   },
   {
     label: "Lançamento",
-    href: "release",
+    value: "released",
   },
 ];
