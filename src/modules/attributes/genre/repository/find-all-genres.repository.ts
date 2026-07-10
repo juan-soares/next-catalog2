@@ -10,10 +10,13 @@
  * - Não decide regras de catálogo.
  */
 
+import { connectToDatabase } from "@/lib/mongoose";
 import type { Genre } from "../genre.entity";
 import { GenreModel } from "../genre.model";
 
 export async function findAllGenres(): Promise<Genre[]> {
+  await connectToDatabase();
+
   const genres = await GenreModel.find()
     .sort({
       label: 1,

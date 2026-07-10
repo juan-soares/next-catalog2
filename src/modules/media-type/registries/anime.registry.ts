@@ -1,17 +1,18 @@
 /**
  * O que esse arquivo faz:
- * - Define o comportamento completo da página /animes
- * - Implementa o contrato MediaType
- * - Centraliza filtros e busca de animes
+ * - Define o comportamento completo da página /animes.
+ * - Implementa o contrato MediaType.
+ * - Centraliza filtros e busca de animes.
  *
  * O que esse arquivo NÃO faz:
- * - Não resolve URL
- * - Não registra outros MediaTypes
- * - Não renderiza UI
+ * - Não resolve URL.
+ * - Não registra outros MediaTypes.
+ * - Não renderiza UI.
  */
 
 import { listOptionsByAttribute } from "@/modules/attributes/services";
-import { MediaType } from "../types";
+import { attributeRegistry } from "@/modules/attributes";
+import type { MediaType } from "../types";
 import { listItemsByMediaType } from "../services";
 
 export const animeRegistry: MediaType = {
@@ -24,10 +25,15 @@ export const animeRegistry: MediaType = {
       listOptionsByAttribute("genre"),
     ]);
 
+    const languageAttribute = attributeRegistry.language;
+    const genreAttribute = attributeRegistry.genre;
+
     return [
       {
-        key: "language",
-        label: "Idiomas",
+        key: languageAttribute.key,
+        slug: languageAttribute.slug,
+        label: languageAttribute.label,
+
         options: languages.map(({ label, value }) => ({
           label,
           value,
@@ -36,8 +42,10 @@ export const animeRegistry: MediaType = {
       },
 
       {
-        key: "genre",
-        label: "Gêneros",
+        key: genreAttribute.key,
+        slug: genreAttribute.slug,
+        label: genreAttribute.label,
+
         options: genres.map(({ label, value }) => ({
           label,
           value,

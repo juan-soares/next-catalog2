@@ -13,7 +13,7 @@ import type { AttributeOptionsProvider } from "./attribute-options-provider.type
 
 export type AttributeDefinition = {
   key: string;
-
+  slug: string;
   label: string;
 
   optionsProvider: AttributeOptionsProvider;

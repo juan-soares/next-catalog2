@@ -10,10 +10,12 @@
  * - Não decide regras de catálogo.
  */
 
+import { connectToDatabase } from "@/lib/mongoose";
 import type { Language } from "../language.entity";
 import { LanguageModel } from "../language.model";
 
 export async function findAllLanguages(): Promise<Language[]> {
+  await connectToDatabase();
   const languages = await LanguageModel.find()
     .sort({
       label: 1,

@@ -8,11 +8,13 @@
  * - Não conhece UI.
  */
 
+import { connectToDatabase } from "@/lib/mongoose";
 import type { Genre } from "../genre.entity";
 import { GenreModel } from "../genre.model";
 
-
 export async function findGenreByValue(value: string): Promise<Genre | null> {
+  await connectToDatabase();
+  
   const genre = await GenreModel.findOne({
     value,
   }).lean();

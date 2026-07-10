@@ -6,7 +6,9 @@ export function MediaTypeNavbar() {
   return (
     <nav className={styles.mediaTypeNavbar}>
       {MEDIA_TYPE_NAV_LINKS.map(({ href, label }) => (
-        <Link key={href} href={href}>{label}</Link>
+        <Link key={href} href={href}>
+          {label}
+        </Link>
       ))}
     </nav>
   );

@@ -16,6 +16,7 @@ import type { AttributeDefinition } from "./types";
 export const attributeRegistry = {
   genre: {
     key: "genre",
+    slug: "generos",
     label: "Gênero",
     optionsProvider: {
       findAll: genreRepository.findAll,
@@ -24,6 +25,7 @@ export const attributeRegistry = {
 
   language: {
     key: "language",
+    slug: "idiomas",
     label: "Idiomas",
     optionsProvider: {
       findAll: languageRepository.findAll,
