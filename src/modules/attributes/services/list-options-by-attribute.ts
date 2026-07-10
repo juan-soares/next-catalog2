@@ -10,10 +10,10 @@
  */
 
 import type { AttributeOption } from "../types";
-import { attributeRegistry, type Attributes } from "../registry";
+import { attributeRegistry, type Attributes } from "../attribute.registry";
 
 export async function listOptionsByAttribute(
   attribute: Attributes,
 ): Promise<AttributeOption[]> {
-  return attributeRegistry[attribute].repository.findAll();
+  return attributeRegistry[attribute].optionsProvider.findAll();
 }
