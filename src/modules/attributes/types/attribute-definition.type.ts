@@ -16,5 +16,5 @@ export type AttributeDefinition = {
 
   label: string;
 
-  repository: AttributeOptionsProvider;
+  optionsProvider: AttributeOptionsProvider;
 };

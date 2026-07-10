@@ -8,8 +8,9 @@
  * - Não conhece UI.
  */
 
-import { Genre } from "../entity";
-import { GenreModel } from "../model";
+import type { Genre } from "../genre.entity";
+import { GenreModel } from "../genre.model";
+
 
 export async function findGenreByValue(value: string): Promise<Genre | null> {
   const genre = await GenreModel.findOne({

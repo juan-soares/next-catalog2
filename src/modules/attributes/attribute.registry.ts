@@ -9,20 +9,16 @@
  * - Não monta filtros.
  */
 
-import { genreRepository } from "../genre";
-import { AttributeDefinition } from "../types";
+import { genreRepository } from "./genre";
+import type { AttributeDefinition } from "./types";
 
 export const attributeRegistry = {
-  language: {
-    key: "language",
-    label: "Idiomas",
-    repository: genreRepository,
-  },
-
   genre: {
     key: "genre",
     label: "Gênero",
-    repository: genreRepository,
+    optionsProvider: {
+      findAll: genreRepository.findAll,
+    },
   },
 } satisfies Record<string, AttributeDefinition>;
 

@@ -10,8 +10,8 @@
  * - Não decide regras de catálogo.
  */
 
-import { Genre } from "../entity";
-import { GenreModel } from "../model";
+import type { Genre } from "../genre.entity";
+import { GenreModel } from "../genre.model";
 
 export async function findAllGenres(): Promise<Genre[]> {
   const genres = await GenreModel.find()
