@@ -28,20 +28,20 @@ export const animeRegistry: MediaType = {
       {
         key: "language",
         label: "Idiomas",
-        options: languages.map(({ label, id }) => ({
+        options: languages.map(({ label, value }) => ({
           label,
-          value: id,
-          selected: query.filters?.language?.includes(id),
+          value,
+          selected: query.filters?.language?.includes(value),
         })),
       },
 
       {
         key: "genre",
         label: "Gêneros",
-        options: genres.map(({ label, id }) => ({
+        options: genres.map(({ label, value }) => ({
           label,
-          value: id,
-          selected: query.filters?.genre?.includes(id),
+          value,
+          selected: query.filters?.genre?.includes(value),
         })),
       },
     ];

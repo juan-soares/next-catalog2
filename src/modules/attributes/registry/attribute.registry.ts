@@ -1,22 +1,22 @@
 /**
  * O que este arquivo faz:
  * - Centraliza os atributos conhecidos pelo sistema.
- * - Define metadados e o repository responsável por cada atributo.
+ * - Associa cada atributo ao seu provider de opções.
  *
  * O que este arquivo NÃO faz:
- * - Não acessa banco de dados.
+ * - Não acessa banco.
  * - Não executa consultas.
- * - Não conhece MediaType.
  * - Não monta filtros.
  */
 
-import { genreRepository, languageRepository } from "../repository";
+import { genreRepository } from "../genre";
+import { AttributeDefinition } from "../types";
 
 export const attributeRegistry = {
   language: {
     key: "language",
     label: "Idiomas",
-    repository: languageRepository,
+    repository: genreRepository,
   },
 
   genre: {
@@ -24,6 +24,6 @@ export const attributeRegistry = {
     label: "Gênero",
     repository: genreRepository,
   },
-};
+} satisfies Record<string, AttributeDefinition>;
 
 export type Attributes = keyof typeof attributeRegistry;

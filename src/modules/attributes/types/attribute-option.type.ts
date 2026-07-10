@@ -12,9 +12,9 @@
 
 export type AttributeOption = {
   /**
-   * Identificador interno da opção.
+   * Valor utilizado na URL e nas consultas do catálogo.
    */
-  id: string;
+  value: string;
 
   /**
    * Texto exibido para o usuário.
