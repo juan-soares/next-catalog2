@@ -10,6 +10,7 @@
  */
 
 import { genreRepository } from "./genre";
+import { NewGenreForm } from "./genre/components";
 import { languageRepository } from "./language";
 import type { AttributeDefinition } from "./types";
 
@@ -17,9 +18,12 @@ export const attributeRegistry = {
   genre: {
     key: "genre",
     slug: "generos",
-    label: "Gênero",
+    label: "Gêneros",
     optionsProvider: {
       findAll: genreRepository.findAll,
+    },
+    admin: {
+      create: NewGenreForm,
     },
   },
 
@@ -29,6 +33,9 @@ export const attributeRegistry = {
     label: "Idiomas",
     optionsProvider: {
       findAll: languageRepository.findAll,
+    },
+    admin: {
+      create: NewGenreForm,
     },
   },
 } satisfies Record<string, AttributeDefinition>;

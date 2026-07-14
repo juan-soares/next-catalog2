@@ -10,13 +10,11 @@
  * - Não manipula formulários.
  */
 
+import { slugify } from "@/lib/helpers";
 import { genreRepository } from "../";
 
-type CreateGenreInput = {
-  value: string;
-  label: string;
-};
+export async function createGenre(label: string) {
+  const value = slugify(label);
 
-export async function createGenre(input: CreateGenreInput) {
-  return genreRepository.create(input);
+  return genreRepository.create({ value, label });
 }

@@ -26,25 +26,12 @@ export default async function NewAttributePage({ params }: Props) {
     notFound();
   }
 
+  const AttributeCreateForm = attribute.admin.create;
+
   return (
     <main>
-      <h1>Novo atributo</h1>
-
-      <p>
-        Criando: <strong>{attribute.label}</strong>
-      </p>
-
-      <dl>
-        <div>
-          <dt>Key</dt>
-          <dd>{attribute.key}</dd>
-        </div>
-
-        <div>
-          <dt>Slug</dt>
-          <dd>{attribute.slug}</dd>
-        </div>
-      </dl>
+      <h1>Adicionar {attribute.label}</h1>
+      <AttributeCreateForm />
     </main>
   );
 }
