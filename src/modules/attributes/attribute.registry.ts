@@ -11,6 +11,7 @@
 
 import { genreRepository } from "./genre";
 import { NewGenreForm } from "./genre/components";
+import { EditGenreForm } from "./genre/components/EditGenreForm";
 import { languageRepository } from "./language";
 import type { AttributeDefinition } from "./types";
 
@@ -24,6 +25,7 @@ export const attributeRegistry = {
     },
     admin: {
       create: NewGenreForm,
+      edit: EditGenreForm,
     },
   },
 
@@ -36,6 +38,7 @@ export const attributeRegistry = {
     },
     admin: {
       create: NewGenreForm,
+      edit: EditGenreForm,
     },
   },
 } satisfies Record<string, AttributeDefinition>;

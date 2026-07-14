@@ -1,1 +1,2 @@
-export * from "./createGenreAction.action";
+export * from "./create-genre.action";
+export * from "./update-genre.action";

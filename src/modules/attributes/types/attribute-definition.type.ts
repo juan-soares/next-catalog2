@@ -22,5 +22,6 @@ export type AttributeDefinition = {
 
   admin: {
     create: ComponentType;
+    edit: ComponentType;
   };
 };

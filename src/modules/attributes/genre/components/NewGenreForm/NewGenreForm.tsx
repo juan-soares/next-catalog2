@@ -10,6 +10,7 @@
  * - Não cria entidades manualmente.
  */
 
+import { ConfirmSubmitButton } from "@/components/ui";
 import { createGenreAction } from "../../actions";
 
 export function NewGenreForm() {
@@ -20,7 +21,10 @@ export function NewGenreForm() {
         <input id="label" name="label" type="text" />
       </div>
 
-      <button type="submit">Enviar</button>
+      <ConfirmSubmitButton
+        label="Salvar"
+        confirmationMessage="Deseja realmente salvar?"
+      />
     </form>
   );
 }
