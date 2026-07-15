@@ -10,7 +10,7 @@
  * - Não define o comportamento de um MediaType.
  */
 
-import { CatalogResult, MediaTypeSlug } from "../types";
+import { MediaTypeSlug } from "../types";
 
 export async function listItemsByMediaType(
   mediaType: MediaTypeSlug,

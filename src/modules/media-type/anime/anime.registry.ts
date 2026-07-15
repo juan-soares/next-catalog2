@@ -15,6 +15,7 @@ import { attributeRegistry } from "@/modules/attributes";
 import type { MediaType } from "../types";
 import { listItemsByMediaType } from "../services";
 import { CreateAnimeForm } from ".";
+import { listAnimes } from "./services";
 
 export const animeRegistry: MediaType = {
   slug: "animes",
@@ -41,7 +42,7 @@ export const animeRegistry: MediaType = {
   },
 
   async getItems(query) {
-    return listItemsByMediaType("animes", query);
+    return listAnimes(query);
   },
 
   admin: {

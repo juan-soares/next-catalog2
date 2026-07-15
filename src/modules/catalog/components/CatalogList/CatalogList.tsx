@@ -14,13 +14,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 import styles from "./CatalogList.module.css";
-import { CatalogItem } from "@/modules/media-type";
+import { CatalogResult } from "../../types";
 
 type Props = {
-  items: CatalogItem[];
+  result: CatalogResult;
 };
 
-export function CatalogList({ items }: Props) {
+export function CatalogList({ result: { items } }: Props) {
   if (items.length === 0) {
     return <p>Sem itens na lista.</p>;
   }

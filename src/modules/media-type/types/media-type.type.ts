@@ -9,7 +9,7 @@
  * - Não conhece implementação de nenhum MediaType específico.
  */
 
-import { CatalogQuery } from "@/modules/catalog/types";
+import { CatalogQuery, CatalogResult } from "@/modules/catalog/types";
 import { CatalogItem, FilterGroup } from ".";
 import { ComponentType } from "react";
 
@@ -26,7 +26,7 @@ export type MediaType = {
   /**
    * Retorna itens do catálogo baseado na consulta.
    */
-  getItems: (query: CatalogQuery) => Promise<CatalogItem[]>;
+  getItems: (query: CatalogQuery) => Promise<CatalogResult>;
 
   admin: {
     create: ComponentType;
