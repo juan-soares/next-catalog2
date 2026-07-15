@@ -2,7 +2,7 @@
  * O que este arquivo faz:
  * - Renderiza a página de edição de um valor de atributo.
  * - Resolve o atributo através do slug.
- * - Busca o valor através do provider registrado.
+ * - Busca a entidade através do provider registrado.
  *
  * O que este arquivo NÃO faz:
  * - Não conhece Genre.
@@ -30,9 +30,9 @@ export default async function EditAttributePage({ params }: Props) {
     notFound();
   }
 
-  const option = await attribute.optionsProvider.findByValue(value);
+  const attributeEntity = await attribute.admin.provider.findByValue(value);
 
-  if (!option) {
+  if (!attributeEntity) {
     notFound();
   }
 
@@ -42,7 +42,7 @@ export default async function EditAttributePage({ params }: Props) {
     <main>
       <h1>Editar {attribute.label}</h1>
 
-      <AttributeEditForm value={option.value} label={option.label} />
+      <AttributeEditForm attribute={attributeEntity} />
     </main>
   );
 }

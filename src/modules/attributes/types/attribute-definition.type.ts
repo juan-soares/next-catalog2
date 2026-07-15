@@ -1,19 +1,8 @@
-/**
- * O que este arquivo faz:
- * - Define o contrato de participação de um atributo na aplicação.
- * - Padroniza os dados registrados no attributeRegistry.
- *
- * O que este arquivo NÃO faz:
- * - Não executa consultas.
- * - Não acessa banco.
- * - Não monta filtros.
- * - Não executa ações administrativas.
- */
-
 import type { ComponentType } from "react";
 import type { AttributeOptionsProvider } from "./attribute-options-provider.type";
+import type { AttributeAdminProvider } from "./attribute-admin-provider.type";
 
-export type AttributeDefinition = {
+export type AttributeDefinition<TEntity> = {
   key: string;
   slug: string;
   label: string;
@@ -21,7 +10,13 @@ export type AttributeDefinition = {
   optionsProvider: AttributeOptionsProvider;
 
   admin: {
+    provider: AttributeAdminProvider<TEntity>;
+
     create: ComponentType;
-    edit: ComponentType;
+    edit: ComponentType<{
+      attribute: TEntity;
+    }>;
   };
 };
+
+export type AnyAttributeDefinition = AttributeDefinition<any>;

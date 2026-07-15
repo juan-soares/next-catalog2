@@ -1,7 +1,7 @@
 /**
  * O que este arquivo faz:
  * - Centraliza os atributos conhecidos pelo sistema.
- * - Associa cada atributo ao seu provider de opções.
+ * - Associa cada atributo aos providers e componentes administrativos.
  *
  * O que este arquivo NÃO faz:
  * - Não acessa banco.
@@ -12,35 +12,28 @@
 import { genreRepository } from "./genre";
 import { NewGenreForm } from "./genre/components";
 import { EditGenreForm } from "./genre/components/EditGenreForm";
-import { languageRepository } from "./language";
 import type { AttributeDefinition } from "./types";
+import type { Genre } from "./genre/genre.entity";
 
 export const attributeRegistry = {
   genre: {
     key: "genre",
     slug: "generos",
     label: "Gêneros",
+
     optionsProvider: {
       findAll: genreRepository.findAll,
     },
-    admin: {
-      create: NewGenreForm,
-      edit: EditGenreForm,
-    },
-  },
 
-  language: {
-    key: "language",
-    slug: "idiomas",
-    label: "Idiomas",
-    optionsProvider: {
-      findAll: languageRepository.findAll,
-    },
     admin: {
+      provider: {
+        findByValue: genreRepository.findByValue,
+      },
+
       create: NewGenreForm,
       edit: EditGenreForm,
     },
-  },
-} satisfies Record<string, AttributeDefinition>;
+  } satisfies AttributeDefinition<Genre>,
+};
 
 export type Attributes = keyof typeof attributeRegistry;

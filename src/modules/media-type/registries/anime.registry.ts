@@ -20,27 +20,11 @@ export const animeRegistry: MediaType = {
   label: "Animes",
 
   async getFilters(query) {
-    const [languages, genres] = await Promise.all([
-      listOptionsByAttribute("language"),
-      listOptionsByAttribute("genre"),
-    ]);
+    const [genres] = await Promise.all([listOptionsByAttribute("genre")]);
 
-    const languageAttribute = attributeRegistry.language;
     const genreAttribute = attributeRegistry.genre;
 
     return [
-      {
-        key: languageAttribute.key,
-        slug: languageAttribute.slug,
-        label: languageAttribute.label,
-
-        options: languages.map(({ label, value }) => ({
-          label,
-          value,
-          selected: query.filters?.language?.includes(value),
-        })),
-      },
-
       {
         key: genreAttribute.key,
         slug: genreAttribute.slug,

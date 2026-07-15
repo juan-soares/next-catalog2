@@ -20,10 +20,10 @@ type UpdateGenreData = {
 export async function updateGenre(
   value: string,
   data: UpdateGenreData,
-): Promise<void> {
+): Promise<boolean> {
   await connectToDatabase();
 
-  await GenreModel.updateOne(
+  const result = await GenreModel.updateOne(
     {
       value,
     },
@@ -33,4 +33,6 @@ export async function updateGenre(
       },
     },
   );
+
+  return result.matchedCount > 0;
 }

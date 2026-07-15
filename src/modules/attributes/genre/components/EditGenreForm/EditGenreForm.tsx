@@ -11,20 +11,26 @@
 
 import { ConfirmSubmitButton } from "@/components/ui";
 import { updateGenreAction } from "../../actions";
+import type { Genre } from "../../genre.entity";
 
 type Props = {
-  value: string;
-  label: string;
+  attribute: Genre;
 };
 
-export function EditGenreForm({ value, label }: Props) {
+export function EditGenreForm({ attribute }: Props) {
   return (
     <form action={updateGenreAction}>
-      <input name="value" value={value} type="hidden" />
+      <input name="value" value={attribute.value} type="hidden" />
 
       <div>
         <label htmlFor="label">Nome</label>
-        <input id="label" name="label" defaultValue={label} type="text" />
+
+        <input
+          id="label"
+          name="label"
+          defaultValue={attribute.label}
+          type="text"
+        />
       </div>
 
       <ConfirmSubmitButton

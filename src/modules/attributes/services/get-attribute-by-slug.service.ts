@@ -10,10 +10,12 @@
  * - Não monta filtros.
  */
 
-import type { AttributeDefinition } from "../types";
 import { attributeRegistry } from "../attribute.registry";
+import { AnyAttributeDefinition } from "../types";
 
-export function getAttributeBySlug(slug: string): AttributeDefinition | null {
+export function getAttributeBySlug(
+  slug: string,
+): AnyAttributeDefinition | null {
   const attribute = Object.values(attributeRegistry).find(
     (attribute) => attribute.slug === slug,
   );

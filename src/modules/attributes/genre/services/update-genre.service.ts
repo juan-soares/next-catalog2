@@ -20,7 +20,11 @@ export async function updateGenre({
   value,
   label,
 }: UpdateGenreInput): Promise<void> {
-  await genreRepository.updateOne(value, {
+  const updated = await genreRepository.update(value, {
     label,
   });
+
+  if (!updated) {
+    throw new Error("Genre not found");
+  }
 }

@@ -40,7 +40,13 @@ export default async function AttributeValuesPage({ params }: Props) {
 
       <ul>
         {options.map((option) => (
-          <li key={option.value}>{option.label}</li>
+          <li key={option.value}>
+            <Link
+              href={`/admin/atributos/${attribute.slug}/${option.value}/editar`}
+            >
+              {option.label}
+            </Link>
+          </li>
         ))}
       </ul>
     </main>

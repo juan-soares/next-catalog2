@@ -1,10 +1,10 @@
 /**
  * O que este arquivo faz:
- * - Define o contrato mínimo necessário para obter opções de atributos.
+ * - Define o contrato para provedores de opções de atributos.
  *
  * O que este arquivo NÃO faz:
- * - Não conhece banco.
- * - Não conhece Mongoose.
+ * - Não acessa banco.
+ * - Não conhece repositories.
  * - Não conhece entidades específicas.
  */
 

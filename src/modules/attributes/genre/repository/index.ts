@@ -7,5 +7,5 @@ export const genreRepository = {
   create: createGenre,
   findAll: findAllGenres,
   findByValue: findGenreByValue,
-  updateOne: updateGenre,
+  update: updateGenre,
 };
