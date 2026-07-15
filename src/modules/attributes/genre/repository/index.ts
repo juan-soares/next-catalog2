@@ -1,4 +1,5 @@
 import { createGenre } from "./create-genre.repository";
+import { deleteGenre } from "./delete-genre.repository";
 import { findAllGenres } from "./find-all-genres.repository";
 import { findGenreByValue } from "./find-genre-by-value.repository";
 import { updateGenre } from "./update-genre.repository";
@@ -8,4 +9,5 @@ export const genreRepository = {
   findAll: findAllGenres,
   findByValue: findGenreByValue,
   update: updateGenre,
+  delete: deleteGenre,
 };

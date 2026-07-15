@@ -16,6 +16,7 @@ export type AttributeDefinition<TEntity> = {
     edit: ComponentType<{
       attribute: TEntity;
     }>;
+    delete: (formData: FormData) => Promise<void>;
   };
 };
 

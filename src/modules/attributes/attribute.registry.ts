@@ -9,11 +9,12 @@
  * - Não monta filtros.
  */
 
-import { genreRepository } from "./genre";
+import { deleteGenre, genreRepository } from "./genre";
 import { NewGenreForm } from "./genre/components";
 import { EditGenreForm } from "./genre/components/EditGenreForm";
 import type { AttributeDefinition } from "./types";
 import type { Genre } from "./genre/genre.entity";
+import { deleteGenreAction } from "./genre/actions";
 
 export const attributeRegistry = {
   genre: {
@@ -32,6 +33,7 @@ export const attributeRegistry = {
 
       create: NewGenreForm,
       edit: EditGenreForm,
+      delete: deleteGenreAction,
     },
   } satisfies AttributeDefinition<Genre>,
 };

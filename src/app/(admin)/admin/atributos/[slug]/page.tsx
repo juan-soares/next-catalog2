@@ -14,6 +14,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getAttributeBySlug } from "@/modules/attributes";
+import { DeleteButton } from "@/components/ui";
 
 type Props = {
   params: Promise<{
@@ -46,6 +47,11 @@ export default async function AttributeValuesPage({ params }: Props) {
             >
               {option.label}
             </Link>
+
+            <DeleteButton
+              onDelete={attribute.admin.delete}
+              value={option.value}
+            />
           </li>
         ))}
       </ul>
