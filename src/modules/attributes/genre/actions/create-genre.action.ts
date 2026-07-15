@@ -22,6 +22,10 @@ export async function createGenreAction(formData: FormData) {
     throw new Error("Dados inválidos");
   }
 
+  if (!label.trim()) {
+    throw new Error("Label obrigatório");
+  }
+
   await createGenre(label);
 
   redirect("/admin/atributos/generos");

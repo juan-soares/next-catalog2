@@ -11,7 +11,7 @@
  */
 
 import { attributeRegistry } from "../attribute.registry";
-import { AnyAttributeDefinition } from "../types";
+import type { AnyAttributeDefinition } from "../types";
 
 export function getAttributeBySlug(
   slug: string,

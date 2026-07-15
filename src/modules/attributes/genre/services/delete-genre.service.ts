@@ -11,6 +11,10 @@
 
 import { genreRepository } from "../repository";
 
-export async function deleteGenre(value: string): Promise<boolean> {
-  return genreRepository.delete(value);
+export async function deleteGenre(value: string): Promise<void> {
+  const deleted = await genreRepository.delete(value);
+
+  if (!deleted) {
+    throw new Error("Genre not found");
+  }
 }

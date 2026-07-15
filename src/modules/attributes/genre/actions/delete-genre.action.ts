@@ -1,7 +1,8 @@
 /**
  * O que este arquivo faz:
  * - Define a Server Action responsável por excluir um gênero.
- * - Faz a ponte entre FormData e o service.
+ * - Converte dados vindos da interface.
+ * - Controla o fluxo de navegação após a operação.
  *
  * O que este arquivo NÃO faz:
  * - Não acessa banco de dados.

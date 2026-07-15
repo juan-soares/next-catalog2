@@ -1,7 +1,8 @@
 /**
  * O que este arquivo faz:
  * - Define a Server Action responsável por atualizar um gênero.
- * - Faz a ponte entre FormData e o service.
+ * - Converte dados vindos do formulário.
+ * - Controla o fluxo de navegação após a operação.
  *
  * O que este arquivo NÃO faz:
  * - Não acessa banco de dados.

@@ -9,7 +9,7 @@
  * - Não monta filtros.
  */
 
-import { deleteGenre, genreRepository } from "./genre";
+import { genreRepository } from "./genre";
 import { NewGenreForm } from "./genre/components";
 import { EditGenreForm } from "./genre/components/EditGenreForm";
 import type { AttributeDefinition } from "./types";

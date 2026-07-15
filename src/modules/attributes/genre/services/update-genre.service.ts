@@ -9,6 +9,7 @@
  * - Não acessa MongoDB diretamente.
  */
 
+import { Genre } from "../genre.entity";
 import { genreRepository } from "../repository";
 
 type UpdateGenreInput = {
@@ -19,7 +20,7 @@ type UpdateGenreInput = {
 export async function updateGenre({
   value,
   label,
-}: UpdateGenreInput): Promise<void> {
+}: UpdateGenreInput): Promise<Genre> {
   const updated = await genreRepository.update(value, {
     label,
   });
@@ -27,4 +28,6 @@ export async function updateGenre({
   if (!updated) {
     throw new Error("Genre not found");
   }
+
+  return updated;
 }

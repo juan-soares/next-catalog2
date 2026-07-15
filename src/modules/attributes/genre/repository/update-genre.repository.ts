@@ -12,6 +12,7 @@
 
 import { connectToDatabase } from "@/lib/mongoose";
 import { GenreModel } from "../genre.model";
+import { Genre } from "../genre.entity";
 
 type UpdateGenreData = {
   label: string;
@@ -20,10 +21,10 @@ type UpdateGenreData = {
 export async function updateGenre(
   value: string,
   data: UpdateGenreData,
-): Promise<boolean> {
+): Promise<Genre | null> {
   await connectToDatabase();
 
-  const result = await GenreModel.updateOne(
+  const genre = await GenreModel.findOneAndUpdate(
     {
       value,
     },
@@ -32,7 +33,17 @@ export async function updateGenre(
         label: data.label,
       },
     },
-  );
+    {
+      new: true,
+    },
+  ).lean();
 
-  return result.matchedCount > 0;
+  if (!genre) {
+    return null;
+  }
+
+  return {
+    value: genre.value,
+    label: genre.label,
+  };
 }

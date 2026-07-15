@@ -11,9 +11,9 @@
  */
 
 import { slugify } from "@/lib/helpers";
-import { genreRepository } from "../";
+import { Genre, genreRepository } from "../";
 
-export async function createGenre(label: string) {
+export async function createGenre(label: string): Promise<Genre> {
   const value = slugify(label);
 
   return genreRepository.create({ value, label });
