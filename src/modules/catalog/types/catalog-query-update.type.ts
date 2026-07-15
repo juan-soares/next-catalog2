@@ -28,4 +28,19 @@ export type CatalogQueryUpdate = {
    * Nova página do catálogo.
    */
   page?: number;
+
+  /**
+   * Novos filtros aplicados ao catálogo.
+   *
+   * A chave representa o atributo.
+   * O array representa os valores selecionados.
+   *
+   * Exemplo:
+   *
+   * {
+   *   genre: ["action"],
+   *   language: ["ja"]
+   * }
+   */
+  filters?: Record<string, string[]>;
 };

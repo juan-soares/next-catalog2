@@ -1,25 +1,15 @@
-/**
- * O que este arquivo faz:
- * - Renderiza os grupos de filtros disponíveis no catálogo.
- * - Exibe opções preparadas pelo MediaType.
- * - Permite navegar para criação administrativa de um atributo.
- *
- * O que este arquivo NÃO faz:
- * - Não busca opções de filtros.
- * - Não conhece regras de MediaType.
- * - Não interpreta atributos.
- * - Não altera URL ou estado do catálogo.
- */
-
 import Link from "next/link";
+import type { CatalogQuery } from "@/modules/catalog";
+import { buildCatalogUrl, toggleCatalogFilter } from "@/modules/catalog";
 import type { FilterGroup } from "@/modules/media-type";
 import styles from "./CatalogFilters.module.css";
 
 type Props = {
   filters: FilterGroup[];
+  query: CatalogQuery;
 };
 
-export function CatalogFilters({ filters }: Props) {
+export function CatalogFilters({ filters, query }: Props) {
   return (
     <div className={styles.catalogFilters}>
       {filters.map((group) => (
@@ -31,9 +21,22 @@ export function CatalogFilters({ filters }: Props) {
           </header>
 
           <ul>
-            {group.options.map((option) => (
-              <li key={option.value}>{option.label}</li>
-            ))}
+            {group.options.map((option) => {
+              const href = buildCatalogUrl(
+                query,
+                toggleCatalogFilter({
+                  query,
+                  key: group.key,
+                  value: option.value,
+                }),
+              );
+
+              return (
+                <li key={option.value}>
+                  <Link href={`?${href}`}>{option.label}</Link>
+                </li>
+              );
+            })}
           </ul>
         </section>
       ))}

@@ -12,7 +12,7 @@ export function CatalogSidebar({ query, filters }: Props) {
   return (
     <aside className={styles.CatalogSidebar}>
       <CatalogSearch query={query} />
-      <CatalogFilters filters={filters} />
+      <CatalogFilters filters={filters} query={query} />
     </aside>
   );
 }

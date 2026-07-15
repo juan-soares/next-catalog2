@@ -2,6 +2,7 @@
  * O que este arquivo faz:
  * - Constrói uma URL de catálogo a partir da consulta atual e das alterações desejadas.
  * - Centraliza a geração de URLs do catálogo.
+ * - Converte filtros do catálogo para parâmetros públicos da URL.
  *
  * O que este arquivo NÃO faz:
  * - Não conhece componentes.
@@ -37,6 +38,14 @@ export function buildCatalogUrl(
 
   if (nextQuery.page) {
     params.set("page", String(nextQuery.page));
+  }
+
+  if (nextQuery.filters) {
+    Object.entries(nextQuery.filters).forEach(([key, values]) => {
+      values.forEach((value) => {
+        params.append(key, value);
+      });
+    });
   }
 
   return params.toString();
