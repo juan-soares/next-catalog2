@@ -50,7 +50,7 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
     <div>
       <main>
         <h1>{label}</h1>
-        <CatalogSidebar query={query} filters={filters} />
+        <CatalogSidebar slug={mediaType.slug} query={query} filters={filters} />
         <CatalogSortbar query={query} />
         <CatalogList items={items} />
       </main>

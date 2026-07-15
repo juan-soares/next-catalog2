@@ -5,11 +5,12 @@ import type { FilterGroup } from "@/modules/media-type";
 import styles from "./CatalogFilters.module.css";
 
 type Props = {
+  slug: string;
   filters: FilterGroup[];
   query: CatalogQuery;
 };
 
-export function CatalogFilters({ filters, query }: Props) {
+export function CatalogFilters({ slug, filters, query }: Props) {
   return (
     <div className={styles.catalogFilters}>
       {filters.map((group) => (
@@ -40,6 +41,9 @@ export function CatalogFilters({ filters, query }: Props) {
           </ul>
         </section>
       ))}
+      <div>
+        <Link href={`/${slug}`}>Limpar Filtros</Link>
+      </div>
     </div>
   );
 }
