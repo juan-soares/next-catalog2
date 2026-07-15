@@ -11,6 +11,7 @@
 
 import { CatalogQuery } from "@/modules/catalog/types";
 import { CatalogItem, FilterGroup } from ".";
+import { ComponentType } from "react";
 
 export type MediaType = {
   slug: string;
@@ -26,4 +27,8 @@ export type MediaType = {
    * Retorna itens do catálogo baseado na consulta.
    */
   getItems: (query: CatalogQuery) => Promise<CatalogItem[]>;
+
+  admin: {
+    create: ComponentType;
+  };
 };

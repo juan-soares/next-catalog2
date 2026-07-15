@@ -9,8 +9,8 @@
  * - Não executa lógica de catálogo.
  */
 
-import { animeRegistry } from ".";
-import { MediaType } from "../types";
+import { animeRegistry } from "./anime";
+import { MediaType } from "./types";
 
 export const mediaTypesRegistry = { animes: animeRegistry } satisfies Record<
   string,
