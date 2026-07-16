@@ -5,7 +5,9 @@ export function MediaTypesNavbar() {
   return (
     <nav>
       {MEDIA_TYPES_LINK.map(({ href, label }) => (
-        <Link href={href}>{label}</Link>
+        <Link key={href} href={href}>
+          {label}
+        </Link>
       ))}
     </nav>
   );
