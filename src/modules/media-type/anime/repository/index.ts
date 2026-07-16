@@ -1,4 +1,3 @@
-import { listAnimes } from "../services";
 import { createAnime } from "./create-anime.repository";
 import { findAllAnimes } from "./find-all-animes.repository";
 
