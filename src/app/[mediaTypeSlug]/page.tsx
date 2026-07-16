@@ -50,7 +50,7 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
         <h1>{label}</h1>
         <CatalogSidebar slug={mediaType.slug} query={query} filters={filters} />
         <CatalogSortbar query={query} />
-        <CatalogList result={result} />
+        <CatalogList result={result} deleteAction={mediaType.admin.delete} />
       </main>
     </div>
   );

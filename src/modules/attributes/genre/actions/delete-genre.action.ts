@@ -16,7 +16,7 @@ import { redirect } from "next/navigation";
 import { deleteGenre } from "../services";
 
 export async function deleteGenreAction(formData: FormData) {
-  const value = formData.get("value");
+  const value = formData.get("identifier");
 
   if (typeof value !== "string") {
     throw new Error("Dados inválidos");

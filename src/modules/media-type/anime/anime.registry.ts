@@ -13,9 +13,9 @@
 import { listOptionsByAttribute } from "@/modules/attributes/services";
 import { attributeRegistry } from "@/modules/attributes";
 import type { MediaType } from "../types";
-import { listItemsByMediaType } from "../services";
 import { CreateAnimeForm } from ".";
 import { listAnimes } from "./services";
+import { deleteAnimeAction } from "./actions";
 
 export const animeRegistry: MediaType = {
   slug: "animes",
@@ -47,5 +47,6 @@ export const animeRegistry: MediaType = {
 
   admin: {
     create: CreateAnimeForm,
+    delete: deleteAnimeAction,
   },
 };

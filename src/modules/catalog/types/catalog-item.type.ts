@@ -11,6 +11,8 @@
  */
 
 export type CatalogItem = {
+  identifier: string;
+
   /**
    * URL pública do item.
    *

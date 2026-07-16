@@ -50,7 +50,7 @@ export default async function AttributeValuesPage({ params }: Props) {
 
             <DeleteButton
               onDelete={attribute.admin.delete}
-              value={option.value}
+              identifier={option.value}
             />
           </li>
         ))}

@@ -1,4 +1,6 @@
 import { createAnime } from "./create-anime.repository";
+import { deleteAnime } from "./delete-anime.repository";
+
 import { findAllAnimes } from "./find-all-animes.repository";
 
 export const animeRepository = {
@@ -6,5 +8,5 @@ export const animeRepository = {
   findAll: findAllAnimes,
   //findByValue: findGenreByValue,
   //update: updateGenre,
-  //delete: deleteGenre,
+  delete: deleteAnime,
 };

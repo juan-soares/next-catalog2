@@ -15,6 +15,8 @@ import type { Anime } from "../anime.entity";
 
 export function convertAnimeToCatalogItem(anime: Anime): CatalogItem {
   return {
+    identifier: anime.slug,
+
     href: `/animes/${anime.slug}`,
 
     cover: anime.cover,

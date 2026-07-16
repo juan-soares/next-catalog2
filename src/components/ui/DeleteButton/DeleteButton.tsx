@@ -14,14 +14,14 @@
 import { ConfirmSubmitButton } from "../ConfirmSubmitButton";
 
 type Props = {
-  value: string;
+  identifier: string;
   onDelete: (formData: FormData) => Promise<void>;
 };
 
-export function DeleteButton({ value, onDelete }: Props) {
+export function DeleteButton({ identifier, onDelete }: Props) {
   return (
     <form action={onDelete}>
-      <input type="hidden" name="value" value={value} />
+      <input type="hidden" name="identifier" value={identifier} />
 
       <ConfirmSubmitButton
         label="Excluir"

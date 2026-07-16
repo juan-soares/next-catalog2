@@ -15,19 +15,21 @@ import Image from "next/image";
 
 import styles from "./CatalogList.module.css";
 import { CatalogResult } from "../../types";
+import { DeleteButton } from "@/components/ui";
 
 type Props = {
+  deleteAction: (formData: FormData) => Promise<void>;
   result: CatalogResult;
 };
 
-export function CatalogList({ result: { items } }: Props) {
+export function CatalogList({ deleteAction, result: { items } }: Props) {
   if (items.length === 0) {
     return <p>Sem itens na lista.</p>;
   }
 
   return (
     <ul className={styles.catalogList}>
-      {items.map(({ href, cover, title, releaseYear }) => (
+      {items.map(({ href, identifier, cover, title, releaseYear }) => (
         <li key={href}>
           <Link href={href}>
             <Image
@@ -42,6 +44,10 @@ export function CatalogList({ result: { items } }: Props) {
               <span>{releaseYear}</span>
             </div>
           </Link>
+          <footer>
+            <Link href={`/admin/catalogo${href}/editar`}>Editar</Link>
+            <DeleteButton identifier={identifier} onDelete={deleteAction} />
+          </footer>
         </li>
       ))}
     </ul>

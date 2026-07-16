@@ -30,5 +30,6 @@ export type MediaType = {
 
   admin: {
     create: ComponentType;
+    delete: (formData: FormData) => Promise<void>;
   };
 };
