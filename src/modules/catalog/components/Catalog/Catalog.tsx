@@ -1,17 +1,24 @@
 import { MediaType } from "@/modules/media-type";
-import { CatalogResults } from "../CatalogResults";
+
 import { CatalogItem } from "../../types";
+import { CatalogList } from "../CatalogList";
+import { MediaTypeSlug } from "@/modules/media-type";
 
 type Props = {
   mediaTypeInfo: MediaType;
+  mediaTypeSlug: MediaTypeSlug;
+  query: string;
 };
 
-export async function Catalog({ mediaTypeInfo }: Props) {
-  const results: CatalogItem[] = [];
+export async function Catalog({ mediaTypeInfo, query }: Props) {
+  const results = await mediaTypeInfo.catalog.getItems(query);
 
   return (
     <div>
-      <CatalogResults results={results} deleteAction={deleteAction} />
+      <CatalogList
+        results={results}
+        deleteAction={mediaTypeInfo.admin.deleteAction}
+      />
     </div>
   );
 }

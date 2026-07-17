@@ -1,4 +1,4 @@
-import { DeleteButton } from "@/components/ui";
+import { FormActionButton } from "@/components/ui";
 
 type Props = {
   identifier: string;
@@ -8,7 +8,12 @@ type Props = {
 export function CatalogAdminButtons({ identifier, deleteAction }: Props) {
   return (
     <footer>
-      <DeleteButton identifier={identifier} onDelete={deleteAction} />
+      <FormActionButton
+        label="Remover"
+        confirmationMessage="Deseja realmente excluir?"
+        identifier={identifier}
+        action={deleteAction}
+      />
     </footer>
   );
 }

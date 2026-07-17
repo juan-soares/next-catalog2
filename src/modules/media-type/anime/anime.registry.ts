@@ -1,5 +1,19 @@
-import { MediaTypeRegistry } from "../types";
+import { MediaType } from "../types";
 
-export const animeRegistry: MediaTypeRegistry = {
+export const animeRegistry: MediaType = {
   label: "Animes",
-} as const;
+
+  catalog: {
+    getItems,
+    getFilters,
+  },
+
+  admin: {
+    createForm: CreateAnimeForm,
+    editForm: EditAnimeForm,
+
+    createAction,
+    updateAction,
+    deleteAction,
+  },
+};

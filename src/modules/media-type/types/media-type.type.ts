@@ -11,12 +11,11 @@
  * - Não acessa banco de dados.
  */
 
+import { MediaTypeCatalog } from "../media-type.catalog.type";
+import { MediaTypeAdmin } from "./media-type.admin.type";
+
 export type MediaType = {
-  /**
-   * Nome exibido ao usuário.
-   *
-   * Exemplo:
-   * "Animes"
-   */
   label: string;
+  catalog: MediaTypeCatalog;
+  admin: MediaTypeAdmin;
 };

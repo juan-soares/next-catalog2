@@ -11,21 +11,28 @@
 
 "use client";
 
-import { ConfirmSubmitButton } from "../ConfirmSubmitButton";
+import { FormSubmitButton } from "../FormSubmitButton";
 
 type Props = {
+  label: string;
+  confirmationMessage: string;
   identifier: string;
-  onDelete: (formData: FormData) => Promise<void>;
+  action: (formData: FormData) => Promise<void>;
 };
 
-export function DeleteButton({ identifier, onDelete }: Props) {
+export function FormActionButton({
+  identifier,
+  action,
+  label,
+  confirmationMessage,
+}: Props) {
   return (
-    <form action={onDelete}>
+    <form action={action}>
       <input type="hidden" name="identifier" value={identifier} />
 
-      <ConfirmSubmitButton
-        label="Excluir"
-        confirmationMessage="Deseja realmente excluir?"
+      <FormSubmitButton
+        label={label}
+        confirmationMessage={confirmationMessage}
       />
     </form>
   );

@@ -1,9 +1,9 @@
-import { getMediaTypeBySlug } from "@/modules/media-type";
+import { getMediaTypeBySlug, MediaTypeSlug } from "@/modules/media-type";
 import { Catalog } from "@/modules/catalog";
 
 type Props = {
   params: Promise<{ mediaType: string }>;
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q: string }>;
 };
 
 export default async function MediaTypePage({ params, searchParams }: Props) {
@@ -11,10 +11,17 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
 
   const mediaTypeInfo = getMediaTypeBySlug(mediaType);
 
+  const { q } = await searchParams;
+
   return (
     <div>
       <h1>{mediaTypeInfo.label}</h1>
-      <Catalog mediaTypeInfo={mediaTypeInfo} />
+
+      <Catalog
+        mediaTypeInfo={mediaTypeInfo}
+        mediaTypeSlug={mediaType as MediaTypeSlug}
+        query={q}
+      />
     </div>
   );
 }
