@@ -1,20 +1,34 @@
-import { CatalogItem } from "../../types";
-import { CatalogCard } from "../CatalogCard";
+import Image from "next/image";
+import Link from "next/link";
+import type { CatalogList } from "../../types";
 
 type Props = {
-  results: CatalogItem[];
-  deleteAction: (formData: FormData) => Promise<void>;
+  results: CatalogList;
 };
 
-export function CatalogList({ results, deleteAction }: Props) {
-  if (!results.length) {
-    return <p>Sem resultados.</p>;
-  }
-
+export function CatalogList({ results }: Props) {
+  if (!results.length) return <p>Sem resultados.</p>;
   return (
     <ul>
-      {results.map((item) => (
-        <CatalogCard key={item.identifier} {...item} deleteAction={deleteAction} />
+      {results.map(({ href, cover, label, releaseYear }) => (
+        <li>
+          <Link href={href}>
+            <Image
+              src={cover}
+              alt={`Capa do título ${label}.`}
+              width={60}
+              height={60}
+            />
+            <div>
+              <span>{label}</span>
+              <span>{releaseYear}</span>
+            </div>
+            <footer>
+              <button>Editar</button>
+              <button>Excluir</button>
+            </footer>
+          </Link>
+        </li>
       ))}
     </ul>
   );

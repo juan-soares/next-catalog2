@@ -1,21 +1,21 @@
 /**
- * O que este arquivo faz:
- * - Define o contrato de um MediaType individual.
- * - Representa as informações e capacidades que um tipo de mídia possui.
+ * O que este arquivo faz
+ * ----------------------
+ * Define os contratos relacionados aos tipos de mídia
+ * e aos módulos responsáveis por cada tipo.
  *
- * O que este arquivo NÃO faz:
- * - Não define quais MediaTypes existem.
- * - Não define slugs.
- * - Não conhece o Registry.
- * - Não conhece URLs.
- * - Não acessa banco de dados.
+ * O que este arquivo NÃO faz
+ * --------------------------
+ * - Não registra MediaTypes.
+ * - Não implementa módulos.
+ * - Não conhece páginas específicas.
+ * - Não possui regras de negócio.
  */
 
-import { MediaTypeCatalog } from "../media-type.catalog.type";
-import { MediaTypeAdmin } from "./media-type.admin.type";
+import { MediaTypeModule } from "./media-type-module.type";
 
-export type MediaType = {
+export interface MediaType {
+  slug: string;
   label: string;
-  catalog: MediaTypeCatalog;
-  admin: MediaTypeAdmin;
-};
+  module: MediaTypeModule;
+}

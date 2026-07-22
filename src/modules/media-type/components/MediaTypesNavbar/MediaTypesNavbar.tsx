@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { MEDIA_TYPES_LINK } from "../../media-types.const";
+import { mediaTypesNavigation } from "../../consts";
 
 export function MediaTypesNavbar() {
   return (
     <nav>
-      {MEDIA_TYPES_LINK.map(({ href, label }) => (
+      {mediaTypesNavigation.map(({ href, label }) => (
         <Link key={href} href={href}>
           {label}
         </Link>
