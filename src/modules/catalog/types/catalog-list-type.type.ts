@@ -1,3 +1,3 @@
 import { CatalogListItem } from "./catalog-list-item.type";
 
-export type CatalogList = CatalogListItem[];
+export type CatalogListType = CatalogListItem[];

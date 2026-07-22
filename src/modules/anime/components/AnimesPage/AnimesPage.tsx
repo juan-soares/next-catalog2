@@ -11,10 +11,13 @@
  * - Não contém regras de navegação.
  */
 
+import { AnimesCatalogList } from "../AnimesCatalogList";
+
 export function AnimePage() {
   return (
     <main>
       <h1>Animes</h1>
+      <AnimesCatalogList />
     </main>
   );
 }

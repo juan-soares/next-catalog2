@@ -11,7 +11,7 @@ export function CatalogList({ results }: Props) {
   return (
     <ul>
       {results.map(({ href, cover, label, releaseYear }) => (
-        <li>
+        <li key={href}>
           <Link href={href}>
             <Image
               src={cover}
