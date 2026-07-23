@@ -1,10 +1,19 @@
 import { CatalogFilterOption as CatalogFilterOptionType } from "../../types";
 
-export function CatalogFilterOption({ label, key }: CatalogFilterOptionType) {
+type Props = {
+  name: string;
+  values: CatalogFilterOptionType[];
+};
+
+export function CatalogFilterOption({ name, values }: Props) {
   return (
     <>
-      <input type="checkbox" value={key} />
-      <label>{label}</label>
+      {values.map(({ value, label }) => (
+        <div key={value}>
+          <input type="checkbox" value={value} name={name} />
+          <label>{label}</label>
+        </div>
+      ))}
     </>
   );
 }

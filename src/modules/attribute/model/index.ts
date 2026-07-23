@@ -1,1 +1,1 @@
-export * from "./attribute-item.model";
+export * from "./attribute.model";

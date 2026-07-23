@@ -1,4 +1,7 @@
-export type CatalogFilterOptionType = {
+import { AttributeTypeKeys } from "@/modules/attribute";
+
+export type CatalogFilterOption = {
   label: string;
-  key: string;
+  value: string;
+  name: AttributeTypeKeys;
 };

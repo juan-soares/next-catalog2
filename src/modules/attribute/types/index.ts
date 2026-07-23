@@ -1,2 +1,4 @@
-export * from "./attribute-types-key.type";
-export * from "./attribute-item.type";
+export * from "./attribute.type";
+
+export * from "./attribute-type.type";
+export * from "./attribute-type-keys.type";

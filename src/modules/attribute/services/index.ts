@@ -1,1 +1,1 @@
-export * from "./getAttributesByType.service";
+export * from "./get-attributes-by-type.service";
