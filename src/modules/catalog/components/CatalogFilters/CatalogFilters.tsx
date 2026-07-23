@@ -11,7 +11,7 @@ export function CatalogFilters({ filters, pathName }: Props) {
     <div>
       <h2>Filtros</h2>
       {filters.map(({ key, label, values }) => (
-        <div>
+        <div key={key}>
           <h3>{label}</h3>
           <CatalogFilterOption key={key} name={key} values={values} />
         </div>
