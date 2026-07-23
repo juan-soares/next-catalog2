@@ -14,17 +14,19 @@
 import { CatalogFilters, CatalogSortbar } from "@/modules/catalog";
 import { MediaTypePageProps } from "@/modules/media-type";
 import { AnimesCatalogList } from "../AnimesCatalogList";
-import { CatalogSearch } from "@/modules/catalog/components/CatalogSearch";
+import { CatalogSearch } from "@/modules/catalog";
+import { getAnimeFilters } from "../../services";
 
-export function AnimePage({ query }: MediaTypePageProps) {
+export async function AnimePage({ query }: MediaTypePageProps) {
   const pathName = "/catalogo/animes";
+  const filters = await getAnimeFilters();
 
   return (
     <main>
       <h1>Animes</h1>
       <aside>
         <CatalogSearch pathname={pathName} query={query} />
-        <CatalogFilters pathName={pathName} />
+        <CatalogFilters pathName={pathName} filters={filters} />
       </aside>
       <main>
         <CatalogSortbar pathname={pathName} query={query} />
