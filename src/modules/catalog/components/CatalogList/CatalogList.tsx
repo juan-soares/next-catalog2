@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { CatalogList } from "../../types";
+import type { CatalogListType } from "../../types";
 
 type Props = {
-  results: CatalogList;
+  results: CatalogListType;
 };
 
 export function CatalogList({ results }: Props) {

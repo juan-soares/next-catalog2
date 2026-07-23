@@ -14,12 +14,16 @@
 import { CatalogSortbar } from "@/modules/catalog";
 import { MediaTypePageProps } from "@/modules/media-type";
 import { AnimesCatalogList } from "../AnimesCatalogList";
+import { CatalogSearch } from "@/modules/catalog/components/CatalogSearch";
 
 export function AnimePage({ query }: MediaTypePageProps) {
+  const pathName = "/catalogo/animes";
+
   return (
     <main>
       <h1>Animes</h1>
-      <CatalogSortbar pathname="/catalogo/animes" query={query} />
+      <CatalogSearch pathname={pathName} query={query} />
+      <CatalogSortbar pathname={pathName} query={query} />
       <AnimesCatalogList />
     </main>
   );

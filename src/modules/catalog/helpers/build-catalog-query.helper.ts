@@ -13,6 +13,7 @@
  */
 
 import type { CatalogQuery, CatalogSearchParams } from "../types";
+import { buildQuery } from "./build-query.helper";
 
 import { buildSort } from "./build-sort.helper";
 
@@ -20,6 +21,7 @@ export function buildCatalogQuery(
   searchParams: CatalogSearchParams,
 ): CatalogQuery {
   return {
+    q: buildQuery(searchParams.q),
     sort: buildSort(searchParams.sort),
   };
 }
