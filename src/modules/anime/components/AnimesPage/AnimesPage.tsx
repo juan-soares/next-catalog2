@@ -11,7 +11,7 @@
  * - Não contém regras de navegação.
  */
 
-import { CatalogSortbar } from "@/modules/catalog";
+import { CatalogFilters, CatalogSortbar } from "@/modules/catalog";
 import { MediaTypePageProps } from "@/modules/media-type";
 import { AnimesCatalogList } from "../AnimesCatalogList";
 import { CatalogSearch } from "@/modules/catalog/components/CatalogSearch";
@@ -22,9 +22,14 @@ export function AnimePage({ query }: MediaTypePageProps) {
   return (
     <main>
       <h1>Animes</h1>
-      <CatalogSearch pathname={pathName} query={query} />
-      <CatalogSortbar pathname={pathName} query={query} />
-      <AnimesCatalogList query={query} />
+      <aside>
+        <CatalogSearch pathname={pathName} query={query} />
+        <CatalogFilters pathName={pathName} />
+      </aside>
+      <main>
+        <CatalogSortbar pathname={pathName} query={query} />
+        <AnimesCatalogList query={query} />
+      </main>
     </main>
   );
 }
