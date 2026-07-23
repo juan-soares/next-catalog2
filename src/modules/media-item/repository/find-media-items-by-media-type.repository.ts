@@ -2,15 +2,23 @@ import { MediaTypeKey } from "@/modules/media-type";
 import { MediaItemModel } from "../model";
 import { MediaItem } from "../types";
 import { connectToDatabase } from "@/lib/mongoose";
+import { CatalogQuery } from "@/modules/catalog";
+import { buildMongoFilters, buildMongoSort } from "../helpers";
 
 export async function findMediaItemsByMediaType(
   mediaType: MediaTypeKey,
+  query: CatalogQuery,
 ): Promise<MediaItem[]> {
   await connectToDatabase();
-  
-  const documents = await MediaItemModel.find({
+
+  const filter = buildMongoFilters({
     mediaType,
-  }).lean();
+    query,
+  });
+
+  const sort = buildMongoSort(query.sort);
+
+  const documents = await MediaItemModel.find(filter).sort(sort).lean();
 
   return documents.map((document) => ({
     id: document._id.toString(),

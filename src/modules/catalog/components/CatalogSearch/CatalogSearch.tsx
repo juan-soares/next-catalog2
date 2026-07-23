@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { convertCatalogQueryToURLQuery } from "../../helpers";
 import { CatalogQuery } from "../../types";
+import { CatalogQueryHiddenFields } from "../CatalogQueryHiddenFields";
 
 type Props = {
   pathname: string;
@@ -17,7 +18,7 @@ export function CatalogSearch({ pathname, query }: Props) {
         defaultValue={query.q}
       />
 
-      <input type="hidden" name="sort" value={query.sort} />
+      <CatalogQueryHiddenFields query={query} exclude={["q"]}/>
 
       <button type="submit">Pesquisar</button>
     </form>

@@ -24,7 +24,7 @@ export function AnimePage({ query }: MediaTypePageProps) {
       <h1>Animes</h1>
       <CatalogSearch pathname={pathName} query={query} />
       <CatalogSortbar pathname={pathName} query={query} />
-      <AnimesCatalogList />
+      <AnimesCatalogList query={query} />
     </main>
   );
 }

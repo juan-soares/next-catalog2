@@ -12,7 +12,9 @@
 
 import { mediaItemRepository } from "@/modules/media-item";
 import { mapMediaItemToAnime } from "../mappers";
+import { CatalogQuery } from "@/modules/catalog";
 
-export async function getAnimes() {
-  return (await mediaItemRepository.find("anime")).map(mapMediaItemToAnime);
+export async function getAnimes(query: CatalogQuery) {
+  const mediaItems = await mediaItemRepository.find("animes", query);
+  return mediaItems.map(mapMediaItemToAnime);
 }
