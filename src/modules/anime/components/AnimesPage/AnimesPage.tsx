@@ -11,12 +11,15 @@
  * - Não contém regras de navegação.
  */
 
+import { CatalogSortbar } from "@/modules/catalog";
+import { MediaTypePageProps } from "@/modules/media-type";
 import { AnimesCatalogList } from "../AnimesCatalogList";
 
-export function AnimePage() {
+export function AnimePage({ query }: MediaTypePageProps) {
   return (
     <main>
       <h1>Animes</h1>
+      <CatalogSortbar pathname="/catalogo/animes" query={query} />
       <AnimesCatalogList />
     </main>
   );

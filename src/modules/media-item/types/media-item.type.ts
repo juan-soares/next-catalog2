@@ -16,6 +16,7 @@ import { MediaTypeKey } from "@/modules/media-type";
 export type MediaItem = {
   title: string;
   translatedTitle?: string;
+
   mediaType: MediaTypeKey;
   slug: string;
 

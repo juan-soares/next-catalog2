@@ -1,10 +1,13 @@
 import { MediaTypeKey } from "@/modules/media-type";
 import { MediaItemModel } from "../model";
 import { MediaItem } from "../types";
+import { connectToDatabase } from "@/lib/mongoose";
 
 export async function findMediaItemsByMediaType(
   mediaType: MediaTypeKey,
 ): Promise<MediaItem[]> {
+  await connectToDatabase();
+  
   const documents = await MediaItemModel.find({
     mediaType,
   }).lean();
