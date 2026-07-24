@@ -1,27 +1,32 @@
 import { CatalogFilter } from "../../types";
-import { CatalogFilterOption } from "../CatalogFilterOption";
 
 type Props = {
-  pathName: string;
   filters: CatalogFilter[];
 };
 
-export function CatalogFilters({ filters, pathName }: Props) {
+export function CatalogFilters({ filters }: Props) {
   return (
     <div>
-      <h2>Filtros</h2>
-      {filters.map(({ key, label, values }) => (
-        <div key={key}>
+      {filters.map(({ label, key: name, values }) => (
+        <div key={name}>
           <h3>{label}</h3>
-          <CatalogFilterOption key={key} name={key} values={values} />
+
+          <ul>
+            {values.map(({ label, value }) => (
+              <li key={value}>
+                <input
+                  form="catalog-query"
+                  type="checkbox"
+                  name={name}
+                  id={value}
+                  value={value}
+                />
+                <label htmlFor={value}>{label}</label>
+              </li>
+            ))}
+          </ul>
         </div>
       ))}
-
-      <footer>
-        <form action={pathName}>
-          <button type="submit">Limpar filtros</button>
-        </form>
-      </footer>
     </div>
   );
 }

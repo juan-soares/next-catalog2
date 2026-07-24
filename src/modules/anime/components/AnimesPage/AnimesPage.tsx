@@ -11,27 +11,29 @@
  * - Não contém regras de navegação.
  */
 
-import { CatalogFilters, CatalogSortbar } from "@/modules/catalog";
 import { MediaTypePageProps } from "@/modules/media-type";
-import { AnimesCatalogList } from "../AnimesCatalogList";
-import { CatalogSearch } from "@/modules/catalog";
-import { getAnimeFilters } from "../../services";
+import {
+  getAnimeFilters,
+  getAnimes,
+  listAnimeCatalogResults,
+} from "../../services";
+import { Catalog } from "@/modules/catalog";
 
 export async function AnimePage({ query }: MediaTypePageProps) {
   const pathName = "/catalogo/animes";
+
   const filters = await getAnimeFilters();
+  const results = await listAnimeCatalogResults(query);
 
   return (
-    <main>
-      <h1>Animes</h1>
-      <aside>
-        <CatalogSearch pathname={pathName} query={query} />
-        <CatalogFilters pathName={pathName} filters={filters} />
-      </aside>
-      <main>
-        <CatalogSortbar pathname={pathName} query={query} />
-        <AnimesCatalogList query={query} />
-      </main>
-    </main>
+    <div>
+      <Catalog
+        title="Animes"
+        pathName={pathName}
+        query={query}
+        filters={filters}
+        results={results}
+      />
+    </div>
   );
 }

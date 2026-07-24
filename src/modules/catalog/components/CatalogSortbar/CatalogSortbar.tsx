@@ -1,39 +1,28 @@
-/**
- * O que este arquivo faz
- * ----------------------
- * Renderiza os controles de ordenação
- * do catálogo.
- *
- * O que este arquivo NÃO faz
- * --------------------------
- * - Não executa ordenação.
- * - Não acessa banco.
- * - Não conhece MediaTypes específicos.
- * - Não controla estado React.
- */
-
-import Link from "next/link";
-
 import { SORT_OPTIONS } from "../../consts";
-import { CatalogQuery } from "../../types";
-import { convertCatalogQueryToURLQuery } from "../../helpers";
+import { CatalogQuery, CatalogSortOptions } from "../../types";
 
 type Props = {
-  pathname: string;
-  query: CatalogQuery;
+  currentSort: CatalogSortOptions;
 };
 
-export function CatalogSortbar({ pathname, query }: Props) {
+export function CatalogSortbar({ currentSort }: Props) {
   return (
-    <nav>
+    <fieldset>
+      <legend>Ordenar por</legend>
+
       {SORT_OPTIONS.map((option) => (
-        <Link
-          key={option.value}
-          href={`${pathname}?${convertCatalogQueryToURLQuery(query, { sort: option.value })}`}
-        >
+        <label key={option.value}>
+          <input
+            form="catalog-query"
+            type="radio"
+            name="sort"
+            value={option.value}
+            defaultChecked={currentSort === option.value}
+          />
+
           {option.label}
-        </Link>
+        </label>
       ))}
-    </nav>
+    </fieldset>
   );
 }
