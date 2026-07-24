@@ -12,13 +12,17 @@
  * - Não possui regras específicas de cada mídia.
  */
 
-import { AnimeModule } from "@/modules/anime";
 import { MediaType } from "../types";
+import { getAnimeFilters, listAnimeCatalogResults } from "@/modules/anime";
 
 export const mediaTypesRegistry = {
   animes: {
     label: "Animes",
     slug: "animes",
-    module: AnimeModule,
+
+    catalog: {
+      getFilters: getAnimeFilters,
+      getResults: listAnimeCatalogResults,
+    },
   },
 } satisfies Record<string, MediaType>;

@@ -12,10 +12,18 @@
  * - Não possui regras de negócio.
  */
 
-import { MediaTypeModule } from "./media-type-module.type";
+import {
+  CatalogFilter,
+  CatalogListItem,
+  CatalogQuery,
+} from "@/modules/catalog";
 
 export interface MediaType {
   slug: string;
   label: string;
-  module: MediaTypeModule;
+
+  catalog: {
+    getFilters: () => Promise<CatalogFilter[]>;
+    getResults: (query: CatalogQuery) => Promise<CatalogListItem[]>;
+  };
 }

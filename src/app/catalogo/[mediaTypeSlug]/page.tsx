@@ -12,8 +12,12 @@
  * - Não acessa banco de dados.
  */
 
-import { CatalogSearchParams, buildCatalogQuery } from "@/modules/catalog";
-import { getMediaTypeBySlug } from "@/modules/media-type/";
+import {
+  Catalog,
+  CatalogSearchParams,
+  buildCatalogQuery,
+} from "@/modules/catalog";
+import { getMediaTypeConfigBySlug } from "@/modules/media-type";
 
 type Props = {
   params: Promise<{
@@ -24,12 +28,24 @@ type Props = {
 
 export default async function MediaTypePage({ params, searchParams }: Props) {
   const { mediaTypeSlug } = await params;
-  const mediaType = getMediaTypeBySlug(mediaTypeSlug);
+  const mediaTypeConfig = getMediaTypeConfigBySlug(mediaTypeSlug);
+
+  const pathName = `/catalogo/${mediaTypeConfig.slug}`;
 
   const searchParamsPromise = await searchParams;
   const query = buildCatalogQuery(searchParamsPromise);
 
-  const Page = mediaType.module.page;
+  const filters = await mediaTypeConfig.catalog.getFilters();
+  const results = await mediaTypeConfig.catalog.getResults(query);
 
-  return <Page query={query} />;
+
+  return (
+    <Catalog
+      pathName={pathName}
+      query={query}
+      title={mediaTypeConfig.label}
+      filters={filters}
+      results={results}
+    />
+  );
 }
