@@ -1,4 +1,5 @@
 import { CatalogFilter, CatalogQuery } from "../../types";
+import { CatalogAddBtn } from "../CatalogAddBtn";
 import { CatalogFilters } from "../CatalogFilters";
 import { CatalogSearch } from "../CatalogSearch";
 
@@ -12,7 +13,11 @@ export function CatalogSidebar({ pathName, term, filters }: Props) {
   return (
     <aside>
       <h2>Filtros</h2>
-      <CatalogSearch term={term} />
+      <section>
+        <CatalogSearch term={term} />
+        <CatalogAddBtn pathName={pathName} />
+      </section>
+
       <CatalogFilters filters={filters} />
 
       <footer>

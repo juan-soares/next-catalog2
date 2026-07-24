@@ -6,7 +6,7 @@ type Props = {
 
 export function CatalogFilters({ filters }: Props) {
   return (
-    <div>
+    <section>
       {filters.map(({ label, key: name, values }) => (
         <div key={name}>
           <h3>{label}</h3>
@@ -27,6 +27,6 @@ export function CatalogFilters({ filters }: Props) {
           </ul>
         </div>
       ))}
-    </div>
+    </section>
   );
 }

@@ -30,14 +30,13 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
   const { mediaTypeSlug } = await params;
   const mediaTypeConfig = getMediaTypeConfigBySlug(mediaTypeSlug);
 
-  const pathName = `/catalogo/${mediaTypeConfig.slug}`;
+  const pathName = `/catalogo/midias/${mediaTypeConfig.slug}`;
 
   const searchParamsPromise = await searchParams;
   const query = buildCatalogQuery(searchParamsPromise);
 
   const filters = await mediaTypeConfig.catalog.getFilters();
   const results = await mediaTypeConfig.catalog.getResults(query);
-
 
   return (
     <Catalog
