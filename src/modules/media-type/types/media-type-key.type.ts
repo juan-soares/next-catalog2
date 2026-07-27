@@ -1,3 +1,3 @@
-import { mediaTypesRegistry } from "../registry";
+import { MEDIA_TYPE_KEYS } from "../consts";
 
-export type MediaTypeKey = keyof typeof mediaTypesRegistry;
+export type MediaTypeKey = (typeof MEDIA_TYPE_KEYS)[number];
