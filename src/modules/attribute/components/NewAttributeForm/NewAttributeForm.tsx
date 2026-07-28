@@ -6,7 +6,7 @@ export function NewAttributeForm() {
   return (
     <form action={createAttributeAction}>
       <label htmlFor="attributeType">Atributo:</label>
-      <select id="attributeType" name="attributeType">
+      <select id="attributeType" name="attributeType" required>
         <option hidden value="">
           Selecione...
         </option>
@@ -18,8 +18,8 @@ export function NewAttributeForm() {
         ))}
       </select>
 
-      <label htmlFor="value">Valor:</label>
-      <input type="text" id="value" name="value" required />
+      <label htmlFor="label">Valor:</label>
+      <input type="text" id="label" name="label" required />
 
       <SubmitActionButton
         label={"Enviar"}

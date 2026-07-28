@@ -1,8 +1,8 @@
 import { attributeRepository } from "../repository";
-import { Attribute, AttributeTypeKeys } from "../types";
+import { Attribute, AttributeTypeKey } from "../types";
 
 export async function getAttributesByType(
-  type: AttributeTypeKeys,
+  type: AttributeTypeKey,
 ): Promise<Attribute[]> {
   return attributeRepository.find(type);
 }

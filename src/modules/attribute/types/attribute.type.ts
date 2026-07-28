@@ -1,7 +1,7 @@
-import { AttributeTypeKeys } from "./attribute-type-keys.type";
+import { AttributeTypeKey } from "./attribute-type-keys.type";
 
 export type Attribute = {
-  id: string;
+  value: string;
   label: string;
-  type: AttributeTypeKeys;
+  type: AttributeTypeKey;
 };

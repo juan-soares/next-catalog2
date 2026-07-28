@@ -1,7 +1,7 @@
-import { MEDIA_TYPE_KEYS } from "@/modules/media-type";
 import { z } from "zod";
+import { ATTRIBUTE_TYPE_KEYS } from "../consts";
 
 export const createAttributeSchema = z.object({
   label: z.string().min(1),
-  attributeType: z.enum(MEDIA_TYPE_KEYS),
+  attributeType: z.enum(ATTRIBUTE_TYPE_KEYS),
 });

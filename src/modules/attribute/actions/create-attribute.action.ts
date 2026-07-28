@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createAttributeSchema } from "../schemas";
+import { createAttribute } from "../services";
 
 export async function createAttributeAction(formData: FormData): Promise<void> {
   const input = createAttributeSchema.parse({
@@ -9,5 +10,7 @@ export async function createAttributeAction(formData: FormData): Promise<void> {
     attributeType: formData.get("attributeType"),
   });
 
-  redirect("/catalog/atributos");
+  await createAttribute(input);
+
+  redirect("/catalogo/atributos");
 }

@@ -1,8 +1,15 @@
 import { Schema, model, models } from "mongoose";
-import { ATTRIBUTE_TYPES } from "../consts";
+import { ATTRIBUTE_TYPE_KEYS } from "../consts";
 
 const AttributeSchema = new Schema(
   {
+    value: {
+      type: String,
+      unique: true,
+      required: true,
+      lowercase: true,
+    },
+
     label: {
       type: String,
       required: true,
@@ -11,7 +18,7 @@ const AttributeSchema = new Schema(
     type: {
       type: String,
       required: true,
-      enum: ATTRIBUTE_TYPES.map((attribute) => attribute.key),
+      enum: ATTRIBUTE_TYPE_KEYS,
       index: true,
     },
   },

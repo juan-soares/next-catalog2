@@ -1,3 +1,3 @@
-import { ATTRIBUTE_TYPES } from "../consts";
+import { ATTRIBUTE_TYPE_KEYS } from "../consts";
 
-export type AttributeTypeKeys = (typeof ATTRIBUTE_TYPES)[number]["key"];
+export type AttributeTypeKey = (typeof ATTRIBUTE_TYPE_KEYS)[number];
