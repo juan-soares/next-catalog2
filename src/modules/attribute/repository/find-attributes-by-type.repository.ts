@@ -1,12 +1,12 @@
 import { connectToDatabase } from "@/lib/mongoose";
 import { AttributeModel } from "../model";
-import { Attribute, AttributeTypeKey } from "../types";
+import { Attribute, AttributeDocument, AttributeTypeKey } from "../types";
 
 export async function findAttributesByType(
   type: AttributeTypeKey,
 ): Promise<Attribute[]> {
   await connectToDatabase();
-  const document = await AttributeModel.find({ type })
+  const document: AttributeDocument[] = await AttributeModel.find({ type })
     .sort({ label: 1 })
     .lean();
 
