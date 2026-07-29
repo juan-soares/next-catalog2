@@ -12,6 +12,7 @@
  * - Não transforma documentos em entidades.
  */
 
+import { MEDIA_TYPE_KEYS } from "@/modules/media-type";
 import { Schema, model, models } from "mongoose";
 
 const MediaItemSchema = new Schema(
@@ -32,12 +33,14 @@ const MediaItemSchema = new Schema(
       required: true,
       trim: true,
       unique: true,
+      lowercase: true,
       index: true,
     },
 
     mediaType: {
       type: String,
       required: true,
+      enum: MEDIA_TYPE_KEYS,
       index: true,
     },
 

@@ -17,15 +17,12 @@ export type MediaItem = {
   title: string;
   translatedTitle?: string;
 
-  mediaType: MediaTypeKey;
   slug: string;
+  mediaType: MediaTypeKey;
 
   releaseDate: Date;
 
   cover: string;
 
   attributes: Record<string, unknown>;
-
-  createdAt: Date;
-  updatedAt: Date;
 };
