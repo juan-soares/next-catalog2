@@ -23,6 +23,4 @@ export type MediaItem = {
   releaseDate: Date;
 
   cover: string;
-
-  attributes: Record<string, unknown>;
 };
