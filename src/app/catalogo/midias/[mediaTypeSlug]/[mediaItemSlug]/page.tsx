@@ -13,6 +13,7 @@ export default function MediaItemPage() {
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit ullam necessitatibus maiores dolores incidunt architecto at nemo, accusantium fugit aspernatur id provident! Totam saepe molestias porro, quas doloribus expedita maiores!",
     acquired: false,
     complete: false,
+    characters: [{ name: "ash", image: "/cover.png", status: "Vivo" }],
   };
 
   return <MediaItemsDetailsPage mediaItemInfo={mediaItemInfo} />;

@@ -9,4 +9,11 @@ export type MediaItemDetails = {
   sinopsys: string;
   acquired: boolean;
   complete: boolean;
+
+  characters: {
+    name: string;
+    nickname?: string;
+    image: string;
+    status: string;
+  }[];
 };

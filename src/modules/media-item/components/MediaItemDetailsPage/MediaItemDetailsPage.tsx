@@ -2,35 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { MediaItemHeader } from "../MediaItemHeader";
 import { MediaItemDetails } from "../../types";
+import { MediaItemCharactersbar } from "../MediaItemCharactersbar";
 
 type Props = {
   mediaItemInfo: MediaItemDetails;
 };
 
 export function MediaItemsDetailsPage({ mediaItemInfo }: Props) {
-  const characters = [
-    { name: "Ash", nickname: "", image: "/ash.png", status: "Ativo" },
-  ];
-
   return (
     <div>
       <main>
         <MediaItemHeader {...mediaItemInfo} />
-        <div>
-          {characters.map(({ name, nickname, image, status }) => (
-            <div key={name}>
-              <Image
-                src={image}
-                alt={`Imagem do personagem ${image}.`}
-                width={60}
-                height={60}
-              />
-              <h3>{name}</h3>
-              <h2>{nickname}</h2>
-              <span>{status}</span>
-            </div>
-          ))}
-        </div>
+        <MediaItemCharactersbar {...mediaItemInfo} />
 
         <div>
           <nav>
