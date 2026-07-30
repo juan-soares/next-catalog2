@@ -12,7 +12,7 @@
  * - Não possui regras específicas de cada mídia.
  */
 
-import { MediaType, MediaTypeKey, MediaTypesRegistry } from "../types";
+import { MediaTypesRegistry } from "../types";
 import { getAnimeFilters, listAnimeCatalogResults } from "@/modules/anime";
 
 export const mediaTypesRegistry = {

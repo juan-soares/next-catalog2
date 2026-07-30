@@ -6,13 +6,15 @@ import { MediaItem, MediaItemDocument } from "../types";
 export async function findMediaItemByTypeAndSlug(
   type: MediaTypeKey,
   slug: string,
-): Promise<MediaItem> {
+): Promise<MediaItem | null> {
   await connectToDatabase();
 
   const document: MediaItemDocument = await MediaItemModel.findOne({
     type,
     slug,
   }).lean();
+
+  if (!document) return null;
 
   return {
     slug: document.slug,

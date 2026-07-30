@@ -1,12 +1,11 @@
 import { slugify } from "@/lib/helpers";
-import { CreateMediaItemInput } from "../types";
+import { CreateMediaItemInput, MediaItem } from "../types";
 import { mediaItemRepository } from "../repository";
-import { Anime } from "@/modules/anime";
 import { ensureMediaItemDoesNotExist } from "./ensure-media-item-does-not-exist.service";
 
 export async function createMediaItem(
   input: CreateMediaItemInput,
-): Promise<Anime> {
+): Promise<MediaItem> {
   const newMediaItem = {
     mediaType: input.mediaType,
     title: input.title,

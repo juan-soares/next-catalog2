@@ -1,4 +1,12 @@
-import z from "zod";
-import { createMediaItemSchema } from "../schemas";
+import { MediaTypeKey } from "@/modules/media-type";
 
-export type CreateMediaItemInput = z.infer<typeof createMediaItemSchema>;
+export type CreateMediaItemInput = {
+  mediaType: MediaTypeKey;
+
+  title: string;
+  translatedTitle?: string;
+
+  cover: string;
+
+  releaseDate: Date;
+};

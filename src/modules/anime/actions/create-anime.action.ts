@@ -15,5 +15,5 @@ export async function createAnimeAction(formData: FormData): Promise<void> {
 
   await createAnime(input);
 
-  redirect("/catalogo/animes");
+  redirect("/catalogo/midias/animes");
 }
