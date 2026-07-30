@@ -4,7 +4,7 @@ import { Anime } from "../types";
 export function mapAnimetoCatalogListItem(anime: Anime): CatalogListItem {
   return {
     label: anime.title,
-    href: `/catalogo/animes/${anime.slug}`,
+    href: `/catalogo/midias/animes/${anime.slug}`,
     cover: anime.cover,
     releaseYear: anime.releaseDate.toString().slice(0, 4),
   };

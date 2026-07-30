@@ -28,10 +28,6 @@ export function CatalogList({ currentSort, results }: Props) {
                 <span>{label}</span>
                 <span>{releaseYear}</span>
               </div>
-              <footer>
-                <button>Editar</button>
-                <button>Excluir</button>
-              </footer>
             </Link>
           </li>
         ))}

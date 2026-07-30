@@ -6,13 +6,16 @@ import { ensureMediaItemDoesNotExist } from "./ensure-media-item-does-not-exist.
 export async function createMediaItem(
   input: CreateMediaItemInput,
 ): Promise<MediaItem> {
+  const releaseDate = input.releaseDate;
+  const slug = `${slugify(input.title)}-${releaseDate.getFullYear().toString()}`;
+
   const newMediaItem = {
     mediaType: input.mediaType,
     title: input.title,
     translatedTitle: input.translatedTitle,
-    slug: slugify(input.title),
     cover: input.cover,
-    releaseDate: input.releaseDate,
+    slug,
+    releaseDate,
   };
 
   await ensureMediaItemDoesNotExist(newMediaItem);

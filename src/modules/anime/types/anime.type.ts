@@ -1,7 +1,5 @@
-export type Anime = {
-  title: string;
-  slug: string;
-  cover: string;
-  mediaType: string;
-  releaseDate: Date;
+import { MediaItem } from "@/modules/media-item";
+
+export type Anime = Omit<MediaItem, "mediaType"> & {
+  mediaType: "animes";
 };

@@ -1,11 +1,22 @@
-import { NewAnimeForm } from "@/modules/anime";
+import { getMediaTypeConfigBySlug } from "@/modules/media-type";
 
-export default function NewAnimePage() {
+type Props = {
+  params: Promise<{ mediaTypeSlug: string }>;
+};
+
+export default async function NewMediaItemPage({ params }: Props) {
+  const { mediaTypeSlug } = await params;
+  const mediaTypeConfig = getMediaTypeConfigBySlug(mediaTypeSlug);
+
+  const {
+    label,
+    admin: { NewMediaItemForm },
+  } = mediaTypeConfig;
+
   return (
     <main>
-      <h1>Novo Anime</h1>
-
-      <NewAnimeForm />
+      <h1>Adicionar {label}</h1>
+      <NewMediaItemForm />
     </main>
   );
 }

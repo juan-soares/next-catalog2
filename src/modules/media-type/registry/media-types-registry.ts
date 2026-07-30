@@ -13,7 +13,11 @@
  */
 
 import { MediaTypesRegistry } from "../types";
-import { getAnimeFilters, listAnimeCatalogResults } from "@/modules/anime";
+import {
+  getAnimeFilters,
+  listAnimeCatalogResults,
+  NewAnimeForm,
+} from "@/modules/anime";
 
 export const mediaTypesRegistry = {
   animes: {
@@ -23,6 +27,10 @@ export const mediaTypesRegistry = {
     catalog: {
       getFilters: getAnimeFilters,
       getResults: listAnimeCatalogResults,
+    },
+
+    admin: {
+      NewMediaItemForm: NewAnimeForm,
     },
   },
 } satisfies MediaTypesRegistry;

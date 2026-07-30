@@ -17,6 +17,7 @@ import {
   CatalogListItem,
   CatalogQuery,
 } from "@/modules/catalog";
+import { ComponentType, JSX } from "react";
 
 export interface MediaType {
   slug: string;
@@ -25,5 +26,9 @@ export interface MediaType {
   catalog: {
     getFilters: () => Promise<CatalogFilter[]>;
     getResults: (query: CatalogQuery) => Promise<CatalogListItem[]>;
+  };
+
+  admin: {
+    NewMediaItemForm: ComponentType;
   };
 }

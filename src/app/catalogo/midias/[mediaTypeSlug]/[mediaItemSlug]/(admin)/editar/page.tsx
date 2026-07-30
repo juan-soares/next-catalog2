@@ -1,3 +1,3 @@
 export default function EditMediaItemsPage() {
-  return <div>Novo</div>;
+  return <div>Editar</div>;
 }
