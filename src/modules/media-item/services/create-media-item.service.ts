@@ -12,20 +12,30 @@ export async function createMediaItem(
 
   const newMediaItem = {
     mediaType: input.mediaType,
+
     title: input.title,
     translatedTitle: input.translatedTitle,
+
     cover: input.cover,
     trailer: input.trailer,
+
     slug,
     releaseDate: input.releaseDate,
+
     synopsis: input.synopsis,
+
     themes: input.themes,
+
     acquired: input.acquired,
     complete: input.complete,
+
     characters: input.characters,
   };
 
-  await ensureMediaItemDoesNotExist(newMediaItem);
+  await ensureMediaItemDoesNotExist({
+    mediaType: input.mediaType,
+    slug,
+  });
 
   return mediaItemRepository.insert(newMediaItem);
 }

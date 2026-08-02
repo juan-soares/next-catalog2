@@ -29,6 +29,7 @@ export function NewAnimeForm() {
       <fieldset>
         <legend>Tags</legend>
         <label htmlFor="theme">Temáticas</label>
+        <label htmlFor="theme1">Tema1</label>
         <input type="checkbox" id="theme1" name="themes" value="theme1" />
       </fieldset>
 
@@ -45,16 +46,16 @@ export function NewAnimeForm() {
         <legend>Controle:</legend>
 
         <label>Adquirido:</label>
-        <label htmlFor="acquired">Sim</label>
         <input type="radio" id="acquired" name="acquired" value={"true"} />
         <label htmlFor="notAcquired">Não</label>
         <input type="radio" id="notAcquired" name="acquired" value={"false"} />
+        <label htmlFor="acquired">Sim</label>
 
         <label>Completo:</label>
-        <label htmlFor="complete">Sim</label>
         <input type="radio" id="complete" name="complete" value={"true"} />
-        <label htmlFor="notcomplete">Não</label>
+        <label htmlFor="complete">Sim</label>
         <input type="radio" id="notComplete" name="complete" value={"false"} />
+        <label htmlFor="notcomplete">Não</label>
       </fieldset>
 
       <SubmitActionButton

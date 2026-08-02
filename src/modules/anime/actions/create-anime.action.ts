@@ -8,9 +8,19 @@ export async function createAnimeAction(formData: FormData): Promise<void> {
   const input = createAnimeSchema.parse({
     title: formData.get("title"),
     translatedTitle: formData.get("translatedTitle"),
-    //cover: formData.get("cover"),
-    cover: "/",
     releaseDate: formData.get("releaseDate"),
+
+    sinopsys: formData.get("sinopsys"),
+
+    cover: formData.get("cover"),
+    trailer: formData.get("trailer"),
+
+    themes: formData.getAll("themes"),
+
+    acquired: formData.get("acquired"),
+    complete: formData.get("complete"),
+
+    characters: JSON.parse(formData.get("characters") as string),
   });
 
   await createAnime(input);
