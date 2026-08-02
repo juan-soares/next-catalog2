@@ -8,3 +8,4 @@ export * from "./MediaItemTabGallery";
 export * from "./MediaItemTabFiles";
 export * from "./MediaItemTabChronology";
 export * from "./MediaItemTabFranchises";
+export * from "./MediaItemCharacterField";

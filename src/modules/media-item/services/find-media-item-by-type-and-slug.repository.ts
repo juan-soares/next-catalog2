@@ -26,7 +26,7 @@ export async function findMediaItemByTypeAndSlug(
 
     trailer: document.trailer,
     themes: document.themes,
-    sinopsys: document.sinopsys,
+    synopsis: document.synopsis,
     acquired: document.acquired,
     complete: document.complete,
     characters: document.characters,

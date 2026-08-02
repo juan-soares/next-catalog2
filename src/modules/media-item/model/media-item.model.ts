@@ -1,19 +1,6 @@
-/**
- * O que este arquivo faz
- * ----------------------
- * Define o schema MongoDB utilizado para persistir itens
- * de mídia na collection "mediaItems".
- *
- * O que este arquivo NÃO faz
- * --------------------------
- * - Não conhece domínios específicos como Anime ou Book.
- * - Não implementa regras de negócio.
- * - Não conhece catálogo ou filtros.
- * - Não transforma documentos em entidades.
- */
-
 import { MEDIA_TYPE_KEYS } from "@/modules/media-type";
 import { Schema, model, models } from "mongoose";
+import { CharacterSchema } from "./media-item-character.model";
 
 const MediaItemSchema = new Schema(
   {
@@ -32,7 +19,6 @@ const MediaItemSchema = new Schema(
       type: String,
       required: true,
       trim: true,
-      unique: true,
       lowercase: true,
       index: true,
     },
@@ -49,15 +35,48 @@ const MediaItemSchema = new Schema(
       required: true,
     },
 
+    synopsis: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
     cover: {
       type: String,
       required: true,
+      trim: true,
+    },
+
+    trailer: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    characters: {
+      type: [CharacterSchema],
+      default: [],
     },
 
     attributes: {
       type: Map,
       of: Schema.Types.Mixed,
       default: {},
+    },
+
+    themes: {
+      type: [String],
+      default: [],
+    },
+
+    acquired: {
+      type: Boolean,
+      default: false,
+    },
+
+    complete: {
+      type: Boolean,
+      default: false,
     },
   },
   {

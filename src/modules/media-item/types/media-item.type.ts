@@ -1,4 +1,5 @@
 import { MediaTypeKey } from "@/modules/media-type";
+import { MediaItemCharacter } from "./media-item-character.type";
 
 export type MediaItem = {
   title: string;
@@ -9,7 +10,7 @@ export type MediaItem = {
 
   releaseDate: Date;
 
-  sinopsys: string;
+  synopsis: string;
 
   cover: string;
   trailer: string;
@@ -18,10 +19,5 @@ export type MediaItem = {
 
   acquired: boolean;
   complete: boolean;
-  characters: {
-    name: string;
-    nickname?: string;
-    image: string;
-    status: string;
-  }[];
+  characters: MediaItemCharacter[];
 };

@@ -26,7 +26,7 @@ export async function getMediaItemDetails(
     releaseYear: mediaItem.releaseDate.getFullYear().toString(),
     mediaType: { label: mediaTypeLabel, slug: mediaTypeKey },
     themes: mediaItem.themes,
-    sinopsys: mediaItem.sinopsys,
+    synopsis: mediaItem.synopsis,
     acquired: mediaItem.acquired,
     complete: mediaItem.complete,
     characters: mediaItem.characters,

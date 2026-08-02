@@ -9,7 +9,7 @@ export type MediaItemDetails = {
   releaseYear: string;
   mediaType: { label: string; slug: MediaTypeKey };
   themes: string[];
-  sinopsys: string;
+  synopsis: string;
   acquired: boolean;
   complete: boolean;
 

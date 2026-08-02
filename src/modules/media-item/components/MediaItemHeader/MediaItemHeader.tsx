@@ -13,7 +13,7 @@ type Props = Pick<
   | "releaseYear"
   | "mediaType"
   | "themes"
-  | "sinopsys"
+  | "synopsis"
   | "acquired"
   | "complete"
 >;
@@ -27,7 +27,7 @@ export function MediaItemHeader({
   releaseYear,
   mediaType,
   themes,
-  sinopsys,
+  synopsis,
   acquired,
   complete,
 }: Props) {
@@ -66,7 +66,7 @@ export function MediaItemHeader({
               <li key={theme}>{theme}</li>
             ))}
           </ul>
-          <p>{sinopsys}</p>
+          <p>{synopsis}</p>
           <div>
             <button>{acquired ? "Adquirido" : "Adquirir"}</button>
             <button>{complete ? "Completo" : "Incompleto"}</button>
