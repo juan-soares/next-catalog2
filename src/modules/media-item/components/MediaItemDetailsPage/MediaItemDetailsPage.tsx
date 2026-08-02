@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { MediaItemHeader } from "../MediaItemHeader";
 import { MediaItemDetails } from "../../types";
@@ -8,7 +7,7 @@ type Props = {
   mediaItemInfo: MediaItemDetails;
 };
 
-export function MediaItemsDetailsPage({ mediaItemInfo }: Props) {
+export function MediaItemDetailsPage({ mediaItemInfo }: Props) {
   return (
     <div>
       <main>

@@ -17,10 +17,11 @@ import {
   CatalogListItem,
   CatalogQuery,
 } from "@/modules/catalog";
-import { ComponentType, JSX } from "react";
+import { ComponentType } from "react";
+import { MediaTypeKey } from "./media-type-key.type";
 
 export interface MediaType {
-  slug: string;
+  slug: MediaTypeKey;
   label: string;
 
   catalog: {
@@ -30,5 +31,6 @@ export interface MediaType {
 
   admin: {
     NewMediaItemForm: ComponentType;
+    deleteAction: (formData: FormData) => Promise<void>;
   };
 }

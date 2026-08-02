@@ -1,10 +1,13 @@
+import { MediaTypeKey } from "@/modules/media-type";
+
 export type MediaItemDetails = {
   trailer: string;
+  slug: string;
   cover: string;
   title: string;
-  translatedTitle: string;
+  translatedTitle?: string;
   releaseYear: string;
-  mediaType: string;
+  mediaType: { label: string; slug: MediaTypeKey };
   themes: string[];
   sinopsys: string;
   acquired: boolean;

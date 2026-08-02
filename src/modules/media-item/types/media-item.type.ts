@@ -9,5 +9,19 @@ export type MediaItem = {
 
   releaseDate: Date;
 
+  sinopsys: string;
+
   cover: string;
+  trailer: string;
+
+  themes: string[];
+
+  acquired: boolean;
+  complete: boolean;
+  characters: {
+    name: string;
+    nickname?: string;
+    image: string;
+    status: string;
+  }[];
 };

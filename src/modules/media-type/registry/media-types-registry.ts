@@ -14,6 +14,7 @@
 
 import { MediaTypesRegistry } from "../types";
 import {
+  deleteAnimeAction,
   getAnimeFilters,
   listAnimeCatalogResults,
   NewAnimeForm,
@@ -31,6 +32,7 @@ export const mediaTypesRegistry = {
 
     admin: {
       NewMediaItemForm: NewAnimeForm,
+      deleteAction: deleteAnimeAction,
     },
   },
 } satisfies MediaTypesRegistry;

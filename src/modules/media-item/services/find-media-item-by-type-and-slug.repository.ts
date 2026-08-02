@@ -4,13 +4,13 @@ import { connectToDatabase } from "@/lib/mongoose";
 import { MediaItem, MediaItemDocument } from "../types";
 
 export async function findMediaItemByTypeAndSlug(
-  type: MediaTypeKey,
+  mediaType: MediaTypeKey,
   slug: string,
 ): Promise<MediaItem | null> {
   await connectToDatabase();
 
   const document: MediaItemDocument = await MediaItemModel.findOne({
-    type,
+    mediaType,
     slug,
   }).lean();
 
@@ -23,5 +23,12 @@ export async function findMediaItemByTypeAndSlug(
     mediaType: document.mediaType,
     releaseDate: document.releaseDate,
     cover: document.cover,
+
+    trailer: document.trailer,
+    themes: document.themes,
+    sinopsys: document.sinopsys,
+    acquired: document.acquired,
+    complete: document.complete,
+    characters: document.characters,
   };
 }

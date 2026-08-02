@@ -1,9 +1,12 @@
 import Image from "next/image";
 import { MediaItemDetails } from "../../types";
+import { DeleteActionForm } from "@/components/ui";
+import { deleteMediaItemAction } from "../../actions/";
 
 type Props = Pick<
   MediaItemDetails,
   | "trailer"
+  | "slug"
   | "cover"
   | "title"
   | "translatedTitle"
@@ -17,6 +20,7 @@ type Props = Pick<
 
 export function MediaItemHeader({
   trailer,
+  slug,
   cover,
   title,
   translatedTitle,
@@ -47,15 +51,21 @@ export function MediaItemHeader({
         </div>
         <div>
           <h1>{title}</h1>
+          <DeleteActionForm
+            fieldName="slug"
+            fieldValue={slug}
+            itemType={mediaType.slug}
+            deleteAction={deleteMediaItemAction}
+          />
           <h2>{translatedTitle}</h2>
           <p>
-            {releaseYear} | {mediaType}
+            {releaseYear} | {mediaType.label}
           </p>
-          <div>
+          <ul>
             {themes.map((theme) => (
-              <span key={theme}>{theme}</span>
+              <li key={theme}>{theme}</li>
             ))}
-          </div>
+          </ul>
           <p>{sinopsys}</p>
           <div>
             <button>{acquired ? "Adquirido" : "Adquirir"}</button>
