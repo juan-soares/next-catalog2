@@ -18,12 +18,13 @@ export async function insertMediaItem(
 
     releaseDate: document.releaseDate,
 
+    synopsis: document.synopsis,
+
     cover: document.cover,
     trailer: document.trailer,
 
-    synopsis: document.synopsis,
-
     themes: document.themes,
+    franchises: document.franchises,
 
     acquired: document.acquired,
     complete: document.complete,

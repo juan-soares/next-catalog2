@@ -16,8 +16,10 @@ export type MediaItem = {
   trailer: string;
 
   themes: string[];
+  franchises: string[];
 
   acquired: boolean;
   complete: boolean;
+
   characters: MediaItemCharacter[];
 };

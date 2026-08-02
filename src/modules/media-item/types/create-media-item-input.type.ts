@@ -14,14 +14,16 @@ export type CreateMediaItemInput = {
   title: string;
   translatedTitle?: string;
 
-  cover: string;
-  trailer: string;
-
   releaseDate: Date;
 
   synopsis: string;
 
+  cover: string;
+  trailer: string;
+
   themes: string[];
+
+  franchises: string[];
 
   acquired: boolean;
   complete: boolean;

@@ -2,24 +2,25 @@
 
 import { useState } from "react";
 import { CHARACTER_STATUS } from "@/modules/media-item/consts";
+import { CharacterStatus } from "../../types/media-item-character-status.type";
 
 type CharacterInput = {
   name: string;
   nickname: string;
   image: string;
-  status: string;
+  status: CharacterStatus;
 };
 
 const EMPTY_CHARACTER: CharacterInput = {
   name: "",
   nickname: "",
   image: "",
-  status: "ativo",
+  status: "Ativo",
 };
 
 export function MediaItemCharacterFields() {
   const [characters, setCharacters] = useState<CharacterInput[]>([
-    EMPTY_CHARACTER,
+    { ...EMPTY_CHARACTER },
   ]);
 
   function updateCharacter(
@@ -90,7 +91,14 @@ export function MediaItemCharacterFields() {
 
           <label htmlFor={`character-image-${index}`}>Imagem:</label>
 
-          <input id={`character-image-${index}`} type="file" />
+          <input
+            id={`character-image-${index}`}
+            type="text"
+            value={character.image}
+            onChange={(event) =>
+              updateCharacter(index, "image", event.target.value)
+            }
+          />
 
           <label htmlFor={`character-status-${index}`}>Status:</label>
 
@@ -98,7 +106,11 @@ export function MediaItemCharacterFields() {
             id={`character-status-${index}`}
             value={character.status}
             onChange={(event) =>
-              updateCharacter(index, "status", event.target.value)
+              updateCharacter(
+                index,
+                "status",
+                event.target.value as CharacterStatus,
+              )
             }
           >
             {CHARACTER_STATUS.map((status) => (

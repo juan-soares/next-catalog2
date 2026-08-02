@@ -20,14 +20,12 @@ const MediaItemSchema = new Schema(
       required: true,
       trim: true,
       lowercase: true,
-      index: true,
     },
 
     mediaType: {
       type: String,
       required: true,
       enum: MEDIA_TYPE_KEYS,
-      index: true,
     },
 
     releaseDate: {
@@ -58,14 +56,24 @@ const MediaItemSchema = new Schema(
       default: [],
     },
 
-    attributes: {
-      type: Map,
-      of: Schema.Types.Mixed,
-      default: {},
+    themes: {
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Attribute",
+        },
+      ],
+      required: true,
+      default: [],
     },
 
-    themes: {
-      type: [String],
+    franchises: {
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Franchise",
+        },
+      ],
       default: [],
     },
 
@@ -82,6 +90,16 @@ const MediaItemSchema = new Schema(
   {
     collection: "mediaItems",
     timestamps: true,
+  },
+);
+
+MediaItemSchema.index(
+  {
+    mediaType: 1,
+    slug: 1,
+  },
+  {
+    unique: true,
   },
 );
 
