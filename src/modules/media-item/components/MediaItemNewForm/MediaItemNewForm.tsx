@@ -91,7 +91,13 @@ export function MediaItemForm({ mediaType, children }: Props) {
 
         <label htmlFor="notAcquired">Não</label>
 
-        <input type="radio" id="notAcquired" name="acquired" value="false" />
+        <input
+          type="radio"
+          id="notAcquired"
+          name="acquired"
+          value="false"
+          defaultChecked
+        />
       </fieldset>
 
       <fieldset>
@@ -105,7 +111,13 @@ export function MediaItemForm({ mediaType, children }: Props) {
 
         <label htmlFor="notComplete">Não</label>
 
-        <input type="radio" id="notComplete" name="complete" value="false" />
+        <input
+          type="radio"
+          id="notComplete"
+          name="complete"
+          value="false"
+          defaultChecked
+        />
       </fieldset>
 
       {children}
