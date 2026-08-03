@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { MediaItemHeader } from "../MediaItemHeader";
+import { MediaItemHeader } from "./MediaItemHeader";
 import { MediaItemDetails } from "../../types";
-import { MediaItemCharactersbar } from "../MediaItemCharactersbar";
+import { MediaItemCharactersbar } from "./MediaItemCharactersbar";
 
 type Props = {
   mediaItemInfo: MediaItemDetails;

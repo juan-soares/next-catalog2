@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MediaItemDetails } from "../../types";
+import { MediaItemDetails } from "../../../types";
 
 type Props = Pick<MediaItemDetails, "characters">;
 

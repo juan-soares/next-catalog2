@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { MediaItemDetails } from "../../types";
+import { MediaItemDetails } from "../../../types";
 import { DeleteActionForm } from "@/components/ui";
-import { deleteMediaItemAction } from "../../actions/";
+import { deleteMediaItemAction } from "../../../actions";
 
 type Props = Pick<
   MediaItemDetails,

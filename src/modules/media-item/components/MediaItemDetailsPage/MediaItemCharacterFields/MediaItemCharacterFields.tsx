@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { CHARACTER_STATUS } from "@/modules/media-item/consts";
-import { CharacterStatus } from "../../types/media-item-character-status.type";
+import { CharacterStatus } from "../../../types/media-item-character-status.type";
 
 type CharacterInput = {
   name: string;

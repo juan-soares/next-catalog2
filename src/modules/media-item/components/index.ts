@@ -1,12 +1,4 @@
 export * from "./MediaItemDetailsPage";
-export * from "./MediaItemTabGeneralInfo";
-export * from "./MediaItemTabSeasons";
-export * from "./MediaItemTabOvas";
-export * from "./MediaItemTabVolumes";
-export * from "./MediaItemTabSpecials";
-export * from "./MediaItemTabGallery";
-export * from "./MediaItemTabFiles";
-export * from "./MediaItemTabChronology";
-export * from "./MediaItemTabFranchises";
-export * from "./MediaItemCharacterFields";
+
+export * from "./MediaItemDetailsPage/MediaItemCharacterFields";
 export * from "./MediaItemNewForm";

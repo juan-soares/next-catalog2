@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { SubmitActionButton } from "@/components/ui";
 import { createMediaItemAction } from "../../actions";
-import { MediaItemCharacterFields } from "../MediaItemCharacterFields";
+import { MediaItemCharacterFields } from "../MediaItemDetailsPage/MediaItemCharacterFields";
 
 type Props = {
   mediaType: string;
