@@ -10,6 +10,7 @@ export type MediaItem = {
 
   releaseDate: Date;
 
+  languages: string[];
   synopsis: string;
 
   cover: string;

@@ -1,4 +1,4 @@
-import { AttributeTypeKey } from "./attribute-type-keys.type";
+import { AttributeTypeKey } from "./attribute-type-key.type";
 
 export type AttributeType = {
   key: AttributeTypeKey;

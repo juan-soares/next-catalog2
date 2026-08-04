@@ -18,6 +18,7 @@ export async function insertMediaItem(
 
     releaseDate: document.releaseDate,
 
+    languages: document.languages,
     synopsis: document.synopsis,
 
     cover: document.cover,

@@ -2,60 +2,50 @@ import { ReactNode } from "react";
 import { SubmitActionButton } from "@/components/ui";
 import { createMediaItemAction } from "../../actions";
 import { MediaItemCharacterFields } from "../MediaItemDetailsPage/MediaItemCharacterFields";
+import { getMediaTypeConfigBySlug, MediaTypeKey } from "@/modules/media-type";
 
 type Props = {
-  mediaType: string;
+  mediaType: MediaTypeKey;
   children?: ReactNode;
 };
 
-export function MediaItemForm({ mediaType, children }: Props) {
+export async function MediaItemForm({ mediaType, children }: Props) {
+  const mediaTypeConfig = getMediaTypeConfigBySlug(mediaType);
+  const attributes = await mediaTypeConfig.catalog.getFilters();
+
   return (
     <form action={createMediaItemAction}>
       <input type="hidden" name="mediaType" value={mediaType} />
 
       <fieldset>
         <legend>Ficha Técnica</legend>
-
         <label htmlFor="title">Título:</label>
-
         <input type="text" id="title" name="title" required />
 
         <label htmlFor="translatedTitle">Título Traduzido:</label>
-
         <input type="text" id="translatedTitle" name="translatedTitle" />
 
         <label htmlFor="releaseDate">Lançamento:</label>
-
         <input type="date" id="releaseDate" name="releaseDate" required />
 
         <label htmlFor="synopsis">Sinopse:</label>
-
         <textarea id="synopsis" name="synopsis" required />
       </fieldset>
 
-      <fieldset>
-        <legend>Temáticas</legend>
-
-        {/* Temporariamente manual.
-            Depois pode vir de uma action que busca a collection attributes. */}
-
-        <label>
-          <input type="checkbox" name="themes" value="THEME_ID_AQUI" />
-          Ação
-        </label>
-
-        <label>
-          <input type="checkbox" name="themes" value="THEME_ID_AQUI" />
-          Drama
-        </label>
-      </fieldset>
+      {attributes.map(({ label, values }) => (
+        <fieldset key={label}>
+          <legend>{label}</legend>
+          {values.map(({ type, value, label }, index) => (
+            <label key={value}>
+              <input type="checkbox" name={type} value={value+index} />
+              {label}
+            </label>
+          ))}
+        </fieldset>
+      ))}
 
       <fieldset>
         <legend>Franquias</legend>
-
-        {/* Opcional.
-            Pode ficar vazio. */}
-
         <label>
           <input type="checkbox" name="franchises" value="FRANCHISE_ID_AQUI" />
           Marvel
@@ -64,7 +54,6 @@ export function MediaItemForm({ mediaType, children }: Props) {
 
       <fieldset>
         <legend>Personagens</legend>
-
         <MediaItemCharacterFields />
       </fieldset>
 

@@ -5,8 +5,9 @@ const AttributeSchema = new Schema(
   {
     value: {
       type: String,
-      unique: true,
       required: true,
+      unique: true,
+      immutable: true,
       lowercase: true,
     },
 

@@ -33,6 +33,11 @@ const MediaItemSchema = new Schema(
       required: true,
     },
 
+    languages: {
+      type: [String],
+      required: true,
+    },
+
     synopsis: {
       type: String,
       required: true,
