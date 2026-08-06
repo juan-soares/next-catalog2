@@ -35,7 +35,12 @@ export const createMediaItemSchema = z.object({
 
   trailer: z.string().trim().min(1, "Informe o trailer."),
 
-  themes: z.array(z.string().trim()).min(1, "Selecione ao menos uma temática."),
+  languageIds: z
+    .array(z.string().trim())
+    .min(1, "Selecione ao menos um idioma."),
+  themeIds: z
+    .array(z.string().trim())
+    .min(1, "Selecione ao menos uma temática."),
 
   franchises: z.array(z.string().trim()).default([]),
 

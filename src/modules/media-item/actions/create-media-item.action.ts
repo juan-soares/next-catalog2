@@ -20,7 +20,8 @@ export async function createMediaItemAction(formData: FormData): Promise<void> {
 
     trailer: formData.get("trailer"),
 
-    themes: formData.getAll("themes"),
+    languageIds: formData.getAll("languageIds"),
+    themeIds: formData.getAll("themeIds"),
 
     franchises: formData.getAll("franchises"),
 

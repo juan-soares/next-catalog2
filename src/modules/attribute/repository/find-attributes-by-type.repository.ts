@@ -4,9 +4,13 @@ import { Attribute, AttributeDocument, AttributeTypeKey } from "../types";
 
 export async function findAttributesByType(
   type: AttributeTypeKey,
+  values: string[],
 ): Promise<Attribute[]> {
   await connectToDatabase();
-  const document: AttributeDocument[] = await AttributeModel.find({ type })
+  const document: AttributeDocument[] = await AttributeModel.find({
+    type,
+    value: { $in: values },
+  })
     .sort({ label: 1 })
     .lean();
 

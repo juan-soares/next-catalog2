@@ -35,9 +35,10 @@ export async function MediaItemForm({ mediaType, children }: Props) {
       {attributes.map(({ label, values }) => (
         <fieldset key={label}>
           <legend>{label}</legend>
-          {values.map(({ type, value, label }, index) => (
-            <label key={value}>
-              <input type="checkbox" name={type} value={value+index} />
+
+          {values.map(({ id, type, label }) => (
+            <label key={id}>
+              <input type="checkbox" name={`${type}Ids`} value={id} />
               {label}
             </label>
           ))}

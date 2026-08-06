@@ -34,8 +34,14 @@ const MediaItemSchema = new Schema(
     },
 
     languages: {
-      type: [String],
+      type: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: "Attribute",
+        },
+      ],
       required: true,
+      default: [],
     },
 
     synopsis: {

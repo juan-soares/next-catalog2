@@ -1,5 +1,5 @@
 import { connectToDatabase } from "@/lib/mongoose";
-import { MediaItem, MediaItemDocument } from "../types";
+import { MediaItem } from "../types";
 import { MediaItemModel } from "../model";
 
 export async function insertMediaItem(
@@ -7,29 +7,14 @@ export async function insertMediaItem(
 ): Promise<MediaItem> {
   await connectToDatabase();
 
-  const document: MediaItemDocument = await MediaItemModel.create(newMediaItem);
+  const languageIds = newMediaItem.languageIds.map((id) => id);
+  const themeIds = newMediaItem.themeIds.map((id) => id);
 
-  return {
-    title: document.title,
-    translatedTitle: document.translatedTitle,
+  await MediaItemModel.create({
+    ...newMediaItem,
+    languageIds,
+    themeIds,
+  });
 
-    slug: document.slug,
-    mediaType: document.mediaType,
-
-    releaseDate: document.releaseDate,
-
-    languages: document.languages,
-    synopsis: document.synopsis,
-
-    cover: document.cover,
-    trailer: document.trailer,
-
-    themes: document.themes,
-    franchises: document.franchises,
-
-    acquired: document.acquired,
-    complete: document.complete,
-
-    characters: document.characters,
-  };
+  return newMediaItem;
 }

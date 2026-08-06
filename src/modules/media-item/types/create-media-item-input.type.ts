@@ -1,5 +1,6 @@
 import { MediaTypeKey } from "@/modules/media-type";
 import { CharacterStatus } from "./media-item-character-status.type";
+import { Attribute } from "@/modules/attribute";
 
 export type CreateMediaItemCharacterInput = {
   name: string;
@@ -21,7 +22,8 @@ export type CreateMediaItemInput = {
   cover: string;
   trailer: string;
 
-  themes: string[];
+  languageIds: Attribute["id"][];
+  themeIds: Attribute["id"][];
 
   franchises: string[];
 

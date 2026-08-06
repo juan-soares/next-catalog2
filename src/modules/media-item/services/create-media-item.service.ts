@@ -7,8 +7,12 @@ export async function createMediaItem(
   input: CreateMediaItemInput,
 ): Promise<MediaItem> {
   const releaseYear = input.releaseDate.getFullYear();
-
   const slug = `${slugify(input.title)}-${releaseYear}`;
+
+  await ensureMediaItemDoesNotExist({
+    mediaType: input.mediaType,
+    slug,
+  });
 
   const newMediaItem: MediaItem = {
     mediaType: input.mediaType,
@@ -19,12 +23,13 @@ export async function createMediaItem(
     slug,
     releaseDate: input.releaseDate,
 
+    languageIds: input.languageIds,
     synopsis: input.synopsis,
 
     cover: input.cover,
     trailer: input.trailer,
 
-    themes: input.themes,
+    themeIds: input.themeIds,
     franchises: input.franchises,
 
     acquired: input.acquired,
@@ -32,11 +37,6 @@ export async function createMediaItem(
 
     characters: input.characters,
   };
-
-  await ensureMediaItemDoesNotExist({
-    mediaType: input.mediaType,
-    slug,
-  });
 
   return mediaItemRepository.insert(newMediaItem);
 }

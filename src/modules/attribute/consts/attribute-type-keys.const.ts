@@ -1,1 +1,1 @@
-export const ATTRIBUTE_TYPE_KEYS = ["language"] as const;
+export const ATTRIBUTE_TYPE_KEYS = ["languages", "themes"] as const;
