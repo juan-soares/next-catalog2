@@ -38,6 +38,7 @@ export const createMediaItemSchema = z.object({
   languageIds: z
     .array(z.string().trim())
     .min(1, "Selecione ao menos um idioma."),
+
   themeIds: z
     .array(z.string().trim())
     .min(1, "Selecione ao menos uma temática."),

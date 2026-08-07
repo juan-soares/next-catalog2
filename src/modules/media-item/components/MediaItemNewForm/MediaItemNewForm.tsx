@@ -2,7 +2,9 @@ import { ReactNode } from "react";
 import { SubmitActionButton } from "@/components/ui";
 import { createMediaItemAction } from "../../actions";
 import { MediaItemCharacterFields } from "../MediaItemDetailsPage/MediaItemCharacterFields";
-import { getMediaTypeConfigBySlug, MediaTypeKey } from "@/modules/media-type";
+import { MediaTypeKey } from "@/modules/media-type";
+import { getAttributesByType } from "@/modules/attribute";
+import { AttributeCheckboxField } from "./AttributeCheckboxField.tsx";
 
 type Props = {
   mediaType: MediaTypeKey;
@@ -10,8 +12,10 @@ type Props = {
 };
 
 export async function MediaItemForm({ mediaType, children }: Props) {
-  const mediaTypeConfig = getMediaTypeConfigBySlug(mediaType);
-  const attributes = await mediaTypeConfig.catalog.getFilters();
+  const [languageOptions, themeOptions] = await Promise.all([
+    getAttributesByType("languages"),
+    getAttributesByType("themes"),
+  ]);
 
   return (
     <form action={createMediaItemAction}>
@@ -28,22 +32,15 @@ export async function MediaItemForm({ mediaType, children }: Props) {
         <label htmlFor="releaseDate">Lançamento:</label>
         <input type="date" id="releaseDate" name="releaseDate" required />
 
+        <AttributeCheckboxField
+          fieldName="languageIds"
+          label="Idiomas"
+          options={languageOptions}
+        />
+
         <label htmlFor="synopsis">Sinopse:</label>
         <textarea id="synopsis" name="synopsis" required />
       </fieldset>
-
-      {attributes.map(({ label, values }) => (
-        <fieldset key={label}>
-          <legend>{label}</legend>
-
-          {values.map(({ id, type, label }) => (
-            <label key={id}>
-              <input type="checkbox" name={`${type}Ids`} value={id} />
-              {label}
-            </label>
-          ))}
-        </fieldset>
-      ))}
 
       <fieldset>
         <legend>Franquias</legend>

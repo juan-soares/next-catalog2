@@ -5,3 +5,4 @@ export * from "./attribute-type.type";
 export * from "./attribute-type-key.type";
 
 export * from "./attribute-field.view.type";
+export * from "./attribute-option.view.type";

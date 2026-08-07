@@ -7,7 +7,7 @@ import { ensureAttributeDoesNotExist } from "./ensure-attribute-does-not-exist.s
 export async function createAttribute(
   input: CreateAttributeInput,
 ): Promise<void> {
-  const newAttribute: Attribute = {
+  const newAttribute: Omit<Attribute, "id"> = {
     value: slugify(input.label),
     label: input.label,
     type: input.attributeType,

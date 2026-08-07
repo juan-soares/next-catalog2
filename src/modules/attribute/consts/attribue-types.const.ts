@@ -1,4 +1,11 @@
-export const ATTRIBUTE_TYPES = [
-  { key: "languages", label: "Idiomas" },
-  { key: "themes", label: "Temas" },
-] as const;
+export const ATTRIBUTE_TYPES = {
+  languages: {
+    label: "Idiomas",
+    fieldName: "languageIds",
+  },
+
+  themes: {
+    label: "Temas",
+    fieldName: "themeIds",
+  },
+} as const;
