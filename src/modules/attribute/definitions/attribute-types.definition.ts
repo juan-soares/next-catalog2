@@ -5,4 +5,9 @@ export const ATTRIBUTE_TYPES = {
     label: "Idiomas",
     fieldName: "languageIds",
   },
+
+  themes: {
+    label: "Temas",
+    fieldName: "themeIds",
+  },
 } satisfies Record<string, AttributeTypeDefinition>;

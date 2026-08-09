@@ -1,3 +1,5 @@
-import { ATTRIBUTE_TYPES } from "./attribue-types.const";
+import { ATTRIBUTE_TYPES } from "../definitions";
+import { AttributeTypeKey } from "../types";
 
-export type AttributeFieldName = (typeof ATTRIBUTE_TYPES)[number]["fieldName"];
+export type AttributeFieldName =
+  (typeof ATTRIBUTE_TYPES)[AttributeTypeKey]["fieldName"];
