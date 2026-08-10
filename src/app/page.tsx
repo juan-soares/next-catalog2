@@ -1,7 +1,11 @@
-import { HeroCarousel } from "@/features/home";
+import {
+  HeroCarousel,
+  CarouselItems,
+  getHeroCarouselItems,
+} from "@/features/home";
 
 export default async function HomePage() {
-  const carouselItems = await getHeroCarouselItems();
+  const carouselItems: CarouselItems = await getHeroCarouselItems();
 
   return (
     <main>
