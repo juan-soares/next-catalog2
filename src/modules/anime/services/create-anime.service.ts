@@ -1,4 +1,4 @@
-import { createMediaItem } from "@/modules/media-item";
+import { createMediaItem } from "@/modules/1-media-item";
 import { Anime, CreateAnimeInput } from "../types";
 
 export async function createAnime(input: CreateAnimeInput): Promise<Anime> {

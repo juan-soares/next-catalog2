@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CHARACTER_STATUS } from "@/modules/media-item/consts";
+import { CHARACTER_STATUS } from "@/modules/1-media-item/consts";
 import { CharacterStatus } from "../../../types/media-item-character-status.type";
 
 type CharacterInput = {

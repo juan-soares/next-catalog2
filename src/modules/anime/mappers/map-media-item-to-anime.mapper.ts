@@ -1,4 +1,4 @@
-import { MediaItem } from "@/modules/media-item/types";
+import { MediaItem } from "@/modules/1-media-item/types";
 import { Anime } from "../types";
 
 export function mapMediaItemToAnime(mediaItem: MediaItem): Anime {

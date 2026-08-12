@@ -1,27 +1,14 @@
-import { MediaTypeKey } from "@/modules/media-type";
-import { MediaItemCharacter } from "./media-item-character.type";
-import { Attribute } from "@/modules/attribute";
-
 export type MediaItem = {
-  title: string;
-  translatedTitle?: string;
+  id: string;
 
   slug: string;
-  mediaType: MediaTypeKey;
+  mediaType: {
+    slug: string;
+    label: string;
+  };
 
+  title: string;
   releaseDate: Date;
 
-  languageIds: Attribute["id"][];
-  synopsis: string;
-
   cover: string;
-  trailer: string;
-
-  themeIds: Attribute["id"][];
-  franchises: string[];
-
-  acquired: boolean;
-  complete: boolean;
-
-  characters: MediaItemCharacter[];
 };

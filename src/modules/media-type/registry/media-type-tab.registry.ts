@@ -8,7 +8,7 @@ import {
   MediaItemTabSeasons,
   MediaItemTabSpecials,
   MediaItemTabVolumes,
-} from "@/modules/media-item";
+} from "@/modules/1-media-item";
 import { MediaTypeTab, MediaTypeTabKey } from "../types";
 
 export const MEDIA_TYPE_TABS = {

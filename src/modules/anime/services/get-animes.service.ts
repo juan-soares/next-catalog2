@@ -10,7 +10,7 @@
  * - Não renderiza UI.
  */
 
-import { mediaItemRepository } from "@/modules/media-item";
+import { mediaItemRepository } from "@/modules/1-media-item";
 import { mapMediaItemToAnime } from "../mappers";
 import { CatalogQuery } from "@/modules/catalog";
 

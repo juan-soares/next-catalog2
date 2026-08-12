@@ -10,11 +10,12 @@ export function GlobalSearch() {
   return (
     <div>
       <GlobalSearchInput query={term} setQuery={setTerm} />
-      {term.trim().length > 3 && isSearching ? (
-        <p>Pesquisando</p>
-      ) : (
-        <GlobalSearchResults results={results} />
-      )}
+
+      <GlobalSearchResults
+        term={term}
+        isSearching={isSearching}
+        results={results}
+      />
     </div>
   );
 }

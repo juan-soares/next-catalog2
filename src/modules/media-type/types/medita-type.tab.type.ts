@@ -1,4 +1,4 @@
-import { MediaItem } from "@/modules/media-item";
+import { MediaItem } from "@/modules/1-media-item";
 import { ComponentType } from "react";
 
 export type MediaTypeTab = {
