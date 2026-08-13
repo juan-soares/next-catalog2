@@ -1,4 +1,4 @@
-import { MEDIA_TYPE_KEYS } from "@/modules/media-type";
+import { MEDIA_TYPE_KEYS } from "@/modules/1-media-type";
 import { z } from "zod";
 
 export const deleteMediaItemSchema = z.object({

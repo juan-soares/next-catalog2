@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { CHARACTER_STATUS } from "../consts";
-import { MEDIA_TYPE_KEYS } from "@/modules/media-type";
+import { MEDIA_TYPE_KEYS } from "@/modules/1-media-type";
 
 const characterSchema = z.object({
   name: z.string().trim().min(1, "Informe o nome do personagem."),

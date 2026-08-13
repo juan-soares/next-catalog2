@@ -1,4 +1,4 @@
-import { MediaTypeKey } from "@/modules/media-type";
+import { MediaTypeKey } from "@/modules/1-media-type";
 import { mediaItemRepository } from "../repository";
 
 export async function deleteMediaItem(

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { SubmitActionButton } from "@/components/ui";
 import { createMediaItemAction } from "../../actions";
 import { MediaItemCharacterFields } from "../MediaItemDetailsPage/MediaItemCharacterFields";
-import { MediaTypeKey } from "@/modules/media-type";
+import { MediaTypeKey } from "@/modules/1-media-type";
 import { getAttributesByType } from "@/modules/attribute";
 import { AttributeCheckboxField } from "./AttributeCheckboxField.tsx";
 

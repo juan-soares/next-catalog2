@@ -1,3 +1,3 @@
-import { MEDIA_TYPE_KEYS } from "../consts";
+import { MEDIA_TYPES } from "../definitions";
 
-export type MediaTypeKey = (typeof MEDIA_TYPE_KEYS)[number];
+export type MediaTypeKey = keyof typeof MEDIA_TYPES;

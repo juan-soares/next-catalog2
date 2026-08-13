@@ -1,5 +1,5 @@
 import type { CatalogQuery } from "@/modules/catalog";
-import type { MediaTypeKey } from "@/modules/media-type";
+import type { MediaTypeKey } from "@/modules/1-media-type";
 
 type Props = {
   mediaType: MediaTypeKey;

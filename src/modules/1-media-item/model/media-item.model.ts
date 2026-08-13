@@ -1,4 +1,4 @@
-import { MEDIA_TYPE_KEYS } from "@/modules/media-type";
+import { MEDIA_TYPE_KEYS } from "@/modules/1-media-type";
 import { Schema, model, models } from "mongoose";
 import { CharacterSchema } from "./media-item-character.model";
 

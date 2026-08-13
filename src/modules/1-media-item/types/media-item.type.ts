@@ -1,4 +1,4 @@
-import { MediaTypeKey } from "@/modules/media-type";
+import { MediaTypeKey } from "@/modules/1-media-type";
 import { MediaItemCharacter } from "./media-item-character.type";
 import { Attribute } from "@/modules/attribute";
 

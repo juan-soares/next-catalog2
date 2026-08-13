@@ -1,4 +1,4 @@
-import { MediaTypeKey } from "@/modules/media-type";
+import { MediaTypeKey } from "@/modules/1-media-type";
 import { MediaItemModel } from "../model";
 import { MediaItem, MediaItemDocument } from "../types";
 import { connectToDatabase } from "@/lib/mongoose";

@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
-import { mediaTypesRegistry } from "../registry";
 import { MediaTypeInfo, MediaTypeKey } from "../types";
+import { MEDIA_TYPES } from "../definitions";
 
 export function getMediaTypeInfoByKey(key: MediaTypeKey): MediaTypeInfo {
-  const mediaType = mediaTypesRegistry[key];
+  const mediaType = MEDIA_TYPES[key];
 
   if (!mediaType) return notFound();
 

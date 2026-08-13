@@ -1,5 +1,5 @@
-import { MEDIA_TYPE_KEYS } from "@/modules/media-type";
 import { Schema, model, models } from "mongoose";
+import { MEDIA_TYPE_KEYS } from "../../media-type/consts";
 
 const MediaItemSchema = new Schema(
   {

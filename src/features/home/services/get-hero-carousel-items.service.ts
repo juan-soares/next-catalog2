@@ -1,9 +1,9 @@
+import { findRecentlyUpdatedMediaItems } from "@/modules/media-item";
 import { CarouselItems } from "../types";
+import { mapMediaItemToCarouselItem } from "../mappers";
 
 export async function getHeroCarouselItems(): Promise<CarouselItems> {
-  return [
-    { title: "Teste", cover: "cover.png" },
-    { title: "Teste1", cover: "cover1.png" },
-    { title: "Teste2", cover: "cover2.png" },
-  ];
+  const mediaItems = await findRecentlyUpdatedMediaItems(5);
+
+  return mediaItems.map(mapMediaItemToCarouselItem);
 }

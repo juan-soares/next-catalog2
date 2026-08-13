@@ -1,4 +1,4 @@
-import { getMediaTypeConfigBySlug, MediaTypeKey } from "@/modules/media-type";
+import { getMediaTypeConfigBySlug, MediaTypeKey } from "@/modules/1-media-type";
 import { MediaItemDetails } from "../types";
 import { findMediaItemByTypeAndSlug } from "./find-media-item-by-type-and-slug.repository";
 import { notFound } from "next/navigation";

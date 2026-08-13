@@ -19,8 +19,12 @@ export function useGlobalSearch() {
     setIsSearching(true);
 
     const timer = setTimeout(async () => {
-      const searchResults = await searchByTerm(query);
-      setResults(searchResults);
+      const response = await fetch(
+        `/api/global-search?q=${encodeURIComponent(query)}`,
+      );
+
+      const results = await response.json();
+      setResults(results);
       setIsSearching(false);
     }, 2000);
 

@@ -1,6 +1,6 @@
 import { connectToDatabase } from "@/lib/mongoose";
 import { MediaItemModel } from "../model";
-import { MediaTypeKey } from "@/modules/media-type";
+import { MediaTypeKey } from "@/modules/1-media-type";
 
 export async function deleteMediaItem(
   mediaType: MediaTypeKey,
