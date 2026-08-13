@@ -1,5 +1,5 @@
-import { findMediaItemsByTitle } from "./find-media-items-by-title.repository";
+import { findMediaItemsByTitleOrTranslatedTitle } from "./find-media-items-by-title-or-translated-title.repository";
 
 export const mediaItemRepository = {
-  find: findMediaItemsByTitle,
+  findByTitleOrTranslatedTitle: findMediaItemsByTitleOrTranslatedTitle,
 };

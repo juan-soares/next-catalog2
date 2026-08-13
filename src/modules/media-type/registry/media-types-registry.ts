@@ -1,17 +1,3 @@
-/**
- * O que este arquivo faz
- * ----------------------
- * Centraliza o registro dos tipos de mídia disponíveis
- * na aplicação.
- *
- * O que este arquivo NÃO faz
- * --------------------------
- * - Não renderiza componentes.
- * - Não cria páginas.
- * - Não acessa banco de dados.
- * - Não possui regras específicas de cada mídia.
- */
-
 import { MediaTypesRegistry } from "../types";
 import {
   deleteAnimeAction,
@@ -21,7 +7,7 @@ import {
 } from "@/modules/anime";
 
 export const mediaTypesRegistry = {
-  animes: {
+  anime: {
     label: "Animes",
     slug: "animes",
 

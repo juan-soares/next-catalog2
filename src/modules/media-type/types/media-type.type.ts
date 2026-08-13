@@ -21,7 +21,7 @@ import { ComponentType } from "react";
 import { MediaTypeKey } from "./media-type-key.type";
 
 export interface MediaType {
-  slug: MediaTypeKey;
+  slug: string;
   label: string;
 
   catalog: {
