@@ -1,1 +1,1 @@
-export * from "./find-user-by-email.service";
+export * from "./verify-user-credentials.service";
