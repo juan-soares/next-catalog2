@@ -13,17 +13,29 @@ export const { auth, signIn, signOut, handlers } = NextAuth({
           return null;
         }
 
-        const user = await verifyUserCredentials({
+        return verifyUserCredentials({
           email,
           password,
         });
-
-        if (!user) {
-          return null;
-        }
-
-        return user;
       },
     }),
   ],
+
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.nickname = user.nickname;
+      }
+
+      return token;
+    },
+
+    async session({ session, token }) {
+      session.user.id = token.id as string;
+      session.user.nickname = token.nickname as string;
+
+      return session;
+    },
+  },
 });
