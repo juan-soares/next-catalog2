@@ -1,4 +1,4 @@
-import { CatalogListItem, CatalogQuery } from "@/modules/catalog/types";
+import { CatalogListItem, CatalogQuery } from "@/modules/1-catalog/types";
 import { mapAnimetoCatalogListItem } from "../mappers";
 import { getAnimes } from "./get-animes.service";
 

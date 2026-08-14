@@ -1,4 +1,4 @@
-import { AttributeType, Attribute } from "./";
+import { AttributeType, Attribute } from ".";
 
 export type AttributeFieldView = AttributeType & {
   options: Attribute[];

@@ -1,4 +1,4 @@
-import { Attribute, AttributeTypeKey } from "@/modules/attribute";
+import { Attribute, AttributeTypeKey } from "@/modules/1-attribute";
 
 export type CatalogFilterOption = {
   id: Attribute["id"];

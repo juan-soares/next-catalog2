@@ -1,4 +1,4 @@
-import { AttributeOption } from "@/modules/attribute";
+import { AttributeOption } from "@/modules/1-attribute";
 
 type Props = {
   fieldName: string;

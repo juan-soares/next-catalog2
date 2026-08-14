@@ -4,7 +4,7 @@ import {
   getAnimeFilters,
   listAnimeCatalogResults,
   NewAnimeForm,
-} from "@/modules/anime";
+} from "@/modules/1-anime";
 
 export const mediaTypesRegistry = {
   anime: {

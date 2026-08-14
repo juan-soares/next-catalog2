@@ -1,9 +1,9 @@
-import { CatalogFilter } from "@/modules/catalog";
+import { CatalogFilter } from "@/modules/1-catalog";
 import { animeFilters } from "../const";
 import {
   getAttributesByType,
   mapAttributeToCatalogFilterOption,
-} from "@/modules/attribute";
+} from "@/modules/1-attribute";
 
 export async function getAnimeFilters(): Promise<CatalogFilter[]> {
   const filters = await Promise.all(

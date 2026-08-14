@@ -5,6 +5,7 @@
 
 import type { ReactNode } from "react";
 import { Header } from "@/components/layout";
+import { FranchiseMarquee } from "@/features/franchise-marquee";
 
 type RootLayoutProps = {
   children: ReactNode;
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="pt-BR">
       <body>
         <Header />
+        <FranchiseMarquee />
         {children}
       </body>
     </html>

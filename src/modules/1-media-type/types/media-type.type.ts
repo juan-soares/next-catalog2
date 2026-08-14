@@ -16,7 +16,7 @@ import {
   CatalogFilter,
   CatalogListItem,
   CatalogQuery,
-} from "@/modules/catalog";
+} from "@/modules/1-catalog";
 import { ComponentType } from "react";
 import { MediaTypeKey } from "./media-type-key.type";
 

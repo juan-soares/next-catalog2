@@ -1,6 +1,6 @@
 import { MediaTypeKey } from "@/modules/1-media-type";
 import { CharacterStatus } from "./media-item-character-status.type";
-import { Attribute } from "@/modules/attribute";
+import { Attribute } from "@/modules/1-attribute";
 
 export type CreateMediaItemCharacterInput = {
   name: string;

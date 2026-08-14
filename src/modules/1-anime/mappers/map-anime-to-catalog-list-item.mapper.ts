@@ -1,4 +1,4 @@
-import { CatalogListItem } from "@/modules/catalog";
+import { CatalogListItem } from "@/modules/1-catalog";
 import { Anime } from "../types";
 
 export function mapAnimetoCatalogListItem(anime: Anime): CatalogListItem {

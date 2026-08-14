@@ -1,4 +1,4 @@
-import { CatalogFilterOption } from "@/modules/catalog";
+import { CatalogFilterOption } from "@/modules/1-catalog";
 import { Attribute } from "../types";
 
 export function mapAttributeToCatalogFilterOption(

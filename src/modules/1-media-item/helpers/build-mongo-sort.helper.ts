@@ -11,10 +11,12 @@
  * - Não conhece MediaTypes.
  */
 
-import type { CatalogSortOptions } from "@/modules/catalog";
+import type { CatalogSortOptions } from "@/modules/1-catalog";
 import { SortOrder } from "mongoose";
 
-export function buildMongoSort(sort: CatalogSortOptions):Record<string, SortOrder> {
+export function buildMongoSort(
+  sort: CatalogSortOptions,
+): Record<string, SortOrder> {
   switch (sort) {
     case "alph":
       return {

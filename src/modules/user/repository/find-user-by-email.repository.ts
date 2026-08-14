@@ -1,4 +1,4 @@
-import { UserModel } from "../models";
+import { UserModel } from "../model";
 import { UserDocument } from "../types";
 import { connectToDatabase } from "@/lib/mongoose";
 

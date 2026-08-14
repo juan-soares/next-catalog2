@@ -2,7 +2,7 @@ import { MediaTypeKey } from "@/modules/1-media-type";
 import { MediaItemModel } from "../model";
 import { MediaItem, MediaItemDocument } from "../types";
 import { connectToDatabase } from "@/lib/mongoose";
-import { CatalogQuery } from "@/modules/catalog";
+import { CatalogQuery } from "@/modules/1-catalog";
 import { buildMongoFilters, buildMongoSort } from "../helpers";
 
 export async function findMediaItemsByMediaType(
