@@ -1,9 +1,18 @@
 "use server";
 
+import { signIn } from "../next-auth/auth";
 import { loginSchema } from "../schemas";
-import { authenticateUser } from "../services";
+import { AuthError } from "next-auth";
 
-export async function loginAction(formData: FormData) {
+type LoginState = {
+  success: boolean;
+  message?: string;
+};
+
+export async function loginAction(
+  _previousState: LoginState,
+  formData: FormData,
+): Promise<LoginState> {
   const result = loginSchema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
@@ -18,12 +27,31 @@ export async function loginAction(formData: FormData) {
 
   const { email, password } = result.data;
 
-  const user = await authenticateUser({ email, password });
+  try {
+    await signIn("credentials", {
+      email,
+      password,
+      redirectTo: "/",
+    });
 
-  if (!user) {
     return {
-      success: false,
-      message: "Usuário ou senha incorretos.",
+      success: true,
     };
+  } catch (error) {
+    if (error instanceof AuthError) {
+      if (error.type === "CredentialsSignin") {
+        return {
+          success: false,
+          message: "*Usuário ou senha inválidos.",
+        };
+      }
+
+      return {
+        success: false,
+        message: "*Não foi possível realizar o login.",
+      };
+    }
+
+    throw error;
   }
 }
