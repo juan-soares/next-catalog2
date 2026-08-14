@@ -1,8 +1,8 @@
 "use server";
 
+import { AuthError } from "next-auth";
 import { signIn } from "../next-auth/auth";
 import { loginSchema } from "../schemas";
-import { AuthError } from "next-auth";
 
 type LoginState = {
   success: boolean;
