@@ -6,3 +6,4 @@ export const LOGIN_PATH = "/login";
 
 export const MEDIA_TYPE_CATALOG_PATH = "/catalogo/midias/";
 export const FRANCHISES_CATALOG_PATH = "/catalogo/franquias/";
+export const ATTRIBUTES_CATALOG_PATH = "/catalogo/atributos/"
