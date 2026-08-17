@@ -7,19 +7,28 @@ export async function FranchiseMarquee() {
   const franchises = await getFranchiseMarqueeItems();
 
   return (
-    <ul>
-      {franchises.map(({ id, slug, title, logo }) => (
-        <li key={id}>
-          <Link href={FRANCHISES_CATALOG_PATH + slug}></Link>
-          <Image
-            src={FRANCHISE_LOGO_PATH + logo}
-            alt={`Logo da franquia ${title}`}
-            width={60}
-            height={60}
-          />
-          <p>{title}</p>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <header>
+        <h2>Franquias</h2>
+        <Link href={FRANCHISES_CATALOG_PATH + "?tipo=franquia"}>
+          Ver todas...
+        </Link>
+      </header>
+
+      <ul>
+        {franchises.map(({ id, slug, title, logo }) => (
+          <li key={id}>
+            <Link href={FRANCHISES_CATALOG_PATH + slug}></Link>
+            <Image
+              src={FRANCHISE_LOGO_PATH + logo}
+              alt={`Logo da franquia ${title}`}
+              width={60}
+              height={60}
+            />
+            <p>{title}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

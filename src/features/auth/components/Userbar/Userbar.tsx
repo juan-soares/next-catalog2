@@ -6,7 +6,7 @@ import { logoutAction } from "../../actions";
 
 export async function Userbar() {
   const session = await auth();
-  console.log(session);
+
 
   if (!session?.user)
     return (
