@@ -1,6 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
-import { FRANCHISE_LOGO_PATH, FRANCHISES_CATALOG_PATH } from "@/consts/paths";
+import { FRANCHISE_LOGO_PATH } from "@/consts/paths";
 import { getFranchiseMarqueeItems } from "../../services";
 
 export async function FranchiseMarquee() {
@@ -8,17 +7,9 @@ export async function FranchiseMarquee() {
 
   return (
     <div>
-      <header>
-        <h2>Franquias</h2>
-        <Link href={FRANCHISES_CATALOG_PATH + "?tipo=franquia"}>
-          Ver todas...
-        </Link>
-      </header>
-
       <ul>
         {franchises.map(({ id, slug, title, logo }) => (
           <li key={id}>
-            <Link href={FRANCHISES_CATALOG_PATH + slug}></Link>
             <Image
               src={FRANCHISE_LOGO_PATH + logo}
               alt={`Logo da franquia ${title}`}

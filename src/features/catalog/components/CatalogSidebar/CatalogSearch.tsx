@@ -16,7 +16,7 @@ export async function CatalogSearch({ path }: Props) {
       </button>
 
       {session && (
-        <Link href={path + "novo"}>
+        <Link href={path + "/novo"}>
           <Plus />
         </Link>
       )}
