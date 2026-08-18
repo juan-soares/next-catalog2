@@ -1,0 +1,1 @@
+export * from "./get-media-type-catalog-info-by-slug.service";

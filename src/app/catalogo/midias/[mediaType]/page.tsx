@@ -1,6 +1,5 @@
-import { MEDIA_TYPE_CATALOG_PATH } from "@/consts/paths";
-import { Catalog } from "@/features/catalog";
-import { getMediaTypeInfoBySlug } from "@/modules/media-type";
+import { notFound } from "next/navigation";
+import { Catalog, getMediaTypeCatalogInfoBySlug } from "@/features/catalog";
 
 type Props = {
   params: Promise<{ mediaType: string }>;
@@ -8,13 +7,8 @@ type Props = {
 
 export default async function MediaTypePage({ params }: Props) {
   const { mediaType } = await params;
-  const { label, slug } = getMediaTypeInfoBySlug(mediaType);
+  const mediaTypeCatalogInfo = await getMediaTypeCatalogInfoBySlug(mediaType);
+  if (!mediaTypeCatalogInfo) return notFound();
 
-  return (
-    <Catalog
-      title={label}
-      path={MEDIA_TYPE_CATALOG_PATH + slug}
-      catalogCards={[]}
-    />
-  );
+  return <Catalog info={mediaTypeCatalogInfo} />;
 }

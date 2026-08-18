@@ -1,20 +1,27 @@
-export function CatalogFilters() {
+import { CatalogFilter } from "../../types";
+
+type Props = {
+  filters: CatalogFilter[];
+};
+
+export function CatalogFilters({ filters }: Props) {
   return (
-    <div>
+    <form>
       <h2>Filtros</h2>
 
-      <article>
-        <h3>Tipos</h3>
-        <label>
-          <input type="checkbox" name="type" value="franchise1" />
-          Franquia
-        </label>
+      {filters.map(({ label, fieldName, options }) => (
+        <article key={fieldName}>
+          <h3>{label}</h3>
+          {options.map(({ value, label }) => (
+            <label key={value}>
+              <input type="checkbox" name={fieldName} value={value} />
+              {label}
+            </label>
+          ))}
+        </article>
+      ))}
 
-        <label>
-          <input type="checkbox" name="type" value="subfranchise1" />
-          Sub-Franquias
-        </label>
-      </article>
-    </div>
+      <button type="submit">Filtrar</button>
+    </form>
   );
 }

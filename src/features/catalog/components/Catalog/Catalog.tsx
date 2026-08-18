@@ -1,20 +1,20 @@
-import { CatalogMainContent } from "../CatalogMainContent";
+import { CatalogFilter } from "../../types";
 import { CatalogSidebar } from "../CatalogSidebar";
-import { CatalogCardItem } from "../types";
 
 type Props = {
-  title: string;
-  path: string;
-  catalogCards: CatalogCardItem[];
+  info: {
+    title: string;
+    filters: CatalogFilter[];
+  };
 };
 
-export function Catalog({ title, path, catalogCards }: Props) {
+export function Catalog({ info }: Props) {
+  const { title, filters } = info;
+
   return (
     <div>
-      <CatalogSidebar title={title} path={path} />
-      <CatalogMainContent catalogCards={catalogCards} />
-
-      <footer></footer>
+      <h1>{title}</h1>
+      <CatalogSidebar filters={filters} />
     </div>
   );
 }

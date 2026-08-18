@@ -1,1 +1,2 @@
-export * from "./components";
+export { Catalog } from "./components";
+export * from "./services";

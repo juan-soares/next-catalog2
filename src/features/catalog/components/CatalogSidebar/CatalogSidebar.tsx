@@ -1,29 +1,21 @@
+import { CatalogFilter } from "../../types";
 import { CatalogFilters } from "./CatalogFilters";
 import { CatalogSearch } from "./CatalogSearch";
 
 type Props = {
-  title: string;
-  path: string;
-};
+  filters: CatalogFilter[]
+}
 
-export function CatalogSidebar({ title, path }: Props) {
+export function CatalogSidebar({filters}:Props) {
   return (
     <aside>
-      <h1>{title}</h1>
+      <section>
+        <CatalogSearch />
+      </section>
 
-      <form>
-        <section>
-          <CatalogSearch path={path} />
-        </section>
-
-        <section>
-          <CatalogFilters />
-        </section>
-
-        <footer>
-          <button>Filtrar</button>
-        </footer>
-      </form>
+      <section>
+        <CatalogFilters filters={filters} />
+      </section>
     </aside>
   );
 }

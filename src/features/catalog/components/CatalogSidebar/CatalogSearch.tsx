@@ -1,25 +1,12 @@
-import Link from "next/link";
-import { Plus, SearchIcon } from "lucide-react";
-import { auth } from "@/features/auth/next-auth/auth";
+import { Search } from "lucide-react";
 
-type Props = {
-  path: string;
-};
-
-export async function CatalogSearch({ path }: Props) {
-  const session = await auth();
+export function CatalogSearch() {
   return (
-    <div>
-      <input type="search" placeholder="Pesquisar..." />
+    <form>
+      <input type="search" placeholder="Pesquisar..." name="q" />
       <button type="submit">
-        <SearchIcon />
+        <Search size={10} />
       </button>
-
-      {session && (
-        <Link href={path + "/novo"}>
-          <Plus />
-        </Link>
-      )}
-    </div>
+    </form>
   );
 }
