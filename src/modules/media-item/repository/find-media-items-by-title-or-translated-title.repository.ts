@@ -5,14 +5,14 @@ import { MediaItemModel } from "../model";
 
 type SearchOptions = {
   query: string;
-  limit: number;
+  limit?: number;
   orderBy: "title" | "createdAt" | "updatedAt";
   order: "asc" | "desc";
 };
 
 export async function findMediaItemsByTitleOrTranslatedTitle({
   query,
-  limit,
+  limit = 50,
   orderBy,
   order,
 }: SearchOptions): Promise<MediaItem[]> {

@@ -1,4 +1,4 @@
-import { MediaTypeInfo } from "@/modules/1-media-type";
+import { MediaTypeInfo } from "@/modules/media-type";
 
 export type MediaItem = {
   id: string;

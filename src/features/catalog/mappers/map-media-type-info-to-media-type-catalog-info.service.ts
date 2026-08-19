@@ -1,14 +1,17 @@
 import { MediaTypeInfo } from "@/modules/media-type";
 import { MediaTypeCatalogInfo } from "../types";
+import { searchMediaItems } from "@/modules/media-item";
+import { mapMediaItemToCatalogListItem } from "./map-media-item-to-catalog-list-item.mapper";
 
-export function mapMediaTypeInfoToMediaTypeCatalogInfo(
+export async function mapMediaTypeInfoToMediaTypeCatalogInfo(
   mediaTypeInfo: MediaTypeInfo,
-
-): MediaTypeCatalogInfo {
-
+): Promise<MediaTypeCatalogInfo> {
+  const mediaItems = await searchMediaItems("anime");
+  const results = mediaItems.map(mapMediaItemToCatalogListItem);
 
   return {
     title: mediaTypeInfo.label,
-    filters: []
+    filters: [],
+    results,
   };
 }
