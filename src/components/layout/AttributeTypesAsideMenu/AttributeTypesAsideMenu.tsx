@@ -1,19 +1,17 @@
-import Link from "next/link";
-import { ATTRIBUTES_CATALOG_PATH } from "@/consts/paths";
-import { getAttributeTypes } from "../../../modules/attribute-type/services";
+import { getAttributeTypes } from "@/modules/attribute-type";
 
 export function AttributeTypesAsideMenu() {
   const attributeTypes = getAttributeTypes({ orderBy: "label", order: "asc" });
 
   return (
-    <nav>
-      <ul>
+    <aside>
+      <form method="GET">
         {attributeTypes.map(({ slug, label }) => (
-          <li key={slug}>
-            <Link href={ATTRIBUTES_CATALOG_PATH + slug}>{label}</Link>
-          </li>
+          <button key={slug} type="submit" name="type" value={slug}>
+            {label}
+          </button>
         ))}
-      </ul>
-    </nav>
+      </form>
+    </aside>
   );
 }
