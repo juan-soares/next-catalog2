@@ -1,6 +1,9 @@
 import { MEDIA_TYPES } from "../definitions";
-import { MediaTypeInfo } from "../types";
+import { MediaTypeInfo, MediaTypeKey } from "../types";
 
 export function getMediaTypesInfo(): MediaTypeInfo[] {
-  return Object.values(MEDIA_TYPES).map(({ label, slug }) => ({ label, slug }));
+  return Object.entries(MEDIA_TYPES).map(([key, info]) => ({
+    key: key as MediaTypeKey,
+    ...info,
+  }));
 }

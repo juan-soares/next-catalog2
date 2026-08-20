@@ -1,4 +1,3 @@
-import { searchMediaItems } from "@/modules/media-item";
 import { MediaTypeDefinition } from "../types";
 
 export const MEDIA_TYPES = {

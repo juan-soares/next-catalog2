@@ -6,7 +6,7 @@ import { mapMediaItemToCatalogListItem } from "./map-media-item-to-catalog-list-
 export async function mapMediaTypeInfoToMediaTypeCatalogInfo(
   mediaTypeInfo: MediaTypeInfo,
 ): Promise<MediaTypeCatalogInfo> {
-  const mediaItems = await searchMediaItems("anime");
+  const mediaItems = await searchMediaItems({ type: mediaTypeInfo.key });
   const results = mediaItems.map(mapMediaItemToCatalogListItem);
 
   return {

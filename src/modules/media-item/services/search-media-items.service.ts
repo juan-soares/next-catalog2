@@ -1,6 +1,13 @@
 import { MediaItem } from "../types";
 import { mediaItemRepository } from "../repository";
+import { MediaTypeKey } from "@/modules/media-type";
 
-export async function searchMediaItems(type: string): Promise<MediaItem[]> {
-  return mediaItemRepository.findMany();
+type SearchParams = {
+  type?: MediaTypeKey;
+};
+
+export async function searchMediaItems(
+  searchParams: SearchParams,
+): Promise<MediaItem[]> {
+  return mediaItemRepository.findMany(searchParams);
 }

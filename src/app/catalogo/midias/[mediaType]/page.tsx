@@ -8,7 +8,10 @@ type Props = {
 export default async function MediaTypePage({ params }: Props) {
   const { mediaType } = await params;
   const mediaTypeCatalogInfo = await getMediaTypeCatalogInfoBySlug(mediaType);
-  if (!mediaTypeCatalogInfo) return notFound();
+
+  if (!mediaTypeCatalogInfo) {
+    notFound();
+  }
 
   return <Catalog info={mediaTypeCatalogInfo} />;
 }
