@@ -1,2 +1,2 @@
 export * from "./Header";
-export * from "./AttributeTypesAsideMenu";
+export * from "../../features/attributes-page/components/AttributesPageNavbar";

@@ -1,6 +1,7 @@
 import { auth } from "@/features/auth/next-auth/auth";
 import { CatalogFilter } from "../../types";
 import Link from "next/link";
+import { ATTRIBUTES_CATALOG_NEW_PATH } from "@/consts/paths";
 
 type Props = {
   filters: CatalogFilter[];
@@ -13,10 +14,10 @@ export async function CatalogFilters({ filters }: Props) {
     <form>
       <h2>Filtros</h2>
 
-      {filters.map(({ label, fieldName, newPath, options }) => (
+      {filters.map(({ label, fieldName, options }) => (
         <article key={fieldName}>
           <h3>{label}</h3>
-          {session && <Link href={newPath}>+</Link>}
+          {session && <Link href={ATTRIBUTES_CATALOG_NEW_PATH}>+</Link>}
 
           {options.map(({ value, label }) => (
             <label key={value}>

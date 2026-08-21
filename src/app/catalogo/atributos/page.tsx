@@ -1,20 +1,41 @@
-import { getAttributeItemsByType } from "@/modules/attribute-item";
+import { AttributesPageList } from "@/features/attributes-page";
 import {
+  getAttributeItems,
+  getAttributeItemsByType,
+} from "@/modules/attribute-item";
+import {
+  AttributesPageNavbar,
   getAttributeTypeBySlug,
-  getAttributeTypes,
 } from "@/modules/attribute-type";
 
-import { AttributesPageList } from "@/features/attributes-page/components/AttributesPageList";
-
 type Props = {
-  searchParams: Promise<{ type: string }>;
+  searchParams: Promise<{ type?: string }>;
 };
 
 export default async function AttributesPage({ searchParams }: Props) {
   const { type } = await searchParams;
-  const attributeType = getAttributeTypeBySlug(type);
 
-  if (!attributeType) return <AttributesOverview />;
+  const attributeType = type ? getAttributeTypeBySlug(type) : null;
 
-  return <AttributeTypeList />;
+  const title = attributeType?.label ?? "Atributos";
+
+  const attributeItems = attributeType
+    ? await getAttributeItemsByType(attributeType.key)
+    : await getAttributeItems();
+
+  return (
+    <div>
+      <aside>
+        <AttributesPageNavbar />
+      </aside>
+
+      <main>
+        <h1>{title}</h1>
+        <AttributesPageList
+          slug={attributeType?.slug}
+          results={attributeItems}
+        />
+      </main>
+    </div>
+  );
 }

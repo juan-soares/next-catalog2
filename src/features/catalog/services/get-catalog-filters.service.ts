@@ -4,7 +4,10 @@ import { getAttributeTypeKeysByMediaType } from "@/modules/attribute-type";
 import { getAttributeItemsByType } from "@/modules/attribute-item/services";
 import { ATTRIBUTE_TYPES } from "@/modules/attribute-type";
 import { mapAttributeItemToCatalogOption } from "../mappers/map-attribute-item-to-catalog-option.mapper";
-import { ATTRIBUTES_CATALOG_PATH } from "@/consts/paths";
+import {
+  ATTRIBUTES_CATALOG_NEW_PATH,
+  ATTRIBUTES_CATALOG_PATH,
+} from "@/consts/paths";
 
 export async function getCatalogFilters(
   mediaType: MediaTypeKey,
@@ -19,12 +22,11 @@ export async function getCatalogFilters(
   );
 
   return attributeTypeWithValues.map(({ attributeType, values }) => {
-    const { label, slug, fieldName } = ATTRIBUTE_TYPES[attributeType];
+    const { label, fieldName } = ATTRIBUTE_TYPES[attributeType];
     const options = values.map(mapAttributeItemToCatalogOption);
 
     return {
       label,
-      newPath: `${ATTRIBUTES_CATALOG_PATH + slug}/novo`,
       fieldName,
       options,
     };

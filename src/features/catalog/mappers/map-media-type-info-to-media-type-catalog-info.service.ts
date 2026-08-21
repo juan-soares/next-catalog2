@@ -10,7 +10,6 @@ export async function mapMediaTypeInfoToMediaTypeCatalogInfo(
   const mediaItems = await searchMediaItems({ type: mediaTypeInfo.key });
   const results = mediaItems.map(mapMediaItemToCatalogListItem);
   const filters = await getCatalogFilters(mediaTypeInfo.key);
-  
 
   return {
     title: mediaTypeInfo.label,
