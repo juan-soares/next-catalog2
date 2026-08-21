@@ -1,4 +1,7 @@
-import { ATTRIBUTES_CATALOG_PATH } from "@/consts/paths";
+import {
+  ATTRIBUTES_CATALOG_EDIT_PATH,
+  ATTRIBUTES_CATALOG_NEW_PATH,
+} from "@/consts/paths";
 import { CATALOG_SORT_TYPE } from "@/features/catalog";
 import { getAttributeItemsByType } from "@/modules/attribute-item";
 import {
@@ -15,23 +18,19 @@ type Props = {
 
 export default async function AttributesPage({ searchParams }: Props) {
   const { type } = await searchParams;
-  const attribute = getAttributeTypeBySlug(type);
+  const attributeType = getAttributeTypeBySlug(type);
 
-  if (!attribute) {
+  if (!attributeType) {
     notFound();
   }
 
-  const attributeItems = await getAttributeItemsByType(
-    type as AttributeTypeKey,
-  );
+  const attributeItems = await getAttributeItemsByType(attributeType.key);
 
   return (
     <div>
       <h1>{attribute.label}</h1>
 
-      <Link href={`${ATTRIBUTES_CATALOG_PATH}/novo?type=${attribute.slug}`}>
-        +
-      </Link>
+      <Link href={ATTRIBUTES_CATALOG_NEW_PATH + attribute.slug}>+</Link>
 
       <form>
         <button
@@ -45,7 +44,7 @@ export default async function AttributesPage({ searchParams }: Props) {
         {attributeItems.map(({ id, label }) => (
           <li key={id}>
             <span>{label}</span>
-            <Link href={"editar"}>
+            <Link href={ATTRIBUTES_CATALOG_EDIT_PATH + id}>
               <Edit />
             </Link>
             <form>
