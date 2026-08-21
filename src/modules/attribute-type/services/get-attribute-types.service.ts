@@ -1,5 +1,5 @@
-import { ATTRIBUTE_TYPES } from "../definitions";
-import { AttributeType } from "../types";
+import { ATTRIBUTE_TYPE_KEYS, ATTRIBUTE_TYPES } from "../consts";
+import { AttributeType, AttributeTypeKey } from "../types";
 
 type Options = {
   orderBy: "label";
@@ -7,9 +7,18 @@ type Options = {
 };
 
 export function getAttributeTypes(options?: Options): AttributeType[] {
-  const attributes = Object.values(ATTRIBUTE_TYPES);
+  const attributeTypes: AttributeType[] = Object.keys(ATTRIBUTE_TYPES).map(
+    (key) => {
+      const typedKey = key as AttributeTypeKey;
 
-  if (!options) return attributes;
+      return {
+        key: typedKey,
+        ...ATTRIBUTE_TYPES[typedKey],
+      };
+    },
+  );
 
-  return attributes.sort((a, b) => a.label.localeCompare(b.label));
+  if (!options) return attributeTypes;
+
+  return attributeTypes.sort((a, b) => a.label.localeCompare(b.label));
 }

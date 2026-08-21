@@ -2,7 +2,7 @@ import { CatalogFilter } from "../types";
 import { MediaTypeKey } from "@/modules/media-type";
 import { getAttributeTypeKeysByMediaType } from "@/modules/attribute-type";
 import { getAttributeItemsByType } from "@/modules/attribute-item/services";
-import { ATTRIBUTE_TYPES } from "@/modules/attribute-type/definitions";
+import { ATTRIBUTE_TYPES } from "@/modules/attribute-type";
 import { mapAttributeItemToCatalogOption } from "../mappers/map-attribute-item-to-catalog-option.mapper";
 import { ATTRIBUTES_CATALOG_PATH } from "@/consts/paths";
 

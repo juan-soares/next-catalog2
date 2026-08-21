@@ -1,4 +1,4 @@
-import { ATTRIBUTE_TYPES } from "@/modules/attribute-type/definitions";
+import { ATTRIBUTE_TYPES } from "@/modules/attribute-type";
 import { Schema, model, models } from "mongoose";
 
 const attributeSchema = new Schema(
