@@ -5,7 +5,7 @@ export async function createAttributeItem(
   label: string,
   type: AttributeTypeKey,
 ): Promise<boolean> {
-    const newAttributeItem = {label,type}
-  await mediaItemRepository.createOne({label, type});
+  const newAttributeItem = { label, type };
+  await mediaItemRepository.createOne(newAttributeItem);
   return true;
 }
