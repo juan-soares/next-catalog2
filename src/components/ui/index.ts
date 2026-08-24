@@ -1,3 +1,4 @@
 export * from "./Logo";
-export * from "./SubmitActionButton";
-export * from "./DeleteActionForm";
+export * from "./FormButton";
+export * from "./SubmitFormButton";
+export * from "./DeleteFormButton";

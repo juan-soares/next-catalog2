@@ -5,7 +5,6 @@ export function mapAttributeDocToAttributeItem(
 ): AttributeItem {
   return {
     id: attributeDoc._id.toString(),
-    slug: attributeDoc.slug,
     label: attributeDoc.label,
     attributeType: attributeDoc.attributeType,
   };

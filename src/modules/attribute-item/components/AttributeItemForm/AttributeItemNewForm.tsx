@@ -1,5 +1,5 @@
 import { getAttributeTypes } from "@/modules/attribute-type";
-import { SubmitActionButton } from "@/components/ui";
+import { SubmitFormButton } from "@/components/ui";
 import { createAttributeItemAction } from "../../actions";
 
 export function AttributeItemNewForm() {
@@ -25,10 +25,7 @@ export function AttributeItemNewForm() {
         <input type="text" id="value" name="value" required />
       </div>
 
-      <SubmitActionButton
-        label="Enviar"
-        confirmationMessage="Deseja realmente salvar?"
-      />
+      <SubmitFormButton />
     </form>
   );
 }

@@ -1,9 +1,9 @@
 "use server";
 
-import { ATTRIBUTES_CATALOG_PATH } from "@/consts/paths";
 import { redirect } from "next/navigation";
-import { createAttributeItem } from "../services";
+import { ATTRIBUTES_CATALOG_PATH } from "@/consts/paths";
 import { AttributeTypeKey } from "@/modules/attribute-type";
+import { createAttributeItem } from "../services";
 
 export async function createAttributeItemAction(formData: FormData) {
   const value = formData.get("value")?.toString();

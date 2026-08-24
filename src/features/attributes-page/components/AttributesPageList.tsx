@@ -1,8 +1,13 @@
-import { ATTRIBUTES_CATALOG_EDIT_PATH } from "@/consts/paths";
-import { AttributeItem } from "@/modules/attribute-item";
-import { Delete, Edit } from "lucide-react";
 import Link from "next/link";
+import { PenBoxIcon } from "lucide-react";
+import { ATTRIBUTES_CATALOG_EDIT_PATH } from "@/consts/paths";
+import {
+  AttributeItem,
+  deleteAttributeItemAction,
+} from "@/modules/attribute-item";
+
 import { AttributesPageSortbar } from "./AttributesPageSortbar";
+import { DeleteFormButton } from "@/components/ui/DeleteFormButton";
 
 type Props = {
   slug?: string;
@@ -27,16 +32,15 @@ export function AttributesPageList({ slug, results }: Props) {
             <span>{label}</span>
             <div>
               <Link href={ATTRIBUTES_CATALOG_EDIT_PATH + id}>
-                <Edit />
+                <PenBoxIcon />
               </Link>
             </div>
 
             <div>
-              <form>
-                <button type="submit">
-                  <Delete />
-                </button>
-              </form>
+              <DeleteFormButton
+                deleteAction={deleteAttributeItemAction}
+                id={id}
+              />
             </div>
           </li>
         ))}

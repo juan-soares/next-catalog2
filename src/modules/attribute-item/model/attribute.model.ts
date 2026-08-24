@@ -9,12 +9,6 @@ const attributeSchema = new Schema(
       trim: true,
     },
 
-    slug: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-
     attributeType: {
       type: String,
       enum: Object.keys(ATTRIBUTE_TYPES),
@@ -26,8 +20,6 @@ const attributeSchema = new Schema(
     timestamps: true,
   },
 );
-
-attributeSchema.index({ attributeType: 1, slug: 1 }, { unique: true });
 
 export const AttributeModel =
   models.Attribute || model("Attribute", attributeSchema);

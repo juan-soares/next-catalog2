@@ -5,15 +5,13 @@ import { AttributeItem, AttributeItemDocument } from "../types";
 import { mapAttributeDocToAttributeItem } from "../mappers";
 
 type Props = {
-  newAttributeItem: {
-    value: string;
-    type: AttributeTypeKey;
-  };
+  label: string;
+  attributeType: AttributeTypeKey;
 };
 
-export async function createAttributeItem({
-  newAttributeItem,
-}: Props): Promise<AttributeItem> {
+export async function createAttributeItem(
+  newAttributeItem: Props,
+): Promise<AttributeItem> {
   await connectToDatabase();
 
   const attributeDoc: AttributeItemDocument =
