@@ -1,10 +1,14 @@
 import { AttributeTypeKey } from "@/modules/attribute-type";
 import { mediaItemRepository } from "@/modules/media-item/repository";
 
+type NewAttributeProps = {
+  label: string;
+  attributeType: AttributeTypeKey;
+};
+
 export async function createAttributeItem(
-  value: string,
-  attributeType: AttributeTypeKey,
+  newAttribute: NewAttributeProps,
 ): Promise<boolean> {
-  await mediaItemRepository.createOne({ label: value, attributeType });
+  await mediaItemRepository.createOne(newAttribute);
   return true;
 }

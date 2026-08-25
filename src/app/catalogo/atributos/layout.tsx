@@ -5,10 +5,13 @@ type Props = {
   children: ReactNode;
 };
 
-export default function Layout({ children }: Props) {
+export default function AttributesLayout({ children }: Props) {
   return (
     <div>
-      <AttributesPageNavbar />
+      <aside>
+        <AttributesPageNavbar />
+      </aside>
+
       <main>{children}</main>
     </div>
   );

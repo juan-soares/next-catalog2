@@ -6,12 +6,14 @@ import { AttributeTypeKey } from "@/modules/attribute-type";
 import { createAttributeItem } from "../services";
 
 export async function createAttributeItemAction(formData: FormData) {
-  const value = formData.get("value")?.toString();
-  const type = formData.get("type")?.toString();
+  const label = formData.get("label")?.toString();
+  const attributeType = formData
+    .get("attributeType")
+    ?.toString() as AttributeTypeKey;
 
-  if (!value || !type) return;
+  if (!label || !attributeType) return;
 
-  const success = await createAttributeItem(value, type as AttributeTypeKey);
+  const success = await createAttributeItem({ label, attributeType });
 
   if (!success) return;
 

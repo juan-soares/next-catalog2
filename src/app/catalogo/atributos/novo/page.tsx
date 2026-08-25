@@ -1,10 +1,13 @@
-import { AttributeItemNewForm } from "@/modules/attribute-item";
+import {
+  AttributeItemForm,
+  createAttributeItemAction,
+} from "@/modules/attribute-item";
 
-export default function NewAttribute() {
+export default function NewAttributeItemPage() {
   return (
     <div>
       <h2>Novo Atributo</h2>
-      <AttributeItemNewForm />
+      <AttributeItemForm action={createAttributeItemAction} />
     </div>
   );
 }

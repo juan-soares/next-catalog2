@@ -22,13 +22,8 @@ export default async function AttributesPage({ searchParams }: Props) {
 
   return (
     <div>
-      <main>
-        <h1>{title}</h1>
-        <AttributesPageList
-          slug={attributeType?.slug}
-          results={attributeItems}
-        />
-      </main>
+      <h1>{title}</h1>
+      <AttributesPageList slug={attributeType?.slug} results={attributeItems} />
     </div>
   );
 }

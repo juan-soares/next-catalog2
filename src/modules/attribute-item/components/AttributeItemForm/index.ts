@@ -1,1 +1,1 @@
-export * from "./AttributeItemNewForm";
+export * from "./AttributeItemForm";

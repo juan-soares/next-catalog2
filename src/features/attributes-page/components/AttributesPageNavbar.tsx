@@ -9,19 +9,17 @@ export function AttributesPageNavbar() {
   const attributeTypes = getAttributeTypes({ orderBy: "label", order: "asc" });
 
   return (
-    <aside>
-      <nav>
-        <h1>Atributos</h1>
+    <nav>
+      <h1>Atributos</h1>
 
-        <Link href={ATTRIBUTES_CATALOG_PATH}>Todos</Link>
-        <Link href={ATTRIBUTES_CATALOG_NEW_PATH}>Novo</Link>
+      <Link href={ATTRIBUTES_CATALOG_PATH}>Todos</Link>
+      <Link href={ATTRIBUTES_CATALOG_NEW_PATH}>Novo</Link>
 
-        {attributeTypes.map(({ key, label, slug }) => (
-          <Link key={key} href={`${ATTRIBUTES_CATALOG_PATH}?type=${slug}`}>
-            {label}
-          </Link>
-        ))}
-      </nav>
-    </aside>
+      {attributeTypes.map(({ key, label, slug }) => (
+        <Link key={key} href={`${ATTRIBUTES_CATALOG_PATH}?type=${slug}`}>
+          {label}
+        </Link>
+      ))}
+    </nav>
   );
 }
