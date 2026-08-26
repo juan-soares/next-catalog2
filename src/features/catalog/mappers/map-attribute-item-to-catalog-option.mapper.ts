@@ -5,7 +5,7 @@ export function mapAttributeItemToCatalogOption(
   attributeItem: AttributeItem,
 ): CatalogFilterOption {
   return {
-    value: attributeItem.slug,
+    value: attributeItem.id,
     label: attributeItem.label,
   };
 }

@@ -1,29 +1,20 @@
 import { AttributesPageList } from "@/features/attributes-page";
-import {
-  getAttributeItems,
-  getAttributeItemsByType,
-} from "@/modules/attribute-item";
-import { getAttributeTypeBySlug } from "@/modules/attribute-type";
+import { auth } from "@/features/auth/next-auth/auth";
+import { getAttributeItems } from "@/modules/attribute-item";
 
 type Props = {
-  searchParams: Promise<{ type?: string }>;
+  searchParams: Promise<{ sortOrder: "label-asc" | "label-desc" }>;
 };
 
 export default async function AttributesPage({ searchParams }: Props) {
-  const { type } = await searchParams;
-
-  const attributeType = type ? getAttributeTypeBySlug(type) : null;
-
-  const title = attributeType?.label ?? "Todos";
-
-  const attributeItems = attributeType
-    ? await getAttributeItemsByType(attributeType.key)
-    : await getAttributeItems();
+  const { sortOrder = "label-asc" } = await searchParams;
+  const results = await getAttributeItems({ sortOrder });
+  const session = await auth();
 
   return (
     <div>
-      <h1>{title}</h1>
-      <AttributesPageList slug={attributeType?.slug} results={attributeItems} />
+      <h1>Todos Atributos</h1>
+      <AttributesPageList hasUser={session !== null} results={results} />
     </div>
   );
 }

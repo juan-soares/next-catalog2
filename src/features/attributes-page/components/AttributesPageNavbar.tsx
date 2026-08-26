@@ -16,7 +16,7 @@ export function AttributesPageNavbar() {
       <Link href={ATTRIBUTES_CATALOG_NEW_PATH}>Novo</Link>
 
       {attributeTypes.map(({ key, label, slug }) => (
-        <Link key={key} href={`${ATTRIBUTES_CATALOG_PATH}?type=${slug}`}>
+        <Link key={key} href={ATTRIBUTES_CATALOG_PATH + slug}>
           {label}
         </Link>
       ))}

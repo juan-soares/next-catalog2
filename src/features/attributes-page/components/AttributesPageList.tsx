@@ -8,13 +8,14 @@ import {
 
 import { AttributesPageSortbar } from "./AttributesPageSortbar";
 import { DeleteFormButton } from "@/components/ui/DeleteFormButton";
+import { ATTRIBUTE_TYPES } from "@/modules/attribute-type";
 
 type Props = {
-  slug?: string;
+  hasUser: boolean;
   results: AttributeItem[];
 };
 
-export function AttributesPageList({ slug, results }: Props) {
+export function AttributesPageList({ hasUser, results }: Props) {
   if (!results.length) {
     return (
       <div>
@@ -25,26 +26,40 @@ export function AttributesPageList({ slug, results }: Props) {
 
   return (
     <div>
-      <AttributesPageSortbar slug={slug} />
-      <ul>
-        {results.map(({ id, label }) => (
-          <li key={id}>
-            <span>{label}</span>
-            <div>
-              <Link href={ATTRIBUTES_CATALOG_EDIT_PATH + id}>
-                <PenBoxIcon />
-              </Link>
-            </div>
+      <AttributesPageSortbar />
 
-            <div>
-              <DeleteFormButton
-                deleteAction={deleteAttributeItemAction}
-                id={id}
-              />
-            </div>
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Atributo</th>
+            <th scope="col">Tipo</th>
+            {hasUser && <th scope="col">Ações</th>}
+          </tr>
+        </thead>
+
+        <tbody>
+          {results.map(({ id, label, attributeType }) => (
+            <tr key={id}>
+              <td>{label}</td>
+
+              <td>{ATTRIBUTE_TYPES[attributeType].label}</td>
+
+              {hasUser && (
+                <td>
+                  <Link href={ATTRIBUTES_CATALOG_EDIT_PATH + id}>
+                    <PenBoxIcon />
+                  </Link>
+
+                  <DeleteFormButton
+                    deleteAction={deleteAttributeItemAction}
+                    id={id}
+                  />
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
