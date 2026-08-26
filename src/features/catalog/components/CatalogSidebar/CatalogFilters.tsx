@@ -14,10 +14,10 @@ export async function CatalogFilters({ filters }: Props) {
     <form>
       <h2>Filtros</h2>
 
-      {filters.map(({ label, fieldName, options }) => (
+      {filters.map(({ label, fieldName, path, options }) => (
         <article key={fieldName}>
           <h3>{label}</h3>
-          {session && <Link href={ATTRIBUTES_CATALOG_NEW_PATH}>+</Link>}
+          {session && <Link href={path}>+</Link>}
 
           {options.map(({ value, label }) => (
             <label key={value}>

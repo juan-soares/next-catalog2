@@ -1,10 +1,10 @@
 import { AttributeTypeKey } from "@/modules/attribute-type";
-import { AttributeItem } from "../types";
+import { AttributeItem, AttributeItemSortOption } from "../types";
 import { attributeItemRepository } from "../repository";
 
 export async function getAttributeItemsByType(
-  sortOrder: "label-asc" | "label-desc",
+  sort: AttributeItemSortOption = "label-asc",
   attributeType: AttributeTypeKey,
 ): Promise<AttributeItem[]> {
-  return attributeItemRepository.findMany({ sortOrder, attributeType });
+  return attributeItemRepository.findMany({ sort, attributeType });
 }

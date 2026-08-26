@@ -1,11 +1,19 @@
-import { CATALOG_SORT_TYPE } from "@/features/catalog";
+import { ATTRIBUTE_ITEM_SORT_OPTIONS_LIST } from "@/modules/attribute-item/consts";
 
 export function AttributesPageSortbar() {
   return (
     <form method="GET">
-      <button type="submit" name="sort" value={CATALOG_SORT_TYPE.ALPH}>
-        A-Z
-      </button>
+      <label htmlFor="sort">Ordenar por:</label>
+
+      <select id="sort" name="sort" defaultValue="label-asc">
+        {ATTRIBUTE_ITEM_SORT_OPTIONS_LIST.map((option) => (
+          <option key={option.ORDER} value={option.ORDER}>
+            {option.LABEL}
+          </option>
+        ))}
+      </select>
+
+      <button type="submit">Ordenar</button>
     </form>
   );
 }

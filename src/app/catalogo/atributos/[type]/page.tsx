@@ -1,18 +1,15 @@
-import { AttributesPageList } from "@/features/attributes-page";
+import { notFound } from "next/navigation";
 import { auth } from "@/features/auth/next-auth/auth";
+import { AttributesPageList } from "@/features/attributes-page";
 import {
-  getAttributeItems,
+  AttributeItemSortOption,
   getAttributeItemsByType,
 } from "@/modules/attribute-item";
-import {
-  AttributeTypeKey,
-  getAttributeTypeBySlug,
-} from "@/modules/attribute-type";
-import { notFound } from "next/navigation";
+import { getAttributeTypeBySlug } from "@/modules/attribute-type";
 
 type Props = {
   params: Promise<{ type: string }>;
-  searchParams: Promise<{ sortOrder: "label-asc" | "label-desc" }>;
+  searchParams: Promise<{ sort: string }>;
 };
 
 export default async function AttributeTypePage({
@@ -20,7 +17,7 @@ export default async function AttributeTypePage({
   searchParams,
 }: Props) {
   const { type } = await params;
-  const { sortOrder = "label-asc" } = await searchParams;
+  const { sort = "label-asc" } = await searchParams;
 
   const attributeType = getAttributeTypeBySlug(type);
   if (!attributeType) {
@@ -29,7 +26,10 @@ export default async function AttributeTypePage({
 
   const { label, key } = attributeType;
 
-  const results = await getAttributeItemsByType(sortOrder, key);
+  const results = await getAttributeItemsByType(
+    sort as AttributeItemSortOption,
+    key,
+  );
   const session = await auth();
 
   return (

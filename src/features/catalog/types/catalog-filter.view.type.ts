@@ -6,5 +6,6 @@ export type CatalogFilterOption = {
 export type CatalogFilter = {
   label: string;
   fieldName: string;
+  path: string;
   options: CatalogFilterOption[];
 };
