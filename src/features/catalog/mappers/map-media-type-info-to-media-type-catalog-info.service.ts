@@ -13,6 +13,7 @@ export async function mapMediaTypeInfoToMediaTypeCatalogInfo(
 
   return {
     title: mediaTypeInfo.label,
+    newPath: mediaTypeInfo.newPath,
     filters,
     results,
   };

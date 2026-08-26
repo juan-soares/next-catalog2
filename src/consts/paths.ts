@@ -11,5 +11,4 @@ export const ATTRIBUTES_CATALOG_PATH = "/catalogo/atributos/";
 export const ATTRIBUTES_CATALOG_NEW_PATH = "/catalogo/atributos/novo";
 export const FRANCHISES_CATALOG_NEW_PATH = "/catalogo/franquias/novo";
 
-
 export const ATTRIBUTES_CATALOG_EDIT_PATH = "/catalogo/atributos/editar/";

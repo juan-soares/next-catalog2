@@ -3,14 +3,16 @@ import { CatalogFilters } from "./CatalogFilters";
 import { CatalogSearch } from "./CatalogSearch";
 
 type Props = {
-  filters: CatalogFilter[]
-}
+  hasUser: boolean;
+  newPath: string;
+  filters: CatalogFilter[];
+};
 
-export function CatalogSidebar({filters}:Props) {
+export function CatalogSidebar({ hasUser, newPath, filters }: Props) {
   return (
     <aside>
       <section>
-        <CatalogSearch />
+        <CatalogSearch hasUser={hasUser} newPath={newPath} />
       </section>
 
       <section>
