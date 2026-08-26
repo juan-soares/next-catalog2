@@ -11,26 +11,25 @@ import {
 import { notFound } from "next/navigation";
 
 type Props = {
-  searchParams: Promise<{
-    type: string;
-    sortOrder: "label-asc" | "label-desc";
-  }>;
+  params: Promise<{ type: string }>;
+  searchParams: Promise<{ sortOrder: "label-asc" | "label-desc" }>;
 };
 
-export default async function AttributeTypePage({ searchParams }: Props) {
-  const { type, sortOrder = "label-asc" } = await searchParams;
+export default async function AttributeTypePage({
+  params,
+  searchParams,
+}: Props) {
+  const { type } = await params;
+  const { sortOrder = "label-asc" } = await searchParams;
 
   const attributeType = getAttributeTypeBySlug(type);
   if (!attributeType) {
     notFound();
   }
 
-  const { label } = attributeType;
+  const { label, key } = attributeType;
 
-  const results = await getAttributeItemsByType(
-    sortOrder,
-    type as AttributeTypeKey,
-  );
+  const results = await getAttributeItemsByType(sortOrder, key);
   const session = await auth();
 
   return (
