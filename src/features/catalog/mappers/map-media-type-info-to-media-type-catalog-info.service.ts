@@ -2,7 +2,7 @@ import { MediaTypeInfo } from "@/modules/media-type";
 import { MediaTypeCatalogInfo } from "../types";
 import { searchMediaItems } from "@/modules/media-item";
 import { mapMediaItemToCatalogListItem } from "./map-media-item-to-catalog-list-item.mapper";
-import { getCatalogFilters } from "../services/get-catalog-filters.service";
+import { getCatalogFilters } from "../services";
 
 export async function mapMediaTypeInfoToMediaTypeCatalogInfo(
   mediaTypeInfo: MediaTypeInfo,
