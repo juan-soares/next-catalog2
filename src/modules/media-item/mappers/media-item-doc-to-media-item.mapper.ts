@@ -8,10 +8,21 @@ export function mapMediaItemDocToMediaItem(
 
   return {
     id: mediaItemDoc._id.toString(),
+
     slug: mediaItemDoc.slug,
-    mediaType: { slug, label },
+    mediaType: { label, slug },
+
     title: mediaItemDoc.title,
+    translatedTitle: mediaItemDoc.translatedTitle,
     releaseDate: mediaItemDoc.releaseDate,
+    synopsis: mediaItemDoc.synopsis,
+
     cover: mediaItemDoc.cover,
+    trailer: mediaItemDoc.trailer,
+
+    themes: mediaItemDoc.themeIds,
+
+    acquired: mediaItemDoc.acquired,
+    completed: mediaItemDoc.completed,
   };
 }

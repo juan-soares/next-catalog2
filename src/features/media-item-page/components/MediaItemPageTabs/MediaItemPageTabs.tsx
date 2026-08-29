@@ -1,20 +1,20 @@
-import { MediaTypeTab } from "../../types";
+import { MediaItemPageTab, MediaItemPageTabKey } from "../../types";
 import { MediaItemPageTabsNavbar } from "./MediaItemPageTabsNavbar";
 import { TabInfo } from "./Tabs";
 
 type Props = {
-  mediaTypeTabs: MediaTypeTab[];
-  currentTab: string;
+  currentTab?: MediaItemPageTabKey;
+  tabs: MediaItemPageTab[];
 };
 
-export function MediaItemPageTabs({
-  mediaTypeTabs,
-  currentTab = "info",
-}: Props) {
+export function MediaItemPageTabs({ currentTab = "info", tabs }: Props) {
+  const activeTab = tabs.find(({ value }) => value === currentTab) ?? tabs[0];
+  const TabContent = activeTab.content;
+
   return (
     <div>
-      <MediaItemPageTabsNavbar mediaTypeTabs={mediaTypeTabs} />
-      {currentTab === "info" && <TabInfo />}
+      <MediaItemPageTabsNavbar tabs={tabs} />
+      <TabContent />
     </div>
   );
 }

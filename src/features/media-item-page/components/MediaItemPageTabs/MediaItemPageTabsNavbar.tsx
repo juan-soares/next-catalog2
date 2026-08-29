@@ -1,14 +1,14 @@
-import { MediaTypeTab } from "../../types";
+import { MediaItemPageTab } from "../../types";
 
 type Props = {
-  mediaTypeTabs: MediaTypeTab[];
+  tabs: MediaItemPageTab[];
 };
 
-export function MediaItemPageTabsNavbar({ mediaTypeTabs }: Props) {
+export function MediaItemPageTabsNavbar({ tabs }: Props) {
   return (
     <nav>
       <form method="GET">
-        {mediaTypeTabs.map(({ value, label }) => (
+        {tabs.map(({ value, label }) => (
           <button key={value} type="submit" name="tab" value={value}>
             {label}
           </button>

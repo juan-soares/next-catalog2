@@ -1,14 +1,12 @@
 import {
+  getMediaItemPageInfoById,
   MediaItemPageHero,
   MediaItemPageTabs,
 } from "@/features/media-item-page";
-import {
-  Loader,
-  Loader2,
-  Loader2Icon,
-  LoaderCircle,
-  LoaderCircleIcon,
-} from "lucide-react";
+import { getMediaItemTabsByMediaType } from "@/features/media-item-page";
+import { MediaItemPageTabKey } from "@/features/media-item-page/types";
+import { getMediaTypeInfoBySlug } from "@/modules/media-type";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: Promise<{
@@ -23,37 +21,27 @@ type Props = {
 
 export default async function MediaItemPage({ params, searchParams }: Props) {
   const { mediaType, mediaItem } = await params;
+  const mediaTypeInfo = getMediaTypeInfoBySlug(mediaType);
+
+  if (!mediaTypeInfo) {
+    notFound();
+  }
+
+  const mediaItemTabs = getMediaItemTabsByMediaType(mediaTypeInfo.key);
   const { currentTab } = await searchParams;
 
-  const mediaItemInfo = {
-    trailer: "/teste.mp4",
-    cover: "/capa.png",
-    title: "naruto",
-    releaseYear: 2020,
-    mediaType: "Animes",
-    themes: ["Ação"],
-    synopsis:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem quasi ab cupiditate deleniti fuga eos, aut fugiat, possimus molestias eligendi eius vel quisquam corporis expedita a, inventore id recusandae! Animi.",
-    acquired: false,
-    completed: false,
-    mediaTypeTabs: [
-      {
-        label: "Ficha Técnica",
-        value: "info",
-      },
-      {
-        label: "Temporadas",
-        value: "temporadas",
-      },
-    ],
-  };
+  const mediaItemInfo = await getMediaItemPageInfoById(mediaItem);
+
+  if (!mediaItemInfo) {
+    notFound();
+  }
 
   return (
     <div>
       <MediaItemPageHero {...mediaItemInfo} />
       <MediaItemPageTabs
-        mediaTypeTabs={mediaItemInfo.mediaTypeTabs}
-        currentTab={currentTab}
+        currentTab={currentTab as MediaItemPageTabKey}
+        tabs={mediaItemTabs}
       />
     </div>
   );

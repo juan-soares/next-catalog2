@@ -1,5 +1,6 @@
+import { AttributeItemDocument } from "@/modules/attribute-item";
+import { MediaTypeKey } from "@/modules/media-type";
 import { HydratedDocument } from "mongoose";
-import { MediaTypeKey } from "@/modules/1-media-type";
 
 export type MediaItemDocument = HydratedDocument<{
   slug: string;
@@ -8,8 +9,15 @@ export type MediaItemDocument = HydratedDocument<{
   title: string;
   translatedTitle?: string;
   releaseDate: Date;
+  synopsis: string;
 
   cover: string;
+  trailer: string;
+
+  themeIds: AttributeItemDocument[];
+
+  acquired: boolean;
+  completed: boolean;
 
   createdAt: Date;
   updatedAt: Date;
