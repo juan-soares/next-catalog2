@@ -1,2 +1,2 @@
 export * from "./MediaItemPageTabs";
-export * from "./Tabs";
+export * from "./TabsContent";

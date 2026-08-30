@@ -5,7 +5,7 @@ type Props = {
   cover: string;
   title: string;
   releaseYear: number;
-  mediaType: string;
+  mediaType: { label: string; slug: string };
   themes: string[];
   synopsis: string;
   acquired: boolean;
@@ -45,7 +45,7 @@ export function MediaItemPageHero({
         <div>
           <h1>{title}</h1>
           <p>
-            {releaseYear} | {mediaType}
+            {releaseYear} | {mediaType.label}
           </p>
           {themes.map((theme) => (
             <span key={theme}>{theme}</span>

@@ -1,4 +1,4 @@
-export function TabInfo() {
+export function TabInfoContent() {
   return (
     <div>
       <h2>Ficha Técnica</h2>

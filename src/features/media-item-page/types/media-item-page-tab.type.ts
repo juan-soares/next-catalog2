@@ -1,7 +1,8 @@
-import { ComponentType } from "react";
-
-export type MediaItemPageTab = {
+export type MediaItemPageTabConfig = {
   value: string;
   label: string;
-  content: ComponentType;
+};
+
+export type MediaItemPageTab = MediaItemPageTabConfig & {
+  content: React.ReactNode;
 };

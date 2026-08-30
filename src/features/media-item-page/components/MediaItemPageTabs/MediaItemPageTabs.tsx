@@ -1,20 +1,40 @@
-import { MediaItemPageTab, MediaItemPageTabKey } from "../../types";
+import {
+  MediaItemPageInfo,
+  MediaItemPageSeason,
+  MediaItemPageTab,
+  MediaItemPageTabKey,
+} from "../../types";
 import { MediaItemPageTabsNavbar } from "./MediaItemPageTabsNavbar";
-import { TabInfo } from "./Tabs";
+import { TabInfoContent, TabSeasonsContent } from "./TabsContent";
 
 type Props = {
+  hasUser: boolean;
+  mediaItemInfo: MediaItemPageInfo;
   currentTab?: MediaItemPageTabKey;
   tabs: MediaItemPageTab[];
 };
 
-export function MediaItemPageTabs({ currentTab = "info", tabs }: Props) {
+export function MediaItemPageTabs({
+  hasUser,
+  mediaItemInfo,
+  currentTab = "info",
+  tabs,
+}: Props) {
   const activeTab = tabs.find(({ value }) => value === currentTab) ?? tabs[0];
-  const TabContent = activeTab.content;
 
   return (
     <div>
       <MediaItemPageTabsNavbar tabs={tabs} />
-      <TabContent />
+
+      {activeTab.value === "info" && <TabInfoContent />}
+      {activeTab.value === "seasons" && mediaItemInfo.seasons && (
+        <TabSeasonsContent
+          hasUser={hasUser}
+          mediaTypeSlug={mediaItemInfo.mediaType.slug}
+          id={mediaItemInfo.id}
+          seasons={mediaItemInfo.seasons}
+        />
+      )}
     </div>
   );
 }

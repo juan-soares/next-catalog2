@@ -1,10 +1,13 @@
+import { auth } from "@/features/auth/next-auth/auth";
 import {
   getMediaItemPageInfoById,
   MediaItemPageHero,
   MediaItemPageTabs,
 } from "@/features/media-item-page";
-import { getMediaItemTabsByMediaType } from "@/features/media-item-page";
-import { MediaItemPageTabKey } from "@/features/media-item-page/types";
+import {
+  getMediaItemTabsByMediaType,
+  MediaItemPageTabKey,
+} from "@/features/media-item-page";
 import { getMediaTypeInfoBySlug } from "@/modules/media-type";
 import { notFound } from "next/navigation";
 
@@ -15,32 +18,31 @@ type Props = {
   }>;
 
   searchParams: Promise<{
-    currentTab: string;
+    tab: string;
   }>;
 };
 
 export default async function MediaItemPage({ params, searchParams }: Props) {
+  const session = await auth();
   const { mediaType, mediaItem } = await params;
   const mediaTypeInfo = getMediaTypeInfoBySlug(mediaType);
+  const mediaItemInfo = await getMediaItemPageInfoById(mediaItem);
 
-  if (!mediaTypeInfo) {
+  if (!mediaTypeInfo || !mediaItemInfo) {
     notFound();
   }
 
   const mediaItemTabs = getMediaItemTabsByMediaType(mediaTypeInfo.key);
-  const { currentTab } = await searchParams;
 
-  const mediaItemInfo = await getMediaItemPageInfoById(mediaItem);
-
-  if (!mediaItemInfo) {
-    notFound();
-  }
+  const { tab } = await searchParams;
 
   return (
     <div>
       <MediaItemPageHero {...mediaItemInfo} />
       <MediaItemPageTabs
-        currentTab={currentTab as MediaItemPageTabKey}
+        hasUser={session !== null}
+        mediaItemInfo={mediaItemInfo}
+        currentTab={tab as MediaItemPageTabKey}
         tabs={mediaItemTabs}
       />
     </div>

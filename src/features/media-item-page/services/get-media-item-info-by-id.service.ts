@@ -6,6 +6,42 @@ export async function getMediaItemPageInfoById(
 ): Promise<MediaItemPageInfo | null> {
   const mediaItem = await getMediaItemById(id);
 
+  return {
+    id: "1",
+    trailer: "/trailer.mp4",
+    cover: "/cover.png",
+    title: "Naruto",
+    releaseYear: 2000,
+    mediaType: { label: "Animes", slug: "animes" },
+    themes: ["Ninja"],
+    synopsis: "lorenlorenlorenlorenlorenlorenlorenloren",
+    acquired: false,
+    completed: false,
+
+    seasons: [
+      {
+        id: "11",
+        number: 1,
+        title: "",
+        releaseYear: 2020,
+        languages: ["pt-br"],
+        resolutions: ["1090p"],
+        acquired: false,
+        watched: false,
+        episodes: [
+          {
+            id: "asa",
+            number: 1,
+            title: "Primeiro",
+            releaseYear: 2000,
+            acquired: false,
+            watched: false,
+          },
+        ],
+      },
+    ],
+  };
+
   if (!mediaItem) return null;
 
   return {

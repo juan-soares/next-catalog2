@@ -1,10 +1,12 @@
-import { TabInfo } from "../components/MediaItemPageTabs";
-import { MediaItemPageTab } from "../types";
+import { MediaItemPageTabConfig } from "../types";
 
 export const MEDIA_ITEM_TABS = {
   info: {
     value: "info",
     label: "Informações",
-    content: TabInfo,
   },
-} satisfies Record<string, MediaItemPageTab>;
+  seasons: {
+    value: "seasons",
+    label: "Temporadas",
+  },
+} satisfies Record<string, MediaItemPageTabConfig>;
