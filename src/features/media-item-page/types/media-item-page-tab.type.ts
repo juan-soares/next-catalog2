@@ -1,8 +1,4 @@
-export type MediaItemPageTabConfig = {
+export type MediaItemPageTab = {
   value: string;
   label: string;
-};
-
-export type MediaItemPageTab = MediaItemPageTabConfig & {
-  content: React.ReactNode;
 };

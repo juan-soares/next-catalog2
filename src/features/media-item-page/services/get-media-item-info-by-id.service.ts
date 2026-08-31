@@ -11,6 +11,8 @@ export async function getMediaItemPageInfoById(
     trailer: "/trailer.mp4",
     cover: "/cover.png",
     title: "Naruto",
+    translatedTitle: "",
+    releaseDate: "01/Abril/2000",
     releaseYear: 2000,
     mediaType: { label: "Animes", slug: "animes" },
     themes: ["Ninja"],
@@ -40,6 +42,8 @@ export async function getMediaItemPageInfoById(
         ],
       },
     ],
+
+    ovas: [],
   };
 
   if (!mediaItem) return null;

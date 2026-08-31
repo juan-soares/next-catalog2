@@ -1,3 +1,4 @@
+import { MediaItemPageOva } from "./media-item-page-ova.view.type";
 import { MediaItemPageSeason } from "./media-item-page-season.view.type";
 
 export type MediaItemPageInfo = {
@@ -5,6 +6,8 @@ export type MediaItemPageInfo = {
   trailer: string;
   cover: string;
   title: string;
+  translatedTitle?: string;
+  releaseDate: string;
   releaseYear: number;
   mediaType: { label: string; slug: string };
   themes: string[];
@@ -13,4 +16,5 @@ export type MediaItemPageInfo = {
   completed: boolean;
 
   seasons?: MediaItemPageSeason[];
+  ovas?: MediaItemPageOva[];
 };

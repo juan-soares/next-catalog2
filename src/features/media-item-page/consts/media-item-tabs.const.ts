@@ -9,4 +9,8 @@ export const MEDIA_ITEM_TABS = {
     value: "seasons",
     label: "Temporadas",
   },
+  ovas: {
+    value: "ovas",
+    label: "OVAS",
+  },
 } satisfies Record<string, MediaItemPageTabConfig>;

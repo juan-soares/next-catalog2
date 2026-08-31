@@ -1,11 +1,14 @@
 import {
   MediaItemPageInfo,
-  MediaItemPageSeason,
   MediaItemPageTab,
   MediaItemPageTabKey,
 } from "../../types";
 import { MediaItemPageTabsNavbar } from "./MediaItemPageTabsNavbar";
-import { TabInfoContent, TabSeasonsContent } from "./TabsContent";
+import {
+  TabInfoContent,
+  TabSeasonsContent,
+  TabOvasContent,
+} from "./TabsContent";
 
 type Props = {
   hasUser: boolean;
@@ -26,13 +29,27 @@ export function MediaItemPageTabs({
     <div>
       <MediaItemPageTabsNavbar tabs={tabs} />
 
-      {activeTab.value === "info" && <TabInfoContent />}
+      {activeTab.value === "info" && (
+        <TabInfoContent
+          title={mediaItemInfo.title}
+          translatedTitle={mediaItemInfo.translatedTitle}
+          releaseDate={mediaItemInfo.releaseDate}
+        />
+      )}
       {activeTab.value === "seasons" && mediaItemInfo.seasons && (
         <TabSeasonsContent
           hasUser={hasUser}
           mediaTypeSlug={mediaItemInfo.mediaType.slug}
           id={mediaItemInfo.id}
           seasons={mediaItemInfo.seasons}
+        />
+      )}
+      {activeTab.value === "ovas" && mediaItemInfo.ovas && (
+        <TabOvasContent
+          hasUser={hasUser}
+          mediaTypeSlug={mediaItemInfo.mediaType.slug}
+          id={mediaItemInfo.id}
+          ovas={mediaItemInfo.ovas}
         />
       )}
     </div>
