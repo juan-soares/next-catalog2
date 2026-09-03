@@ -19,10 +19,14 @@ export type MediaItem = {
     files: MediaFile[];
   };
 
+  sequence?: {
+    previousId?: string;
+    nextId?: string;
+  };
+
   languageIds: string[];
-  characterIds: string[];
   themeIds: string[];
-  franchiseIds?: string[];
+  franchiseId?: string;
 
   createdAt: Date;
   updatedAt: Date;
