@@ -1,20 +1,23 @@
+import { MediaItem } from "../media-item";
+import { Attribute } from "./attribute.type";
+
 export type GameType = {
-  genreIds: string[];
+  genreIds: Attribute["id"];
   minPlayers: number;
   maxPlayers: number;
 
-  edition: string;
-  parentId?: string;
+  edition: Attribute["id"];
+  parentId?: MediaItem["id"];
 };
 
 //<-->
 
 export type VideoGameMediaType = GameType & {
-  platformIds: string[];
-  gameplayStyleIds: string;
+  platformIds: Attribute["id"];
+  gameplayStyleIds: Attribute["id"];
 };
 
 export type BoardGameMediaType = GameType & {
-  platformIds: string[];
-  gameplayStyleIds: string;
+  platformIds: Attribute["id"];
+  gameplayStyleIds: Attribute["id"];
 };

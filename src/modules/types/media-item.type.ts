@@ -1,7 +1,7 @@
+import { Franchise } from "../franchise";
+import { Attribute } from "./attribute.type";
 import { MediaFile } from "./media-file.type";
-import { MediaImage } from "./media-image.type";
 import { MediaTypeCode } from "./media-type.type";
-import { MediaVideo } from "./media-video.type";
 
 export type MediaItem = {
   id: string;
@@ -14,19 +14,19 @@ export type MediaItem = {
   releaseDate: Date;
 
   medias: {
-    cover: MediaImage;
-    trailer: MediaVideo;
-    files: MediaFile[];
+    cover: MediaFile["id"];
+    trailer: MediaFile["id"];
+    files: MediaFile["id"][];
   };
 
   sequence?: {
-    previousId?: string;
-    nextId?: string;
+    previousId?: MediaItem["id"];
+    nextId?: MediaItem["id"];
   };
 
-  languageIds: string[];
-  themeIds: string[];
-  franchiseId?: string;
+  languageIds: Attribute["id"][];
+  themeIds: Attribute["id"][];
+  franchiseId?: Franchise["id"];
 
   createdAt: Date;
   updatedAt: Date;

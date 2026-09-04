@@ -4,7 +4,7 @@ export type MediaTypeCode =
   | "cartoon"
   | "animated-movie"
   | "live-action-movie"
-  | "electronic-game"
+  | "video-game"
   | "board-game"
   | "music-artist"
   | "book"
@@ -43,8 +43,8 @@ export const MEDIA_TYPES = {
     label: "Filmes Live-Action",
     slug: "filmes-live-action",
   },
-  "electronic-game": {
-    code: "electronic-game",
+  "video-game": {
+    code: "video-game",
     label: "Jogos Eletrônicos",
     slug: "jogos-eletronicos",
   },

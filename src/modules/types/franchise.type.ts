@@ -1,4 +1,4 @@
-import { MediaImage } from "./media-image.type";
+import { MediaFile } from "./media-file.type";
 
 export type Franchise = {
   id: string;
@@ -7,9 +7,9 @@ export type Franchise = {
   translatedTitle?: string;
   slug: string;
 
-  logo: MediaImage;
+  logo: MediaFile["id"];
 
-  parentFranchiseId?: string;
+  parentFranchiseId?: Franchise["id"];
 
   createdAt: Date;
   updatedAt: Date;
