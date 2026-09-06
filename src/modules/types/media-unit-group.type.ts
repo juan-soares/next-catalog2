@@ -29,7 +29,7 @@ const MEDIA_UNIT_GROUP_TYPES = {
   },
   album: {
     code: "album",
-    label: "albuns",
+    label: "Álbuns",
     slug: "albuns",
   },
 } satisfies Record<MediaUnitGroupTypeCode, MediaUnitGroupType>;
@@ -46,7 +46,7 @@ export type MediaUnitGroup = {
 
   cover: MediaFile["id"];
 
-  languageIds: Attribute["id"];
+  languageIds: Attribute["id"][];
   characterIds: MediaItemCharacter["id"][];
 
   createdAt: Date;

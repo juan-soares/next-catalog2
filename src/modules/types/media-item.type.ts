@@ -1,6 +1,8 @@
 import { Franchise } from "../franchise";
 import { Attribute } from "./attribute.type";
 import { MediaFile } from "./media-file.type";
+import { MediaItemCharacter } from "./media-item-character-relation.type";
+import { MediaItemUniverseRelationType } from "./media-item-universe-relation.type";
 import { MediaTypeCode } from "./media-type.type";
 
 export type MediaItem = {
@@ -13,16 +15,19 @@ export type MediaItem = {
   synopsis: string;
   releaseDate: Date;
 
-  medias: {
-    cover: MediaFile["id"];
-    trailer: MediaFile["id"];
-    files: MediaFile["id"][];
+  assets: {
+    coverId: MediaFile["id"];
+    trailerId: MediaFile["id"];
+    fileIds: MediaFile["id"][];
   };
 
-  sequence?: {
+  sequence: {
     previousId?: MediaItem["id"];
     nextId?: MediaItem["id"];
   };
+
+  characters: MediaItemCharacter[];
+  universes: MediaItemUniverseRelationType[];
 
   languageIds: Attribute["id"][];
   themeIds: Attribute["id"][];

@@ -7,13 +7,13 @@ export type AttributeTypeCode =
   | "platform"
   | "gameplayStyle";
 
-type AttributeType = {
+export type AttributeType = {
   code: AttributeTypeCode;
   label: string;
   slug: string;
 };
 
-const ATTRIBUTE_TYPES = {
+export const ATTRIBUTE_TYPES = {
   language: {
     code: "language",
     label: "Idiomas",
@@ -31,7 +31,7 @@ const ATTRIBUTE_TYPES = {
   },
   genre: {
     code: "genre",
-    label: "Genêros",
+    label: "Gêneros",
     slug: "generos",
   },
 

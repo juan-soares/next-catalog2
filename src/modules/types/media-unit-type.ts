@@ -44,9 +44,6 @@ export type MediaUnit = {
 
   languageIds: Attribute["id"][];
 
-  acquired: boolean;
-  consumed: boolean;
-
   createdAt: Date;
   updatedAt: Date;
 };

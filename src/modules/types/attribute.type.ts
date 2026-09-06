@@ -4,7 +4,7 @@ export type Attribute = {
   id: string;
   label: string;
   slug: string;
-  attributeType: AttributeTypeCode;
+  type: AttributeTypeCode;
   createdAt: Date;
   updatedAt: Date;
 };
