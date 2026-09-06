@@ -1,7 +1,6 @@
 import { Franchise } from "../franchise";
 import { Attribute } from "./attribute.type";
 import { MediaFile } from "./media-file.type";
-import { MediaItemCharacter } from "./media-item-character-relation.type";
 import { MediaItemUniverse } from "./media-item-universe-relation.type";
 import { MediaTypeCode } from "./media-type.type";
 
@@ -26,7 +25,6 @@ export type MediaItem = {
     nextId?: MediaItem["id"];
   };
 
-  characters: MediaItemCharacter[];
   universes: MediaItemUniverse[];
 
   languageIds: Attribute["id"][];

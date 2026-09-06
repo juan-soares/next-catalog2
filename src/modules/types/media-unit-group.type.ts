@@ -1,7 +1,5 @@
 import { MediaItem } from "../media-item";
-import { Attribute } from "./attribute.type";
 import { MediaFile } from "./media-file.type";
-import { MediaItemCharacter } from "./media-item-character.type";
 
 export type MediaUnitGroupTypeCode = "season" | "special" | "volume" | "album";
 
@@ -45,9 +43,6 @@ export type MediaUnitGroup = {
   releaseDate: Date;
 
   cover: MediaFile["id"];
-
-  languageIds: Attribute["id"][];
-  characterIds: MediaItemCharacter["id"][];
 
   createdAt: Date;
   updatedAt: Date;
