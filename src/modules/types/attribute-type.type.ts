@@ -1,11 +1,12 @@
 export type AttributeTypeCode =
   | "language"
-  | "characterStatus"
   | "theme"
   | "genre"
   | "edition"
   | "platform"
-  | "gameplayStyle";
+  | "gameplayStyle"
+  | "characterStatus"
+  | "universeType";
 
 export type AttributeType = {
   code: AttributeTypeCode;
@@ -18,11 +19,6 @@ export const ATTRIBUTE_TYPES = {
     code: "language",
     label: "Idiomas",
     slug: "idiomas",
-  },
-  characterStatus: {
-    code: "characterStatus",
-    label: "Status do Personagem",
-    slug: "status-do-personagem",
   },
   theme: {
     code: "theme",
@@ -49,5 +45,15 @@ export const ATTRIBUTE_TYPES = {
     code: "edition",
     label: "Edições",
     slug: "edicao",
+  },
+  characterStatus: {
+    code: "characterStatus",
+    label: "Status do Personagem",
+    slug: "status-personagem",
+  },
+  universeType: {
+    code: "universeType",
+    label: "Tipo de Universo",
+    slug: "tipo-universo",
   },
 } satisfies Record<AttributeTypeCode, AttributeType>;
