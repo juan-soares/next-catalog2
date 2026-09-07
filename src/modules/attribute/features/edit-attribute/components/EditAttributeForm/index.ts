@@ -1,2 +1,1 @@
-export * from "./EditAttributeBtn";
 export * from "./EditAttributeForm";
