@@ -8,7 +8,6 @@ import {
   getAttributeTypeKeysByMediaType,
 } from "@/modules1/attribute-type";
 import { MediaTypeKey } from "@/modules1/media-type";
-import { getAttributeItemsByType } from "@/modules1/attribute-item";
 
 export async function getAttributesCatalogFilters(
   mediaType: MediaTypeKey,
@@ -18,7 +17,7 @@ export async function getAttributesCatalogFilters(
   const attributeTypeWithValues = await Promise.all(
     attributeTypeKeys.map(async (attributeType) => ({
       attributeType,
-      values: await getAttributeItemsByType("label-asc", attributeType),
+      values: [],
     })),
   );
 

@@ -1,6 +1,3 @@
-import { AttributeTypeCode } from "../../domain";
+import type { AttributeIdentifiers } from "../../domain";
 
-export type DeleteAttributeIdentifiers = {
-  slug: string;
-  type: AttributeTypeCode;
-};
+export type DeleteAttributeIdentifiers = AttributeIdentifiers;

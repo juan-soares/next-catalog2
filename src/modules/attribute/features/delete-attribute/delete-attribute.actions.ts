@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { ATTRIBUTES_CATALOG_PATH } from "@/consts/paths";
 import { deleteAttribute } from "./delete-attribute.services";
 import { deleteAttributeSchema } from "./delete-attribute.schema";
+import { ATTRIBUTE_TYPES } from "../../domain";
 
 export async function deleteAttributeAction(formData: FormData) {
   const result = deleteAttributeSchema.safeParse({
@@ -12,13 +13,14 @@ export async function deleteAttributeAction(formData: FormData) {
   });
 
   if (!result.success) {
-    return {
-      success: false,
-      error: "Dados inválidos.",
-    };
+    return;
   }
 
-  await deleteAttribute(result.data);
+  const success = await deleteAttribute(result.data);
 
-  redirect(ATTRIBUTES_CATALOG_PATH);
+  if (!success) {
+    return;
+  }
+  const attributeTypeSlug = ATTRIBUTE_TYPES[result.data.type].slug;
+  redirect(ATTRIBUTES_CATALOG_PATH + attributeTypeSlug);
 }

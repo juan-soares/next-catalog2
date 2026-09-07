@@ -1,7 +1,7 @@
 "use client";
 
 type Props = {
-  actionLabel: string;
+  actionLabel: "salvar" | "editar" | "remover";
   children: React.ReactNode;
 };
 

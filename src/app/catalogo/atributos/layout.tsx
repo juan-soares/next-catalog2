@@ -1,6 +1,5 @@
-import { AttributeTypesNavbar } from "@/modules/attribute";
-import { AttributesPageNavbar } from "@/modules1/attribute-type";
 import { ReactNode } from "react";
+import { AttributeTypesNavbar } from "@/modules/attribute";
 
 type Props = {
   children: ReactNode;

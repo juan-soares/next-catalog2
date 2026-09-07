@@ -1,12 +1,9 @@
-import mongoose from "mongoose";
-
 import { connectToDatabase } from "@/lib/mongoose";
-
+import type { AttributeIdentifiers } from "@/modules/attribute/domain";
 import { AttributeModel } from "../attribute.model";
-import { Attribute } from "@/modules/attribute/domain";
 
 export async function deleteAttributeBySlugAndType(
-  identifiers: Pick<Attribute, "slug" | "type">,
+  identifiers: AttributeIdentifiers,
 ): Promise<boolean> {
   await connectToDatabase();
 
