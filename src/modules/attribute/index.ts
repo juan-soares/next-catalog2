@@ -1,2 +1,2 @@
-export * from "./presentation";
-export * from "./application";
+export * from "./shared";
+export * from "./features";

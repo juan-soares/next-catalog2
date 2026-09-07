@@ -3,14 +3,16 @@ import { FormButton } from "../FormButton";
 
 type Props = {
   deleteAction: (formData: FormData) => void;
-  id: string;
+  fields: Record<string, string>;
 };
 
-export function DeleteFormButton({ deleteAction, id }: Props) {
+export function DeleteFormButton({ deleteAction, fields }: Props) {
   return (
     <form action={deleteAction}>
       <FormButton actionLabel="remover">
-        <input type="hidden" name="id" value={id} required />
+        {Object.entries(fields).map(([name, value]) => (
+          <input key={name} type="hidden" name={name} value={value} required />
+        ))}
         <Trash2Icon />
       </FormButton>
     </form>

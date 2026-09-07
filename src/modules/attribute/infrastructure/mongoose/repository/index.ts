@@ -2,10 +2,10 @@ import { AttributeRepository } from "@/modules/attribute/domain";
 
 import { findAttributeById } from "./find-attribute-by-id.repository";
 import { findAttributesByType } from "./find-attributes-by-type.repository";
-import { deleteAttributeById } from "./delete-attribute-by-id.repository";
+import { deleteAttributeBySlugAndType } from "./delete-attribute-by-slug-and-type.repository";
 
 export const attributeRepository: AttributeRepository = {
   findById: findAttributeById,
   findByType: findAttributesByType,
-  deleteOne: deleteAttributeById,
+  deleteOne: deleteAttributeBySlugAndType,
 };

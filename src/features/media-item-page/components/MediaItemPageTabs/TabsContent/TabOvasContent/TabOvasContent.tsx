@@ -40,7 +40,7 @@ export function TabOvasContent({ hasUser, mediaTypeSlug, id, ovas }: Props) {
                 </Link>
                 <DeleteFormButton
                   deleteAction={deleteMediaItemAction}
-                  id={ova.id}
+                  fields={{ id: ova.id }}
                 />
               </>
             )}
@@ -68,7 +68,7 @@ export function TabOvasContent({ hasUser, mediaTypeSlug, id, ovas }: Props) {
                         </Link>
                         <DeleteFormButton
                           deleteAction={deleteMediaItemAction}
-                          id={episode.id}
+                          fields={{ id: episode.id }}
                         />
                       </>
                     )}

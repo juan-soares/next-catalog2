@@ -45,7 +45,7 @@ export function TabSeasonsContent({
                 </Link>
                 <DeleteFormButton
                   deleteAction={deleteMediaItemAction}
-                  id={season.id}
+                  fields={{ id: season.id }}
                 />
               </>
             )}
@@ -73,7 +73,7 @@ export function TabSeasonsContent({
                         </Link>
                         <DeleteFormButton
                           deleteAction={deleteMediaItemAction}
-                          id={episode.id}
+                          fields={{ id: episode.id }}
                         />
                       </>
                     )}
