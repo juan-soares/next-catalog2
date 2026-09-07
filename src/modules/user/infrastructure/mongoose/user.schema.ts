@@ -1,6 +1,6 @@
-import { Schema, model, models } from "mongoose";
+import { Schema } from "mongoose";
 
-const UserSchema = new Schema(
+export const UserSchema = new Schema(
   {
     nickname: {
       type: String,
@@ -27,5 +27,3 @@ const UserSchema = new Schema(
 );
 
 UserSchema.index({ email: 1 }, { unique: true });
-
-export const UserModel = models.User ?? model("User", UserSchema);

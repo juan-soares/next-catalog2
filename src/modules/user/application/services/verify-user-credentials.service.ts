@@ -1,6 +1,7 @@
-import { verifyPassword } from "../crypto";
-import { userRepository } from "../repository";
-import { User, UserDocument } from "../types";
+import { User } from "next-auth";
+import { UserDocument } from "../../infrastructure/mongoose/user-document.type";
+import { userRepository } from "../../infrastructure/mongoose/repository";
+import { verifyPassword } from "../../crypto";
 
 type Credentials = {
   email: string;

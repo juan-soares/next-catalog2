@@ -1,6 +1,6 @@
-import { UserModel } from "../model";
-import { UserDocument } from "../types";
 import { connectToDatabase } from "@/lib/mongoose";
+import { UserDocument } from "../user-document.type";
+import { UserModel } from "../user.model";
 
 export async function findUserByEmail(
   email: string,

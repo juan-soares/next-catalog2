@@ -1,5 +1,5 @@
 import { MediaItem } from "../../modules1/media-item";
-import { User } from "../../modules1/user";
+import { User } from "../user";
 import { MediaUnit } from "./media-unit-type";
 
 export type UserMediaItemProgress = {

@@ -1,4 +1,4 @@
-import { auth } from "@/features/auth/next-auth/auth";
+import { auth } from "@/modules/user/features/auth/next-auth/auth";
 import {
   getMediaItemPageInfoById,
   MediaItemPageHero,
