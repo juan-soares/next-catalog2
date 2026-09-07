@@ -1,2 +1,1 @@
-export * from "./AttributeList";
 export * from "./AttributeTypesNavbar";

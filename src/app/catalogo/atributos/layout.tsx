@@ -1,3 +1,4 @@
+import { AttributeTypesNavbar } from "@/modules/attribute";
 import { AttributesPageNavbar } from "@/modules1/attribute-type";
 import { ReactNode } from "react";
 
@@ -9,7 +10,7 @@ export default function AttributesLayout({ children }: Props) {
   return (
     <div>
       <aside>
-        <AttributesPageNavbar />
+        <AttributeTypesNavbar />
       </aside>
 
       <main>{children}</main>

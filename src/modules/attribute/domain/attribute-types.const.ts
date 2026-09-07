@@ -47,3 +47,5 @@ export const ATTRIBUTE_TYPES = {
 export const ATTRIBUTE_TYPE_CODES = Object.keys(
   ATTRIBUTE_TYPES,
 ) as AttributeTypeCode[];
+
+export const ATTRIBUTE_TYPES_LIST = Object.values(ATTRIBUTE_TYPES);

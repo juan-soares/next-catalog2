@@ -1,6 +1,7 @@
 import { AttributeListItem } from "./AttributeList.types";
 import { ATTRIBUTES_CATALOG_EDIT_PATH } from "@/consts/paths";
 import { DeleteFormButton, EditButton } from "@/components/ui";
+import { deleteAttributeAction } from "@/modules/attribute";
 
 type Props = {
   isAdmin: boolean;
@@ -28,7 +29,10 @@ export function AttributeList({ isAdmin, attributes }: Props) {
                   path={ATTRIBUTES_CATALOG_EDIT_PATH + id}
                   label={label}
                 />
-                <DeleteFormButton deleteAction={() => {}} id={id} />
+                <DeleteFormButton
+                  deleteAction={deleteAttributeAction}
+                  id={id}
+                />
               </>
             )}
           </li>
