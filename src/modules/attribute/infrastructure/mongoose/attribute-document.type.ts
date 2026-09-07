@@ -1,5 +1,6 @@
 import { Types } from "mongoose";
-import { AttributeTypeCode } from "../../domain";
+
+import { AttributeTypeCode } from "@/modules/attribute/domain";
 
 export type AttributeDocument = {
   _id: Types.ObjectId;

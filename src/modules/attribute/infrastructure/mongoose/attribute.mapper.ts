@@ -1,5 +1,6 @@
-import { Attribute } from "../../domain/attribute.type";
-import { AttributeDocument } from "./attribute-document.type";
+import type { Attribute } from "@/modules/attribute/domain";
+
+import type { AttributeDocument } from "./attribute-document.type";
 
 export function toAttribute(document: AttributeDocument): Attribute {
   return {

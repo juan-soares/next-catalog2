@@ -1,4 +1,4 @@
-import { AttributeType, AttributeTypeCode } from "./attribute-type.type";
+import type { AttributeType, AttributeTypeCode } from "./attribute-type.type";
 
 export const ATTRIBUTE_TYPES = {
   language: {

@@ -1,8 +1,9 @@
-import { AttributeRepository, AttributeTypeCode } from "../../domain";
-import { attributeRepository } from "../../infrastructure/mongoose/repository";
+import { Attribute, AttributeTypeCode } from "@/modules/attribute/domain";
+import { attributeRepository } from "@/modules/attribute/infrastructure";
 
 export async function listAttributesByType(
   type: AttributeTypeCode,
-) {
+): Promise<Attribute[]> {
+  
   return attributeRepository.findByType(type);
 }

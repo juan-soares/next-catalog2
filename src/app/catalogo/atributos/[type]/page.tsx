@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation";
+
 import { auth } from "@/features/auth/next-auth/auth";
-import { AttributesPageList } from "@/features/attributes-page";
-import {
-  AttributeItemSortOption,
-  getAttributeItemsByType,
-} from "@/modules1/attribute-item";
+
+import { listAttributesByType, AttributeList } from "@/modules/attribute";
+
 import { getAttributeTypeBySlug } from "@/modules1/attribute-type";
 
 type Props = {
@@ -26,16 +25,14 @@ export default async function AttributeTypePage({
 
   const { label, key } = attributeType;
 
-  const results = await getAttributeItemsByType(
-    sort as AttributeItemSortOption,
-    key,
-  );
   const session = await auth();
+  const attributes = await listAttributesByType(key);
 
   return (
     <div>
       <h1>{label}</h1>
-      <AttributesPageList hasUser={session !== null} results={results} />
+
+      <AttributeList isAdmin={session !== null} attributes={attributes} />
     </div>
   );
 }
