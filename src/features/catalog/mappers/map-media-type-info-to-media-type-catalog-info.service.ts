@@ -1,6 +1,6 @@
-import { MediaTypeInfo } from "@/modules/media-type";
+import { MediaTypeInfo } from "@/modules1/media-type";
 import { MediaTypeCatalogInfo } from "../types";
-import { searchMediaItems } from "@/modules/media-item";
+import { searchMediaItems } from "@/modules1/media-item";
 import { mapMediaItemToCatalogListItem } from "./map-media-item-to-catalog-list-item.mapper";
 import { getCatalogFilters } from "../services";
 

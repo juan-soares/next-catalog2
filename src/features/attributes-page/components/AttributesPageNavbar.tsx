@@ -2,7 +2,7 @@ import {
   ATTRIBUTES_CATALOG_NEW_PATH,
   ATTRIBUTES_CATALOG_PATH,
 } from "@/consts/paths";
-import { getAttributeTypes } from "@/modules/attribute-type";
+import { getAttributeTypes } from "@/modules1/attribute-type";
 import Link from "next/link";
 
 export function AttributesPageNavbar() {

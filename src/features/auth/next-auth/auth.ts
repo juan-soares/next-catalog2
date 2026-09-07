@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { verifyUserCredentials } from "@/modules/user";
+import { verifyUserCredentials } from "@/modules1/user";
 
 export const { auth, signIn, signOut, handlers } = NextAuth({
   providers: [

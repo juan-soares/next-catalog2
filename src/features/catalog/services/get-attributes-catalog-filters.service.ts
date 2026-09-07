@@ -6,9 +6,9 @@ import { mapAttributeItemToCatalogOption } from "../mappers";
 import {
   ATTRIBUTE_TYPES,
   getAttributeTypeKeysByMediaType,
-} from "@/modules/attribute-type";
-import { MediaTypeKey } from "@/modules/media-type";
-import { getAttributeItemsByType } from "@/modules/attribute-item";
+} from "@/modules1/attribute-type";
+import { MediaTypeKey } from "@/modules1/media-type";
+import { getAttributeItemsByType } from "@/modules1/attribute-item";
 
 export async function getAttributesCatalogFilters(
   mediaType: MediaTypeKey,

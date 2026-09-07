@@ -1,4 +1,4 @@
-import { AttributeItem } from "@/modules/attribute-item/types";
+import { AttributeItem } from "@/modules1/attribute-item/types";
 import { CatalogFilterOption } from "../types";
 
 export function mapAttributeItemToCatalogOption(

@@ -1,4 +1,4 @@
-import { findRecentlyUpdatedMediaItems } from "@/modules/media-item";
+import { findRecentlyUpdatedMediaItems } from "@/modules1/media-item";
 import { CarouselItems } from "../types";
 import { mapMediaItemToCarouselItem } from "../mappers";
 

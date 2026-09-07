@@ -1,4 +1,4 @@
-import { MediaItem } from "../media-item";
+import { MediaItem } from "../../modules1/media-item";
 import { MediaFile } from "./media-file.type";
 
 export type MediaUnitGroupTypeCode = "season" | "special" | "volume" | "album";

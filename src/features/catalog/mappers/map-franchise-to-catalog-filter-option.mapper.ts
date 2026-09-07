@@ -1,4 +1,4 @@
-import { Franchise } from "@/modules/franchise";
+import { Franchise } from "@/modules1/franchise";
 import { CatalogFilterOption } from "../types";
 
 export function mapFranchiseToCatalogFilterOption(

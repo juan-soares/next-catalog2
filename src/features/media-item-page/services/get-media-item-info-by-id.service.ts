@@ -1,4 +1,4 @@
-import { getMediaItemById } from "@/modules/media-item";
+import { getMediaItemById } from "@/modules1/media-item";
 import { MediaItemPageInfo } from "../types";
 
 export async function getMediaItemPageInfoById(

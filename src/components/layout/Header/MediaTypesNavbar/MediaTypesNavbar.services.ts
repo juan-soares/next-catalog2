@@ -1,4 +1,4 @@
-import { getMediaTypesInfo } from "@/modules/media-type";
+import { getMediaTypesInfo } from "@/modules1/media-type";
 import { mapMediaTypeInfoToMediaTypeLink } from "./MediaTypesNavbar.mappers";
 import { MediaTypeLink } from "./MediaTypesNavbar.types";
 

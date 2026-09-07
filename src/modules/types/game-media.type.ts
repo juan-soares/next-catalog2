@@ -1,4 +1,4 @@
-import { MediaItem } from "../media-item";
+import { MediaItem } from "../../modules1/media-item";
 import { Attribute } from "./attribute.type";
 
 export type GameType = {

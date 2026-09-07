@@ -1,4 +1,4 @@
-import { AttributesPageNavbar } from "@/modules/attribute-type";
+import { AttributesPageNavbar } from "@/modules1/attribute-type";
 import { ReactNode } from "react";
 
 type Props = {

@@ -1,4 +1,4 @@
-import { MediaItem } from "@/modules/media-item";
+import { MediaItem } from "@/modules1/media-item";
 import { GlobalResult } from "../types";
 import { MEDIA_ITEM_COVER_PATH } from "@/consts/paths";
 

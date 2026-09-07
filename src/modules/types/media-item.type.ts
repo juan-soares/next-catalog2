@@ -1,7 +1,6 @@
-import { Franchise } from "../franchise";
+import { Franchise } from "../../modules1/franchise";
 import { Attribute } from "./attribute.type";
 import { MediaFile } from "./media-file.type";
-import { MediaItemUniverse } from "./media-item-universe-relation.type";
 import { MediaTypeCode } from "./media-type.type";
 
 export type MediaItem = {
@@ -24,8 +23,6 @@ export type MediaItem = {
     previousId?: MediaItem["id"];
     nextId?: MediaItem["id"];
   };
-
-  universes: MediaItemUniverse[];
 
   languageIds: Attribute["id"][];
   themeIds: Attribute["id"][];

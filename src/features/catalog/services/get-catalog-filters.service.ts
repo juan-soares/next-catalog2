@@ -2,7 +2,7 @@ import { CatalogFilter } from "../types";
 import { getFranchiseCatalogFilters } from "./get-franchise-catalog-filters.service";
 import { getAttributesCatalogFilters } from "./get-attributes-catalog-filters.service";
 
-import { MediaTypeKey } from "@/modules/media-type";
+import { MediaTypeKey } from "@/modules1/media-type";
 
 export async function getCatalogFilters(
   mediaType: MediaTypeKey,

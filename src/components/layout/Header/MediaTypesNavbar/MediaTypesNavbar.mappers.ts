@@ -1,5 +1,4 @@
-
-import { MediaTypeInfo } from "@/modules/media-type";
+import { MediaTypeInfo } from "@/modules1/media-type";
 import { MediaTypeLink } from "./MediaTypesNavbar.types";
 import { MEDIA_TYPE_CATALOG_PATH } from "@/consts/paths";
 

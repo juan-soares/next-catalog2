@@ -2,7 +2,7 @@ import { CatalogFilter } from "../types";
 import { mapFranchiseToCatalogFilterOption } from "../mappers";
 
 import { FRANCHISES_CATALOG_NEW_PATH } from "@/consts/paths";
-import { getFranchises } from "@/modules/franchise";
+import { getFranchises } from "@/modules1/franchise";
 
 export async function getFranchiseCatalogFilters(): Promise<CatalogFilter> {
   const franchises = await getFranchises();

@@ -1,4 +1,4 @@
-import { getMediaTypeInfoBySlug } from "@/modules/media-type";
+import { getMediaTypeInfoBySlug } from "@/modules1/media-type";
 import { MediaTypeCatalogInfo } from "../types/media-type-catalog-info.view.type";
 import { mapMediaTypeInfoToMediaTypeCatalogInfo } from "../mappers";
 

@@ -1,4 +1,4 @@
-import { MediaTypeKey } from "@/modules/media-type";
+import { MediaTypeKey } from "@/modules1/media-type";
 import { MediaItemPageTab } from "../types";
 import { MEDIA_ITEM_TABS } from "./media-item-tabs.const";
 

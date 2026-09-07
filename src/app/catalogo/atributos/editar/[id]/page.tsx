@@ -1,8 +1,8 @@
 import {
   AttributeItemForm,
   editAttributeItemAction,
-} from "@/modules/attribute-item";
-import { getAttributeItemById } from "@/modules/attribute-item/services/get-attribute-item-by-id.service";
+} from "@/modules1/attribute-item";
+import { getAttributeItemById } from "@/modules1/attribute-item/services/get-attribute-item-by-id.service";
 import { notFound } from "next/navigation";
 
 type Props = {

@@ -1,4 +1,4 @@
-import { searchMediaItemsByTitleOrTranslatedTitle } from "@/modules/media-item";
+import { searchMediaItemsByTitleOrTranslatedTitle } from "@/modules1/media-item";
 import { GlobalResults } from "../types";
 import { mapMediaItemToGlobalResult } from "../mappers";
 

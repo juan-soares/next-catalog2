@@ -8,7 +8,7 @@ import {
   getMediaItemTabsByMediaType,
   MediaItemPageTabKey,
 } from "@/features/media-item-page";
-import { getMediaTypeInfoBySlug } from "@/modules/media-type";
+import { getMediaTypeInfoBySlug } from "@/modules1/media-type";
 import { notFound } from "next/navigation";
 
 type Props = {

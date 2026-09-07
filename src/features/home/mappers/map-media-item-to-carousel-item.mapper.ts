@@ -1,4 +1,4 @@
-import { MediaItem } from "@/modules/media-item";
+import { MediaItem } from "@/modules1/media-item";
 import { CarouselItem } from "../types";
 
 export function mapMediaItemToCarouselItem(mediaItem: MediaItem): CarouselItem {

@@ -3,7 +3,7 @@ import { auth } from "@/features/auth/next-auth/auth";
 import {
   AttributeItemSortOption,
   getAttributeItems,
-} from "@/modules/attribute-item";
+} from "@/modules1/attribute-item";
 
 type Props = {
   searchParams: Promise<{ sort: string }>;

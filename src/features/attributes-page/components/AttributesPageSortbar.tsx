@@ -1,4 +1,4 @@
-import { ATTRIBUTE_ITEM_SORT_OPTIONS_LIST } from "@/modules/attribute-item/consts";
+import { ATTRIBUTE_ITEM_SORT_OPTIONS_LIST } from "@/modules1/attribute-item/consts";
 
 export function AttributesPageSortbar() {
   return (

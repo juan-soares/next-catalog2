@@ -4,8 +4,8 @@ import { AttributesPageList } from "@/features/attributes-page";
 import {
   AttributeItemSortOption,
   getAttributeItemsByType,
-} from "@/modules/attribute-item";
-import { getAttributeTypeBySlug } from "@/modules/attribute-type";
+} from "@/modules1/attribute-item";
+import { getAttributeTypeBySlug } from "@/modules1/attribute-type";
 
 type Props = {
   params: Promise<{ type: string }>;

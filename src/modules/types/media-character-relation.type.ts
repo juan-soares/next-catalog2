@@ -1,4 +1,4 @@
-import { MediaItem } from "../media-item";
+import { MediaItem } from "../../modules1/media-item";
 import { Attribute } from "./attribute.type";
 import { Character } from "./character.type";
 import { MediaFile } from "./media-file.type";

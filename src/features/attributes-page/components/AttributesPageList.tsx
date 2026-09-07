@@ -4,11 +4,11 @@ import { ATTRIBUTES_CATALOG_EDIT_PATH } from "@/consts/paths";
 import {
   AttributeItem,
   deleteAttributeItemAction,
-} from "@/modules/attribute-item";
+} from "@/modules1/attribute-item";
 
 import { AttributesPageSortbar } from "./AttributesPageSortbar";
 import { DeleteFormButton } from "@/components/ui/DeleteFormButton";
-import { ATTRIBUTE_TYPES } from "@/modules/attribute-type";
+import { ATTRIBUTE_TYPES } from "@/modules1/attribute-type";
 
 type Props = {
   hasUser: boolean;

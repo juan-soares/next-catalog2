@@ -1,7 +1,7 @@
 import {
   AttributeItemForm,
   createAttributeItemAction,
-} from "@/modules/attribute-item";
+} from "@/modules1/attribute-item";
 
 export default function NewAttributeItemPage() {
   return (

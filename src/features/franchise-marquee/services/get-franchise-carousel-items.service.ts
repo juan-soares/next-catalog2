@@ -1,4 +1,4 @@
-import { getFranchises } from "@/modules/franchise";
+import { getFranchises } from "@/modules1/franchise";
 import { FranchiseMarqueeItem } from "../types";
 
 export async function getFranchiseMarqueeItems(): Promise<
