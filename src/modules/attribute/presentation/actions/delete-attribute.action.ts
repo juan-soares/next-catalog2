@@ -3,8 +3,7 @@
 import { redirect } from "next/navigation";
 
 import { ATTRIBUTES_CATALOG_PATH } from "@/consts/paths";
-
-import { deleteAttribute } from "./delete-attribute.service";
+import { deleteAttribute } from "@/modules/attribute/application";
 
 export async function deleteAttributeAction(formData: FormData) {
   const id = formData.get("id")?.toString();
