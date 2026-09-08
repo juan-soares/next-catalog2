@@ -1,6 +1,6 @@
 import { connectToDatabase } from "@/lib/mongoose";
 import type { AttributeIdentifiers } from "@/modules/attribute/domain";
-import { AttributeModel } from "../attribute.model";
+import { AttributeModel } from "../../../models/attribute.model";
 
 export async function deleteAttributeBySlugAndType(
   identifiers: AttributeIdentifiers,

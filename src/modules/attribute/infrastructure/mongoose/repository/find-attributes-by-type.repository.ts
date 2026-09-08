@@ -1,7 +1,7 @@
 import { connectToDatabase } from "@/lib/mongoose";
 import { Attribute, AttributeTypeCode } from "@/modules/attribute/domain";
 
-import { AttributeModel } from "../attribute.model";
+import { AttributeModel } from "../../../models/attribute.model";
 import { AttributeDocument } from "../attribute-document.type";
 import { toAttribute } from "../attribute.mapper";
 

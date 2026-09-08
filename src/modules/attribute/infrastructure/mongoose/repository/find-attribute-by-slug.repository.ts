@@ -1,6 +1,6 @@
 import { connectToDatabase } from "@/lib/mongoose";
 import { Attribute, AttributeIdentifiers } from "@/modules/attribute/domain";
-import { AttributeModel } from "../attribute.model";
+import { AttributeModel } from "../../../models/attribute.model";
 import { toAttribute } from "../attribute.mapper";
 
 export async function findAttributeBySlug(

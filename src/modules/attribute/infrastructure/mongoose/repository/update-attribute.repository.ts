@@ -4,7 +4,7 @@ import type {
   AttributeIdentifiers,
   UpdateAttributeData,
 } from "@/modules/attribute/domain";
-import { AttributeModel } from "../attribute.model";
+import { AttributeModel } from "../../../models/attribute.model";
 import { toAttribute } from "../attribute.mapper";
 
 export async function updateAttribute(

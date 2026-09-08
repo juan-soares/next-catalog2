@@ -1,28 +1,24 @@
-import { EditAttributeForm, getAttributeBySlug } from "@/modules/attribute";
-import { ATTRIBUTE_TYPES } from "@/modules/attribute/domain";
 import { notFound } from "next/navigation";
+import { AttributeEditForm } from "@/modules/attribute";
+import { getAttributeById } from "@/modules/attribute/services";
 
 type Props = {
-  params: Promise<{ attribute: string }>;
+  params: Promise<{ id: string }>;
 };
 
 export default async function EditAttributePage({ params }: Props) {
-  const { attribute } = await params;
+  const { id } = await params;
 
-  const attributeData = await getAttributeBySlug(attribute);
+  const attribute = await getAttributeById(id);
 
-  if (!attributeData) {
+  if (!attribute) {
     notFound();
   }
-  const attributeType = ATTRIBUTE_TYPES[attributeData.type].label;
 
   return (
     <div>
       <h1>Editar Atributo</h1>
-      <EditAttributeForm
-        attribute={attributeData}
-        attributeType={attributeType}
-      />
+      <AttributeEditForm attribute={attribute} />
     </div>
   );
 }

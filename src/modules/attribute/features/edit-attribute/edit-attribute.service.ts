@@ -1,7 +1,7 @@
 import { slugify } from "@/lib/helpers";
 import type { Attribute } from "../../domain";
 import { attributeRepository } from "../../infrastructure";
-import type { EditAttributeInput } from "./edit-attribute.schema";
+import type { EditAttributeInput } from "../../schemas/edit-attribute.schema";
 
 export async function editAttribute(
   input: EditAttributeInput,
