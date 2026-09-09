@@ -1,3 +1,3 @@
-export * from "./domain";
-export * from "./application";
-export * from "./features";
+export * from "./services";
+export * from "./repositories";
+export type { User } from "./types";

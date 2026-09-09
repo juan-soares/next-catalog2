@@ -13,7 +13,6 @@ export function AttributeEditForm({ attribute }: Props) {
   return (
     <form action={editAttributeAction}>
       <input type="hidden" name="id" value={attribute.id} />
-      <input type="hidden" name="type" value={attribute.type} />
 
       <label htmlFor="type">Tipo:</label>
       <input id="type" type="text" value={attributeTypeLabel} disabled />

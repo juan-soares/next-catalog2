@@ -1,4 +1,4 @@
-import type { AttributeTypeCode } from "./attribute-type.type";
+import type { AttributeTypeCode } from "@/modules/attribute/types";
 
 export type Attribute = {
   id: string;

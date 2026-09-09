@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
 
-import { auth } from "@/modules/user/features/auth/next-auth/auth";
+import { auth } from "@/modules/auth/configs/next-auth.config";
 
-import { listAttributesByType, AttributeList } from "@/modules/attribute";
-
-import { getAttributeTypeBySlug } from "@/modules1/attribute-type";
+import {
+  getAttributesByType,
+  AttributeList,
+  getAttributeTypeBySlug,
+} from "@/modules/attribute";
 
 type Props = {
   params: Promise<{ type: string }>;
@@ -18,15 +20,16 @@ export default async function AttributeTypePage({
   const { type } = await params;
   const { sort = "label-asc" } = await searchParams;
 
-  const attributeType = getAttributeTypeBySlug(type);
-  if (!attributeType) {
+  const attributeTypeInfo = getAttributeTypeBySlug(type);
+
+  if (!attributeTypeInfo) {
     notFound();
   }
 
-  const { label, key } = attributeType;
+  const { label, code } = attributeTypeInfo;
 
   const session = await auth();
-  const attributes = await listAttributesByType(key);
+  const attributes = await getAttributesByType(code);
 
   return (
     <div>

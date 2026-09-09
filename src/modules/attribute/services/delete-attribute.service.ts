@@ -1,5 +1,6 @@
-import { attributeRepository } from "@/modules/attribute/infrastructure";
+import { deleteAttributeById } from "@/modules/attribute/repositories";
+import type { Attribute } from "@/modules/attribute/types";
 
-export async function deleteAttribute(id: string): Promise<boolean> {
-  return attributeRepository.deleteOne(id);
+export async function deleteAttribute(id: string): Promise<Attribute | null> {
+  return deleteAttributeById(id);
 }

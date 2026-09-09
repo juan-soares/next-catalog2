@@ -1,4 +1,4 @@
-import { auth } from "@/modules/user/features/auth/next-auth/auth";
+import { auth } from "@/modules/auth/configs/next-auth.config";
 import { CatalogFilter } from "../../types";
 import Link from "next/link";
 import { ATTRIBUTES_CATALOG_NEW_PATH } from "@/consts/paths";

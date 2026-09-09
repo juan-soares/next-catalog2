@@ -9,19 +9,17 @@ import { ATTRIBUTE_TYPES } from "@/modules/attribute/consts";
 export async function deleteAttributeAction(formData: FormData) {
   const result = deleteAttributeSchema.safeParse({
     id: formData.get("id"),
-    typeCode: formData.get("type"),
+    type: formData.get("typeCode"),
   });
 
   if (!result.success) {
     return;
   }
 
-  const success = await deleteAttribute(result.data.id);
+  const deletedAttribute = await deleteAttribute(result.data.id);
 
-  if (!success) {
-    return;
-  }
+  if (!deletedAttribute) return;
 
-  const attributeTypeSlug = ATTRIBUTE_TYPES[result.data.typeCode].slug;
+  const attributeTypeSlug = ATTRIBUTE_TYPES[deletedAttribute.type].slug;
   redirect(ATTRIBUTES_CATALOG_PATH + attributeTypeSlug);
 }
