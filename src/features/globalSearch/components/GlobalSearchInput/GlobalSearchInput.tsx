@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import { GLOBAL_SEARCH_PATH } from "@/consts/paths";
+import { GLOBAL_SEARCH_PATH } from "@/shared/consts/paths.const";
 import { SearchIcon } from "lucide-react";
 
 type Props = {

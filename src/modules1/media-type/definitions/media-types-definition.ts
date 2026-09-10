@@ -1,4 +1,4 @@
-import { MEDIA_TYPE_CATALOG_PATH } from "@/consts/paths";
+import { MEDIA_TYPE_CATALOG_PATH } from "@/shared/consts/paths.const";
 import { MediaTypeDefinition } from "../types";
 
 export const MEDIA_TYPES = {

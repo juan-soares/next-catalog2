@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 
-import { Logo } from "@/components/ui";
+import { Logo } from "@/shared/components/ui";
 import { Userbar } from "@/modules/auth";
 import { GlobalSearch } from "@/features/globalSearch";
 import { MediaTypesNavbar } from "./MediaTypesNavbar";

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { GlobalResults } from "../../types";
 import Image from "next/image";
-import { GLOBAL_SEARCH_PATH } from "@/consts/paths";
+import { GLOBAL_SEARCH_PATH } from "@/shared/consts/paths.const";
 
 type Props = {
   term: string;

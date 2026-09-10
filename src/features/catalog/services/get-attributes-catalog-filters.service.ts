@@ -1,4 +1,4 @@
-import { ATTRIBUTES_CATALOG_NEW_PATH } from "@/consts/paths";
+import { ATTRIBUTES_CATALOG_NEW_PATH } from "@/shared/consts/paths.const";
 
 import { CatalogFilter } from "../types";
 import { mapAttributeItemToCatalogOption } from "../mappers";

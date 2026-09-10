@@ -1,20 +1,27 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { ATTRIBUTES_CATALOG_PATH } from "@/consts/paths";
+import type { ActionState } from "@/shared/types";
+import { ATTRIBUTES_CATALOG_PATH, ACTION_MESSAGES } from "@/shared/consts";
+import { requireAdmin } from "@/modules/auth";
 import { deleteAttributeSchema } from "@/modules/attribute/schemas";
 import { deleteAttribute } from "@/modules/attribute/services";
 import { ATTRIBUTE_TYPES } from "@/modules/attribute/consts";
-import { requireAdmin } from "@/modules/auth";
 
-export async function deleteAttributeAction(formData: FormData) {
+export async function deleteAttributeAction(
+  _previousState: ActionState,
+  formData: FormData,
+) {
   const result = deleteAttributeSchema.safeParse({
     id: formData.get("id"),
     type: formData.get("typeCode"),
   });
 
   if (!result.success) {
-    return;
+    return {
+      success: false,
+      message: ACTION_MESSAGES.delete.failure,
+    };
   }
 
   await requireAdmin();
@@ -24,11 +31,18 @@ export async function deleteAttributeAction(formData: FormData) {
   try {
     deletedAttribute = await deleteAttribute(result.data.id);
   } catch {
-    console.error("Deu erro ao excluir");
-    return;
+    return {
+      success: false,
+      message: ACTION_MESSAGES.delete.failure,
+    };
   }
 
-  if (!deletedAttribute) return;
+  if (!deletedAttribute) {
+    return {
+      success: false,
+      message: ACTION_MESSAGES.delete.failure,
+    };
+  }
 
   const attributeTypeSlug = ATTRIBUTE_TYPES[deletedAttribute.type].slug;
 

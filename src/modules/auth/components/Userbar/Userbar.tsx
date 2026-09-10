@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { UserCircle } from "lucide-react";
-import { LOGIN_PATH } from "@/consts/paths";
+import { LOGIN_PATH } from "@/shared/consts/paths.const";
 import { auth } from "@/modules/auth/configs";
 import { logoutAction } from "@/modules/auth/actions";
 

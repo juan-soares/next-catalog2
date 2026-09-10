@@ -2,7 +2,7 @@ import Link from "next/link";
 import {
   CATALOG_ATTRIBUTES_NEW_PATH,
   CATALOG_ATTRIBUTES_PATH,
-} from "@/consts/paths";
+} from "@/shared/consts/paths.const";
 import { ATTRIBUTE_TYPES_LIST } from "@/modules/attribute/consts";
 
 export function AttributeTypesNavbar() {

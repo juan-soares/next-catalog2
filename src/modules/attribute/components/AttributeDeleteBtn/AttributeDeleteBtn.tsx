@@ -1,6 +1,8 @@
-import { DeleteFormButton } from "@/components/ui";
+"use client";
+
+import { DeleteFormButton } from "@/shared/components/ui";
 import { deleteAttributeAction } from "@/modules/attribute/actions";
-import { AttributeTypeCode } from "@/modules/attribute/types";
+import type { AttributeTypeCode } from "@/modules/attribute/types";
 
 type Props = {
   id: string;
@@ -11,7 +13,7 @@ export function AttributeDeleteBtn({ id, typeCode }: Props) {
   return (
     <DeleteFormButton
       deleteAction={deleteAttributeAction}
-      fields={{ id, typeCode }}
+      fields={{ id, type: typeCode }}
     />
   );
 }

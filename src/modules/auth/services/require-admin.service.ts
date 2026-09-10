@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { LOGIN_PATH } from "@/consts/paths";
+import { LOGIN_PATH } from "@/shared/consts/paths.const";
 import { auth } from "@/modules/auth/configs";
 
 export async function requireAdmin() {

@@ -1,5 +1,5 @@
-import { DeleteFormButton } from "@/components/ui";
-import { MEDIA_TYPE_CATALOG_PATH } from "@/consts/paths";
+import { DeleteFormButton } from "@/shared/components/ui";
+import { MEDIA_TYPE_CATALOG_PATH } from "@/shared/consts/paths.const";
 import { MediaItemPageOva } from "@/features/media-item-page/types";
 import { deleteMediaItemAction } from "@/modules1/media-item/actions";
 import { Edit } from "lucide-react";

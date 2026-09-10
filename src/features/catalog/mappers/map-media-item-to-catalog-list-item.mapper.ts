@@ -1,6 +1,9 @@
 import { MediaItem } from "@/modules1/media-item";
 import { CatalogListItem } from "../types";
-import { MEDIA_ITEM_COVER_PATH, MEDIA_TYPE_CATALOG_PATH } from "@/consts/paths";
+import {
+  MEDIA_ITEM_COVER_PATH,
+  MEDIA_TYPE_CATALOG_PATH,
+} from "@/shared/consts/paths.const";
 
 export function mapMediaItemToCatalogListItem(
   mediaItem: MediaItem,

@@ -1,7 +1,7 @@
 import { auth } from "@/modules/auth/configs/next-auth.config";
 import { CatalogFilter } from "../../types";
 import Link from "next/link";
-import { ATTRIBUTES_CATALOG_NEW_PATH } from "@/consts/paths";
+import { ATTRIBUTES_CATALOG_NEW_PATH } from "@/shared/consts/paths.const";
 
 type Props = {
   filters: CatalogFilter[];

@@ -1,5 +1,5 @@
-import { EditButton } from "@/components/ui";
-import { CATALOG_ATTRIBUTES_EDIT_PATH } from "@/consts/paths";
+import { EditButton } from "@/shared/components/ui";
+import { CATALOG_ATTRIBUTES_EDIT_PATH } from "@/shared/consts/paths.const";
 
 type Props = {
   id: string;

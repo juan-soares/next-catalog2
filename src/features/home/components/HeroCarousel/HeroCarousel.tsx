@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { MEDIA_ITEM_COVER_PATH } from "@/consts/paths";
+import { MEDIA_ITEM_COVER_PATH } from "@/shared/consts/paths.const";
 import { CarouselItems } from "../../types";
 import { useHeroCarousel } from "../../hooks";
 import { HeroCarouselNavigation } from "../HeroCarouselNavigation";
