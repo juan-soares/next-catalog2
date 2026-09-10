@@ -1,4 +1,4 @@
-export type FranchiseMarqueeLink = {
+export type FranchiseLogoLink = {
   id: string;
   href: string;
   logoPath: string;

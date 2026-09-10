@@ -1,1 +1,2 @@
-export * from "./get-franchise-marquee-links.service";
+export * from "./get-parent-franchise-logo-links.service";
+export * from "./get-franchise-family.service";

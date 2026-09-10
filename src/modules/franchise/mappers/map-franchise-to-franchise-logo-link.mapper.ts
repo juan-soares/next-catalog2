@@ -1,12 +1,9 @@
 import { CATALOG_FRANCHISE_PATH, FRANCHISES_LOGO_PATH } from "@/shared/consts";
-import type {
-  Franchise,
-  FranchiseMarqueeLink,
-} from "@/modules/franchise/types";
+import type { Franchise, FranchiseLogoLink } from "@/modules/franchise/types";
 
-export function mapFranchiseToFranchiseMarqueeLink(
+export function mapFranchiseToFranchiseLogoLink(
   franchise: Franchise,
-): FranchiseMarqueeLink {
+): FranchiseLogoLink {
   return {
     id: franchise.id,
     href: CATALOG_FRANCHISE_PATH + franchise.id,

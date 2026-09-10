@@ -1,2 +1,1 @@
 export * from "./FranchiseLogoLink";
-export * from "./FranchiseMarquee";

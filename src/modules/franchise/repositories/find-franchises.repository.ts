@@ -10,11 +10,14 @@ export async function findFranchises(
 ): Promise<Franchise[]> {
   await connectToDatabase();
 
-  return FranchiseModel.find(filters)
+  const franchiseDocs = await FranchiseModel.find(filters)
     .sort({ title: 1 })
     .collation({
       locale: "pt",
       strength: 1,
     })
+    .populate("parentFranchiseId")
     .lean();
+
+  return franchiseDocs.map(mapFranchiseDocToFranchise);
 }
