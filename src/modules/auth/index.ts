@@ -1,2 +1,2 @@
 export * from "./components";
-export { requireAdmin } from "./services";
+export { requireAdmin, isAdminUser } from "./services";

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { auth } from "@/modules/auth/configs/next-auth.config";
+import { isAdmin } from "@/modules/auth";
 
 import {
   getAttributesByType,
@@ -28,14 +28,14 @@ export default async function AttributeTypePage({
 
   const { label, code } = attributeTypeInfo;
 
-  const session = await auth();
+  const isUserAdmin = await isAdmin();
   const attributes = await getAttributesByType(code);
 
   return (
     <div>
       <h1>{label}</h1>
 
-      <AttributeList isAdmin={session !== null} attributes={attributes} />
+      <AttributeList isAdmin={isUserAdmin} attributes={attributes} />
     </div>
   );
 }

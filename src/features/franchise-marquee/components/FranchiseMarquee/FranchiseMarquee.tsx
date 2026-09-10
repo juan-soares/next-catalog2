@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FRANCHISE_LOGO_PATH } from "@/shared/consts/paths.const";
 import { getFranchiseMarqueeItems } from "../../services";
 
-export async function FranchiseMarquee() {
+export async function FranchiseMarqueeOld() {
   const franchises = await getFranchiseMarqueeItems();
 
   return (

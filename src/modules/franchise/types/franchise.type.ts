@@ -9,7 +9,7 @@ export type Franchise = {
 
   logo: MediaFile["id"];
 
-  parentFranchiseId?: Franchise["id"];
+  parentFranchiseId: Franchise["id"] | null;
 
   createdAt: Date;
   updatedAt: Date;

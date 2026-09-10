@@ -1,8 +1,9 @@
 import { redirect } from "next/navigation";
 import { LOGIN_PATH } from "@/shared/consts/paths.const";
 import { auth } from "@/modules/auth/configs";
+import { Session } from "next-auth";
 
-export async function requireAdmin() {
+export async function requireAdmin(): Promise<Session> {
   const session = await auth();
 
   if (!session?.user) {
