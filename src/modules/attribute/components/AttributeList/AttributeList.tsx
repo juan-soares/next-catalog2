@@ -20,14 +20,14 @@ export function AttributeList({ isAdmin, attributes }: Props) {
   return (
     <div>
       <ul>
-        {attributes.map(({ id, label, slug, type }) => (
+        {attributes.map(({ id, label, type }) => (
           <li key={id}>
             <span>{label}</span>
 
             {isAdmin && (
               <>
                 <AttributeEditBtn id={id} />
-                <AttributeDeleteBtn id={id} typeCode={type}/>
+                <AttributeDeleteBtn id={id} typeCode={type} />
               </>
             )}
           </li>

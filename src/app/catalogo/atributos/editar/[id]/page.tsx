@@ -1,11 +1,14 @@
 import { notFound } from "next/navigation";
 import { AttributeEditForm, getAttributeById } from "@/modules/attribute";
+import { requireAdmin } from "@/modules/auth";
 
 type Props = {
   params: Promise<{ id: string }>;
 };
 
 export default async function EditAttributePage({ params }: Props) {
+  await requireAdmin();
+
   const { id } = await params;
 
   const attribute = await getAttributeById(id);

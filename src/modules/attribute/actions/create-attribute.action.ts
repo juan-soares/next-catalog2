@@ -5,6 +5,7 @@ import { ATTRIBUTE_TYPES } from "@/modules/attribute/consts";
 import { createAttributeSchema } from "@/modules/attribute/schemas";
 import { createAttribute } from "@/modules/attribute/services";
 import { CATALOG_ATTRIBUTES_PATH } from "@/consts/paths";
+import { requireAdmin } from "@/modules/auth";
 
 export async function createAttributeAction(formData: FormData) {
   const result = createAttributeSchema.safeParse({
@@ -14,15 +15,21 @@ export async function createAttributeAction(formData: FormData) {
 
   if (!result.success) return;
 
+  await requireAdmin();
+
+  let newAttribute;
+
   try {
-    const newAttribute = await createAttribute({
+    newAttribute = await createAttribute({
       label: result.data.label,
       type: result.data.type,
     });
-
-    const attributeTypeSlug = ATTRIBUTE_TYPES[newAttribute.type].slug;
-    redirect(CATALOG_ATTRIBUTES_PATH + attributeTypeSlug);
   } catch {
-    console.error("Deu erro ao criar;");
+    console.error("Deu erro ao criar");
+    return;
   }
+
+  const attributeTypeSlug = ATTRIBUTE_TYPES[newAttribute.type].slug;
+
+  redirect(CATALOG_ATTRIBUTES_PATH + attributeTypeSlug);
 }

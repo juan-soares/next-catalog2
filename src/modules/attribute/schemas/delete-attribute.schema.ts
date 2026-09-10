@@ -1,5 +1,5 @@
 import z from "zod";
-import { ATTRIBUTE_TYPE_CODES } from "../consts";
+import { ATTRIBUTE_TYPE_CODES } from "@/modules/attribute/consts";
 
 export const deleteAttributeSchema = z.object({
   id: z.string().min(1),

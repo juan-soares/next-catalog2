@@ -40,13 +40,13 @@ export async function loginAction(
       if (error.type === "CredentialsSignin") {
         return {
           success: false,
-          message: "*Usuário ou senha inválidos.",
+          message: "Usuário ou senha inválidos.",
         };
       }
 
       return {
         success: false,
-        message: "*Não foi possível realizar o login.",
+        message: "Não foi possível realizar o login.",
       };
     }
 

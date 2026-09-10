@@ -1,6 +1,9 @@
 import { AttributeNewForm } from "@/modules/attribute";
+import { requireAdmin } from "@/modules/auth";
 
-export default function NewAttributeItemPage() {
+export default async function NewAttributeItemPage() {
+  await requireAdmin();
+
   return (
     <div>
       <h2>Novo Atributo</h2>

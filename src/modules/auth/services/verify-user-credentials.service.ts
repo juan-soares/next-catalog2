@@ -1,11 +1,14 @@
-import { getUserWithPasswordByEmail, type User } from "@/modules/user";
-import type { LoginCredentialsInput } from "@/modules/auth/types";
+import { getUserWithPasswordByEmail } from "@/modules/user";
+import type {
+  AuthenticatedUser,
+  LoginCredentialsInput,
+} from "@/modules/auth/types";
 import { verifyPassword } from "@/modules/auth/crypto";
 
 export async function verifyUserCredentials({
   email,
   password,
-}: LoginCredentialsInput): Promise<User | null> {
+}: LoginCredentialsInput): Promise<AuthenticatedUser | null> {
   const user = await getUserWithPasswordByEmail(email);
 
   if (!user) {
@@ -22,5 +25,6 @@ export async function verifyUserCredentials({
     id: user.id,
     email: user.email,
     nickname: user.nickname,
+    role: user.role,
   };
 }

@@ -5,6 +5,7 @@ import { ATTRIBUTES_CATALOG_PATH } from "@/consts/paths";
 import { deleteAttributeSchema } from "@/modules/attribute/schemas";
 import { deleteAttribute } from "@/modules/attribute/services";
 import { ATTRIBUTE_TYPES } from "@/modules/attribute/consts";
+import { requireAdmin } from "@/modules/auth";
 
 export async function deleteAttributeAction(formData: FormData) {
   const result = deleteAttributeSchema.safeParse({
@@ -16,10 +17,20 @@ export async function deleteAttributeAction(formData: FormData) {
     return;
   }
 
-  const deletedAttribute = await deleteAttribute(result.data.id);
+  await requireAdmin();
+
+  let deletedAttribute;
+
+  try {
+    deletedAttribute = await deleteAttribute(result.data.id);
+  } catch {
+    console.error("Deu erro ao excluir");
+    return;
+  }
 
   if (!deletedAttribute) return;
 
   const attributeTypeSlug = ATTRIBUTE_TYPES[deletedAttribute.type].slug;
+
   redirect(ATTRIBUTES_CATALOG_PATH + attributeTypeSlug);
 }

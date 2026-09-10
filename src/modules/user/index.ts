@@ -1,3 +1,3 @@
 export * from "./services";
 export * from "./repositories";
-export type { User } from "./types";
+export type { User, UserRole } from "./types";

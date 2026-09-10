@@ -1,6 +1,6 @@
 "use server";
 
-import { signOut } from "../configs/next-auth.config";
+import { signOut } from "@/modules/auth/configs";
 
 export async function logoutAction() {
   await signOut({

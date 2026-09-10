@@ -5,6 +5,7 @@ import { CATALOG_ATTRIBUTES_PATH } from "@/consts/paths";
 import { editAttributeSchema } from "@/modules/attribute/schemas";
 import { ATTRIBUTE_TYPES } from "@/modules/attribute/consts";
 import { editAttribute } from "@/modules/attribute/services";
+import { requireAdmin } from "@/modules/auth";
 
 export async function editAttributeAction(formData: FormData) {
   const result = editAttributeSchema.safeParse({
@@ -14,7 +15,16 @@ export async function editAttributeAction(formData: FormData) {
 
   if (!result.success) return;
 
-  const updatedAttribute = await editAttribute(result.data);
+  await requireAdmin();
+
+  let updatedAttribute;
+
+  try {
+    updatedAttribute = await editAttribute(result.data);
+  } catch {
+    console.error("Deu erro ao editar");
+    return;
+  }
 
   if (!updatedAttribute) return;
 

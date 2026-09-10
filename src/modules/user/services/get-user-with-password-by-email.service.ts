@@ -1,8 +1,8 @@
-import { findUserRepository } from "@/modules/user/repositories";
-import { UserWithPassword } from "@/modules/user/types";
+import { findUser } from "@/modules/user/repositories";
+import type { UserWithPassword } from "@/modules/user/types";
 
 export async function getUserWithPasswordByEmail(
   email: string,
 ): Promise<UserWithPassword | null> {
-  return findUserRepository({ email });
+  return findUser({ email });
 }

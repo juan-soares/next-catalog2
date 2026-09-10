@@ -1,4 +1,5 @@
 import { model, models, Schema } from "mongoose";
+import { USER_ROLES } from "@/modules/user/consts";
 
 const UserSchema = new Schema(
   {
@@ -18,6 +19,13 @@ const UserSchema = new Schema(
     passwordHash: {
       type: String,
       required: true,
+    },
+
+    role: {
+      type: String,
+      required: true,
+      enum: USER_ROLES,
+      default: "user",
     },
   },
   {
