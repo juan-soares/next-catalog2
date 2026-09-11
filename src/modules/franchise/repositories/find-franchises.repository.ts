@@ -4,6 +4,7 @@ import type {
   Franchise,
 } from "@/modules/franchise/types";
 import { FranchiseModel } from "@/modules/franchise/models";
+import { mapFranchiseDocToFranchise } from "@/modules/franchise/mappers";
 
 export async function findFranchises(
   filters: FindFranchiseFilters = {},
@@ -16,7 +17,6 @@ export async function findFranchises(
       locale: "pt",
       strength: 1,
     })
-    .populate("parentFranchiseId")
     .lean();
 
   return franchiseDocs.map(mapFranchiseDocToFranchise);

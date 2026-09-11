@@ -4,3 +4,5 @@ export * from "./SubmitFormButton";
 export * from "./DeleteFormButton";
 
 export * from "./EditButton";
+
+export * from "./Form";
