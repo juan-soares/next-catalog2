@@ -29,7 +29,7 @@ export function FranchiseNewForm({ parentFranchises }: Props) {
       <input type="text" id="translatedTitle" name="translatedTitle" />
 
       <label htmlFor="logo">Logo:</label>
-      <input type="file" id="logo" name="logo" required />
+      <input type="file" id="logo" name="logo" accept=".png" required />
 
       <FormSelect
         id="parent"

@@ -1,4 +1,4 @@
-import { connectToDatabase } from "@/lib/mongoose";
+import { connectToDatabase } from "@/shared/libs/mongoose";
 import { AttributeModel } from "@/modules/attribute/models";
 import { mapAttributeDocToAttribute } from "@/modules/attribute/mappers";
 import type { Attribute, CreateAttributeData } from "@/modules/attribute/types";

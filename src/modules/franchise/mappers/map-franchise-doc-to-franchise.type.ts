@@ -7,7 +7,6 @@ export function mapFranchiseDocToFranchise(
     id: franchiseDoc._id.toString(),
     title: franchiseDoc.title,
     translatedTitle: franchiseDoc.translatedTitle,
-    slug: franchiseDoc.slug,
     logo: franchiseDoc.logo.toString(),
     parentFranchiseId: franchiseDoc.parentFranchiseId?.toString() || null,
     createdAt: franchiseDoc.createdAt,

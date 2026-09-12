@@ -1,4 +1,4 @@
-import { slugify } from "@/lib/helpers";
+import { slugify } from "@/shared/libs/helpers";
 import type {
   Attribute,
   CreateAttributeInput,

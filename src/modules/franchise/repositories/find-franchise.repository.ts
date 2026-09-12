@@ -1,6 +1,9 @@
-
-import { FranchiseModel } from "../models";
-import { FindFranchiseFilters, Franchise } from "../types";
+import { mapFranchiseDocToFranchise } from "@/modules/franchise/mappers";
+import { FranchiseModel } from "@/modules/franchise/models";
+import type {
+  FindFranchiseFilters,
+  Franchise,
+} from "@/modules/franchise/types";
 
 export async function findFranchise(
   filters: FindFranchiseFilters = {},
@@ -9,5 +12,5 @@ export async function findFranchise(
 
   if (!franchise) return null;
 
-  return mapF(franchise);
+  return mapFranchiseDocToFranchise(franchise);
 }

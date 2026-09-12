@@ -1,5 +1,5 @@
 import { isValidObjectId } from "mongoose";
-import { connectToDatabase } from "@/lib/mongoose";
+import { connectToDatabase } from "@/shared/libs/mongoose";
 import type { Attribute } from "@/modules/attribute/types";
 import { AttributeModel } from "@/modules/attribute/models";
 import { mapAttributeDocToAttribute } from "@/modules/attribute/mappers";

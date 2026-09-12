@@ -15,7 +15,7 @@ const FranchiseSchema = new Schema(
 
     logo: {
       type: Schema.Types.ObjectId,
-      ref: "MediaFile",
+      ref: "Asset",
       required: true,
     },
 

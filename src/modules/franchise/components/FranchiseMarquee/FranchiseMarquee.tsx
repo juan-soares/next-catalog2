@@ -18,7 +18,7 @@ export async function FranchiseMarquee() {
       )}
 
       {franchiseLinks.map((logoLink) => (
-        <FranchiseLogoLink {...logoLink} />
+        <FranchiseLogoLink key={logoLink.id} {...logoLink} />
       ))}
     </nav>
   );

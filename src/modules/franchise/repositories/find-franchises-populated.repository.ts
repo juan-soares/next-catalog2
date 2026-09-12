@@ -1,23 +1,24 @@
 import { connectToDatabase } from "@/shared/libs/mongoose";
 import type {
   FindFranchiseFilters,
-  Franchise,
+  FranchisePopulated,
 } from "@/modules/franchise/types";
 import { FranchiseModel } from "@/modules/franchise/models";
-import { mapFranchiseDocToFranchise } from "@/modules/franchise/mappers";
 
-export async function findFranchises(
+export async function findFranchisesPopulated(
   filters: FindFranchiseFilters = {},
-): Promise<Franchise[]> {
+): Promise<FranchisePopulated[]> {
   await connectToDatabase();
 
   const franchiseDocs = await FranchiseModel.find(filters)
     .sort({ title: 1 })
+    .populate("logo")
+    .populate("parentFranchiseId")
     .collation({
       locale: "pt",
       strength: 1,
     })
     .lean();
 
-  return franchiseDocs.map(mapFranchiseDocToFranchise);
+  return franchiseDocs.map(mapFranchisePopulatedDocToFranchisePopulated);
 }

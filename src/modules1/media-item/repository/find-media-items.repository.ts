@@ -1,4 +1,4 @@
-import { connectToDatabase } from "@/lib/mongoose";
+import { connectToDatabase } from "@/shared/libs/mongoose";
 import { MediaItem, MediaItemDocument } from "../types";
 import { mapMediaItemDocToMediaItem } from "../mappers";
 import { MediaItemModel } from "../model";

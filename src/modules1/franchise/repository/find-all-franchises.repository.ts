@@ -1,4 +1,4 @@
-import { connectToDatabase } from "@/lib/mongoose";
+import { connectToDatabase } from "@/shared/libs/mongoose";
 import { Franchise, FranchiseDocument } from "../types";
 import { FranchiseModel } from "../model";
 import { mapFranchiseDocToFranchise } from "../mappers";

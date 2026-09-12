@@ -1,4 +1,4 @@
-import { slugify } from "@/lib/helpers";
+import { slugify } from "@/shared/libs/helpers";
 import type { Attribute, EditAttributeInput } from "@/modules/attribute/types";
 import { updateAttributeById } from "@/modules/attribute/repositories";
 
