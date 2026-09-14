@@ -9,11 +9,10 @@ export function FranchiseLogoLink({
   logoPath,
   title,
 }: FranchiseLogoLink) {
-  console.log(logoPath);
   return (
     <Link key={id} href={href}>
       <Image
-        src={FRANCHISES_LOGO_PATH + logoPath}
+        src={logoPath}
         alt={`Logotipo da franquia ${title}.`}
         width={60}
         height={60}
