@@ -1,6 +1,6 @@
 import { model, models, Schema } from "mongoose";
 
-const FranchiseSchema = new Schema(
+export const FranchiseSchema = new Schema(
   {
     title: {
       type: String,
@@ -10,10 +10,11 @@ const FranchiseSchema = new Schema(
 
     translatedTitle: {
       type: String,
+      required: true,
       trim: true,
     },
 
-    logo: {
+    logoId: {
       type: Schema.Types.ObjectId,
       ref: "Asset",
       required: true,

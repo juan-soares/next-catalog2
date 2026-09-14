@@ -1,14 +1,4 @@
-import type { HydratedDocument, Types } from "mongoose";
+import { HydratedDocument, InferSchemaType } from "mongoose";
+import type { AssetSchema } from "@/modules/asset/models";
 
-export type AssetDocument = HydratedDocument<{
-  _id: Types.ObjectId;
-
-  title: string;
-  fileName: string;
-  extension: string;
-  mimeType: string;
-  size: number;
-
-  createdAt: Date;
-  updatedAt: Date;
-}>;
+export type AssetDoc = HydratedDocument<InferSchemaType<typeof AssetSchema>>;

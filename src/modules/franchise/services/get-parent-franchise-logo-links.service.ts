@@ -1,5 +1,5 @@
 import type { FranchiseLogoLink } from "@/modules/franchise/types";
-import { mapFranchisePopulatedToFranchiseLogoLink } from "@/modules/franchise/mappers";
+import { mapFranchiseDetailsToFranchiseLogoLink } from "@/modules/franchise/mappers";
 import { findFranchisesPopulated } from "@/modules/franchise/repositories";
 
 export async function getParentFranchiseLogoLinks(): Promise<
@@ -9,5 +9,5 @@ export async function getParentFranchiseLogoLinks(): Promise<
     parentFranchiseId: null,
   });
 
-  return parentFranchises.map(mapFranchisePopulatedToFranchiseLogoLink);
+  return parentFranchises.map(mapFranchiseDetailsToFranchiseLogoLink);
 }

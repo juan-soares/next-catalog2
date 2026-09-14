@@ -10,10 +10,6 @@ export type Franchise = {
   updatedAt: Date;
 };
 
-export type FranchisePopulated = Omit<
-  Franchise,
-  "logo" | "parentFranchiseId"
-> & {
+export type FranchiseDetails = Omit<Franchise, "logo"> & {
   logo: Asset;
-  parentFranchiseId: FranchisePopulated | null;
 };

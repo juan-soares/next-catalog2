@@ -1,15 +1,11 @@
-import type { HydratedDocument, Types } from "mongoose";
+import type { HydratedDocument, InferSchemaType } from "mongoose";
+import type { AssetDoc } from "@/modules/asset";
+import type { FranchiseSchema } from "@/modules/franchise/models";
 
-export type FranchiseDocument = HydratedDocument<{
-  _id: Types.ObjectId;
+export type FranchiseDoc = HydratedDocument<
+  InferSchemaType<typeof FranchiseSchema>
+>;
 
-  title: string;
-  translatedTitle?: string;
-
-  logo: Types.ObjectId;
-
-  parentFranchiseId: Types.ObjectId | null;
-
-  createdAt: Date;
-  updatedAt: Date;
-}>;
+export type FranchiseDocPopulated = Omit<FranchiseDoc, "logoId"> & {
+  logoId: AssetDoc;
+};
