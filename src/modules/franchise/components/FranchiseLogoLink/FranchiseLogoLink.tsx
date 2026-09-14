@@ -1,24 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { FranchiseLogoLink } from "@/modules/franchise/types";
-import { FRANCHISES_LOGO_PATH } from "@/shared/consts";
+import { CATALOG_FRANCHISES_PATH, FRANCHISES_LOGO_PATH } from "@/shared/consts";
 
-export function FranchiseLogoLink({
-  id,
-  href,
-  logoPath,
-  title,
-}: FranchiseLogoLink) {
+type Props = {
+  id: string;
+  label: string;
+  logo: string;
+};
+
+export function FranchiseLogoLink({ id, label, logo }: Props) {
   return (
-    <Link key={id} href={href}>
+    <Link href={CATALOG_FRANCHISES_PATH + `/${id}`}>
       <Image
-        src={logoPath}
-        alt={`Logotipo da franquia ${title}.`}
+        src={FRANCHISES_LOGO_PATH + logo}
+        alt={`Logotipo da franquia ${label}.`}
         width={60}
         height={60}
       />
 
-      <p>{title}</p>
+      <p>{label}</p>
     </Link>
   );
 }

@@ -4,16 +4,11 @@ export const GLOBAL_SEARCH_PATH = "/pesquisar?";
 export const LOGIN_PATH = "/login";
 
 export const MEDIA_TYPE_CATALOG_PATH = "/catalogo/midias/";
-export const ATTRIBUTES_CATALOG_PATH = "/catalogo/atributos/";
-
-export const ATTRIBUTES_CATALOG_NEW_PATH = "/catalogo/atributos/novo";
-export const FRANCHISES_CATALOG_NEW_PATH = "/catalogo/franquias/novo";
-
 export const FRANCHISES_LOGO_PATH = "/assets/franchises/";
 
-export const CATALOG_ATTRIBUTES_PATH = "/catalogo/atributos/";
-export const CATALOG_ATTRIBUTES_NEW_PATH = "/catalogo/atributos/novo";
-export const CATALOG_ATTRIBUTES_EDIT_PATH = "/catalogo/atributos/editar/";
+export const CATALOG_ATTRIBUTES_PATH = "/catalogo/atributos";
+export const CATALOG_ATTRIBUTES_NEW_PATH = CATALOG_ATTRIBUTES_PATH + "/novo";
+export const CATALOG_ATTRIBUTES_EDIT_PATH = CATALOG_ATTRIBUTES_PATH + "/editar";
 
-export const CATALOG_FRANCHISES_PATH = "/catalogo/franquias/";
-export const CATALOG_FRANCHISES_NEW_PATH = "/catalogo/franquias/novo";
+export const CATALOG_FRANCHISES_PATH = "/catalogo/franquias";
+export const CATALOG_FRANCHISES_NEW_PATH = CATALOG_ATTRIBUTES_PATH + "/novo";

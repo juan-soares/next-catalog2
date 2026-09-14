@@ -2,12 +2,12 @@ import Link from "next/link";
 import { PlusCircleIcon } from "lucide-react";
 import { CATALOG_FRANCHISES_NEW_PATH } from "@/shared/consts";
 import { isAdminUser } from "@/modules/auth";
-import { getParentFranchiseLogoLinks } from "@/modules/franchise/services";
+import { getChildlessFranchises } from "@/modules/franchise/services";
 import { FranchiseLogoLink } from "@/modules/franchise/components";
 
 export async function FranchiseMarquee() {
   const isAdmin = await isAdminUser();
-  const franchiseLinks = await getParentFranchiseLogoLinks();
+  const franchisesDetails = await getChildlessFranchises();
 
   return (
     <nav>
@@ -17,8 +17,8 @@ export async function FranchiseMarquee() {
         </Link>
       )}
 
-      {franchiseLinks.map((logoLink) => (
-        <FranchiseLogoLink key={logoLink.id} {...logoLink} />
+      {franchisesDetails.map(({ id, title, logo: { fileName } }) => (
+        <FranchiseLogoLink key={id} id={id} label={title} logo={fileName} />
       ))}
     </nav>
   );
