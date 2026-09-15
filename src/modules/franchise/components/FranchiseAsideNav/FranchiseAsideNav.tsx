@@ -6,6 +6,7 @@ import {
 import { isAdminUser } from "@/modules/auth";
 import { FranchiseLogoLink } from "@/modules/franchise/components";
 import { getChildlessFranchises } from "@/modules/franchise/services";
+import { Search } from "lucide-react";
 
 export async function FranchiseAsideNav() {
   const isAdmin = await isAdminUser();
@@ -17,6 +18,13 @@ export async function FranchiseAsideNav() {
         <Link href={CATALOG_FRANCHISES_PATH}>
           <h1>Franquias</h1>
         </Link>
+        <form method="GET">
+          <input type="search" placeholder="Pesquisar..." name="q" />
+          <button type="submit">
+            <Search />
+          </button>
+        </form>
+
         {isAdmin && <Link href={CATALOG_FRANCHISES_NEW_PATH}>Adicionar</Link>}
       </header>
 

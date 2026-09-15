@@ -1,13 +1,13 @@
 import { connectToDatabase } from "@/shared/libs/mongoose";
 import type {
-  FindFranchiseFilters,
   FranchiseDetails,
+  FranchiseMongoFilter,
 } from "@/modules/franchise/types";
 import { FranchiseModel } from "@/modules/franchise/models";
 import { mapFranchiseDocPopulatedToDoFranchiseDetails } from "@/modules/franchise/mappers";
 
 export async function findFranchisesPopulated(
-  filters: FindFranchiseFilters = {},
+  filters: FranchiseMongoFilter = {},
 ): Promise<FranchiseDetails[]> {
   await connectToDatabase();
 
