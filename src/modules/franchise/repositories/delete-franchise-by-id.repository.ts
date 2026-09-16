@@ -1,9 +1,9 @@
+import { isValidObjectId } from "mongoose";
 import { connectToDatabase } from "@/shared/libs/mongoose";
+import { deleteAssetById } from "@/modules/asset/repositories";
 import { FranchiseModel } from "@/modules/franchise/models";
 import type { Franchise } from "@/modules/franchise/types";
 import { mapFranchiseDocToFranchise } from "@/modules/franchise/mappers";
-import { isValidObjectId } from "mongoose";
-import { deleteAssetById } from "@/modules/asset/repositories";
 
 export async function deleteFranchiseById(
   id: string,

@@ -14,3 +14,6 @@ export const CATALOG_FRANCHISES_PATH = "/catalogo/franquias";
 export const CATALOG_FRANCHISES_NEW_PATH = CATALOG_FRANCHISES_PATH + "/novo";
 export const CATALOG_FRANCHISES_EDIT_PATH =
   CATALOG_FRANCHISES_PATH + "/editar/";
+
+export const CATALOG_MEDIAS_PATH = "/catalogo/medias";
+export const CATALOG_MEDIAS_NEW_PATH = CATALOG_MEDIAS_PATH + "/novo";
