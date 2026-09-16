@@ -1,4 +1,8 @@
-import { FranchiseLogoLink, searchFranchises } from "@/modules/franchise";
+import {
+  FranchiseLogoLink,
+  getChildlessFranchises,
+  searchFranchises,
+} from "@/modules/franchise";
 
 type Props = {
   searchParams: Promise<{ q: string }>;
@@ -6,7 +10,9 @@ type Props = {
 
 export default async function FranchisesPage({ searchParams }: Props) {
   const { q } = await searchParams;
-  const franchises = await searchFranchises(q);
+  const franchises = q
+    ? await searchFranchises(q)
+    : await getChildlessFranchises();
 
   if (!franchises.length) return <p>Sem resultados.</p>;
 

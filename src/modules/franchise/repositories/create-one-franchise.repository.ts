@@ -8,7 +8,11 @@ export async function createOneFranchise(
 ): Promise<Franchise> {
   await connectToDatabase();
 
-  const franchiseDoc = await FranchiseModel.create(data);
-
-  return mapFranchiseDocToFranchise(franchiseDoc);
+  try {
+    const franchiseDoc = await FranchiseModel.create(data);
+    return mapFranchiseDocToFranchise(franchiseDoc);
+  } catch (error) {
+    console.log(error);
+    throw new Error("quebrou");
+  }
 }

@@ -8,6 +8,7 @@ import {
 } from "@/shared/consts";
 import { DeleteFormButton, EditButton } from "@/shared/components/ui";
 import { isAdminUser } from "@/modules/auth";
+import { MediaCard } from "@/modules/media";
 import { deleteFranchiseAction, getFranchiseById } from "@/modules/franchise";
 
 type Props = {
@@ -77,8 +78,10 @@ export default async function FranchisePage({ params }: Props) {
             <strong>Mídias:</strong>
           </p>
           <div>
-            {medias.map(() => (
-              <li></li>
+            {medias.map((media) => (
+              <li key={media.id}>
+                <MediaCard {...media} />
+              </li>
             ))}
             {isAdmin && (
               <div>

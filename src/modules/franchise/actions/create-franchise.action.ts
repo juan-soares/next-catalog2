@@ -33,7 +33,7 @@ export async function createFranchiseAction(
   try {
     newFranchise = await createFranchise({
       title: result.data.title,
-      translatedTitle: result.data.translatedTitle,
+      translatedTitle: result.data.translatedTitle ?? "",
       logo: result.data.logo,
       parentFranchiseId: result.data.parentFranchiseId,
     });

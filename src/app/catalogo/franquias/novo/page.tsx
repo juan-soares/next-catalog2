@@ -1,15 +1,12 @@
-import {
-  FranchiseNewForm,
-  getParentFranchiseLogoLinks,
-} from "@/modules/franchise";
+import { FranchiseNewForm, getChildlessFranchises } from "@/modules/franchise";
 
 export default async function NewFranchisePage() {
-  const parentFranchises = await getParentFranchiseLogoLinks();
+  const parentFranchises = await getChildlessFranchises();
 
   return (
     <div>
       <h1>Nova Franquia</h1>
-      <FranchiseNewForm parentFranchises={parentFranchises} />
+      <FranchiseNewForm franchises={parentFranchises} />
     </div>
   );
 }

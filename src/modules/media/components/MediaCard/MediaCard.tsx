@@ -1,20 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CATALOG_MEDIAS_PATH } from "@/shared/consts";
+import { CATALOG_MEDIAS_PATH, MEDIAS_ASSETS_PATH } from "@/shared/consts";
 
 type Props = {
-  id: string;
-  typeSlug: string;
-  cover: string;
-  title: string;
-  releaseYear: string;
+  media: any;
 };
 
-export function MediaCard({ id, typeSlug, cover, title, releaseYear }: Props) {
+export function MediaCard({ media }: Props) {
+  const {
+    id,
+    slug,
+    title,
+    cover: { fileName },
+  } = media;
+  const coverPath = `${MEDIAS_ASSETS_PATH}/${slug}/${fileName}`;
+  const typeSlug = media.type;
+  const releaseYear = media.releaseDate.getFullYear().toString();
+
   return (
     <Link href={`${CATALOG_MEDIAS_PATH}/${typeSlug}/${id}`}>
       <Image
-        src={cover}
+        src={coverPath}
         alt={`Capa da mídia ${title}.`}
         width={60}
         height={60}

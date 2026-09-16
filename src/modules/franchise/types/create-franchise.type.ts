@@ -6,7 +6,7 @@ export type CreateFranchiseInput = z.infer<typeof createFranchiseSchema>;
 
 export type CreateFranchiseData = {
   title: string;
-  translatedTitle?: string;
-  logo: Asset["id"];
+  translatedTitle: string;
+  logoId: Asset["id"];
   parentFranchiseId: string | null;
 };

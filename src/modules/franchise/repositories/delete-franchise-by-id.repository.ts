@@ -26,13 +26,13 @@ export async function deleteFranchiseById(
         return;
       }
 
-      if (franchiseDoc.logo) {
-        await deleteAssetById(franchiseDoc.logo, session);
+      if (franchiseDoc.logoId) {
+        await deleteAssetById(franchiseDoc.logoId, session);
       }
 
-      await FranchiseModel.findByIdAndDelete(id).session(session);
+      await FranchiseModel.findByIdAndDelete(franchiseDoc._id).session(session);
 
-      deletedFranchise = mapFranchiseDocToFranchise(franchiseDoc);
+      deletedFranchise = mapFranchiseDocToFranchise(deletedFranchise);
     });
 
     return deletedFranchise;

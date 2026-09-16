@@ -3,18 +3,18 @@
 import { useActionState } from "react";
 import type { ActionState } from "@/shared/types";
 import { FormSelect, FormSubmitBtn } from "@/shared/components/ui";
-import type { FranchiseLogoLink } from "@/modules/franchise/types";
+import type { FranchiseDetails } from "@/modules/franchise/types";
 import { createFranchiseAction } from "@/modules/franchise/actions";
 
 type Props = {
-  parentFranchises: FranchiseLogoLink[];
+  franchises: FranchiseDetails[];
 };
 
 const initialActionState: ActionState = {
   success: false,
 };
 
-export function FranchiseNewForm({ parentFranchises }: Props) {
+export function FranchiseNewForm({ franchises }: Props) {
   const [state, formAction] = useActionState(
     createFranchiseAction,
     initialActionState,
@@ -35,7 +35,7 @@ export function FranchiseNewForm({ parentFranchises }: Props) {
         id="parent"
         name="parentFranchiseId"
         label="Pertence a:"
-        options={parentFranchises}
+        options={franchises}
       />
 
       <FormSubmitBtn />

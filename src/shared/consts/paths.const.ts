@@ -1,10 +1,11 @@
 export const MEDIA_ITEM_COVER_PATH = "/assets/medias/";
+export const MEDIA_TYPE_CATALOG_PATH = "/";
 
 export const GLOBAL_SEARCH_PATH = "/pesquisar?";
 export const LOGIN_PATH = "/login";
 
-export const MEDIA_TYPE_CATALOG_PATH = "/catalogo/midias/";
 export const FRANCHISES_LOGO_PATH = "/assets/franchises/";
+export const MEDIAS_ASSETS_PATH = "/assets/medias/";
 
 export const CATALOG_ATTRIBUTES_PATH = "/catalogo/atributos";
 export const CATALOG_ATTRIBUTES_NEW_PATH = CATALOG_ATTRIBUTES_PATH + "/novo";

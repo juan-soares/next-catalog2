@@ -18,8 +18,8 @@ export async function createFranchise(
 
   return createOneFranchise({
     title: input.title,
-    translatedTitle: input.translatedTitle,
-    logo: asset.id,
+    translatedTitle: input.translatedTitle ?? "",
+    logoId: asset.id,
     parentFranchiseId: input.parentFranchiseId,
   });
 }

@@ -10,7 +10,6 @@ export const FranchiseSchema = new Schema(
 
     translatedTitle: {
       type: String,
-      required: true,
       trim: true,
     },
 
