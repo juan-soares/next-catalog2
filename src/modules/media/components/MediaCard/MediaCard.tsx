@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CATALOG_MEDIAS_PATH } from "@/shared/consts";
-import Image from "next/image";
 
 type Props = {
   id: string;
