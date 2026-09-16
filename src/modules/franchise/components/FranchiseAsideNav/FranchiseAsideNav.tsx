@@ -1,16 +1,13 @@
 import Link from "next/link";
+import { Search } from "lucide-react";
 import {
   CATALOG_FRANCHISES_NEW_PATH,
   CATALOG_FRANCHISES_PATH,
 } from "@/shared/consts";
 import { isAdminUser } from "@/modules/auth";
-import { FranchiseLogoLink } from "@/modules/franchise/components";
-import { getChildlessFranchises } from "@/modules/franchise/services";
-import { Search } from "lucide-react";
 
 export async function FranchiseAsideNav() {
   const isAdmin = await isAdminUser();
-  const franchises = await getChildlessFranchises();
 
   return (
     <aside>
@@ -27,13 +24,6 @@ export async function FranchiseAsideNav() {
 
         {isAdmin && <Link href={CATALOG_FRANCHISES_NEW_PATH}>Adicionar</Link>}
       </header>
-
-      {!franchises.length && <p>Sem itens na lista.</p>}
-      <nav>
-        {franchises.map(({ id, title, logo: { fileName } }) => (
-          <FranchiseLogoLink key={id} id={id} label={title} logo={fileName} />
-        ))}
-      </nav>
     </aside>
   );
 }

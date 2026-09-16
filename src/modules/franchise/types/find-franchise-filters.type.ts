@@ -8,4 +8,4 @@ export type FindFranchiseFilters = {
   parentFranchiseId?: string | null;
 };
 
-export type FranchiseMongoFilter = QueryFilter<FranchiseDoc>;
+export type FindFranchiseMongoFilters = QueryFilter<FranchiseDoc>;
