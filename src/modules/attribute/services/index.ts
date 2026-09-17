@@ -1,5 +1,7 @@
 export * from "./get-attributes-by-type.service";
 export * from "./get-attribute-by-id.service";
+export * from "./get-attribute-filters.service";
+
 export * from "./create-attribute.service";
 export * from "./edit-attribute.service";
 export * from "./delete-attribute.service";
