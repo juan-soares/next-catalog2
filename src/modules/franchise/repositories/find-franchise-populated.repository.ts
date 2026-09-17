@@ -18,12 +18,7 @@ export async function findFranchisePopulated(
   await connectToDatabase();
 
   const franchiseDoc = await FranchiseModel.findOne(mongoFilters)
-    .sort({ title: 1 })
     .populate("logoId")
-    .collation({
-      locale: "pt",
-      strength: 1,
-    })
     .lean();
 
   if (!franchiseDoc) return null;

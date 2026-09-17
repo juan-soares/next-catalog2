@@ -3,11 +3,10 @@ import { FranchiseDetails, FranchiseDocPopulated } from "../types";
 export function mapFranchiseDocPopulatedToDoFranchiseDetails(
   docPopulated: FranchiseDocPopulated,
 ): FranchiseDetails {
- 
   return {
     id: docPopulated._id.toString(),
     title: docPopulated.title,
-    translatedTitle: docPopulated.translatedTitle,
+    translatedTitle: docPopulated.translatedTitle ?? "",
     parentFranchiseId: docPopulated.parentFranchiseId?.toString() ?? null,
     createdAt: docPopulated.createdAt,
     updatedAt: docPopulated.updatedAt,
@@ -19,6 +18,7 @@ export function mapFranchiseDocPopulatedToDoFranchiseDetails(
       extension: docPopulated.logoId.extension,
       mimeType: docPopulated.logoId.mimeType,
       size: docPopulated.logoId.size,
+      url: docPopulated.logoId.url,
     },
   };
 }

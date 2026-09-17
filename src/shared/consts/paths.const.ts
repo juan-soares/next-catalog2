@@ -11,6 +11,8 @@ export const FRANCHISES_LOGO_STORAGE = {
   url: "/assets/franchises",
 };
 
+export const CATALOG_GLOBAL_SEARCH_PATH = "/catalogo/pesquisar?";
+
 export const CATALOG_ATTRIBUTES_PATH = "/catalogo/atributos";
 export const CATALOG_ATTRIBUTES_NEW_PATH = CATALOG_ATTRIBUTES_PATH + "/novo";
 export const CATALOG_ATTRIBUTES_EDIT_PATH = CATALOG_ATTRIBUTES_PATH + "/editar";

@@ -12,7 +12,7 @@ export function FranchiseLogoLink({ id, label, logoURL }: Props) {
   return (
     <Link href={CATALOG_FRANCHISES_PATH + `/${id}`}>
       <Image
-        src={"/assets/" + logoURL}
+        src={logoURL}
         alt={`Logotipo da franquia ${label}.`}
         width={60}
         height={60}

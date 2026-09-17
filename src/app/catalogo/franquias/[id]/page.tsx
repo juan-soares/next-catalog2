@@ -3,11 +3,15 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   CATALOG_FRANCHISES_EDIT_PATH,
+  CATALOG_GLOBAL_SEARCH_PATH,
   CATALOG_MEDIAS_PATH,
 } from "@/shared/consts";
 import { DeleteFormButton, EditButton } from "@/shared/components/ui";
 import { isAdminUser } from "@/modules/auth";
-import { MediaCard } from "@/modules/media";
+import {
+  MediaCard,
+  getRecentMediasDetailsByFranchiseId,
+} from "@/modules/media";
 import { deleteFranchiseAction, getFranchiseById } from "@/modules/franchise";
 
 type Props = {
@@ -18,8 +22,7 @@ export default async function FranchisePage({ params }: Props) {
   const { id } = await params;
   const franchiseInfo = await getFranchiseById(id);
   const isAdmin = await isAdminUser();
-  const universes = [];
-  const medias = [];
+  const medias = await getRecentMediasDetailsByFranchiseId(id);
 
   if (!franchiseInfo) {
     notFound();
@@ -83,6 +86,9 @@ export default async function FranchisePage({ params }: Props) {
                 <Link href={CATALOG_MEDIAS_PATH}>Adicionar</Link>
               </div>
             )}
+            <Link href={`${CATALOG_GLOBAL_SEARCH_PATH}franchiseId=${id}`}>
+              Ver todos...
+            </Link>
           </div>
         </div>
       </main>

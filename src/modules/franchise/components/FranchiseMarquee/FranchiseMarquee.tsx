@@ -12,7 +12,6 @@ export async function FranchiseMarquee() {
   const isAdmin = await isAdminUser();
   const franchisesDetails = await getChildlessFranchises();
 
-
   return (
     <nav>
       <div>
@@ -26,8 +25,8 @@ export async function FranchiseMarquee() {
         )}
       </div>
 
-      {franchisesDetails.map(({ id, title, logo: { fileName } }) => (
-        <FranchiseLogoLink key={id} id={id} label={title} logoURL={fileName} />
+      {franchisesDetails.map(({ id, title, logo: { url } }) => (
+        <FranchiseLogoLink key={id} id={id} label={title} logoURL={url} />
       ))}
     </nav>
   );

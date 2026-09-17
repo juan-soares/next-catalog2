@@ -5,6 +5,7 @@ import { mapAssetDocToAsset } from "@/modules/asset/mappers";
 
 export async function createAssetDoc(data: CreateAssetData): Promise<Asset> {
   await connectToDatabase();
+
   const assetDoc = await AssetModel.create(data);
 
   return mapAssetDocToAsset(assetDoc);
