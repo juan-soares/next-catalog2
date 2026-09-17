@@ -16,8 +16,6 @@ export default async function FranchisesPage({ searchParams }: Props) {
 
   if (!franchises.length) return <p>Sem resultados.</p>;
 
-  console.log(franchises);
-
   return (
     <div>
       {franchises.map(({ id, title, logo: { url } }) => (

@@ -12,6 +12,7 @@ export async function FranchiseMarquee() {
   const isAdmin = await isAdminUser();
   const franchisesDetails = await getChildlessFranchises();
 
+
   return (
     <nav>
       <div>
