@@ -1,4 +1,4 @@
-import { FRANCHISES_LOGO_PATH } from "@/shared/consts";
+import { FRANCHISES_LOGO_STORAGE } from "@/shared/consts";
 import { createAsset } from "@/modules/asset";
 import type {
   CreateFranchiseInput,
@@ -12,7 +12,7 @@ export async function createFranchise(
   const asset = await createAsset({
     file: input.logo,
     module: "franchise-logo",
-    path: FRANCHISES_LOGO_PATH,
+    storage: FRANCHISES_LOGO_STORAGE,
     title: input.title,
   });
 

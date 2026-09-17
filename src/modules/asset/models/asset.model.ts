@@ -27,6 +27,11 @@ export const AssetSchema = new Schema(
       type: Number,
       required: true,
     },
+
+    url: {
+      type: String,
+      required: true,
+    },
   },
   {
     collection: "assets",

@@ -18,8 +18,8 @@ export default async function FranchisesPage({ searchParams }: Props) {
 
   return (
     <div>
-      {franchises.map(({ id, title, logo: { fileName } }) => (
-        <FranchiseLogoLink key={id} id={id} label={title} logo={fileName} />
+      {franchises.map(({ id, title, logo: { url } }) => (
+        <FranchiseLogoLink key={id} id={id} label={title} logoURL={url} />
       ))}
     </div>
   );

@@ -1,3 +1,4 @@
+import path from "node:path";
 import { isValidObjectId } from "mongoose";
 import { connectToDatabase } from "@/shared/libs/mongoose";
 import { deleteAssetById } from "@/modules/asset/repositories";
@@ -27,12 +28,12 @@ export async function deleteFranchiseById(
       }
 
       if (franchiseDoc.logoId) {
-        await deleteAssetById(franchiseDoc.logoId, session);
+        await deleteAssetById(franchiseDoc.logoId);
       }
 
       await FranchiseModel.findByIdAndDelete(franchiseDoc._id).session(session);
 
-      deletedFranchise = mapFranchiseDocToFranchise(deletedFranchise);
+      deletedFranchise = mapFranchiseDocToFranchise(franchiseDoc);
     });
 
     return deletedFranchise;

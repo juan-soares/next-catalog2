@@ -1,6 +1,6 @@
-import { Asset, AssetDocument } from "@/modules/asset/types";
+import { Asset, AssetDoc } from "@/modules/asset/types";
 
-export function mapAssetDocToAsset(assetDoc: AssetDocument): Asset {
+export function mapAssetDocToAsset(assetDoc: AssetDoc): Asset {
   return {
     id: assetDoc._id.toString(),
     title: assetDoc.title,
@@ -8,5 +8,6 @@ export function mapAssetDocToAsset(assetDoc: AssetDocument): Asset {
     extension: assetDoc.extension,
     mimeType: assetDoc.mimeType,
     size: assetDoc.size,
+    url: assetDoc.url,
   };
 }

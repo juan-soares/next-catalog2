@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import {
   CATALOG_FRANCHISES_EDIT_PATH,
   CATALOG_MEDIAS_PATH,
-  FRANCHISES_LOGO_PATH,
 } from "@/shared/consts";
 import { DeleteFormButton, EditButton } from "@/shared/components/ui";
 import { isAdminUser } from "@/modules/auth";
@@ -26,17 +25,13 @@ export default async function FranchisePage({ params }: Props) {
     notFound();
   }
 
-  const {
-    title,
-    translatedTitle,
-    logo: { fileName },
-  } = franchiseInfo;
+  const { title, translatedTitle, logo } = franchiseInfo;
 
   return (
     <div>
       <aside>
         <Image
-          src={FRANCHISES_LOGO_PATH + fileName}
+          src={logo.url}
           alt={`Logo da franquia ${title}.`}
           width={60}
           height={60}
