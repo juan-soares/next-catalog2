@@ -26,7 +26,7 @@ export async function FranchiseMarquee() {
       </div>
 
       {franchisesDetails.map(({ id, title, logo: { fileName } }) => (
-        <FranchiseLogoLink key={id} id={id} label={title} logo={fileName} />
+        <FranchiseLogoLink key={id} id={id} label={title} logoURL={fileName} />
       ))}
     </nav>
   );

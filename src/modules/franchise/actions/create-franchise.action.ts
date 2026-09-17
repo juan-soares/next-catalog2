@@ -44,5 +44,5 @@ export async function createFranchiseAction(
     };
   }
 
-  redirect(CATALOG_FRANCHISES_PATH + newFranchise.id);
+  redirect(`${CATALOG_FRANCHISES_PATH}/${newFranchise.id}`);
 }

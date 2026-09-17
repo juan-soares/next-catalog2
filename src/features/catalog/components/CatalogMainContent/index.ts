@@ -1,1 +1,0 @@
-export { CatalogMainContent } from "./CatalogMainContent";
