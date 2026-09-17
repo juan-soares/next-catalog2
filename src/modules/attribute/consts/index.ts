@@ -1,1 +1,1 @@
-export * from "./attribute-types.const"
+export * from "./attribute-types.const";

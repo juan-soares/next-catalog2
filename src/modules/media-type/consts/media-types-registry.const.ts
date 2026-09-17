@@ -1,23 +1,6 @@
-export type MediaTypeCode =
-  | "anime"
-  | "series"
-  | "cartoon"
-  | "animated-movie"
-  | "live-action-movie"
-  | "video-game"
-  | "board-game"
-  | "music-artist"
-  | "book"
-  | "comic"
-  | "manga";
+import type { MediaType, MediaTypeCode } from "@/modules/media-type/types";
 
-export type MediaType = {
-  code: MediaTypeCode;
-  label: string;
-  slug: string;
-};
-
-export const MEDIA_TYPES = {
+export const MEDIA_TYPES_REGISTRY = {
   anime: {
     code: "anime",
     label: "Animes",

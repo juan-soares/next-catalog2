@@ -3,7 +3,7 @@ import type {
   AttributeTypeCode,
 } from "@/modules/attribute/types";
 
-export const ATTRIBUTE_TYPES = {
+export const ATTRIBUTE_TYPES_REGISTRY = {
   language: {
     code: "language",
     label: "Idiomas",
@@ -48,7 +48,7 @@ export const ATTRIBUTE_TYPES = {
 } satisfies Record<AttributeTypeCode, AttributeType>;
 
 export const ATTRIBUTE_TYPE_CODES = Object.keys(
-  ATTRIBUTE_TYPES,
+  ATTRIBUTE_TYPES_REGISTRY,
 ) as AttributeTypeCode[];
 
-export const ATTRIBUTE_TYPES_LIST = Object.values(ATTRIBUTE_TYPES);
+export const ATTRIBUTE_TYPES_LIST = Object.values(ATTRIBUTE_TYPES_REGISTRY);

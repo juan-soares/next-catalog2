@@ -5,7 +5,7 @@ import type { ActionState } from "@/shared/types";
 import { ACTION_MESSAGES, CATALOG_ATTRIBUTES_PATH } from "@/shared/consts";
 import { requireAdmin } from "@/modules/auth";
 import { editAttributeSchema } from "@/modules/attribute/schemas";
-import { ATTRIBUTE_TYPES } from "@/modules/attribute/consts";
+import { ATTRIBUTE_TYPES_REGISTRY } from "@/modules/attribute/consts";
 import { editAttribute } from "@/modules/attribute/services";
 
 export async function editAttributeAction(
@@ -43,7 +43,8 @@ export async function editAttributeAction(
       message: ACTION_MESSAGES.edit.failure,
     };
 
-  const attributeTypeSlug = ATTRIBUTE_TYPES[updatedAttribute.type].slug;
+  const attributeTypeSlug =
+    ATTRIBUTE_TYPES_REGISTRY[updatedAttribute.type].slug;
 
   redirect(CATALOG_ATTRIBUTES_PATH + attributeTypeSlug);
 }

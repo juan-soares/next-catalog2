@@ -6,7 +6,7 @@ import { CATALOG_ATTRIBUTES_PATH, ACTION_MESSAGES } from "@/shared/consts";
 import { requireAdmin } from "@/modules/auth";
 import { deleteAttributeSchema } from "@/modules/attribute/schemas";
 import { deleteAttribute } from "@/modules/attribute/services";
-import { ATTRIBUTE_TYPES } from "@/modules/attribute/consts";
+import { ATTRIBUTE_TYPES_REGISTRY } from "@/modules/attribute/consts";
 
 export async function deleteAttributeAction(
   _previousState: ActionState,
@@ -44,7 +44,8 @@ export async function deleteAttributeAction(
     };
   }
 
-  const attributeTypeSlug = ATTRIBUTE_TYPES[deletedAttribute.type].slug;
+  const attributeTypeSlug =
+    ATTRIBUTE_TYPES_REGISTRY[deletedAttribute.type].slug;
 
   redirect(CATALOG_ATTRIBUTES_PATH + attributeTypeSlug);
 }

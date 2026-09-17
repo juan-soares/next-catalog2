@@ -3,7 +3,7 @@
 import type { ActionState } from "@/shared/types";
 import { FormButton } from "@/shared/components/ui";
 import type { Attribute } from "@/modules/attribute/types";
-import { ATTRIBUTE_TYPES } from "@/modules/attribute/consts";
+import { ATTRIBUTE_TYPES_REGISTRY } from "@/modules/attribute/consts";
 import { editAttributeAction } from "@/modules/attribute/actions";
 import { useActionState } from "react";
 
@@ -17,7 +17,7 @@ const initialState: ActionState = {
 
 export function AttributeEditForm({ attribute }: Props) {
   const [state, formAction] = useActionState(editAttributeAction, initialState);
-  const attributeTypeLabel = ATTRIBUTE_TYPES[attribute.type].label;
+  const attributeTypeLabel = ATTRIBUTE_TYPES_REGISTRY[attribute.type].label;
 
   return (
     <form action={formAction}>
