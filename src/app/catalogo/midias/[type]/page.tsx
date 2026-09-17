@@ -5,6 +5,8 @@ import {
   MediaTypeList,
   MediaTypeSidebar,
 } from "@/modules/media-type";
+import { Suspense } from "react";
+import { Loader } from "lucide-react";
 
 type Props = {
   params: Promise<{ type: string }>;
@@ -24,7 +26,9 @@ export default async function MediaTypePage({ params }: Props) {
       <h1>{mediaTypeInfo.label}</h1>
 
       <MediaTypeSidebar isAdmin={isAdmin} typeInfo={mediaTypeInfo} />
-      <MediaTypeList />
+      <Suspense fallback={<Loader />}>
+        <MediaTypeList typeCode={mediaTypeInfo.code} />
+      </Suspense>
     </div>
   );
 }
