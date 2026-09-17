@@ -12,7 +12,7 @@ type Props = {
 export async function MediaTypeSidebar({ isAdmin = false, typeInfo }: Props) {
   return (
     <aside>
-      <form method="GET">
+      <form id="media-type-filters" method="GET">
         <section>
           <input type="search" placeholder="Pesquisar..." name="q" />
           <button type="submit">
