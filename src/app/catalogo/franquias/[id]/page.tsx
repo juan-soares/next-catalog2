@@ -12,7 +12,12 @@ import {
   MediaCard,
   getRecentMediasDetailsByFranchiseId,
 } from "@/modules/media";
-import { deleteFranchiseAction, getFranchiseById } from "@/modules/franchise";
+import {
+  deleteFranchiseAction,
+  FranchiseLogoLink,
+  getFranchiseById,
+  getSubfranchisesDetails,
+} from "@/modules/franchise";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -23,6 +28,7 @@ export default async function FranchisePage({ params }: Props) {
   const franchiseInfo = await getFranchiseById(id);
   const isAdmin = await isAdminUser();
   const medias = await getRecentMediasDetailsByFranchiseId(id);
+  const subFranchises = await getSubfranchisesDetails(id);
 
   if (!franchiseInfo) {
     notFound();
@@ -71,6 +77,13 @@ export default async function FranchisePage({ params }: Props) {
               <strong>Título Traduzido:</strong> {translatedTitle}
             </p>
           </div>
+
+          <p>
+            <strong>Subfranquias:</strong>
+            {subFranchises.map(({ id, title, logo: { url } }) => (
+              <FranchiseLogoLink key={id} id={id} label={title} logoURL={url} />
+            ))}
+          </p>
 
           <p>
             <strong>Mídias:</strong>
