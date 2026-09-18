@@ -1,2 +1,1 @@
-export * from "./MediaCard";
 export * from "./NewMediaForm";
