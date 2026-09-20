@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import { getMediaTypeBySlug } from "@/modules/media-type";
-import { NewMediaForm } from "@/modules/media";
 
 type Props = {
   params: Promise<{ type: string }>;
@@ -18,7 +17,6 @@ export default async function NewMediaPage({ params }: Props) {
   return (
     <div>
       <h1>Adicionar {mediaInfo.label}</h1>
-      <NewMediaForm />
     </div>
   );
 }
