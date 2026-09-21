@@ -12,6 +12,25 @@ export async function MediaDetailsPage() {
   const synopsis = "Lorem LoremLoremLoremLoremLorem";
   const acquired = false;
   const consumed = false;
+  const seasons = [
+    {
+      id: "12",
+      releaseYear: "2024",
+      number: 1,
+      title: "Era uma vez",
+      resolutionLabel: "1080p",
+      languageLabel: "Portugues",
+      episodes: [
+        {
+          id: "1",
+          number: 1,
+          title: "Era agora.",
+          acquired: false,
+          consumed: true,
+        },
+      ],
+    },
+  ];
 
   return (
     <div>
@@ -67,6 +86,40 @@ export async function MediaDetailsPage() {
           <p>Título: {title}</p>
           <p>Título Traduzido: {translatedTitle}</p>
           <p>Laçamento: {translatedTitle}</p>
+        </main>
+
+        <main>
+          <ul>
+            {seasons.map(
+              ({
+                id,
+                releaseYear,
+                number,
+                title,
+                resolutionLabel,
+                languageLabel,
+                episodes,
+              }) => (
+                <li key={id}>
+                  <Link href={`tab=seasons&n=${id}`}>
+                    {`(${releaseYear}) ${number}° Temporada: ${title} [${resolutionLabel}] (${languageLabel})`}
+                  </Link>
+
+                  <ul>
+                    {episodes.map(({ id, number, title }) => (
+                      <li key={id}>
+                        <p>
+                          {`EP.${number}: - ${title}`}{" "}
+                          <span>{acquired ? "OK" : "!OK"}</span>
+                          <span>{consumed ? "OK" : "!OK"}</span>
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ),
+            )}
+          </ul>
         </main>
       </div>
     </div>
