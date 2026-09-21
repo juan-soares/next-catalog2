@@ -1,3 +1,5 @@
+"use server";
+
 import { redirect } from "next/navigation";
 import { ACTION_MESSAGES, CATALOG_MEDIAS_PATH } from "@/shared/consts";
 import type { ActionState } from "@/shared/types";
