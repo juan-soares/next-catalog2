@@ -1,13 +1,17 @@
-type Props = {
-  trailer;
-  cover;
-  title;
-  releaseYear;
-  type;
-  themes;
-  synopsis;
-  userStatus;
-};
+import Image from "next/image";
+import type { MediaDetails } from "@/modules/media/types";
+
+type Props = Pick<
+  MediaDetails,
+  | "trailer"
+  | "cover"
+  | "title"
+  | "releaseYear"
+  | "type"
+  | "themes"
+  | "synopsis"
+  | "userStatus"
+>;
 
 export function MediaHero({
   trailer,
@@ -23,7 +27,7 @@ export function MediaHero({
     <main>
       {trailer && (
         <div>
-          <video autoPlay muted loop playsInline preload="metadata">
+          <video autoPlay muted loop playsInline preload="metadata" controls>
             <source src={trailer.url} type="video/mp4" />
             Seu navegador não suporta vídeo.
           </video>
@@ -56,7 +60,7 @@ export function MediaHero({
             </ul>
           )}
 
-          {synopsis && <p>{synopsis}</p>}
+          <p>{synopsis}</p>
 
           <div>
             <button type="button">

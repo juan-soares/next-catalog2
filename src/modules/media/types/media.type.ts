@@ -9,7 +9,3 @@ export type Media = {
 
   franchiseId: Franchise["id"];
 };
-
-export type MediaDetails = Omit<Media, "franchiseId"> & {
-  franchise: Franchise;
-};
