@@ -3,7 +3,7 @@ import {
   MediaTabs,
   MediaCurrentTab,
 } from "@/modules/media/components";
-import type { MediaDetails } from "@/modules/media/types";
+import type { MediaDetails, MediaTab } from "@/modules/media/types";
 
 type Props = {
   mediaDetails: MediaDetails;
@@ -18,7 +18,10 @@ export async function MediaDetailsPage({
     <div>
       <MediaHero {...mediaDetails} />
       <MediaTabs />
-      <MediaCurrentTab currentTab={currentTab} mediaDetails={mediaDetails} />
+      <MediaCurrentTab
+        currentTab={currentTab as MediaTab}
+        mediaDetails={mediaDetails}
+      />
     </div>
   );
 }

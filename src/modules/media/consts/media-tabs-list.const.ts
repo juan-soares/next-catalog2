@@ -1,5 +1,5 @@
 export const MEDIA_TABS_LIST = [
-  { tab: "info", label: "Ficha Técnica" },
+  { tab: "info", label: "Detalhes" },
 
   { tab: "seasons", label: "Temporadas" },
   { tab: "ovas", label: "OVAs" },

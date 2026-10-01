@@ -1,8 +1,12 @@
+import type { MediaType } from "@/modules/media-type";
+
 export type MediaDetails = {
+  id: string;
+  slug: string;
   title: string;
   translatedTitle: string;
   releaseYear: number;
-  type: { slug: string; label: string };
+  type: MediaType;
   synopsis: string;
 
   cover: { url: string; alt: string };
@@ -11,6 +15,26 @@ export type MediaDetails = {
   themes: { id: string; label: string }[];
 
   seasons?: {
+    id: string;
+    number: number;
+    title: string;
+    releaseYear: number;
+    resolution: string;
+    language: string;
+    synopsis: string;
+    opening: { url: string };
+    episodes: {
+      id: string;
+      number: number;
+      title: string;
+      userStatus: {
+        acquired: boolean;
+        consumed: boolean;
+      };
+    }[];
+  }[];
+
+  ovas?: {
     id: string;
     number: number;
     title: string;
@@ -26,6 +50,58 @@ export type MediaDetails = {
         consumed: boolean;
       };
     }[];
+  }[];
+
+  specials?: {
+    id: string;
+    number: number;
+    title: string;
+    releaseYear: number;
+    resolution: string;
+    language: string;
+    episodes: {
+      id: string;
+      number: number;
+      title: string;
+      userStatus: {
+        acquired: boolean;
+        consumed: boolean;
+      };
+    }[];
+  }[];
+
+  edition?: {
+    base: MediaDetails;
+    expansions: MediaDetails[];
+    dlcs: MediaDetails[];
+  };
+
+  continuity: {
+    previous?: Pick<MediaDetails, "id" | "title" | "releaseYear" | "cover">;
+    next?: Pick<MediaDetails, "id" | "title" | "releaseYear" | "cover">;
+  };
+
+  files: {
+    id: string;
+    name: string;
+    size: number;
+    sizeLabel: string;
+    extension: string;
+    mimeType: string;
+    downloadUrl: string;
+  }[];
+
+  gallery: {
+    id: string;
+    imageUrl: string;
+    thumbnailUrl: string;
+    title: string;
+  }[];
+
+  franchises: {
+    id: string;
+    logo: { url: string; alt: string };
+    title: string;
   }[];
 
   userStatus: {

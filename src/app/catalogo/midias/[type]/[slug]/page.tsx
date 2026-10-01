@@ -1,15 +1,15 @@
 import { notFound } from "next/navigation";
-import { getMediaDetailsById, MediaDetailsPage } from "@/modules/media";
+import { getMediaDetailsBySlug, MediaDetailsPage } from "@/modules/media";
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
   searchParams: Promise<{ tab: string }>;
 };
 
 export default async function MediaPage({ params, searchParams }: Props) {
-  const { id } = await params;
+  const { slug } = await params;
   const { tab } = await searchParams;
-  const mediaDetails = await getMediaDetailsById(id);
+  const mediaDetails = await getMediaDetailsBySlug(slug);
 
   if (!mediaDetails) {
     notFound();

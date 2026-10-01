@@ -5,7 +5,9 @@ export function MediaTabs() {
   return (
     <nav>
       {MEDIA_TABS_LIST.map(({ tab, label }) => (
-        <Link key={tab} href={`?tab=${tab}`}>{label}</Link>
+        <Link key={tab} href={`?tab=${tab}`}>
+          {label}
+        </Link>
       ))}
     </nav>
   );

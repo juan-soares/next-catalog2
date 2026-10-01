@@ -1,19 +1,20 @@
-import { MediaDetails } from "../types";
+import type { MediaDetails } from "@/modules/media/types";
 
-export async function getMediaDetailsById(
-  id: string,
+export async function getMediaDetailsBySlug(
+  slug: string,
 ): Promise<MediaDetails | null> {
-  const mediaDetailsMock = {
+  const mediaDetailsMock: MediaDetails = {
     id: "1",
-
+    slug: "era-uma-vez--1",
     title: "Era uma vez",
     translatedTitle: "Once Upon a Time",
 
     releaseYear: 2024,
 
     type: {
-      id: "anime",
+      code: "anime",
       label: "Anime",
+      slug: "animes",
     },
 
     cover: {
@@ -48,8 +49,6 @@ export async function getMediaDetailsById(
       consumed: false,
     },
 
-    edition: null,
-
     seasons: [
       {
         id: "season-1",
@@ -58,6 +57,8 @@ export async function getMediaDetailsById(
         releaseYear: 2024,
         resolution: "1080p",
         language: "pt-BR",
+        opening: { url: "/opening.mp4" },
+        synopsis: "aaaaa",
 
         episodes: [
           {
@@ -150,7 +151,7 @@ export async function getMediaDetailsById(
         },
       },
     ],
-  } as const;
+  };
 
   return mediaDetailsMock;
 }
