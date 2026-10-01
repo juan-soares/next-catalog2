@@ -12,5 +12,6 @@ export async function createOneMedia(
     typeCode: data.typeCode,
     publicID: data.publicID,
     synopsis: data.synopsis,
+    themeIds: data.themeIds,
   });
 }

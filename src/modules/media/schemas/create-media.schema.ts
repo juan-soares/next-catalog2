@@ -12,4 +12,8 @@ export const createMediaSchema = z.object({
   typeCode: z.enum(MEDIA_TYPE_CODES),
 
   synopsis: z.string().trim().min(1, "A sinopse é obrigatória"),
+
+  themeIds: z
+    .array(z.string().regex(/^[a-f\d]{24}$/i, "ID de tema inválido"))
+    .default([]),
 });

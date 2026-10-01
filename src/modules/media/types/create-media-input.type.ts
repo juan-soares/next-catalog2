@@ -10,6 +10,7 @@ export type CreateMediaData = {
   releaseDate: Date;
   releaseYear: number;
   typeCode: MediaTypeCode;
-  publicID:string;
+  publicID: string;
   synopsis: string;
+  themeIds: string[];
 };

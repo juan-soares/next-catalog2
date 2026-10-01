@@ -20,6 +20,9 @@ export async function createMediaAction(
     releaseDate: formData.get("releaseDate"),
     typeCode: formData.get("typeCode"),
     synopsis: formData.get("synopsis"),
+    themeIds: formData
+      .getAll("themes")
+      .filter((value): value is string => typeof value === "string"),
   });
 
   if (!result.success) {
@@ -38,6 +41,7 @@ export async function createMediaAction(
       releaseDate: result.data.releaseDate,
       typeCode: result.data.typeCode,
       synopsis: result.data.synopsis,
+      themeIds: result.data.themeIds,
     });
   } catch {
     return {

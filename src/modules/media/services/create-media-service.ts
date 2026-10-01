@@ -4,6 +4,7 @@ import {
   generateMediaPublicId,
   generateMediaSlug,
 } from "@/modules/media/utils";
+import { filterValidAttributeIds } from "@/modules/attribute";
 
 export async function createMedia(
   input: CreateMediaInput,
@@ -12,5 +13,13 @@ export async function createMedia(
   const releaseYear = Number(input.releaseDate.slice(0, 4));
   const publicID = generateMediaPublicId();
 
-  return createOneMedia({ ...input, releaseDate, releaseYear, publicID });
+  const themeIds = await filterValidAttributeIds(input.themeIds, "theme");
+
+  return createOneMedia({
+    ...input,
+    releaseDate,
+    releaseYear,
+    publicID,
+    themeIds,
+  });
 }
