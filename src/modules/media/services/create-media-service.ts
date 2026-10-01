@@ -1,8 +1,16 @@
 import type { CreateMediaInput, MediaDetails } from "@/modules/media/types";
 import { createOneMedia } from "@/modules/media/repositories";
+import {
+  generateMediaPublicId,
+  generateMediaSlug,
+} from "@/modules/media/utils";
 
 export async function createMedia(
   input: CreateMediaInput,
 ): Promise<MediaDetails> {
-  return createOneMedia(input);
+  const releaseDate = new Date(`${input.releaseDate}T00:00:00.000Z`);
+  const releaseYear = Number(input.releaseDate.slice(0, 4));
+  const publicID = generateMediaPublicId();
+
+  return createOneMedia({ ...input, releaseDate, releaseYear, publicID });
 }

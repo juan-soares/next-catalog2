@@ -6,7 +6,6 @@ import { FormSubmitBtn } from "@/shared/components/ui";
 import { createMediaAction } from "@/modules/media/actions";
 import { MEDIA_TYPES_LIST } from "@/modules/media-type";
 import Image from "next/image";
-import { id } from "zod/locales";
 
 const initialActionState: ActionState = {
   success: false,
@@ -39,8 +38,8 @@ export function CreateMediaForm() {
         </div>
 
         <div>
-          <label htmlFor="type">Tipo</label>
-          <select id="type" name="type" required>
+          <label htmlFor="typeCode">Tipo</label>
+          <select id="typeCode" name="typeCode" required>
             <option value="">Selecione</option>
             {MEDIA_TYPES_LIST.map(({ code, label }) => (
               <option value={code}>{label}</option>

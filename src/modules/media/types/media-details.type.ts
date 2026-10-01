@@ -5,7 +5,7 @@ export type MediaDetails = {
   slug: string;
   title: string;
   translatedTitle: string;
-  releaseYear: number;
+  releaseDate: string;
   type: MediaType;
   synopsis: string;
 
@@ -77,8 +77,8 @@ export type MediaDetails = {
   };
 
   continuity: {
-    previous?: Pick<MediaDetails, "id" | "title" | "releaseYear" | "cover">;
-    next?: Pick<MediaDetails, "id" | "title" | "releaseYear" | "cover">;
+    previous?: Pick<MediaDetails, "id" | "title" | "releaseDate" | "cover">;
+    next?: Pick<MediaDetails, "id" | "title" | "releaseDate" | "cover">;
   };
 
   files: {
