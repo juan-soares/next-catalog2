@@ -1,5 +1,5 @@
 export * from "./MediaCard";
-export * from "./NewMediaForm";
+export * from "./CreateMediaForm";
 
 export * from "./MediaDetailsPage";
 export * from "./MediaHero";
