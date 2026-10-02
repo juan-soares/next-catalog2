@@ -6,6 +6,7 @@ export type MediaDetails = {
   title: string;
   translatedTitle: string;
   releaseDate: string;
+  releaseYear: number;
   type: MediaType;
   synopsis: string;
 

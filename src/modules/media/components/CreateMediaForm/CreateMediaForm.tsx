@@ -1,17 +1,26 @@
 "use client";
 
 import { useActionState } from "react";
+import Image from "next/image";
 import type { ActionState } from "@/shared/types";
 import { FormSubmitBtn } from "@/shared/components/ui";
+import type { Attribute } from "@/modules/attribute";
+import type { FranchiseDetails } from "@/modules/franchise/types";
 import { createMediaAction } from "@/modules/media/actions";
 import { MEDIA_TYPES_LIST } from "@/modules/media-type";
-import Image from "next/image";
+import type { MediaDetails } from "@/modules/media/types";
 
 const initialActionState: ActionState = {
   success: false,
 };
 
-export function CreateMediaForm() {
+type Props = {
+  themes: Attribute[];
+  medias: MediaDetails[];
+  franchises: FranchiseDetails[];
+};
+
+export function CreateMediaForm({ themes, medias, franchises }: Props) {
   const [state, formAction] = useActionState(
     createMediaAction,
     initialActionState,
@@ -40,7 +49,7 @@ export function CreateMediaForm() {
         <div>
           <label htmlFor="typeCode">Tipo</label>
           <select id="typeCode" name="typeCode" required>
-            <option value="">Selecione</option>
+            <option defaultValue="">Selecione</option>
             {MEDIA_TYPES_LIST.map(({ code, label }) => (
               <option value={code}>{label}</option>
             ))}
@@ -91,36 +100,26 @@ export function CreateMediaForm() {
         </div>
 
         <div>
-          <label>Franquias</label>
-          {franchises.map(({ id, label, logo }) => (
-            <label key={id}>
-              <input type="checkbox" name="franchiseIds" value={id} />
-              <Image src={logo.url} alt={logo.alt} width={60} height={60} />
-              {label}
-            </label>
-          ))}
+          <label htmlFor="franchiseID">Franquia</label>
+          <select id="franchiseID" name="franchiseID" required>
+            <option defaultValue="">Selecione</option>
+            {franchises.map(({ id, title, logo }) => (
+              <option value={id}>
+                <Image src={logo.url} alt={logo.title} width={60} height={60} />
+                {title}
+              </option>
+            ))}
+          </select>
         </div>
       </fieldset>
 
       <fieldset>
         <legend>Sequencia</legend>
-        <div>
-          <label htmlFor="previousId">Anterior</label>
-          <select id="previousId" name="previousId" value="">
-            {allMedias.map(({ id, cover, title, releaseYear }) => (
-              <option key={id} value={id}>
-                <Image src={cover.url} alt={cover.alt} />
-                {title}
-                {releaseYear}
-              </option>
-            ))}
-          </select>
-        </div>
 
         <div>
           <label htmlFor="nextId">Seguinte</label>
-          <select id="nextId" name="nextId" value="">
-            {allMedias.map(({ id, cover, title, releaseYear }) => (
+          <select id="nextId" name="nextId" defaultValue="">
+            {medias.map(({ id, cover, title, releaseYear }) => (
               <option key={id} value={id}>
                 <Image src={cover.url} alt={cover.alt} />
                 {title}
@@ -132,6 +131,10 @@ export function CreateMediaForm() {
       </fieldset>
 
       {/* 
+
+  
+     
+
  
 
   seasons?: {
@@ -201,6 +204,7 @@ export function CreateMediaForm() {
 
   
   }[]; */}
+
       <FormSubmitBtn />
     </form>
   );

@@ -48,7 +48,29 @@ const MediaSchema = new Schema(
       required: true,
       trim: true,
     },
+
+    continuity: {
+      nextId: {
+        type: Schema.Types.ObjectId,
+        ref: "Media",
+        index: true,
+      },
+    },
+
+    themeIds: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Attribute",
+      },
+    ],
+
+    franchiseId: {
+      type: Schema.Types.ObjectId,
+      ref: "Franchise",
+      required: true,
+    },
   },
+
   {
     collection: "medias",
     timestamps: true,

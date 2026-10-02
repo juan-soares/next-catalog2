@@ -1,9 +1,12 @@
 import { CreateMediaData, MediaDetails } from "@/modules/media/types";
 import { MediaModel } from "@/modules/media/models";
+import { connectToDatabase } from "@/shared/libs/mongoose";
 
 export async function createOneMedia(
   data: CreateMediaData,
 ): Promise<MediaDetails> {
+  await connectToDatabase();
+
   return MediaModel.create({
     title: data.title,
     translatedTitle: data.translatedTitle,
@@ -12,6 +15,10 @@ export async function createOneMedia(
     typeCode: data.typeCode,
     publicID: data.publicID,
     synopsis: data.synopsis,
+    continuity: {
+      nextId: data.nextId,
+    },
     themeIds: data.themeIds,
+    franchiseId: data.franchiseId,
   });
 }

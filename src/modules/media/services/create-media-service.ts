@@ -1,10 +1,7 @@
+import { filterValidAttributeIds } from "@/modules/attribute";
 import type { CreateMediaInput, MediaDetails } from "@/modules/media/types";
 import { createOneMedia } from "@/modules/media/repositories";
-import {
-  generateMediaPublicId,
-  generateMediaSlug,
-} from "@/modules/media/utils";
-import { filterValidAttributeIds } from "@/modules/attribute";
+import { generateMediaPublicId } from "@/modules/media/utils";
 
 export async function createMedia(
   input: CreateMediaInput,

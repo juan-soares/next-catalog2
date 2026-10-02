@@ -12,5 +12,7 @@ export type CreateMediaData = {
   typeCode: MediaTypeCode;
   publicID: string;
   synopsis: string;
+  nextId: string;
   themeIds: string[];
+  franchiseId: string;
 };
