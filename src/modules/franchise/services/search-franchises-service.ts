@@ -1,5 +1,5 @@
 import type { FranchiseDetails } from "@/modules/franchise/types";
-import { findFranchisesPopulated } from "../repositories";
+import { findFranchisesPopulated } from "@/modules/franchise/repositories";
 
 export async function searchFranchises(q: string): Promise<FranchiseDetails[]> {
   const search = q?.trim();

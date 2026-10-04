@@ -22,7 +22,7 @@ export async function createMediaAction(
     synopsis: formData.get("synopsis"),
     nextId: formData.get("nextId"),
     themeIds: formData
-      .getAll("themes")
+      .getAll("themeIds")
       .filter((value): value is string => typeof value === "string"),
     franchiseId: formData.get("franchiseId"),
   });

@@ -3,7 +3,7 @@ import {
   CATALOG_FRANCHISES_NEW_PATH,
 } from "@/shared/consts";
 import { getAttributeFilters } from "@/modules/attribute";
-import { getChildlessFranchises } from "@/modules/franchise";
+import { getChildlessFranchises } from "@/modules/franchise/services";
 import { MediaTypeFilterGroup } from "@/modules/media-type/components";
 
 type Props = {
