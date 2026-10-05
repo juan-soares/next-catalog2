@@ -1,3 +1,5 @@
+import "server-only";
+
 import { isValidObjectId } from "mongoose";
 import { connectToDatabase } from "@/shared/libs/mongoose";
 import { deleteAsset } from "@/modules/asset/services";

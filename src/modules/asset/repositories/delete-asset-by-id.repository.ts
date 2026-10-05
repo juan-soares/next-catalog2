@@ -1,3 +1,5 @@
+import "server-only";
+
 import path from "node:path";
 import { unlink } from "node:fs/promises";
 import { ClientSession, isValidObjectId } from "mongoose";

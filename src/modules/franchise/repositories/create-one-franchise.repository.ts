@@ -1,3 +1,5 @@
+import "server-only";
+
 import { connectToDatabase } from "@/shared/libs/mongoose";
 import { FranchiseModel } from "@/modules/franchise/models";
 import { mapFranchiseDocToFranchise } from "@/modules/franchise/mappers";

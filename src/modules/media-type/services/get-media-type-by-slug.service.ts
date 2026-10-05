@@ -1,3 +1,5 @@
+import "server-only";
+
 import { MEDIA_TYPES_LIST } from "@/modules/media-type/consts";
 import { MediaType } from "@/modules/media-type/types";
 

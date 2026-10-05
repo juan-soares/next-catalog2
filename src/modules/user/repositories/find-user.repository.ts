@@ -1,3 +1,5 @@
+import "server-only";
+
 import { connectToDatabase } from "@/shared/libs/mongoose";
 import type { FindUserFilters, UserWithPassword } from "@/modules/user/types";
 import { UserModel } from "@/modules/user/models";

@@ -1,3 +1,5 @@
+import "server-only";
+
 import { connectToDatabase } from "@/shared/libs/mongoose";
 import { AttributeModel } from "@/modules/attribute/models";
 import type { Attribute } from "@/modules/attribute/types";

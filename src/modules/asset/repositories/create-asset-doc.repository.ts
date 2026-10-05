@@ -1,3 +1,5 @@
+import "server-only";
+
 import { connectToDatabase } from "@/shared/libs/mongoose";
 import type { Asset, CreateAssetData } from "@/modules/asset/types";
 import { AssetModel } from "@/modules/asset/models";

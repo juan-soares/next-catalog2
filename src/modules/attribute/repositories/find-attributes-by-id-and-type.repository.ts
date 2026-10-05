@@ -1,3 +1,5 @@
+import "server-only";
+
 import { Types } from "mongoose";
 import type { AttributeTypeCode } from "@/modules/attribute/types";
 import { AttributeModel } from "@/modules/attribute/models";

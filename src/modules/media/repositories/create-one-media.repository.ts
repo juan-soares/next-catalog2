@@ -1,3 +1,5 @@
+import "server-only";
+
 import { CreateMediaData, MediaDetails } from "@/modules/media/types";
 import { MediaModel } from "@/modules/media/models";
 import { connectToDatabase } from "@/shared/libs/mongoose";
