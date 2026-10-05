@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 import Link from "next/link";
-import { CATALOG_MEDIAS_NEW_PATH, CATALOG_MEDIAS_PATH } from "@/shared/consts";
+import { CATALOG_MEDIAS_PATH } from "@/shared/consts";
 import type { MediaType } from "@/modules/media-type/types";
 import { MediaTypeFilters } from "@/modules/media-type/components";
 
