@@ -1,6 +1,6 @@
 import {
   FranchiseLogoLink,
-  getChildlessFranchises,
+  getParentFranchises,
   searchFranchises,
 } from "@/modules/franchise";
 
@@ -12,7 +12,7 @@ export default async function FranchisesPage({ searchParams }: Props) {
   const { q } = await searchParams;
   const franchises = q
     ? await searchFranchises(q)
-    : await getChildlessFranchises();
+    : await getParentFranchises();
 
   if (!franchises.length) return <p>Sem resultados.</p>;
 

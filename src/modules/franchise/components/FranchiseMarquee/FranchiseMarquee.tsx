@@ -5,12 +5,12 @@ import {
   CATALOG_FRANCHISES_PATH,
 } from "@/shared/consts";
 import { isAdminUser } from "@/modules/auth";
-import { getChildlessFranchises } from "@/modules/franchise/services";
+import { getParentFranchises } from "@/modules/franchise/services";
 import { FranchiseLogoLink } from "@/modules/franchise/components";
 
 export async function FranchiseMarquee() {
   const isAdmin = await isAdminUser();
-  const franchisesDetails = await getChildlessFranchises();
+  const franchisesDetails = await getParentFranchises();
 
   return (
     <nav>

@@ -16,7 +16,7 @@ import {
   deleteFranchiseAction,
   FranchiseLogoLink,
   getFranchiseById,
-  getSubfranchisesDetails,
+  getChildFranchises,
 } from "@/modules/franchise";
 
 type Props = {
@@ -28,7 +28,7 @@ export default async function FranchisePage({ params }: Props) {
   const franchiseInfo = await getFranchiseById(id);
   const isAdmin = await isAdminUser();
   const medias = await getRecentMediasDetailsByFranchiseId(id);
-  const subFranchises = await getSubfranchisesDetails(id);
+  const childFranchises = await getChildFranchises(id);
 
   if (!franchiseInfo) {
     notFound();
@@ -80,7 +80,7 @@ export default async function FranchisePage({ params }: Props) {
 
           <p>
             <strong>Subfranquias:</strong>
-            {subFranchises.map(({ id, title, logo: { url } }) => (
+            {childFranchises.map(({ id, title, logo: { url } }) => (
               <FranchiseLogoLink key={id} id={id} label={title} logoURL={url} />
             ))}
           </p>

@@ -3,7 +3,7 @@ import {
   CATALOG_FRANCHISES_NEW_PATH,
 } from "@/shared/consts";
 import { getAttributeFilters } from "@/modules/attribute";
-import { getChildlessFranchises } from "@/modules/franchise/services";
+import { getParentFranchises } from "@/modules/franchise/services";
 import { MediaTypeFilterGroup } from "@/modules/media-type/components";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 
 export async function MediaTypeFilters({ isAdmin }: Props) {
   const attributeFilters = await getAttributeFilters();
-  const franchises = await getChildlessFranchises();
+  const franchises = await getParentFranchises();
 
   return (
     <div>

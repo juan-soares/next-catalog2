@@ -32,6 +32,7 @@ export const FranchiseSchema = new Schema(
 );
 
 FranchiseSchema.index({ title: 1 });
+FranchiseSchema.index({ parentFranchiseId: 1 });
 
 export const FranchiseModel =
   models.Franchise ?? model("Franchise", FranchiseSchema);

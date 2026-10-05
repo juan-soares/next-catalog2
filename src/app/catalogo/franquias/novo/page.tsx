@@ -1,8 +1,8 @@
 import { FranchiseNewForm } from "@/modules/franchise/components";
-import { getChildlessFranchises } from "@/modules/franchise/services";
+import { getParentFranchises } from "@/modules/franchise/services";
 
 export default async function NewFranchisePage() {
-  const parentFranchises = await getChildlessFranchises();
+  const parentFranchises = await getParentFranchises();
 
   return (
     <div>
