@@ -1,3 +1,5 @@
+import "server-only";
+
 import { findFranchisesPopulated } from "@/modules/franchise/repositories";
 import type { FranchiseDetails } from "@/modules/franchise/types";
 

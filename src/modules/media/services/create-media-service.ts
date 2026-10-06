@@ -1,3 +1,5 @@
+import "server-only";
+
 import { filterValidAttributeIds } from "@/modules/attribute";
 import type { CreateMediaInput, MediaDetails } from "@/modules/media/types";
 import { createOneMedia } from "@/modules/media/repositories";
