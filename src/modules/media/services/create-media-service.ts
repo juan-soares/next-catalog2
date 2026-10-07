@@ -21,6 +21,13 @@ export async function createMedia(
     title: input.title,
   });
 
+  const trailer = await createAsset({
+    file: input.trailer,
+    module: "media-trailer",
+    storage: MEDIA_STORAGE.TRAILER,
+    title: input.title,
+  });
+
   const themeIds = await filterValidAttributeIds(input.themeIds, "theme");
 
   return createOneMedia({
@@ -30,5 +37,6 @@ export async function createMedia(
     publicID,
     themeIds,
     coverAssetId: cover.id,
+    trailerAssetId: cover.id,
   });
 }

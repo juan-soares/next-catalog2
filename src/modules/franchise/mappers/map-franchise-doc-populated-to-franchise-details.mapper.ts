@@ -8,8 +8,8 @@ export function mapFranchiseDocPopulatedToDoFranchiseDetails(
     title: docPopulated.title,
     translatedTitle: docPopulated.translatedTitle ?? "",
     parentFranchiseId: docPopulated.parentFranchiseId?.toString() ?? null,
-    createdAt: docPopulated.createdAt,
-    updatedAt: docPopulated.updatedAt,
+    createdAt: docPopulated.createdAt.toISOString(),
+    updatedAt: docPopulated.updatedAt.toISOString(),
 
     logo: {
       id: docPopulated.logoId._id.toString(),

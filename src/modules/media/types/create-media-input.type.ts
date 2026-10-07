@@ -16,4 +16,5 @@ export type CreateMediaData = {
   themeIds: string[];
   franchiseId: string;
   coverAssetId: string;
+  trailerAssetId: string;
 };

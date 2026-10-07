@@ -11,6 +11,10 @@ export const MEDIA_STORAGE = {
     directory: path.join(process.cwd(), "public", "assets", "medias"),
     url: "/assets/medias",
   },
+  TRAILER: {
+    directory: path.join(process.cwd(), "public", "assets", "medias"),
+    url: "/assets/medias",
+  },
 };
 
 export const FRANCHISES_STORAGE = {

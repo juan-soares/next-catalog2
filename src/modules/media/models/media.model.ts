@@ -56,6 +56,13 @@ const MediaSchema = new Schema(
       index: true,
     },
 
+    trailerAssetId: {
+      type: Schema.Types.ObjectId,
+      ref: "Asset",
+      required: true,
+      index: true,
+    },
+
     continuity: {
       nextId: {
         type: Schema.Types.ObjectId,

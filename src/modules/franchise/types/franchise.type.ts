@@ -6,8 +6,8 @@ export type Franchise = {
   translatedTitle?: string;
   logo: Asset["id"];
   parentFranchiseId: Franchise["id"] | null;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type FranchiseDetails = Omit<Franchise, "logo"> & {

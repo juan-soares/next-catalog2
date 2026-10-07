@@ -5,6 +5,6 @@ export type Attribute = {
   label: string;
   slug: string;
   type: AttributeTypeCode;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 };

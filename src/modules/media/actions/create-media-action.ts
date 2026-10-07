@@ -21,6 +21,7 @@ export async function createMediaAction(
     typeCode: formData.get("typeCode"),
     synopsis: formData.get("synopsis"),
     cover: formData.get("cover"),
+    trailer: formData.get("trailer"),
     nextId: formData.get("nextId"),
     themeIds: formData
       .getAll("themeIds")
@@ -45,6 +46,7 @@ export async function createMediaAction(
       typeCode: result.data.typeCode,
       synopsis: result.data.synopsis,
       cover: result.data.cover,
+      trailer: result.data.trailer,
       nextId: result.data.nextId,
       themeIds: result.data.themeIds,
       franchiseId: result.data.franchiseId,

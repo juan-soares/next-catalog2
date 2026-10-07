@@ -15,6 +15,14 @@ const coverSchema = z
     },
   );
 
+const trailerSchema = z
+  .instanceof(File)
+  .refine((file) => file.size > 0, "O trailer é obrigatório")
+  .refine(
+    (file) => ["video/mp4", "video/webm"].includes(file.type),
+    "Formato de trailer inválido",
+  );
+
 export const createMediaSchema = z.object({
   title: z.string().trim().min(1, "O título é obrigatório"),
   translatedTitle: z.string().trim(),
@@ -28,6 +36,7 @@ export const createMediaSchema = z.object({
   synopsis: z.string().trim().min(1, "A sinopse é obrigatória"),
 
   cover: coverSchema,
+  trailer: trailerSchema,
 
   nextId: z
     .string()

@@ -8,7 +8,7 @@ export function mapAttributeDocToAttribute(
     label: attributeDoc.label,
     slug: attributeDoc.slug,
     type: attributeDoc.type,
-    createdAt: attributeDoc.createdAt,
-    updatedAt: attributeDoc.updatedAt,
+    createdAt: attributeDoc.createdAt.toISOString(),
+    updatedAt: attributeDoc.updatedAt.toISOString(),
   };
 }
