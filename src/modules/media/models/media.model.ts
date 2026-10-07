@@ -49,6 +49,13 @@ const MediaSchema = new Schema(
       trim: true,
     },
 
+    coverAssetId: {
+      type: Schema.Types.ObjectId,
+      ref: "Asset",
+      required: true,
+      index: true,
+    },
+
     continuity: {
       nextId: {
         type: Schema.Types.ObjectId,
@@ -78,4 +85,4 @@ const MediaSchema = new Schema(
 );
 
 export const MediaModel =
-  mongoose.models.Media ?? mongoose.model("Media", MediaSchema, "attributes");
+  mongoose.models.Media ?? mongoose.model("Media", MediaSchema);

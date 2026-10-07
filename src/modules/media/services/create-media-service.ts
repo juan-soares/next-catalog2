@@ -1,6 +1,8 @@
 import "server-only";
 
+import { MEDIA_STORAGE } from "@/shared/consts";
 import { filterValidAttributeIds } from "@/modules/attribute";
+import { createAsset } from "@/modules/asset";
 import type { CreateMediaInput, MediaDetails } from "@/modules/media/types";
 import { createOneMedia } from "@/modules/media/repositories";
 import { generateMediaPublicId } from "@/modules/media/utils";
@@ -12,6 +14,13 @@ export async function createMedia(
   const releaseYear = Number(input.releaseDate.slice(0, 4));
   const publicID = generateMediaPublicId();
 
+  const cover = await createAsset({
+    file: input.cover,
+    module: "media-cover",
+    storage: MEDIA_STORAGE.COVER,
+    title: input.title,
+  });
+
   const themeIds = await filterValidAttributeIds(input.themeIds, "theme");
 
   return createOneMedia({
@@ -20,5 +29,6 @@ export async function createMedia(
     releaseYear,
     publicID,
     themeIds,
+    coverAssetId: cover.id,
   });
 }

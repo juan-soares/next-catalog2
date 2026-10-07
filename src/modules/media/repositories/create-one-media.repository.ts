@@ -16,6 +16,7 @@ export async function createOneMedia(
     releaseYear: data.releaseYear,
     typeCode: data.typeCode,
     publicID: data.publicID,
+    coverAssetId: data.coverAssetId,
     synopsis: data.synopsis,
     continuity: {
       nextId: data.nextId,

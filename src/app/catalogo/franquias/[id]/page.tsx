@@ -78,12 +78,12 @@ export default async function FranchisePage({ params }: Props) {
             </p>
           </div>
 
-          <p>
+          <div>
             <strong>Subfranquias:</strong>
             {childFranchises.map(({ id, title, logo: { url } }) => (
               <FranchiseLogoLink key={id} id={id} label={title} logoURL={url} />
             ))}
-          </p>
+          </div>
 
           <p>
             <strong>Mídias:</strong>

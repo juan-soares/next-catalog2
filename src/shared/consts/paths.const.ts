@@ -6,9 +6,18 @@ export const MEDIA_TYPE_CATALOG_PATH = "/";
 export const GLOBAL_SEARCH_PATH = "/pesquisar?";
 export const LOGIN_PATH = "/login";
 
-export const FRANCHISES_LOGO_STORAGE = {
-  directory: path.join(process.cwd(), "public", "assets", "franchises"),
-  url: "/assets/franchises",
+export const MEDIA_STORAGE = {
+  COVER: {
+    directory: path.join(process.cwd(), "public", "assets", "medias"),
+    url: "/assets/medias",
+  },
+};
+
+export const FRANCHISES_STORAGE = {
+  LOGO: {
+    directory: path.join(process.cwd(), "public", "assets", "franchises"),
+    url: "/assets/franchises",
+  },
 };
 
 export const CATALOG_GLOBAL_SEARCH_PATH = "/catalogo/pesquisar?";

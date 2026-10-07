@@ -1,3 +1,5 @@
+import "server-only";
+
 import path from "node:path";
 import { requireAdmin } from "@/modules/auth";
 import type { Asset, CreateAssetInput } from "@/modules/asset/types";

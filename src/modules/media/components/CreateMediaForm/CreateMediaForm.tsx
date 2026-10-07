@@ -51,7 +51,9 @@ export function CreateMediaForm({ themes, medias, franchises }: Props) {
           <select id="typeCode" name="typeCode" required>
             <option defaultValue="">Selecione</option>
             {MEDIA_TYPES_LIST.map(({ code, label }) => (
-              <option value={code}>{label}</option>
+              <option key={code} value={code}>
+                {label}
+              </option>
             ))}
           </select>
         </div>
@@ -104,7 +106,7 @@ export function CreateMediaForm({ themes, medias, franchises }: Props) {
           <select id="franchiseId" name="franchiseId" required>
             <option defaultValue="">Selecione</option>
             {franchises.map(({ id, title, logo }) => (
-              <option value={id}>
+              <option key={id} value={id}>
                 <Image src={logo.url} alt={logo.title} width={60} height={60} />
                 {title}
               </option>

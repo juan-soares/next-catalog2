@@ -1,6 +1,20 @@
 import { z } from "zod";
 import { MEDIA_TYPE_CODES } from "@/modules/media-type";
 
+const coverSchema = z
+  .instanceof(File, {
+    message: "A capa é obrigatória",
+  })
+  .refine((file) => file.size > 0, {
+    message: "A capa é obrigatória",
+  })
+  .refine(
+    (file) => ["image/jpeg", "image/png", "image/webp"].includes(file.type),
+    {
+      message: "A capa deve ser JPG, PNG ou WebP",
+    },
+  );
+
 export const createMediaSchema = z.object({
   title: z.string().trim().min(1, "O título é obrigatório"),
   translatedTitle: z.string().trim(),
@@ -12,6 +26,8 @@ export const createMediaSchema = z.object({
   typeCode: z.enum(MEDIA_TYPE_CODES),
 
   synopsis: z.string().trim().min(1, "A sinopse é obrigatória"),
+
+  cover: coverSchema,
 
   nextId: z
     .string()
