@@ -1,4 +1,4 @@
-import { getMediasDetailsByType, MediaCard } from "@/modules/media";
+import { getMediasDetailsByType, MediaCard } from "@/entities/media";
 import { MediaTypeSortbar } from "@/modules/media-type/components";
 import type { MediaTypeCode } from "@/modules/media-type/types";
 

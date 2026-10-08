@@ -1,3 +1,5 @@
+export * from "./list-attributes.service";
+
 export * from "./get-attributes-by-type.service";
 export * from "./get-attribute-by-id.service";
 export * from "./get-attribute-filters.service";

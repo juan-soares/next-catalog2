@@ -2,11 +2,10 @@
 
 import { redirect } from "next/navigation";
 import type { ActionState } from "@/shared/types";
-import { CATALOG_ATTRIBUTES_PATH, ACTION_MESSAGES } from "@/shared/consts";
+import { ACTION_MESSAGES, ADMIN_PANEL_PATH } from "@/shared/consts";
 import { requireAdmin } from "@/modules/auth";
 import { deleteAttributeSchema } from "@/modules/attribute/schemas";
 import { deleteAttribute } from "@/modules/attribute/services";
-import { ATTRIBUTE_TYPES_REGISTRY } from "@/modules/attribute/consts";
 
 export async function deleteAttributeAction(
   _previousState: ActionState,
@@ -44,8 +43,5 @@ export async function deleteAttributeAction(
     };
   }
 
-  const attributeTypeSlug =
-    ATTRIBUTE_TYPES_REGISTRY[deletedAttribute.type].slug;
-
-  redirect(CATALOG_ATTRIBUTES_PATH + attributeTypeSlug);
+  redirect(ADMIN_PANEL_PATH);
 }

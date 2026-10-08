@@ -1,214 +1,201 @@
-"use client";
-
-import { useActionState } from "react";
-import Image from "next/image";
-import type { ActionState } from "@/shared/types";
-import { FormSubmitBtn } from "@/shared/components/ui";
-import type { Attribute } from "@/modules/attribute";
-import type { FranchiseDetails } from "@/modules/franchise/types";
-import { createMediaAction } from "@/modules/media/actions";
-import { MEDIA_TYPES_LIST } from "@/modules/media-type/consts";
-import type { MediaDetails } from "@/modules/media/types";
-
-const initialActionState: ActionState = {
-  success: false,
-};
+import Link from "next/link";
+import { ADMIN_ATTRIBUTES_CREATE_PATH } from "@/shared/consts";
+import { SubmitFormButton } from "@/shared/components/ui";
+import { Attribute } from "@/modules/attribute";
+import type { MediaTypeGroup } from "@/modules/media-type";
+import type { MediaDetails } from "@/entities/media";
 
 type Props = {
-  themes: Attribute[];
+  groupType: MediaTypeGroup;
+  editions: Attribute[];
   medias: MediaDetails[];
-  franchises: FranchiseDetails[];
+  platforms: Attribute[];
+  modes: Attribute[];
+  gameplays: Attribute[];
+  genres: Attribute[];
+  languages: Attribute[];
+  themes: Attribute[];
 };
 
-export function CreateMediaForm({ themes, medias, franchises }: Props) {
-  const [state, formAction] = useActionState(
-    createMediaAction,
-    initialActionState,
-  );
-
+export function CreateMediaForm({
+  groupType,
+  editions,
+  platforms,
+  modes,
+  genres,
+  gameplays,
+  medias,
+  languages,
+  themes,
+}: Props) {
   return (
-    <form action={formAction}>
+    <form>
       <fieldset>
-        <legend>Detalhes</legend>
+        <legend>Informações Gerais</legend>
+        <label htmlFor="title">Título:</label>
+        <input type="text" name="title" id="title" required />
 
-        <div>
-          <label htmlFor="title">Título</label>
-          <input id="title" name="title" type="text" required />
-        </div>
+        <label htmlFor="translatedTitle">Título Traduzido:</label>
+        <input type="text" name="translatedTitle" id="translatedTitle" />
 
-        <div>
-          <label htmlFor="translatedTitle">Título traduzido</label>
-          <input id="translatedTitle" name="translatedTitle" type="text" />
-        </div>
+        <label htmlFor="releaseDate">Data de Lançamento:</label>
+        <input type="date" name="releaseDate" id="releaseDate" required />
 
-        <div>
-          <label htmlFor="releaseDate">Lançamento</label>
-          <input id="releaseDate" name="releaseDate" type="date" required />
-        </div>
+        <label htmlFor="synopsis">Sinopse:</label>
+        <textarea id="synopsis" name="synopsis" required />
+      </fieldset>
 
-        <div>
-          <label htmlFor="typeCode">Tipo</label>
-          <select id="typeCode" name="typeCode" required>
-            <option value="">Selecione</option>
-            {MEDIA_TYPES_LIST.map(({ code, label }) => (
-              <option key={code} value={code}>
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
+      <fieldset>
+        <legend>
+          <Link href={ADMIN_ATTRIBUTES_CREATE_PATH}>Detalhes</Link>
+        </legend>
 
-        <div>
-          <label htmlFor="synopsis">Sinopse</label>
-          <textarea id="synopsis" name="synopsis" required />
-        </div>
+        {groupType !== "tv-show" && (
+          <>
+            <label htmlFor="languageAttributeId">Idioma:</label>
+            <select
+              id="languageAttributeId"
+              name="languageAttributeId"
+              defaultValue=""
+              required
+            >
+              <option value="">Selecione...</option>
+              {languages.map(({ id, label }) => (
+                <option key={id} value={id}>
+                  {label}
+                </option>
+              ))}
+            </select>
+          </>
+        )}
+
+        {groupType === "game" && (
+          <>
+            <div>
+              <label htmlFor="platformAttributeIds">Plataformas:</label>
+              <select
+                id="platformAttributeIds"
+                name="platformAttributeIds"
+                defaultValue=""
+                required
+              >
+                <option value="">Selecione...</option>
+                {platforms.map(({ id, label }) => (
+                  <option key={id} value={id}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="modeAttributeId">Modo:</label>
+              <select
+                id="modeAttributeId"
+                name="modeAttributeId"
+                defaultValue=""
+                required
+              >
+                <option value="">Selecione...</option>
+                {modes.map(({ id, label }) => (
+                  <option key={id} value={id}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="genreAttributeId">Gênero:</label>
+              <select
+                id="genreAttributeId"
+                name="genreAttributeId"
+                defaultValue=""
+                required
+              >
+                <option value="">Selecione...</option>
+                {genres.map(({ id, label }) => (
+                  <option key={id} value={id}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="gameplayAttributeId">Gameplay:</label>
+              <select
+                id="gameplayAttributeId"
+                name="gameplayAttributeId"
+                defaultValue=""
+                required
+              >
+                <option value="">Selecione...</option>
+                {gameplays.map(({ id, label }) => (
+                  <option key={id} value={id}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="editionAttributeId">Edição:</label>
+              <select
+                id="editionAttributeId"
+                name="editionAttributeId"
+                defaultValue=""
+                required
+              >
+                <option value="">Selecione...</option>
+                {editions.map(({ id, label }) => (
+                  <option key={id} value={id}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="baseMediaId">Jogo Base:</label>
+              <select id="baseMediaId" name="baseMediaId" defaultValue="">
+                <option value="">Selecione...</option>
+                {medias.map(({ id, title }) => (
+                  <option key={id} value={id}>
+                    {title}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </>
+        )}
       </fieldset>
 
       <fieldset>
         <legend>Arquivos</legend>
+        <label htmlFor="cover">Capa:</label>
+        <input type="file" id="cover" name="cover" required />
 
-        <div>
-          <label htmlFor="cover">Capa</label>
-          <input type="file" id="cover" name="cover" required />
-        </div>
-
-        <div>
-          <label htmlFor="trailer">Trailer</label>
-          <input type="file" id="trailer" name="trailer" required />
-        </div>
-
-        <div>
-          <label htmlFor="images">Imagens</label>
-          <input type="file" id="images" name="images" multiple />
-        </div>
-
-        <div>
-          <label htmlFor="files">Arquivos</label>
-          <input type="file" id="files" name="files" multiple />
-        </div>
+        <label htmlFor="trailer">Trailer:</label>
+        <input type="file" id="trailer" name="trailer" />
       </fieldset>
 
       <fieldset>
         <legend>Tags</legend>
 
         <div>
-          <label>Temáticas</label>
+          <label>Temáticas:</label>
           {themes.map(({ id, label }) => (
             <label key={id}>
               <input type="checkbox" name="themeIds" value={id} />
               {label}
             </label>
           ))}
-        </div>
-
-        <div>
-          <label htmlFor="franchiseId">Franquia</label>
-          <select id="franchiseId" name="franchiseId" required>
-            <option value="">Selecione</option>
-            {franchises.map(({ id, title }) => (
-              <option key={id} value={id}>
-                {title}
-              </option>
-            ))}
-          </select>
+          <Link href={ADMIN_ATTRIBUTES_CREATE_PATH}>Adicionar</Link>
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend>Sequencia</legend>
-
-        <div>
-          <label htmlFor="nextId">Seguinte</label>
-          <select id="nextId" name="nextId" defaultValue="">
-            <option hidden value="">
-              Selecione...
-            </option>
-            {medias.map(({ id, cover, title, releaseYear }) => (
-              <option key={id} value={id}>
-                {title}
-                {releaseYear}
-              </option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
-
-      {/* 
-
-  
-     
-
- 
-
-  seasons?: {
-    id: string;
-    number: number;
-    title: string;
-    releaseYear: number;
-    resolution: string;
-    language: string;
-    synopsis: string;
-    opening: { url: string };
-    episodes: {
-      id: string;
-      number: number;
-      title: string;
-      userStatus: {
-        acquired: boolean;
-        consumed: boolean;
-      };
-    }[];
-  }[];
-
-  ovas?: {
-    id: string;
-    number: number;
-    title: string;
-    releaseYear: number;
-    resolution: string;
-    language: string;
-    episodes: {
-      id: string;
-      number: number;
-      title: string;
-      userStatus: {
-        acquired: boolean;
-        consumed: boolean;
-      };
-    }[];
-  }[];
-
-  specials?: {
-    id: string;
-    number: number;
-    title: string;
-    releaseYear: number;
-    resolution: string;
-    language: string;
-    episodes: {
-      id: string;
-      number: number;
-      title: string;
-      userStatus: {
-        acquired: boolean;
-        consumed: boolean;
-      };
-    }[];
-  }[];
-
-  edition?: {
-    base: MediaDetails;
-    expansions: MediaDetails[];
-    dlcs: MediaDetails[];
-  };
-
- 
-  };
-
-  
-  }[]; */}
-
-      <FormSubmitBtn />
+      <SubmitFormButton />
     </form>
   );
 }

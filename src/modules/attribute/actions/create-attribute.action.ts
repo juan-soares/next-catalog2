@@ -2,9 +2,8 @@
 
 import { redirect } from "next/navigation";
 import type { ActionState } from "@/shared/types";
-import { ACTION_MESSAGES, CATALOG_ATTRIBUTES_PATH } from "@/shared/consts";
+import { ACTION_MESSAGES, ADMIN_PANEL_PATH } from "@/shared/consts";
 import { requireAdmin } from "@/modules/auth";
-import { ATTRIBUTE_TYPES_REGISTRY } from "@/modules/attribute/consts";
 import { createAttributeSchema } from "@/modules/attribute/schemas";
 import { createAttribute } from "@/modules/attribute/services";
 
@@ -40,7 +39,5 @@ export async function createAttributeAction(
     };
   }
 
-  const attributeTypeSlug = ATTRIBUTE_TYPES_REGISTRY[newAttribute.type].slug;
-
-  redirect(CATALOG_ATTRIBUTES_PATH + attributeTypeSlug);
+  redirect(ADMIN_PANEL_PATH);
 }

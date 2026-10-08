@@ -1,0 +1,44 @@
+"use client";
+
+import { useActionState } from "react";
+import type { ActionState } from "@/shared/types";
+import { FormSelect, FormSubmitBtn } from "@/shared/components/ui";
+import type { FranchiseDetails } from "@/entities/franchise/types";
+import { createFranchiseAction } from "@/entities/franchise/actions";
+
+type Props = {
+  franchises: FranchiseDetails[];
+};
+
+const initialActionState: ActionState = {
+  success: false,
+};
+
+export function FranchiseNewForm({ franchises }: Props) {
+  const [state, formAction] = useActionState(
+    createFranchiseAction,
+    initialActionState,
+  );
+
+  return (
+    <form action={formAction}>
+      <label htmlFor="title">Título:</label>
+      <input type="text" id="title" name="title" required />
+
+      <label htmlFor="translatedTitle">Título Traduzido:</label>
+      <input type="text" id="translatedTitle" name="translatedTitle" />
+
+      <label htmlFor="logo">Logo:</label>
+      <input type="file" id="logo" name="logo" accept=".png" required />
+
+      <FormSelect
+        id="parent"
+        name="parentFranchiseId"
+        label="Pertence a:"
+        options={franchises}
+      />
+
+      <FormSubmitBtn />
+    </form>
+  );
+}

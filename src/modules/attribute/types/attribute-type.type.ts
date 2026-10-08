@@ -4,6 +4,7 @@ export type AttributeTypeCode =
   | "genre"
   | "edition"
   | "platform"
+  | "mode"
   | "gameplayStyle"
   | "characterStatus"
   | "universeType";

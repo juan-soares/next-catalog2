@@ -1,7 +1,3 @@
-/**
- * Layout raiz da aplicação.
- * Define a estrutura compartilhada entre todas as páginas do CATFLIX.
- */
 
 import type { ReactNode } from "react";
 import { Header } from "@/shared/components/layout";

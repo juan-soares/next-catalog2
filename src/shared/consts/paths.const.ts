@@ -4,17 +4,10 @@ export const MEDIA_ITEM_COVER_PATH = "/assets/medias/";
 export const MEDIA_TYPE_CATALOG_PATH = "/";
 
 export const GLOBAL_SEARCH_PATH = "/pesquisar?";
-export const LOGIN_PATH = "/login";
 
 export const MEDIA_STORAGE = {
-  COVER: {
-    directory: path.join(process.cwd(), "public", "assets", "medias"),
-    url: "/assets/medias",
-  },
-  TRAILER: {
-    directory: path.join(process.cwd(), "public", "assets", "medias"),
-    url: "/assets/medias",
-  },
+  directory: path.join(process.cwd(), "public", "assets", "medias"),
+  url: "/assets/medias",
 };
 
 export const FRANCHISES_STORAGE = {
@@ -37,3 +30,11 @@ export const CATALOG_FRANCHISES_EDIT_PATH =
 
 export const CATALOG_MEDIAS_PATH = "/catalogo/midias";
 export const CATALOG_MEDIAS_NEW_PATH = CATALOG_MEDIAS_PATH + "/novo";
+
+//
+export const LOGIN_PATH = "/login";
+export const ADMIN_PANEL_PATH = "/admin/painel";
+export const ADMIN_ATTRIBUTES_PATH = "/admin/atributos";
+export const ADMIN_ATTRIBUTES_CREATE_PATH =
+  ADMIN_ATTRIBUTES_PATH + "/adicionar";
+export const ADMIN_ATTRIBUTES_EDIT_PATH = ADMIN_ATTRIBUTES_PATH + "/editar";
