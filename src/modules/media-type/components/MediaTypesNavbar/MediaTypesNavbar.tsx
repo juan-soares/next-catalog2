@@ -4,8 +4,8 @@ import { MEDIA_TYPES_LIST } from "@/modules/media-type/consts";
 export function MediaTypesNavbar() {
   return (
     <nav>
-      {MEDIA_TYPES_LIST.map(({ code, label, slug }) => (
-        <Link key={code} href={`/${slug}`}>
+      {MEDIA_TYPES_LIST.map(({ code, label, path }) => (
+        <Link key={code} href={path}>
           {label}
         </Link>
       ))}

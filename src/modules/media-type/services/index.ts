@@ -1,1 +1,3 @@
-export * from "./get-media-type-by-slug.service";
+import "server-only";
+
+export * from "./get-media-type-details-by-slug.service";

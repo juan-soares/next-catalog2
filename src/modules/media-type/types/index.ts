@@ -1,3 +1,2 @@
-export * from "./media-type-code.type";
-export * from "./media-type-group.type";
-export * from "./media-type.type";
+export type * from "./media-type-code.type";
+export type * from "./media-type-details.type";
