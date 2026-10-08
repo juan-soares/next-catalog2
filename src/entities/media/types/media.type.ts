@@ -1,4 +1,4 @@
-import { Franchise } from "@/entities/franchise/types";
+import { Franchise } from "@/modules/franchise/types";
 
 export type Media = {
   id: string;

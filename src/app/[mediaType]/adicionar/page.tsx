@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { CreateMediaForm } from "@/modules/media";
 import { getMediaTypeBySlug } from "@/modules/media-type";
 import { getAttributesByType } from "@/modules/attribute";
+import { getSubFranchises } from "@/modules/franchise";
 import { getMediasDetailsByType } from "@/entities/media";
 
 type Props = {
@@ -15,20 +16,33 @@ export default async function CreateMediaPage({ params }: Props) {
     notFound();
   }
 
-  const languages = await getAttributesByType("language");
-  const editions = await getAttributesByType("edition");
-  const medias = await getMediasDetailsByType(mediaTypeInfo.code);
-  const platforms = await getAttributesByType("platform");
-  const genres = await getAttributesByType("genre");
-  const modes = await getAttributesByType("mode");
-  const gameplays = await getAttributesByType("gameplayStyle");
-  const themes = await getAttributesByType("theme");
+  const [
+    languages,
+    editions,
+    medias,
+    platforms,
+    genres,
+    modes,
+    gameplays,
+    themes,
+    subfranchises,
+  ] = await Promise.all([
+    getAttributesByType("language"),
+    getAttributesByType("edition"),
+    getMediasDetailsByType(mediaTypeInfo.code),
+    getAttributesByType("platform"),
+    getAttributesByType("genre"),
+    getAttributesByType("mode"),
+    getAttributesByType("gameplayStyle"),
+    getAttributesByType("theme"),
+    getSubFranchises(),
+  ]);
 
   return (
     <div>
       <h1>Adicionar {mediaTypeInfo.label}</h1>
       <CreateMediaForm
-        groupType={mediaTypeInfo.groupType}
+        mediaType={mediaTypeInfo}
         editions={editions}
         platforms={platforms}
         gameplays={gameplays}
@@ -37,6 +51,7 @@ export default async function CreateMediaPage({ params }: Props) {
         medias={medias}
         languages={languages}
         themes={themes}
+        subfranchises={subfranchises}
       />
     </div>
   );

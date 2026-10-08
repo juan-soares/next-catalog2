@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import type { ActionState } from "@/shared/types";
 import { FormSubmitBtn } from "@/shared/components/ui";
 import type { Attribute } from "@/modules/attribute";
-import type { FranchiseDetails } from "@/entities/franchise/types";
+import type { FranchiseDetails } from "@/modules/franchise/types";
 import { createMediaAction } from "@/entities/media/actions";
 import { MEDIA_TYPES_LIST } from "@/modules/media-type/consts";
 import type { MediaDetails } from "@/entities/media/types";

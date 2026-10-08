@@ -33,8 +33,12 @@ export const CATALOG_MEDIAS_NEW_PATH = CATALOG_MEDIAS_PATH + "/novo";
 
 //
 export const LOGIN_PATH = "/login";
+
 export const ADMIN_PANEL_PATH = "/admin/painel";
 export const ADMIN_ATTRIBUTES_PATH = "/admin/atributos";
 export const ADMIN_ATTRIBUTES_CREATE_PATH =
   ADMIN_ATTRIBUTES_PATH + "/adicionar";
 export const ADMIN_ATTRIBUTES_EDIT_PATH = ADMIN_ATTRIBUTES_PATH + "/editar";
+export const ADMIN_FRANCHISES_PATH = "/admin/franquias";
+export const ADMIN_FRANCHISES_CREATE_PATH =
+  ADMIN_FRANCHISES_PATH + "/adicionar";
