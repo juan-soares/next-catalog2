@@ -1,5 +1,9 @@
 import { notFound } from "next/navigation";
-import { getMediaDetailsBySlug, MediaPageDetails } from "@/modules/media";
+import {
+  getMediaDetailsBySlug,
+  MediaPageContent,
+  MediaPageHero,
+} from "@/modules/media";
 
 type Props = {
   params: Promise<{ mediaSlug: string }>;
@@ -17,7 +21,8 @@ export default async function MediaPage({ params, searchParams }: Props) {
 
   return (
     <div>
-      <MediaPageDetails {...media} currentTab={tab} />
+      <MediaPageHero {...media} />
+      <MediaPageContent currentTab={tab} media={media} />
     </div>
   );
 }

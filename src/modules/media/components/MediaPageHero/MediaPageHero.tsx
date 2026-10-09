@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MediaDetails } from "../../types";
+import { MediaDetails } from "@/modules/media/types";
 
 type Props = Pick<
   MediaDetails,
