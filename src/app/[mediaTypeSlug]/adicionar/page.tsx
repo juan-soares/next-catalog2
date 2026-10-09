@@ -1,12 +1,12 @@
-import { notFound } from "next/navigation";
-import Link from "next/link";
+import { CreateMediaForm } from "@/modules/media";
 import { getMediaTypeDetailsBySlug } from "@/modules/media-type";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: Promise<{ mediaTypeSlug: string }>;
 };
 
-export default async function MediaTypePage({ params }: Props) {
+export default async function CreateMediaPage({ params }: Props) {
   const { mediaTypeSlug } = await params;
   const mediaType = getMediaTypeDetailsBySlug(mediaTypeSlug);
 
@@ -16,8 +16,8 @@ export default async function MediaTypePage({ params }: Props) {
 
   return (
     <div>
-      <h1>{mediaType.label}</h1>
-      <Link href={`${mediaType.path}/adicionar`}>Adicionar</Link>
+      <h1>Adicionar {mediaType.label}</h1>
+      <CreateMediaForm />
     </div>
   );
 }
