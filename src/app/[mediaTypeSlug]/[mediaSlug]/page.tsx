@@ -3,10 +3,12 @@ import { getMediaDetailsBySlug, MediaPageDetails } from "@/modules/media";
 
 type Props = {
   params: Promise<{ mediaSlug: string }>;
+  searchParams: Promise<{ tab: string }>;
 };
 
-export default async function MediaPage({ params }: Props) {
+export default async function MediaPage({ params, searchParams }: Props) {
   const { mediaSlug } = await params;
+  const { tab } = await searchParams;
   const media = await getMediaDetailsBySlug(mediaSlug);
 
   if (!media) {
@@ -15,7 +17,7 @@ export default async function MediaPage({ params }: Props) {
 
   return (
     <div>
-      <MediaPageDetails {...media} />
+      <MediaPageDetails {...media} currentTab={tab} />
     </div>
   );
 }
