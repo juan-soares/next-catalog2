@@ -7,9 +7,11 @@ type Props = Pick<
   | "cover"
   | "title"
   | "releaseYear"
+  | "type"
   | "translatedTitle"
   | "themes"
   | "synopsis"
+  | "franchises"
   | "status"
 >;
 
@@ -19,8 +21,10 @@ export function MediaPageHero({
   title,
   translatedTitle,
   releaseYear,
+  type,
   themes,
   synopsis,
+  franchises,
   status,
 }: Props) {
   return (
@@ -41,10 +45,20 @@ export function MediaPageHero({
           <h1>
             {title} {translatedTitle && <span>{`(${translatedTitle})`}</span>}
           </h1>
-          <p>{releaseYear}</p>
+          <p>
+            {releaseYear} | {type.label}
+          </p>
           <div>
             {themes.map(({ label }) => (
               <span key={label}>{label}</span>
+            ))}
+          </div>
+          <div>
+            {franchises.map(({ logo, title }) => (
+              <span key={title}>
+                <Image src={logo.url} alt={logo.alt} width={60} height={60} />
+                <strong>{title}</strong>
+              </span>
             ))}
           </div>
           <p>{synopsis}</p>

@@ -1,17 +1,19 @@
-import { MediaDetails } from "@/modules/media/types";
-import { TabInfo } from "@/modules/media/components";
+import { MediaDetails, MediaTabCode } from "@/modules/media/types";
+import { MediaPageTabsNavbar } from "@/modules/media/components";
+import { MEDIA_TABS_REGISTRY } from "@/modules/media/consts";
 
 type Props = {
-  currentTab: string;
+  currentTab: MediaTabCode;
   media: MediaDetails;
 };
 
-export function MediaPageContent({ currentTab = "info", media }: Props) {
-  switch (currentTab) {
-    case "info":
-      return <TabInfo {...media} />;
+export function MediaPageContent({ currentTab, media }: Props) {
+  const CurrentTabContent = MEDIA_TABS_REGISTRY[currentTab].component;
 
-    default:
-      return <TabInfo {...media} />;
-  }
+  return (
+    <main>
+      <MediaPageTabsNavbar />
+      <CurrentTabContent {...media} />
+    </main>
+  );
 }

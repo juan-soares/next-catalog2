@@ -42,3 +42,7 @@ export const ADMIN_ATTRIBUTES_EDIT_PATH = ADMIN_ATTRIBUTES_PATH + "/editar";
 export const ADMIN_FRANCHISES_PATH = "/admin/franquias";
 export const ADMIN_FRANCHISES_CREATE_PATH =
   ADMIN_FRANCHISES_PATH + "/adicionar";
+
+  //
+
+  
