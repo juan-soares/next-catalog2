@@ -1,3 +1,4 @@
+import { MEDIA_GROUPS_REGISTRY } from "@/modules/media-group";
 import { MediaDetails } from "@/modules/media/types";
 import { string } from "zod";
 
@@ -28,9 +29,11 @@ export async function getMediaDetailsBySlug(
     seasons: [
       {
         id: "1234",
+        groupType: MEDIA_GROUPS_REGISTRY.season,
         number: 1,
         releaseYear: "2000",
         title: "-",
+        translatedTitle: "",
         language: "DUAL",
         resolution: "1080p",
 

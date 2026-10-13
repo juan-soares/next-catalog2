@@ -1,5 +1,5 @@
 import { MediaDetails } from "@/modules/media/types";
-import { SeasonsList } from "@/modules/media/components";
+import { MEDIA_GROUPS_REGISTRY, MediaGroupList } from "@/modules/media-group";
 
 export function TabSeasons({
   slug,
@@ -10,7 +10,12 @@ export function TabSeasons({
 
   return (
     <section>
-      <SeasonsList type={type} slug={slug} seasons={seasons} />
+      <MediaGroupList
+        mediaTypeSlugPath={type.path}
+        mediaSlug={slug}
+        mediaGroupTypeSlug={MEDIA_GROUPS_REGISTRY.season.slug}
+        mediaGroupItems={seasons}
+      />
     </section>
   );
 }
