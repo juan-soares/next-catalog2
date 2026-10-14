@@ -11,6 +11,7 @@ import {
   MediaTabGallery,
   MediaTabFiles,
   MediaTabFranchises,
+  MediaTabGameEditions,
 } from "@/modules/media-tab/components";
 
 export const MEDIA_TABS_REGISTRY = {
@@ -56,6 +57,13 @@ export const MEDIA_TABS_REGISTRY = {
     slug: "especiais",
     component: MediaTabSpecials,
   },
+  gameEdition: {
+    label: "Edições",
+    code: "gameEdition",
+    slug: "expansoes",
+    component: MediaTabGameEditions,
+  },
+
   gallery: {
     label: "Galeria",
     code: "gallery",

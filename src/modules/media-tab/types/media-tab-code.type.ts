@@ -4,6 +4,7 @@ export type MediaTabCode =
   | "ova"
   | "special"
   | "volume"
+  | "gameEdition"
   | "album"
   | "concert"
   | "gallery"

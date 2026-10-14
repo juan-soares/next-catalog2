@@ -4,7 +4,7 @@ import { MediaDetails } from "@/modules/media/types";
 
 type Props = Pick<MediaDetails, "gameEdition">;
 
-export function MediaTabSequel({ gameEdition }: Props) {
+export function MediaTabGameEditions({ gameEdition }: Props) {
   if (!gameEdition) return null;
 
   if (gameEdition.base)
@@ -46,7 +46,7 @@ export function MediaTabSequel({ gameEdition }: Props) {
       </article>
 
       <article>
-        <h2>Expansões</h2>
+        <h2>DLCs</h2>
 
         <ul>
           {gameEdition.dlcs.map(({ path, cover, title, releaseYear }) => (
