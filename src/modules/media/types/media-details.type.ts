@@ -30,9 +30,35 @@ export type MediaDetails = {
   ovas?: MediaGroup[];
   specials?: MediaGroup[];
 
-  gallery: { id: string; url: string; alt: string }[];
+  sequel: {
+    previous?: {
+      title: string;
+      releaseYear: number;
+      path: string;
+      cover: { url: string; alt: string };
+    };
+    next?: {
+      title: string;
+      releaseYear: number;
+      path: string;
+      cover: { url: string; alt: string };
+    };
+  };
 
-  franchises: { title: string; logo: { url: string; alt: string } }[];
+  gallery: { fileName: string; url: string; alt: string }[];
+  files: {
+    label: string;
+    fileName: string;
+    fileType: string;
+    fileSize: string;
+  }[];
+
+  franchises: {
+    title: string;
+    slug: string;
+    path: string;
+    logo: { url: string; alt: string };
+  }[];
 
   status: {
     acquired: boolean;

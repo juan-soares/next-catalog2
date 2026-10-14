@@ -14,8 +14,8 @@ export function MediaTabGallery({ gallery }: Props) {
   return (
     <section>
       <ul>
-        {gallery.map(({ id, url, alt }) => (
-          <li id={id}>
+        {gallery.map(({ fileName, url, alt }) => (
+          <li id={fileName}>
             <Image src={url} alt={alt} />
           </li>
         ))}

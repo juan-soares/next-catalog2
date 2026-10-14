@@ -5,6 +5,9 @@ import {
   MediaTabOvas,
   MediaTabSpecials,
   MediaTabGallery,
+  MediaTabFiles,
+  MediaTabFranchises,
+  MediaTabSequel,
 } from "@/modules/media-tab/components";
 
 export const MEDIA_TABS_REGISTRY = {
@@ -37,5 +40,23 @@ export const MEDIA_TABS_REGISTRY = {
     code: "gallery",
     slug: "galeria",
     component: MediaTabGallery,
+  },
+  files: {
+    label: "Arquivos",
+    code: "files",
+    slug: "arquivos",
+    component: MediaTabFiles,
+  },
+  franchises: {
+    label: "Franquias",
+    code: "franchises",
+    slug: "franquias",
+    component: MediaTabFranchises,
+  },
+  sequel: {
+    label: "Sequência",
+    code: "sequel",
+    slug: "sequencia",
+    component: MediaTabSequel,
   },
 } satisfies Record<MediaTabCode, MediaTab>;

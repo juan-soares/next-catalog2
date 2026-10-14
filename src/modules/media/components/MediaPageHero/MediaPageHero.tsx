@@ -63,8 +63,8 @@ export function MediaPageHero({
           </div>
           <p>{synopsis}</p>
           <div>
-            <button>{status.acquired ? "Adquirido" : "Adquirir"}</button>
-            <button>{status.consumed ? "Consumido" : "Consumir"}</button>
+            <span>{status.acquired ? "Adquirido" : "Adquirir"}</span>
+            <span>{status.consumed ? "Consumido" : "Consumir"}</span>
           </div>
         </div>
       </div>

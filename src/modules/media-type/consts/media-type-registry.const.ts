@@ -6,6 +6,15 @@ export const MEDIA_TYPE_REPOSITORY = {
     label: "Animes",
     slug: "animes",
     path: "/animes",
-    tabs: ["info", "season", "ova", "special", "gallery"],
+    tabs: [
+      "info",
+      "season",
+      "ova",
+      "special",
+      "gallery",
+      "files",
+      "sequel",
+      "franchises",
+    ],
   },
 } satisfies Record<MediaTypeCode, MediaTypeDetails>;

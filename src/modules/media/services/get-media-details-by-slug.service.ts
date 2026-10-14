@@ -115,15 +115,35 @@ export async function getMediaDetailsBySlug(
 
     gallery: [
       {
-        id: "123",
-        url: "/assets/franchises/naruto-franchise-aHaH-logo.png",
+        fileName: "123",
+        url: "/assets/medias/naruto-franchise-aHaH-gallery-ahaH.png",
         alt: "Imagem de naruto.",
       },
     ],
 
+    files: [
+      {
+        label: "Manual",
+        fileName: "adase",
+        fileSize: "100mb",
+        fileType: ".pdf",
+      },
+    ],
+
+    sequel: {
+      next: {
+        title: "Naruto Shippuden",
+        releaseYear: 2021,
+        path: "/animes/naruto-shippuden-2021",
+        cover: { url: "/assets/naruto.png", alt: "capa" },
+      },
+    },
+
     franchises: [
       {
         title: "Naruto",
+        path: "/franquias/naruto-2020",
+        slug: "naruto-2020",
         logo: {
           url: "/assets/franchises/naruto-franchise-aHaH-logo.png",
           alt: "Logo da franquia Naruto",
@@ -131,6 +151,8 @@ export async function getMediaDetailsBySlug(
       },
       {
         title: "Naruto Anime",
+        path: "/franquias/naruto-anime-2020",
+        slug: "naruto-anime-2020",
         logo: {
           url: "/assets/naruto-anime-franchise-aHaH-logo.png",
           alt: "Logo da franquia Naruto Anime",

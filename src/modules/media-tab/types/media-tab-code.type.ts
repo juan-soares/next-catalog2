@@ -1,1 +1,9 @@
-export type MediaTabCode = "info" | "season" | "ova" | "special" | "gallery";
+export type MediaTabCode =
+  | "info"
+  | "season"
+  | "ova"
+  | "special"
+  | "gallery"
+  | "files"
+  | "sequel"
+  | "franchises";
