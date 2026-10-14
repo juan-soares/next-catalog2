@@ -30,6 +30,8 @@ export type MediaDetails = {
   ovas?: MediaGroup[];
   specials?: MediaGroup[];
 
+  gallery: { id: string; url: string; alt: string }[];
+
   franchises: { title: string; logo: { url: string; alt: string } }[];
 
   status: {

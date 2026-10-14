@@ -4,6 +4,7 @@ import {
   MediaTabSeasons,
   MediaTabOvas,
   MediaTabSpecials,
+  MediaTabGallery,
 } from "@/modules/media-tab/components";
 
 export const MEDIA_TABS_REGISTRY = {
@@ -30,5 +31,11 @@ export const MEDIA_TABS_REGISTRY = {
     code: "special",
     slug: "especiais",
     component: MediaTabSpecials,
+  },
+  gallery: {
+    label: "Galeria",
+    code: "gallery",
+    slug: "galeria",
+    component: MediaTabGallery,
   },
 } satisfies Record<MediaTabCode, MediaTab>;

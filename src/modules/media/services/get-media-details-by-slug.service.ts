@@ -113,6 +113,14 @@ export async function getMediaDetailsBySlug(
       },
     ],
 
+    gallery: [
+      {
+        id: "123",
+        url: "/assets/franchises/naruto-franchise-aHaH-logo.png",
+        alt: "Imagem de naruto.",
+      },
+    ],
+
     franchises: [
       {
         title: "Naruto",
