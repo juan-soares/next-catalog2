@@ -5,6 +5,7 @@ import {
   MediaPageHero,
   getValidMediaTabFromSearchParams,
 } from "@/modules/media";
+import { getTabsByMediaType } from "@/modules/media-tab";
 
 type Props = {
   params: Promise<{ mediaSlug: string }>;
@@ -20,11 +21,16 @@ export default async function MediaPage({ params, searchParams }: Props) {
   }
 
   const currentTab = getValidMediaTabFromSearchParams(tab);
+  const mediaTypeTabs = getTabsByMediaType(media.type.code);
 
   return (
     <div>
       <MediaPageHero {...media} />
-      <MediaPageContent currentTab={currentTab} media={media} />
+      <MediaPageContent
+        currentTab={currentTab}
+        mediaTypeTabs={mediaTypeTabs}
+        media={media}
+      />
     </div>
   );
 }

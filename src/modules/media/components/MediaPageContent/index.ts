@@ -1,5 +1,3 @@
 export * from "./MediaPageContent";
 
-export * from "./TabInfo";
-export * from "./TabSeasons";
-export * from "./TabOvas";
+export * from "../../../media-tab/components/MediaTabInfo";

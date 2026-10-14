@@ -1,8 +1,8 @@
-import { MediaDetails } from "@/modules/media/types";
+import { MediaTabDetails } from "@/modules/media-tab/types";
 
-type Props = Pick<MediaDetails, "title" | "translatedTitle" | "releaseYear">;
+type Props = Pick<MediaTabDetails, "title" | "translatedTitle" | "releaseYear">;
 
-export function TabInfo({ title, translatedTitle, releaseYear }: Props) {
+export function MediaTabInfo({ title, translatedTitle, releaseYear }: Props) {
   return (
     <section>
       <dl>

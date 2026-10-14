@@ -1,9 +1,10 @@
-import { MediaTypeCode } from "@/modules/media-type/types";
+import { MediaTabCode } from "@/modules/media-tab";
+import { MediaTypeCode } from "@/modules/media-type";
 
 export type MediaTypeDetails = {
   code: MediaTypeCode;
-  groupType: "video" | "season" | "game" | "music" | "reading";
   label: string;
   slug: string;
   path: string;
+  tabs: MediaTabCode[];
 };

@@ -3,9 +3,9 @@ import { MediaTypeCode, MediaTypeDetails } from "@/modules/media-type/types";
 export const MEDIA_TYPE_REPOSITORY = {
   anime: {
     code: "anime",
-    groupType: "season",
     label: "Animes",
-    slug:"animes",
+    slug: "animes",
     path: "/animes",
+    tabs: ["info", "season"],
   },
 } satisfies Record<MediaTypeCode, MediaTypeDetails>;

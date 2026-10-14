@@ -1,9 +1,8 @@
-import { MediaGroup, MediaGroupCode } from "@/modules/media-group";
 import { MediaTypeCode } from "@/modules/media-type";
 
 export type Season = {
   id: string;
-  groupType: MediaGroup;
+  groupType: string;
   number: number;
   releaseYear: string;
   title: string;
@@ -30,7 +29,7 @@ export type Season = {
 
 export type OVA = {
   id: string;
-  groupType: MediaGroup;
+  groupType: string;
   number: number;
   releaseYear: string;
   title: string;

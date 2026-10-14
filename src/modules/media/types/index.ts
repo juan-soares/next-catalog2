@@ -1,4 +1,4 @@
 export type * from "./media-details.type";
 
-export type * from "./media-tab-code.type";
-export type * from "./media-tab-details.type";
+export type * from "../../media-type/types/media-type-tab-code.type";
+export type * from "../../media-type/types/media-type-tab-details.type";

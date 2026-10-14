@@ -1,2 +1,2 @@
-export * from "./media-type-repository.const";
-export * from "./media-types-list.const";
+export * from "./media-type-registry.const";
+export * from "./media-type-list.const";

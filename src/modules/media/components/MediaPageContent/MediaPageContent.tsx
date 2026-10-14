@@ -1,19 +1,32 @@
-import { MediaDetails, MediaTabCode } from "@/modules/media/types";
-import { MediaPageTabsNavbar } from "@/modules/media/components";
-import { MEDIA_TABS_REGISTRY } from "@/modules/media/consts";
+import {
+  MEDIA_TABS_REGISTRY,
+  MediaTab,
+  MediaTabCode,
+  MediaTabsNavbar,
+} from "@/modules/media-tab";
+import { MediaDetails } from "@/modules/media/types";
 
 type Props = {
   currentTab: MediaTabCode;
+  mediaTypeTabs: MediaTab[];
   media: MediaDetails;
 };
 
-export function MediaPageContent({ currentTab, media }: Props) {
-  const CurrentTabContent = MEDIA_TABS_REGISTRY[currentTab].component;
+export function MediaPageContent({ currentTab, mediaTypeTabs, media }: Props) {
+  const tabInfo = MEDIA_TABS_REGISTRY[currentTab];
+  const CurrentTab = tabInfo.component;
 
   return (
     <main>
-      <MediaPageTabsNavbar />
-      <CurrentTabContent {...media} />
+      <MediaTabsNavbar tabs={mediaTypeTabs} />
+      <CurrentTab
+        title={media.title}
+        translatedTitle={media.translatedTitle}
+        releaseYear={media.translatedTitle}
+        mediaSlug={media.slug}
+        mediaTypePath={media.type.path}
+        groupType={tabInfo.code}
+      />
     </main>
   );
 }
