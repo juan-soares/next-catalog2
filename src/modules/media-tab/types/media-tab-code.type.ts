@@ -1,1 +1,1 @@
-export type MediaTabCode = "info" | "season";
+export type MediaTabCode = "info" | "season" | "ova" | "special";

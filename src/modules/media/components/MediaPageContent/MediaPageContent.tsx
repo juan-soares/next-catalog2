@@ -19,14 +19,7 @@ export function MediaPageContent({ currentTab, mediaTypeTabs, media }: Props) {
   return (
     <main>
       <MediaTabsNavbar tabs={mediaTypeTabs} />
-      <CurrentTab
-        title={media.title}
-        translatedTitle={media.translatedTitle}
-        releaseYear={media.translatedTitle}
-        mediaSlug={media.slug}
-        mediaTypePath={media.type.path}
-        groupType={tabInfo.code}
-      />
+      <CurrentTab {...media} />
     </main>
   );
 }

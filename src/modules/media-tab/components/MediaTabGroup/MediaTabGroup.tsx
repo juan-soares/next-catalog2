@@ -1,26 +1,73 @@
 import Link from "next/link";
-import { MediaTabDetails } from "@/modules/media-tab/types";
+import { MediaGroup } from "@/modules/media-group";
+import Image from "next/image";
+import { MediaUnitList } from "@/modules/media-unit";
 
-type Props = Pick<MediaTabDetails, "mediaTypePath" | "mediaSlug" | "groupType">;
+type Props = {
+  group: MediaGroup[];
+  mediaTypePath: string;
+  groupTypeSlug: string;
+  mediaSlug: string;
+};
 
-export function MediaTabGroup({ mediaTypePath, mediaSlug, groupType }: Props) {
-  const groups = [];
-
-  if (groups.length === 0)
+export function MediaTabGroup({
+  group,
+  mediaTypePath,
+  groupTypeSlug,
+  mediaSlug,
+}: Props) {
+  const createPath = `${mediaTypePath}/${mediaSlug}/adicionar/${groupTypeSlug}`;
+  if (group.length === 0)
     return (
-      <section>
-        Sem registros.{" "}
-        <Link href={`${mediaTypePath}/${mediaSlug}/adicionar/`}>
-          Adicionar?
-        </Link>
-      </section>
+      <p>
+        Sem registros. <Link href={createPath}>Adicionar?</Link>
+      </p>
     );
 
   return (
     <ul>
-      {groups.map((group) => (
-        <li key={group.id}>
-          <article>{group.title}</article>
+      {group.map((groupItem) => (
+        <li key={groupItem.id}>
+          <article>
+            <aside>
+              <video controls loop muted playsInline preload="metadata">
+                <source
+                  src={groupItem.trailer.url}
+                  type={groupItem.trailer.fileType}
+                />
+                Seu navegador não suporta a reprodução de vídeos.
+              </video>
+
+              <Image
+                src={groupItem.cover.url}
+                alt={groupItem.cover.alt}
+                width={60}
+                height={60}
+              />
+            </aside>
+
+            <main>
+              <header>{`${groupItem.groupType.label} ${groupItem.number} • ${groupItem.releaseYear} • [${groupItem.resolution}] (${groupItem.language})`}</header>
+
+              <h2>
+                {groupItem.title}{" "}
+                {groupItem.translatedTitle && (
+                  <span>{`(${groupItem.translatedTitle})`}</span>
+                )}
+              </h2>
+
+              <p>{groupItem.synopsis}</p>
+
+              <button>Detalhes</button>
+            </main>
+
+            <div>
+              <MediaUnitList
+                createPath={`${createPath}/${groupItem.id}`}
+                mediaUnits={groupItem.units}
+              />
+            </div>
+          </article>
         </li>
       ))}
     </ul>

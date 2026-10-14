@@ -1,6 +1,10 @@
 import { MediaTab, MediaTabCode } from "@/modules/media-tab/types";
-import { MediaTabInfo } from "@/modules/media-tab/components";
-import { MediaTabGroup } from "../components/MediaTabGroup/MediaTabGroup";
+import {
+  MediaTabInfo,
+  MediaTabSeasons,
+  MediaTabOvas,
+  MediaTabSpecials,
+} from "@/modules/media-tab/components";
 
 export const MEDIA_TABS_REGISTRY = {
   info: {
@@ -13,6 +17,18 @@ export const MEDIA_TABS_REGISTRY = {
     label: "Temporadas",
     code: "season",
     slug: "temporadas",
-    component: MediaTabGroup,
+    component: MediaTabSeasons,
+  },
+  ova: {
+    label: "OVAS",
+    code: "ova",
+    slug: "ovas",
+    component: MediaTabOvas,
+  },
+  special: {
+    label: "Especiais",
+    code: "special",
+    slug: "especiais",
+    component: MediaTabSpecials,
   },
 } satisfies Record<MediaTabCode, MediaTab>;

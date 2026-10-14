@@ -27,9 +27,9 @@ export async function getMediaDetailsBySlug(
     seasons: [
       {
         id: "1234",
-        groupType: "season",
+        groupType: { label: "Temporada" },
         number: 1,
-        releaseYear: "2000",
+        releaseYear: 2000,
         title: "-",
         translatedTitle: "",
         language: "DUAL",
@@ -43,7 +43,7 @@ export async function getMediaDetailsBySlug(
           acquired: false,
           consumed: false,
         },
-        episodes: [
+        units: [
           {
             id: "123",
             number: 1,
@@ -54,6 +54,62 @@ export async function getMediaDetailsBySlug(
             },
           },
         ],
+      },
+    ],
+
+    ovas: [
+      {
+        id: "1234",
+        groupType: { label: "OVA" },
+        number: 1,
+        releaseYear: 2000,
+        title: "-",
+        translatedTitle: "",
+        language: "DUAL",
+        resolution: "1080p",
+
+        cover: { url: "/assets/", alt: "Capa do OVA de Naruto." },
+        trailer: { url: "/assets/", fileType: "video/mp4" },
+        synopsis:
+          " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime asperiores, quis dolore quas excepturi eos, amet dicta dolorum consequuntur veniam tempore recusandae laudantium, cum deserunt sequi pariatur. Doloribus, ab assumenda!",
+        status: {
+          acquired: false,
+          consumed: false,
+        },
+        units: [
+          {
+            id: "123",
+            number: 1,
+            title: "Era uma vez",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+        ],
+      },
+    ],
+
+    specials: [
+      {
+        id: "1234",
+        groupType: { label: "OVA" },
+        number: 1,
+        releaseYear: 2000,
+        title: "-",
+        translatedTitle: "",
+        language: "DUAL",
+        resolution: "1080p",
+
+        cover: { url: "/assets/", alt: "Capa do OVA de Naruto." },
+        trailer: { url: "/assets/", fileType: "video/mp4" },
+        synopsis:
+          " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime asperiores, quis dolore quas excepturi eos, amet dicta dolorum consequuntur veniam tempore recusandae laudantium, cum deserunt sequi pariatur. Doloribus, ab assumenda!",
+        status: {
+          acquired: false,
+          consumed: false,
+        },
+        units: [],
       },
     ],
 

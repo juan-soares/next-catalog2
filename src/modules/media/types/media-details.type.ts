@@ -1,58 +1,5 @@
+import { MediaGroup } from "@/modules/media-group";
 import { MediaTypeCode } from "@/modules/media-type";
-
-export type Season = {
-  id: string;
-  groupType: string;
-  number: number;
-  releaseYear: string;
-  title: string;
-  translatedTitle: string;
-  language: string;
-  resolution: string;
-  cover: {
-    url: string;
-    alt: string;
-  };
-  trailer: {
-    url: string;
-    fileType: string;
-  };
-  synopsis: string;
-  status: { acquired: boolean; consumed: boolean };
-  episodes: {
-    id: string;
-    number: number;
-    title: string;
-    status: { acquired: boolean; consumed: boolean };
-  }[];
-};
-
-export type OVA = {
-  id: string;
-  groupType: string;
-  number: number;
-  releaseYear: string;
-  title: string;
-  translatedTitle: string;
-  language: string;
-  resolution: string;
-  cover: {
-    url: string;
-    alt: string;
-  };
-  trailer: {
-    url: string;
-    fileType: string;
-  };
-  synopsis: string;
-  status: { acquired: boolean; consumed: boolean };
-  episodes: {
-    id: string;
-    number: number;
-    title: string;
-    status: { acquired: boolean; consumed: boolean };
-  }[];
-};
 
 export type MediaDetails = {
   slug: string;
@@ -79,8 +26,9 @@ export type MediaDetails = {
     fileType: string;
   };
 
-  seasons?: Season[];
-  ovas?: OVA[];
+  seasons?: MediaGroup[];
+  ovas?: MediaGroup[];
+  specials?: MediaGroup[];
 
   franchises: { title: string; logo: { url: string; alt: string } }[];
 
