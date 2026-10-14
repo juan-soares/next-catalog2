@@ -661,4 +661,168 @@ export const MEDIAS_MOCK: MediaDetails[] = [
       consumed: false,
     },
   },
+
+  {
+    slug: "the-sims-4-2014--video-game-aHaH",
+
+    title: "The Sims 4",
+    translatedTitle: "The Sims 4",
+    releaseYear: "2014",
+
+    type: {
+      label: "Jogos eletrônicos",
+      path: "/jogos-eletronicos",
+      code: "video-game",
+    },
+
+    synopsis:
+      "The Sims 4 é um jogo de simulação de vida no qual o jogador cria personagens, constrói casas e acompanha histórias em um mundo virtual. É possível personalizar a aparência, a personalidade, os relacionamentos, a carreira e a rotina dos Sims, além de ampliar a experiência com conteúdos adicionais.",
+
+    themes: [
+      { label: "Simulação" },
+      { label: "Vida virtual" },
+      { label: "Construção" },
+      { label: "Criatividade" },
+    ],
+
+    cover: {
+      url: "/assets/medias/the-sims-4-2014--video-game-aHaH-capa.jpg",
+      alt: "Capa do jogo The Sims 4",
+    },
+
+    trailer: {
+      url: "/assets/medias/the-sims-4-2014--video-game-aHaH-trailer.mp4",
+      fileType: "video/mp4",
+    },
+
+    gameDetails: {
+      platforms: ["PC", "macOS", "PlayStation 4", "Xbox One"],
+
+      genres: ["Simulação", "Sandbox", "Casual"],
+
+      gameplay:
+        "Crie e personalize Sims, construa residências, desenvolva relacionamentos, explore carreiras e controle diferentes aspectos da vida cotidiana dos personagens.",
+
+      modes: ["Um jogador"],
+
+      players: {
+        min: 1,
+        max: 1,
+      },
+    },
+
+    gameEdition: {
+      base: null,
+
+      dlcs: [
+        {
+          title: "The Sims 4 Vida de Gato e Cachorro",
+          cover: {
+            url: "/assets/medias/the-sims-4-cats-dogs-capa.jpg",
+            alt: "Capa de The Sims 4 Gatos e Cães",
+          },
+          releaseYear: 2017,
+          path: "/jogos-eletronicos/the-sims-4-gatos-e-caes-2017",
+        },
+        {
+          title: "The Sims 4 Decoração dos Sonhos",
+          cover: {
+            url: "/assets/medias/the-sims-4-dream-home-decorator-capa.jpg",
+            alt: "Capa de The Sims 4 Decoração dos Sonhos",
+          },
+          releaseYear: 2021,
+          path: "/jogos-eletronicos/the-sims-4-decoracao-dos-sonhos-2021",
+        },
+      ],
+
+      expansions: [
+        {
+          title: "The Sims 4 Ao Trabalho",
+          cover: {
+            url: "/assets/medias/the-sims-4-get-to-work-capa.jpg",
+            alt: "Capa de The Sims 4 Ao Trabalho",
+          },
+          releaseYear: 2015,
+          path: "/jogos-eletronicos/the-sims-4-ao-trabalho-2015",
+        },
+        {
+          title: "The Sims 4 Junte-se à Galera",
+          cover: {
+            url: "/assets/medias/the-sims-4-get-together-capa.jpg",
+            alt: "Capa de The Sims 4 Junte-se à Galera",
+          },
+          releaseYear: 2015,
+          path: "/jogos-eletronicos/the-sims-4-junte-se-a-galera-2015",
+        },
+        {
+          title: "The Sims 4 Vida na Cidade",
+          cover: {
+            url: "/assets/medias/the-sims-4-city-living-capa.jpg",
+            alt: "Capa de The Sims 4 Vida na Cidade",
+          },
+          releaseYear: 2016,
+          path: "/jogos-eletronicos/the-sims-4-vida-na-cidade-2016",
+        },
+        {
+          title: "The Sims 4 Estações",
+          cover: {
+            url: "/assets/medias/the-sims-4-seasons-capa.jpg",
+            alt: "Capa de The Sims 4 Estações",
+          },
+          releaseYear: 2018,
+          path: "/jogos-eletronicos/the-sims-4-estacoes-2018",
+        },
+        {
+          title: "The Sims 4 Vida Campestre",
+          cover: {
+            url: "/assets/medias/the-sims-4-cottage-living-capa.jpg",
+            alt: "Capa de The Sims 4 Vida Campestre",
+          },
+          releaseYear: 2021,
+          path: "/jogos-eletronicos/the-sims-4-vida-campestre-2021",
+        },
+      ],
+    },
+
+    sequel: {},
+
+    gallery: [
+      {
+        fileName: "the-sims-4-gallery-1",
+        url: "/assets/medias/the-sims-4-gallery-1.png",
+        alt: "Personagens de The Sims 4 em uma residência.",
+      },
+      {
+        fileName: "the-sims-4-gallery-2",
+        url: "/assets/medias/the-sims-4-gallery-2.png",
+        alt: "Construção e personalização de uma casa em The Sims 4.",
+      },
+    ],
+
+    files: [
+      {
+        label: "Manual do jogo",
+        fileName: "the-sims-4-manual",
+        fileType: ".pdf",
+        fileSize: "10mb",
+      },
+    ],
+
+    franchises: [
+      {
+        title: "The Sims",
+        slug: "the-sims",
+        path: "/franquias/the-sims",
+        logo: {
+          url: "/assets/franchises/the-sims-logo.png",
+          alt: "Logo da franquia The Sims",
+        },
+      },
+    ],
+
+    status: {
+      acquired: false,
+      consumed: false,
+    },
+  },
 ];

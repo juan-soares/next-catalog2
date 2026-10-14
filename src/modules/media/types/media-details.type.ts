@@ -26,6 +26,38 @@ export type MediaDetails = {
     fileType: string;
   };
 
+  gameDetails?: {
+    platforms: string[];
+    genres: string[];
+    gameplay: string;
+    modes: string[];
+    players: {
+      min: number;
+      max: number;
+    };
+  };
+
+  gameEdition?: {
+    base: {
+      title: string;
+      cover: { url: string; alt: string };
+      releaseYear: number;
+      path: string;
+    } | null;
+    dlcs: {
+      title: string;
+      cover: { url: string; alt: string };
+      releaseYear: number;
+      path: string;
+    }[];
+    expansions: {
+      title: string;
+      cover: { url: string; alt: string };
+      releaseYear: number;
+      path: string;
+    }[];
+  };
+
   seasons?: MediaGroup[];
   ovas?: MediaGroup[];
   specials?: MediaGroup[];

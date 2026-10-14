@@ -4,6 +4,8 @@ export type MediaTypeCode =
   | "cartoon"
   | "animated-movie"
   | "live-action-movie"
+  | "video-game"
+  | "board-game"
   | "comic-book"
   | "book"
   | "manga"

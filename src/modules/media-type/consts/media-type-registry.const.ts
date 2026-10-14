@@ -61,6 +61,20 @@ export const MEDIA_TYPE_REPOSITORY = {
     path: "/filmes-live-action",
     tabs: ["info", "gallery", "files", "sequel", "franchises"],
   },
+  "video-game": {
+    code: "video-game",
+    label: "Jogos Eletrônicos",
+    slug: "jogos-eletronicos",
+    path: "/jogos-eletronicos",
+    tabs: ["info", "gallery", "files", "sequel", "franchises"],
+  },
+  "board-game": {
+    code: "board-game",
+    label: "Jogos de Tabuleiro",
+    slug: "jogos-de-tabuleiro",
+    path: "/jogos-de-tabuleiro",
+    tabs: ["info", "gallery", "files", "sequel", "franchises"],
+  },
   "comic-book": {
     code: "comic-book",
     label: "HQs",

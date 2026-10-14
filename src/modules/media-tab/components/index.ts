@@ -8,6 +8,7 @@ export * from "./MediaTabOvas";
 export * from "./MediaTabSpecials";
 
 export * from "./MediaTabVolumes";
+export * from "./MediaTabGameEditions";
 export * from "./MediaTabAlbums";
 export * from "./MediaTabConcerts";
 
