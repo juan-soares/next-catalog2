@@ -3,6 +3,7 @@ import { MediaDetails } from "../types";
 export const MEDIAS_MOCK: MediaDetails[] = [
   {
     slug: "naruto-2020--anime-aHaH",
+    path: "/animes/naruto-2020--anime-aHaH",
     type: { label: "Animes", path: "/animes", code: "anime" },
 
     title: "Naruto",
@@ -12,6 +13,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
       " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime asperiores, quis dolore quas excepturi eos, amet dicta dolorum consequuntur veniam tempore recusandae laudantium, cum deserunt sequi pariatur. Doloribus, ab assumenda!",
 
     themes: [{ label: "Ninja" }],
+    characters: [],
 
     cover: {
       url: "/assets/medias/naruto-2020--anime-aHaH-capa.jpg",
@@ -166,6 +168,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
 
   {
     slug: "interestelar-2014--movie-aHaH",
+    path: "/filmes-live-action/interestelar-2014--movie-aHaH",
     type: { label: "Filmes", path: "/filmes", code: "live-action-movie" },
 
     title: "Interestelar",
@@ -180,6 +183,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
       { label: "Viagem no tempo" },
       { label: "Drama" },
     ],
+    characters: [],
 
     cover: {
       url: "/assets/medias/interestelar-2014--movie-aHaH-capa.jpg",
@@ -235,6 +239,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
 
   {
     slug: "homem-aranha-2020--comic-book-aHaH",
+    path: "/hqs/homem-aranha-2020--comic-book-aHaH",
     type: {
       label: "HQs",
       path: "/hqs",
@@ -253,6 +258,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
       { label: "Aventura" },
       { label: "Ficção científica" },
     ],
+    characters: [],
 
     cover: {
       url: "/assets/medias/homem-aranha-2020--comic-book-aHaH-capa.jpg",
@@ -410,6 +416,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
 
   {
     slug: "anitta-2013--music-aHaH",
+    path: "/musicas/anitta-2013--music-aHaH",
     type: {
       label: "Músicas",
       path: "/musicas",
@@ -428,6 +435,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
       { label: "Reggaeton" },
       { label: "Música brasileira" },
     ],
+    characters: [],
 
     cover: {
       url: "/assets/medias/anitta-2013--music-aHaH-capa.jpg",
@@ -664,7 +672,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
 
   {
     slug: "the-sims-4-2014--video-game-aHaH",
-
+    path: "/jogos-eletronicos/the-sims-4-2014--video-game-aHaH",
     title: "The Sims 4",
     translatedTitle: "The Sims 4",
     releaseYear: "2014",
@@ -684,6 +692,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
       { label: "Construção" },
       { label: "Criatividade" },
     ],
+    characters: [],
 
     cover: {
       url: "/assets/medias/the-sims-4-2014--video-game-aHaH-capa.jpg",

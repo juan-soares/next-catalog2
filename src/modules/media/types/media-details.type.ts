@@ -1,8 +1,10 @@
+import { MediaCharacter } from "@/modules/media-character";
 import { MediaGroup } from "@/modules/media-group";
 import { MediaTypeCode } from "@/modules/media-type";
 
 export type MediaDetails = {
   slug: string;
+  path: string;
 
   title: string;
   translatedTitle: string;
@@ -25,6 +27,8 @@ export type MediaDetails = {
     url: string;
     fileType: string;
   };
+
+  characters: MediaCharacter[];
 
   gameDetails?: {
     platforms: string[];

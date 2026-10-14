@@ -1,6 +1,7 @@
 import { MediaTab, MediaTabCode } from "@/modules/media-tab/types";
 import {
   MediaTabInfo,
+  MediaTabCharacters,
   MediaTabSeasons,
   MediaTabOvas,
   MediaTabSequel,
@@ -20,6 +21,12 @@ export const MEDIA_TABS_REGISTRY = {
     code: "info",
     slug: "info",
     component: MediaTabInfo,
+  },
+  character: {
+    label: "Personagens",
+    code: "character",
+    slug: "personagens",
+    component: MediaTabCharacters,
   },
   season: {
     label: "Temporadas",

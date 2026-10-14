@@ -3,9 +3,11 @@ import {
   getMediaDetailsBySlug,
   MediaPageContent,
   MediaPageHero,
-  getValidMediaTabFromSearchParams,
 } from "@/modules/media";
-import { getTabsByMediaType } from "@/modules/media-tab";
+import {
+  getTabsByMediaType,
+  getValidMediaTabFromSearchParams,
+} from "@/modules/media-tab";
 
 type Props = {
   params: Promise<{ mediaSlug: string }>;

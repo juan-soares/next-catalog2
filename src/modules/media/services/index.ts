@@ -1,5 +1,5 @@
 import "server-only";
 
-export * from "./get-media-details-by-slug.service";
+export * from "./get-medias-details-by-type.service";
 
-export * from "../../media-tab/services/get-valid-media-tab-from-search-params";
+export * from "./get-media-details-by-slug.service";

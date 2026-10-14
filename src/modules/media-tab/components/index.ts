@@ -2,6 +2,7 @@ export * from "./MediaTabsNavbar";
 export * from "./MediaTabGroup";
 
 export * from "./MediaTabInfo";
+export * from "./MediaTabCharacters";
 
 export * from "./MediaTabSeasons";
 export * from "./MediaTabOvas";

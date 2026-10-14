@@ -1,5 +1,6 @@
 export type MediaTabCode =
   | "info"
+  | "character"
   | "season"
   | "ova"
   | "special"
