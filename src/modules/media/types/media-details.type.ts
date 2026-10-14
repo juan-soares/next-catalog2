@@ -30,6 +30,10 @@ export type MediaDetails = {
   ovas?: MediaGroup[];
   specials?: MediaGroup[];
 
+  volumes?: MediaGroup[];
+  albums?: MediaGroup[];
+  concerts?: MediaGroup[];
+
   sequel: {
     previous?: {
       title: string;

@@ -3,11 +3,14 @@ import {
   MediaTabInfo,
   MediaTabSeasons,
   MediaTabOvas,
+  MediaTabSequel,
+  MediaTabVolumes,
+  MediaTabAlbums,
+  MediaTabConcerts,
   MediaTabSpecials,
   MediaTabGallery,
   MediaTabFiles,
   MediaTabFranchises,
-  MediaTabSequel,
 } from "@/modules/media-tab/components";
 
 export const MEDIA_TABS_REGISTRY = {
@@ -28,6 +31,24 @@ export const MEDIA_TABS_REGISTRY = {
     code: "ova",
     slug: "ovas",
     component: MediaTabOvas,
+  },
+  volume: {
+    label: "Volumes",
+    code: "volume",
+    slug: "volumes",
+    component: MediaTabVolumes,
+  },
+  album: {
+    label: "Álbuns",
+    code: "album",
+    slug: "albuns",
+    component: MediaTabAlbums,
+  },
+  concert: {
+    label: "Shows",
+    code: "concert",
+    slug: "shows",
+    component: MediaTabConcerts,
   },
   special: {
     label: "Especiais",

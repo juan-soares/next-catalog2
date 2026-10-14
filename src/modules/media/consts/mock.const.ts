@@ -1,0 +1,664 @@
+import { MediaDetails } from "../types";
+
+export const MEDIAS_MOCK: MediaDetails[] = [
+  {
+    slug: "naruto-2020--anime-aHaH",
+    type: { label: "Animes", path: "/animes", code: "anime" },
+
+    title: "Naruto",
+    translatedTitle: "asasa",
+    releaseYear: "2020",
+    synopsis:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime asperiores, quis dolore quas excepturi eos, amet dicta dolorum consequuntur veniam tempore recusandae laudantium, cum deserunt sequi pariatur. Doloribus, ab assumenda!",
+
+    themes: [{ label: "Ninja" }],
+
+    cover: {
+      url: "/assets/medias/naruto-2020--anime-aHaH-capa.jpg",
+      alt: "Capa do título Naruto",
+    },
+    trailer: {
+      url: "/assets/medias/naruto-2020--anime-aHaH-trailer.mp4",
+      fileType: "video/mp4",
+    },
+
+    seasons: [
+      {
+        id: "1234",
+        groupType: { label: "Temporada" },
+        number: 1,
+        releaseYear: 2000,
+        title: "-",
+        translatedTitle: "",
+        language: "DUAL",
+        resolution: "1080p",
+
+        cover: { url: "/assets/", alt: "Capa da temporada de Naruto." },
+        trailer: { url: "/assets/", fileType: "video/mp4" },
+        synopsis:
+          " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime asperiores, quis dolore quas excepturi eos, amet dicta dolorum consequuntur veniam tempore recusandae laudantium, cum deserunt sequi pariatur. Doloribus, ab assumenda!",
+        status: {
+          acquired: false,
+          consumed: false,
+        },
+        units: [
+          {
+            id: "123",
+            number: 1,
+            title: "Era uma vez",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+        ],
+      },
+    ],
+
+    ovas: [
+      {
+        id: "1234",
+        groupType: { label: "OVA" },
+        number: 1,
+        releaseYear: 2000,
+        title: "-",
+        translatedTitle: "",
+        language: "DUAL",
+        resolution: "1080p",
+
+        cover: { url: "/assets/", alt: "Capa do OVA de Naruto." },
+        trailer: { url: "/assets/", fileType: "video/mp4" },
+        synopsis:
+          " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime asperiores, quis dolore quas excepturi eos, amet dicta dolorum consequuntur veniam tempore recusandae laudantium, cum deserunt sequi pariatur. Doloribus, ab assumenda!",
+        status: {
+          acquired: false,
+          consumed: false,
+        },
+        units: [
+          {
+            id: "123",
+            number: 1,
+            title: "Era uma vez",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+        ],
+      },
+    ],
+
+    specials: [
+      {
+        id: "1234",
+        groupType: { label: "OVA" },
+        number: 1,
+        releaseYear: 2000,
+        title: "-",
+        translatedTitle: "",
+        language: "DUAL",
+        resolution: "1080p",
+
+        cover: { url: "/assets/", alt: "Capa do OVA de Naruto." },
+        trailer: { url: "/assets/", fileType: "video/mp4" },
+        synopsis:
+          " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime asperiores, quis dolore quas excepturi eos, amet dicta dolorum consequuntur veniam tempore recusandae laudantium, cum deserunt sequi pariatur. Doloribus, ab assumenda!",
+        status: {
+          acquired: false,
+          consumed: false,
+        },
+        units: [],
+      },
+    ],
+
+    gallery: [
+      {
+        fileName: "123",
+        url: "/assets/medias/naruto-franchise-aHaH-gallery-ahaH.png",
+        alt: "Imagem de naruto.",
+      },
+    ],
+
+    files: [
+      {
+        label: "Manual",
+        fileName: "adase",
+        fileSize: "100mb",
+        fileType: ".pdf",
+      },
+    ],
+
+    sequel: {
+      next: {
+        title: "Naruto Shippuden",
+        releaseYear: 2021,
+        path: "/animes/naruto-shippuden-2021",
+        cover: { url: "/assets/naruto.png", alt: "capa" },
+      },
+    },
+
+    franchises: [
+      {
+        title: "Naruto",
+        path: "/franquias/naruto-2020",
+        slug: "naruto-2020",
+        logo: {
+          url: "/assets/franchises/naruto-franchise-aHaH-logo.png",
+          alt: "Logo da franquia Naruto",
+        },
+      },
+      {
+        title: "Naruto Anime",
+        path: "/franquias/naruto-anime-2020",
+        slug: "naruto-anime-2020",
+        logo: {
+          url: "/assets/naruto-anime-franchise-aHaH-logo.png",
+          alt: "Logo da franquia Naruto Anime",
+        },
+      },
+    ],
+
+    status: {
+      acquired: false,
+      consumed: false,
+    },
+  },
+
+  {
+    slug: "interestelar-2014--movie-aHaH",
+    type: { label: "Filmes", path: "/filmes", code: "live-action-movie" },
+
+    title: "Interestelar",
+    translatedTitle: "Interstellar",
+    releaseYear: "2014",
+    synopsis:
+      "Em um futuro próximo, a Terra enfrenta uma crise ambiental que ameaça a sobrevivência da humanidade. Cooper, um ex-piloto da NASA, é recrutado para participar de uma missão espacial que busca um novo lar para a humanidade, viajando por um buraco de minhoca em busca de planetas habitáveis.",
+
+    themes: [
+      { label: "Ficção científica" },
+      { label: "Espaço" },
+      { label: "Viagem no tempo" },
+      { label: "Drama" },
+    ],
+
+    cover: {
+      url: "/assets/medias/interestelar-2014--movie-aHaH-capa.jpg",
+      alt: "Capa do filme Interestelar",
+    },
+
+    trailer: {
+      url: "/assets/medias/interestelar-2014--movie-aHaH-trailer.mp4",
+      fileType: "video/mp4",
+    },
+
+    gallery: [
+      {
+        fileName: "interestelar-cena-1",
+        url: "/assets/medias/interestelar-2014--movie-aHaH-gallery-1.png",
+        alt: "Cooper e sua equipe durante a missão espacial.",
+      },
+      {
+        fileName: "interestelar-cena-2",
+        url: "/assets/medias/interestelar-2014--movie-aHaH-gallery-2.png",
+        alt: "A nave Endurance durante a exploração espacial.",
+      },
+    ],
+
+    files: [
+      {
+        label: "Roteiro",
+        fileName: "interestelar-roteiro",
+        fileSize: "100mb",
+        fileType: ".pdf",
+      },
+    ],
+
+    sequel: {},
+
+    franchises: [
+      {
+        title: "Interestelar",
+        path: "/franquias/interestelar",
+        slug: "interestelar",
+        logo: {
+          url: "/assets/franchises/interestelar-logo.png",
+          alt: "Logo da franquia Interestelar",
+        },
+      },
+    ],
+
+    status: {
+      acquired: false,
+      consumed: false,
+    },
+  },
+
+  {
+    slug: "homem-aranha-2020--comic-book-aHaH",
+    type: {
+      label: "HQs",
+      path: "/hqs",
+      code: "comic-book",
+    },
+
+    title: "Homem-Aranha",
+    translatedTitle: "Spider-Man",
+    releaseYear: "2020",
+    synopsis:
+      "Peter Parker enfrenta novos desafios enquanto equilibra sua vida pessoal com as responsabilidades de ser o Homem-Aranha. Entre ameaças inesperadas, inimigos perigosos e dilemas pessoais, o herói precisa proteger Nova York e aqueles que ama.",
+
+    themes: [
+      { label: "Super-heróis" },
+      { label: "Ação" },
+      { label: "Aventura" },
+      { label: "Ficção científica" },
+    ],
+
+    cover: {
+      url: "/assets/medias/homem-aranha-2020--comic-book-aHaH-capa.jpg",
+      alt: "Capa da HQ Homem-Aranha",
+    },
+
+    trailer: {
+      url: "/assets/medias/homem-aranha-2020--comic-book-aHaH-trailer.mp4",
+      fileType: "video/mp4",
+    },
+
+    volumes: [
+      {
+        id: "volume-1",
+        groupType: { label: "Volume" },
+        number: 1,
+        releaseYear: 2020,
+        title: "Grandes Poderes",
+        translatedTitle: "Great Power",
+        language: "PT-BR",
+        resolution: "Digital",
+
+        cover: {
+          url: "/assets/medias/homem-aranha-2020-volume-1-capa.jpg",
+          alt: "Capa do volume 1 de Homem-Aranha",
+        },
+
+        trailer: {
+          url: "/assets/medias/homem-aranha-2020-volume-1-trailer.mp4",
+          fileType: "video/mp4",
+        },
+
+        synopsis:
+          "Peter Parker precisa enfrentar uma nova ameaça em Nova York enquanto tenta conciliar sua vida pessoal com suas responsabilidades como herói.",
+
+        status: {
+          acquired: false,
+          consumed: false,
+        },
+
+        units: [
+          {
+            id: "volume-1-edicao-1",
+            number: 1,
+            title: "Um Novo Começo",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+          {
+            id: "volume-1-edicao-2",
+            number: 2,
+            title: "Ameaças nas Sombras",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+          {
+            id: "volume-1-edicao-3",
+            number: 3,
+            title: "O Preço da Responsabilidade",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+        ],
+      },
+
+      {
+        id: "volume-2",
+        groupType: { label: "Volume" },
+        number: 2,
+        releaseYear: 2021,
+        title: "Novos Inimigos",
+        translatedTitle: "New Enemies",
+        language: "PT-BR",
+        resolution: "Digital",
+
+        cover: {
+          url: "/assets/medias/homem-aranha-2020-volume-2-capa.jpg",
+          alt: "Capa do volume 2 de Homem-Aranha",
+        },
+
+        trailer: {
+          url: "/assets/medias/homem-aranha-2020-volume-2-trailer.mp4",
+          fileType: "video/mp4",
+        },
+
+        synopsis:
+          "Uma nova ameaça surge e coloca à prova as habilidades e a determinação do Homem-Aranha, levando Peter Parker a enfrentar consequências inesperadas.",
+
+        status: {
+          acquired: false,
+          consumed: false,
+        },
+
+        units: [
+          {
+            id: "volume-2-edicao-1",
+            number: 1,
+            title: "O Retorno do Perigo",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+        ],
+      },
+    ],
+
+    gallery: [
+      {
+        fileName: "homem-aranha-cena-1",
+        url: "/assets/medias/homem-aranha-2020--comic-book-aHaH-gallery-1.png",
+        alt: "Homem-Aranha em ação nos prédios de Nova York.",
+      },
+      {
+        fileName: "homem-aranha-cena-2",
+        url: "/assets/medias/homem-aranha-2020--comic-book-aHaH-gallery-2.png",
+        alt: "Ilustração do Homem-Aranha enfrentando seus inimigos.",
+      },
+    ],
+
+    files: [
+      {
+        label: "Guia de leitura",
+        fileName: "homem-aranha-guia-de-leitura",
+        fileSize: "10mb",
+        fileType: ".pdf",
+      },
+    ],
+
+    sequel: {},
+
+    franchises: [
+      {
+        title: "Homem-Aranha",
+        path: "/franquias/homem-aranha",
+        slug: "homem-aranha",
+        logo: {
+          url: "/assets/franchises/homem-aranha-logo.png",
+          alt: "Logo da franquia Homem-Aranha",
+        },
+      },
+    ],
+
+    status: {
+      acquired: false,
+      consumed: false,
+    },
+  },
+
+  {
+    slug: "anitta-2013--music-aHaH",
+    type: {
+      label: "Músicas",
+      path: "/musicas",
+      code: "music",
+    },
+
+    title: "Anitta",
+    translatedTitle: "",
+    releaseYear: "2013",
+    synopsis:
+      "Anitta é uma cantora brasileira que ganhou destaque no cenário musical com uma mistura de pop, funk carioca, reggaeton e outros ritmos. Ao longo de sua carreira, conquistou reconhecimento nacional e internacional com músicas em português, espanhol e inglês.",
+
+    themes: [
+      { label: "Pop" },
+      { label: "Funk carioca" },
+      { label: "Reggaeton" },
+      { label: "Música brasileira" },
+    ],
+
+    cover: {
+      url: "/assets/medias/anitta-2013--music-aHaH-capa.jpg",
+      alt: "Capa da artista Anitta",
+    },
+
+    trailer: {
+      url: "/assets/medias/anitta-2013--music-aHaH-trailer.mp4",
+      fileType: "video/mp4",
+    },
+
+    concerts: [],
+
+    albums: [
+      {
+        id: "album-1",
+        groupType: { label: "Álbum" },
+        number: 1,
+        releaseYear: 2013,
+        title: "Anitta",
+        translatedTitle: "",
+        language: "PT-BR",
+        resolution: "320kbps",
+
+        cover: {
+          url: "/assets/medias/anitta-album-1-capa.jpg",
+          alt: "Capa do álbum Anitta",
+        },
+
+        trailer: {
+          url: "/assets/medias/anitta-album-1-trailer.mp4",
+          fileType: "video/mp4",
+        },
+
+        synopsis:
+          "Álbum de estreia de Anitta, lançado em 2013, que reúne músicas de pop e funk carioca e ajudou a consolidar sua carreira no Brasil.",
+
+        status: {
+          acquired: false,
+          consumed: false,
+        },
+
+        units: [
+          {
+            id: "album-1-faixa-1",
+            number: 1,
+            title: "Show das Poderosas",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+          {
+            id: "album-1-faixa-2",
+            number: 2,
+            title: "Meiga e Abusada",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+          {
+            id: "album-1-faixa-3",
+            number: 3,
+            title: "Não Para",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+        ],
+      },
+
+      {
+        id: "album-2",
+        groupType: { label: "Álbum" },
+        number: 2,
+        releaseYear: 2014,
+        title: "Ritmo Perfeito",
+        translatedTitle: "",
+        language: "PT-BR",
+        resolution: "320kbps",
+
+        cover: {
+          url: "/assets/medias/anitta-album-2-capa.jpg",
+          alt: "Capa do álbum Ritmo Perfeito",
+        },
+
+        trailer: {
+          url: "/assets/medias/anitta-album-2-trailer.mp4",
+          fileType: "video/mp4",
+        },
+
+        synopsis:
+          "Segundo álbum de estúdio de Anitta, com músicas que exploram o pop brasileiro e o funk, ampliando a identidade musical da artista.",
+
+        status: {
+          acquired: false,
+          consumed: false,
+        },
+
+        units: [
+          {
+            id: "album-2-faixa-1",
+            number: 1,
+            title: "Ritmo Perfeito",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+          {
+            id: "album-2-faixa-2",
+            number: 2,
+            title: "Na Batida",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+          {
+            id: "album-2-faixa-3",
+            number: 3,
+            title: "No Meu Talento",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+        ],
+      },
+
+      {
+        id: "album-3",
+        groupType: { label: "Álbum" },
+        number: 3,
+        releaseYear: 2015,
+        title: "Bang",
+        translatedTitle: "",
+        language: "PT-BR",
+        resolution: "320kbps",
+
+        cover: {
+          url: "/assets/medias/anitta-album-3-capa.jpg",
+          alt: "Capa do álbum Bang",
+        },
+
+        trailer: {
+          url: "/assets/medias/anitta-album-3-trailer.mp4",
+          fileType: "video/mp4",
+        },
+
+        synopsis:
+          "Álbum que marcou uma nova fase visual e musical na carreira de Anitta, combinando pop, influências eletrônicas e ritmos brasileiros.",
+
+        status: {
+          acquired: false,
+          consumed: false,
+        },
+
+        units: [
+          {
+            id: "album-3-faixa-1",
+            number: 1,
+            title: "Bang",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+          {
+            id: "album-3-faixa-2",
+            number: 2,
+            title: "Deixa Ele Sofrer",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+          {
+            id: "album-3-faixa-3",
+            number: 3,
+            title: "Essa Mina É Louca",
+            status: {
+              acquired: false,
+              consumed: false,
+            },
+          },
+        ],
+      },
+    ],
+
+    gallery: [
+      {
+        fileName: "anitta-gallery-1",
+        url: "/assets/medias/anitta-2013--music-aHaH-gallery-1.png",
+        alt: "Anitta durante uma apresentação musical.",
+      },
+      {
+        fileName: "anitta-gallery-2",
+        url: "/assets/medias/anitta-2013--music-aHaH-gallery-2.png",
+        alt: "Anitta em uma sessão fotográfica promocional.",
+      },
+    ],
+
+    files: [
+      {
+        label: "Biografia",
+        fileName: "anitta-biografia",
+        fileSize: "10mb",
+        fileType: ".pdf",
+      },
+    ],
+
+    sequel: {},
+
+    franchises: [
+      {
+        title: "Anitta",
+        path: "/franquias/anitta",
+        slug: "anitta",
+        logo: {
+          url: "/assets/franchises/anitta-logo.png",
+          alt: "Logo da artista Anitta",
+        },
+      },
+    ],
+
+    status: {
+      acquired: false,
+      consumed: false,
+    },
+  },
+];
