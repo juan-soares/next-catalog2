@@ -1,11 +1,11 @@
-import { MediaTypeCode, MediaTypeFilters } from "@/modules/media-type";
+import { MediaTypeFilter, MediaTypeFilters } from "@/modules/media-type";
 
 type Props = {
   typeTitle: string;
-  typeCode: MediaTypeCode;
+  filters: MediaTypeFilter[];
 };
 
-export function MediaSidebar({ typeTitle, typeCode }: Props) {
+export function MediaSidebar({ typeTitle, filters }: Props) {
   return (
     <aside>
       <h1>{typeTitle}</h1>
@@ -13,7 +13,7 @@ export function MediaSidebar({ typeTitle, typeCode }: Props) {
       <form method="GET" id="search">
         <input type="search" name="term" placeholder="Pesquisar..." />
 
-        <MediaTypeFilters typeCode={typeCode} />
+        <MediaTypeFilters filters={filters} />
 
         <button form="search" type="submit">
           OK

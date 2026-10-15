@@ -1,6 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getMediaTypeDetailsBySlug } from "@/modules/media-type";
+import {
+  getMediaTypeDetailsBySlug,
+  getMediaTypeFilters,
+} from "@/modules/media-type";
 import {
   getMediasDetailsByType,
   MediaList,
@@ -28,10 +31,12 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
     sort: validatedSort,
   });
 
+  const mediaFilters = await getMediaTypeFilters(mediaType.filters);
+
   return (
     <div>
       <Link href={`${mediaType.path}/adicionar`}>Adicionar</Link>
-      <MediaSidebar typeTitle={mediaType.label} typeCode={mediaType.code} />
+      <MediaSidebar typeTitle={mediaType.label} filters={mediaFilters} />
 
       <main>
         <MediaList currentSort={validatedSort} medias={medias} />

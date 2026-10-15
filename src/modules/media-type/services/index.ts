@@ -2,4 +2,4 @@ import "server-only";
 
 export * from "./get-media-type-details-by-slug.service";
 
-export * from "./get-filters-by-media-type.service";
+export * from "./get-media-type-filters.service";

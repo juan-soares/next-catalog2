@@ -1,13 +1,10 @@
-import { MediaTypeCode } from "@/modules/media-type/types";
-import { getFiltersByMediaType } from "@/modules/media-type/services";
+import { MediaTypeFilter } from "@/modules/media-type/types";
 
 type Props = {
-  typeCode: MediaTypeCode;
+  filters: MediaTypeFilter[];
 };
 
-export function MediaTypeFilters({ typeCode }: Props) {
-  const filters = getFiltersByMediaType(typeCode);
-
+export async function MediaTypeFilters({ filters }: Props) {
   return (
     <div>
       <h2>Filtros</h2>
@@ -24,6 +21,30 @@ export function MediaTypeFilters({ typeCode }: Props) {
           ))}
         </article>
       ))}
+
+      <article>
+        <label>Adquirido</label>
+        <label>
+          <input type="checkbox" name="acquired" value="true" />
+          Sim
+        </label>
+        <label>
+          <input type="checkbox" name="acquired" value="false" />
+          Não
+        </label>
+      </article>
+
+      <article>
+        <label>Consumido</label>
+        <label>
+          <input type="checkbox" name="consumed" value="true" />
+          Sim
+        </label>
+        <label>
+          <input type="checkbox" name="consumed" value="false" />
+          Não
+        </label>
+      </article>
     </div>
   );
 }
