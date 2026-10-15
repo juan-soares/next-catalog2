@@ -7,30 +7,31 @@ import {
 import {
   getMediasDetailsByType,
   MediaList,
-  getValidMediaSortOptionFromSearchParams,
+  prepareMediaSearchOptionsFromSearchParams,
   MediaSidebar,
 } from "@/modules/media";
 
 type Props = {
   params: Promise<{ mediaTypeSlug: string }>;
-  searchParams: Promise<{ term?: string; sort?: string }>;
+  searchParams: Promise<{
+    [key: string]: string | string[] | undefined;
+  }>;
 };
 
 export default async function MediaTypePage({ params, searchParams }: Props) {
   const { mediaTypeSlug } = await params;
-  const { term, sort } = await searchParams;
+  const rawSearchParams = await searchParams;
+
   const mediaType = getMediaTypeDetailsBySlug(mediaTypeSlug);
 
   if (!mediaType) {
     notFound();
   }
 
-  const validatedSort = getValidMediaSortOptionFromSearchParams(sort ?? "");
-  const medias = await getMediasDetailsByType(mediaType.code, {
-    query: term?.trim() || undefined,
-    sort: validatedSort,
-  });
+  const searchOptions =
+    prepareMediaSearchOptionsFromSearchParams(rawSearchParams);
 
+  const medias = await getMediasDetailsByType(mediaType.code, searchOptions);
   const mediaFilters = await getMediaTypeFilters(mediaType.filters);
 
   return (
@@ -39,7 +40,7 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
       <MediaSidebar typeTitle={mediaType.label} filters={mediaFilters} />
 
       <main>
-        <MediaList currentSort={validatedSort} medias={medias} />
+        <MediaList currentSort={searchOptions.sort} medias={medias} />
       </main>
     </div>
   );

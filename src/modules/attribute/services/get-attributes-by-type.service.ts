@@ -13,6 +13,16 @@ export async function getAttributesByType(
         label: "Idiomas",
       },
     },
+
+    {
+      id: "2",
+      label: "usar-BR",
+      type: {
+        code: "language",
+        field: "languages",
+        label: "Idiomas",
+      },
+    },
   ];
 
   return attributes.filter((att) => att.type.code === type);

@@ -1,7 +1,8 @@
-import { MediaSortOptionKey } from "./media-sort-option-key.type";
+import { AttributeTypeFieldCode } from "@/modules/attribute";
+import { MediaSortOptionKey } from "@/modules/media/types";
 
 export type MediaSearchOptions = {
-  query?: string;
-  sort?: MediaSortOptionKey;
-  filters?: {};
+  term?: string;
+  sort: MediaSortOptionKey;
+  filters: Partial<Record<AttributeTypeFieldCode, string[]>>;
 };

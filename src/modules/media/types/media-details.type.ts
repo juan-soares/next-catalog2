@@ -8,7 +8,7 @@ export type MediaDetails = {
 
   title: string;
   translatedTitle: string;
-  releaseYear: string;
+  releaseYear: number;
   type: {
     label: string;
     path: string;

@@ -1,10 +1,15 @@
 import { MediaSortOptionKey } from "@/modules/media/types";
-import { MEDIA_SORT_OPTION_LIST } from "@/modules/media/consts";
+import { MEDIA_SORT_OPTIONS_REGISTRY } from "@/modules/media/consts";
 
 export function getValidMediaSortOptionFromSearchParams(
-  sortParams: string,
+  sortParams: string | string[] | undefined,
 ): MediaSortOptionKey {
-  const option = MEDIA_SORT_OPTION_LIST.find(({ code }) => code === sortParams);
+  if (
+    typeof sortParams === "string" &&
+    Object.hasOwn(MEDIA_SORT_OPTIONS_REGISTRY, sortParams)
+  ) {
+    return sortParams as MediaSortOptionKey;
+  }
 
-  return option?.code ?? "title-asc";
+  return "title-asc";
 }
