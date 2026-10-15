@@ -15,6 +15,7 @@ export type MediaDetails = {
     code: MediaTypeCode;
   };
   synopsis: string;
+  languages: string[];
 
   themes: { label: string }[];
 

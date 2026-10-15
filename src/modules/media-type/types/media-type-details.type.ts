@@ -1,5 +1,5 @@
 import { MediaTabCode } from "@/modules/media-tab";
-import { MediaTypeCode } from "@/modules/media-type";
+import { MediaTypeCode, MediaTypeFilterCode } from "@/modules/media-type";
 
 export type MediaTypeDetails = {
   code: MediaTypeCode;
@@ -7,4 +7,5 @@ export type MediaTypeDetails = {
   slug: string;
   path: string;
   tabs: MediaTabCode[];
+  filters: MediaTypeFilterCode[];
 };

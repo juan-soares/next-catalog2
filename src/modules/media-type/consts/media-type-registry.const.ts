@@ -16,6 +16,7 @@ export const MEDIA_TYPE_REPOSITORY = {
       "sequel",
       "franchises",
     ],
+    filters: ["languages", "resolutions", "themes", "franchises"],
   },
   "tv-show": {
     code: "tv-show",
@@ -31,6 +32,7 @@ export const MEDIA_TYPE_REPOSITORY = {
       "sequel",
       "franchises",
     ],
+    filters: ["languages", "resolutions", "themes", "franchises"],
   },
   cartoon: {
     code: "cartoon",
@@ -46,6 +48,7 @@ export const MEDIA_TYPE_REPOSITORY = {
       "sequel",
       "franchises",
     ],
+    filters: ["languages", "resolutions", "themes", "franchises"],
   },
   "animated-movie": {
     code: "animated-movie",
@@ -53,6 +56,7 @@ export const MEDIA_TYPE_REPOSITORY = {
     slug: "filmes-animados",
     path: "/filmes-animados",
     tabs: ["info", "gallery", "files", "sequel", "franchises"],
+    filters: ["languages", "resolutions", "themes", "franchises"],
   },
   "live-action-movie": {
     code: "live-action-movie",
@@ -60,6 +64,7 @@ export const MEDIA_TYPE_REPOSITORY = {
     slug: "filmes-live-action",
     path: "/filmes-live-action",
     tabs: ["info", "gallery", "files", "sequel", "franchises"],
+    filters: ["languages", "resolutions", "themes", "franchises"],
   },
   "video-game": {
     code: "video-game",
@@ -67,6 +72,16 @@ export const MEDIA_TYPE_REPOSITORY = {
     slug: "jogos-eletronicos",
     path: "/jogos-eletronicos",
     tabs: ["info", "gameEdition", "gallery", "files", "sequel", "franchises"],
+    filters: [
+      "languages",
+      "resolutions",
+      "platforms",
+      "genres",
+      "gameplays",
+      "modes",
+      "themes",
+      "franchises",
+    ],
   },
   "board-game": {
     code: "board-game",
@@ -74,6 +89,16 @@ export const MEDIA_TYPE_REPOSITORY = {
     slug: "jogos-de-tabuleiro",
     path: "/jogos-de-tabuleiro",
     tabs: ["info", "gameEdition", "gallery", "files", "sequel", "franchises"],
+    filters: [
+      "languages",
+      "resolutions",
+      "platforms",
+      "genres",
+      "gameplays",
+      "modes",
+      "themes",
+      "franchises",
+    ],
   },
   "comic-book": {
     code: "comic-book",
@@ -89,6 +114,7 @@ export const MEDIA_TYPE_REPOSITORY = {
       "sequel",
       "franchises",
     ],
+    filters: ["languages", "themes", "franchises"],
   },
   book: {
     code: "book",
@@ -96,6 +122,7 @@ export const MEDIA_TYPE_REPOSITORY = {
     slug: "livros",
     path: "/livros",
     tabs: ["info", "gallery", "files", "sequel", "franchises"],
+    filters: ["languages", "themes", "franchises"],
   },
   manga: {
     code: "manga",
@@ -103,6 +130,7 @@ export const MEDIA_TYPE_REPOSITORY = {
     slug: "mangas",
     path: "/mangas",
     tabs: ["info", "volume", "gallery", "files", "sequel", "franchises"],
+    filters: ["languages", "themes", "franchises"],
   },
   music: {
     code: "music",
@@ -118,5 +146,6 @@ export const MEDIA_TYPE_REPOSITORY = {
       "sequel",
       "franchises",
     ],
+    filters: ["languages", "resolutions", "themes", "franchises"],
   },
 } satisfies Record<MediaTypeCode, MediaTypeDetails>;

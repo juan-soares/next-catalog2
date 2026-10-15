@@ -5,6 +5,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
     slug: "naruto-2020--anime-aHaH",
     path: "/animes/naruto-2020--anime-aHaH",
     type: { label: "Animes", path: "/animes", code: "anime" },
+    languages: ["pt-br"],
 
     title: "Naruto",
     translatedTitle: "asasa",
@@ -170,7 +171,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
     slug: "interestelar-2014--movie-aHaH",
     path: "/filmes-live-action/interestelar-2014--movie-aHaH",
     type: { label: "Filmes", path: "/filmes", code: "live-action-movie" },
-
+    languages: ["pt-br"],
     title: "Interestelar",
     translatedTitle: "Interstellar",
     releaseYear: "2014",
@@ -245,6 +246,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
       path: "/hqs",
       code: "comic-book",
     },
+    languages: ["pt-br"],
 
     title: "Homem-Aranha",
     translatedTitle: "Spider-Man",
@@ -422,6 +424,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
       path: "/musicas",
       code: "music",
     },
+    languages: ["pt-br"],
 
     title: "Anitta",
     translatedTitle: "",
@@ -676,7 +679,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
     title: "The Sims 4",
     translatedTitle: "The Sims 4",
     releaseYear: "2014",
-
+    languages: ["pt-br"],
     type: {
       label: "Jogos eletrônicos",
       path: "/jogos-eletronicos",

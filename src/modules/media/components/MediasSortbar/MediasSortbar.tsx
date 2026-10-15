@@ -7,16 +7,18 @@ type Props = {
 
 export function MediasSortbar({ currentSort }: Props) {
   return (
-    <form>
+    <div>
       <label htmlFor="sort">Ordenar:</label>
-      <select id="sort" name="sort" defaultValue={currentSort}>
+      <select id="sort" name="sort" form="search" defaultValue={currentSort}>
         {MEDIA_SORT_OPTION_LIST.map(({ code, label }) => (
           <option key={code} value={code}>
             {label}
           </option>
         ))}
       </select>
-      <button type="submit">OK</button>
-    </form>
+      <button form="search" type="submit">
+        OK
+      </button>
+    </div>
   );
 }

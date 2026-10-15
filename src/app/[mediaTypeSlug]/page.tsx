@@ -5,6 +5,7 @@ import {
   getMediasDetailsByType,
   MediaList,
   getValidMediaSortOptionFromSearchParams,
+  MediaSidebar,
 } from "@/modules/media";
 
 type Props = {
@@ -29,8 +30,8 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
 
   return (
     <div>
-      <h1>{mediaType.label}</h1>
       <Link href={`${mediaType.path}/adicionar`}>Adicionar</Link>
+      <MediaSidebar typeTitle={mediaType.label} typeCode={mediaType.code} />
 
       <main>
         <MediaList currentSort={validatedSort} medias={medias} />
