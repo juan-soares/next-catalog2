@@ -4,7 +4,7 @@ type Props = {
   filters: MediaTypeFilter[];
 };
 
-export async function MediaTypeFilters({ filters }: Props) {
+export function MediaTypeFilters({ filters }: Props) {
   return (
     <div>
       <h2>Filtros</h2>

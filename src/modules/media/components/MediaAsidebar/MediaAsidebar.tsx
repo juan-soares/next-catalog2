@@ -1,4 +1,5 @@
-import { MediaTypeFilter, MediaTypeFilters } from "@/modules/media-type";
+import { MediaTypeFilter } from "@/modules/media-type/types";
+import { MediaTypeFilters } from "@/modules/media-type/components/";
 
 type Props = {
   typeTitle: string;

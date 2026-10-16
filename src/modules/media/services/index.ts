@@ -1,6 +1,6 @@
 import "server-only";
 
-export * from "./search-medias-service";
+export * from "./search-medias.service";
 export * from "./get-medias-details-by-type.service";
 
 export * from "./get-media-details-by-slug.service";

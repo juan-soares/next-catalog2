@@ -10,7 +10,7 @@ export function useGlobalSearch() {
   const [hasError, setHasError] = useState(false);
 
   const normalizedTerm = term.trim();
-  const searchHref = `${SEARCH_PATH}?q=${encodeURIComponent(normalizedTerm)}`;
+  const searchHref = `${SEARCH_PATH}?term=${encodeURIComponent(normalizedTerm)}`;
 
   const handleChange = (newTerm: string) => setTerm(newTerm);
 
