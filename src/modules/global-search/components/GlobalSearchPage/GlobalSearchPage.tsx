@@ -1,5 +1,5 @@
-import { GlobalSearchResult } from "@/modules/global-search/types";
 import { MediaList, MediaSidebar } from "@/modules/media";
+import { GlobalSearchResult } from "@/modules/global-search/types";
 
 type Props = {
   term: string;

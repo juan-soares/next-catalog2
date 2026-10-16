@@ -9,7 +9,7 @@ export const MEDIAS_MOCK: MediaDetails[] = [
 
     title: "Naruto",
     translatedTitle: "asasa",
-    releaseYear: "2020",
+    releaseYear: 2020,
     synopsis:
       " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime asperiores, quis dolore quas excepturi eos, amet dicta dolorum consequuntur veniam tempore recusandae laudantium, cum deserunt sequi pariatur. Doloribus, ab assumenda!",
 

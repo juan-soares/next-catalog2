@@ -1,29 +1,8 @@
 import { Attribute, AttributeTypeCode } from "@/modules/attribute/types";
+import { ATTRIBUTES_MOCK } from "../consts/attribute.mock.const";
 
 export async function getAttributesByType(
   type: AttributeTypeCode,
 ): Promise<Attribute[]> {
-  const attributes: Attribute[] = [
-    {
-      id: "1",
-      label: "PT-BR",
-      type: {
-        code: "language",
-        field: "languages",
-        label: "Idiomas",
-      },
-    },
-
-    {
-      id: "2",
-      label: "usar-BR",
-      type: {
-        code: "language",
-        field: "languages",
-        label: "Idiomas",
-      },
-    },
-  ];
-
-  return attributes.filter((att) => att.type.code === type);
+  return ATTRIBUTES_MOCK.filter((att) => att.type.code === type);
 }

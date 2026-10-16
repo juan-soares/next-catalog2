@@ -37,7 +37,11 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
   return (
     <div>
       <Link href={`${mediaType.path}/adicionar`}>Adicionar</Link>
-      <MediaSidebar typeTitle={mediaType.label} filters={mediaFilters} />
+      <MediaSidebar
+        mediaTypePath={mediaType.path}
+        typeTitle={mediaType.label}
+        filters={mediaFilters}
+      />
 
       <main>
         <MediaList currentSort={searchOptions.sort} medias={medias} />
