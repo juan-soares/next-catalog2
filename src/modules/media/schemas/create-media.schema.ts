@@ -8,6 +8,7 @@ export const createMediaSchema = z.object({
   languages: z.array(z.string()).min(1, "Selecione pelo menos um idioma"),
   themes: z.array(z.string()).min(1, "Selecione pelo menos uma temática"),
   franchise: z.string().trim().min(1, "Selecione uma franquia."),
+  sequel: z.string().optional(),
   cover: z
     .file("A capa é obrigatória.")
     .min(1, "A capa não pode estar vazia.")

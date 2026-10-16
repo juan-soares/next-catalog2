@@ -1,12 +1,14 @@
 import { Attribute } from "@/modules/attribute";
 import { createMediaAction } from "@/modules/media/actions";
+import { MediaDetails } from "@/modules/media/types";
 
 type Props = {
   attributes: Attribute[];
+  medias: MediaDetails[];
   franchises: [];
 };
 
-export function CreateMediaForm({ attributes, franchises }: Props) {
+export function CreateMediaForm({ attributes, medias, franchises }: Props) {
   const languages = attributes.filter(({ type }) => type.field === "languages");
   const themes = attributes.filter(({ type }) => type.field === "themes");
 
@@ -59,6 +61,23 @@ export function CreateMediaForm({ attributes, franchises }: Props) {
             </option>
             {franchises.map(({ id, title }) => (
               <option key={id} value={id}>
+                {title}
+              </option>
+            ))}
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Sequência</legend>
+        <div>
+          <label htmlFor="sequel">Continuação:</label>
+          <select id="sequel" name="sequel" defaultValue="">
+            <option value="" hidden>
+              Selecione...
+            </option>
+            {medias.map(({ slug, title }) => (
+              <option key={slug} value={slug}>
                 {title}
               </option>
             ))}

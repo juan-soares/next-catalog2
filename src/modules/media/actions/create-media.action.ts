@@ -14,6 +14,7 @@ export async function createMediaAction(formData: FormData) {
     languages: formData.getAll("languages"),
     themes: formData.getAll("themes"),
     franchise: formData.get("franchise"),
+    sequel: formData.get("sequel"),
     cover: formData.get("cover"),
     trailer: formData.get("trailer"),
     gallery: formData.getAll("gallery"),
