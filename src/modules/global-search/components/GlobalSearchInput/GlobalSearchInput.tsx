@@ -1,14 +1,13 @@
-import { ChangeEvent } from "react";
-import { Search } from "lucide-react";
 import Link from "next/link";
-import { SEARCH_PATH } from "@/shared/consts";
+import { Search } from "lucide-react";
 
 type Props = {
   term: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (newTerm: string) => void;
+  searchHref: string;
 };
 
-export function GlobalSearchInput({ term, onChange }: Props) {
+export function GlobalSearchInput({ term, onChange, searchHref }: Props) {
   return (
     <div>
       <input
@@ -16,9 +15,9 @@ export function GlobalSearchInput({ term, onChange }: Props) {
         placeholder="Pesquisar..."
         name="search"
         value={term}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.value)}
       />
-      <Link href={SEARCH_PATH + term}>
+      <Link href={searchHref}>
         <Search />
       </Link>
     </div>

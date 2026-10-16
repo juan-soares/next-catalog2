@@ -1,16 +1,26 @@
 import Link from "next/link";
 import Image from "next/image";
 import { GlobalSearchResult } from "@/modules/global-search/types";
-import { SEARCH_PATH } from "@/shared/consts";
 
 type Props = {
   isLoading: boolean;
+  hasError: boolean;
   results: GlobalSearchResult[];
-  term: string;
+  searchHref: string;
 };
 
-export function GlobalSearchResults({ isLoading, results, term }: Props) {
+export function GlobalSearchResults({
+  isLoading,
+  hasError,
+  results,
+  searchHref,
+}: Props) {
   if (isLoading) return <p>Carregando...</p>;
+
+  if (hasError)
+    return (
+      <p>Ops! Aconteceu algum erro na pesquisa, por favor, tente novamente.</p>
+    );
 
   if (results.length === 0) return <p>Sem resultados.</p>;
 
@@ -43,7 +53,7 @@ export function GlobalSearchResults({ isLoading, results, term }: Props) {
           ),
         )}
       </ul>
-      <Link href={SEARCH_PATH + term}>Ver todos resultados...</Link>
+      <Link href={searchHref}>Ver todos resultados...</Link>
     </div>
   );
 }
