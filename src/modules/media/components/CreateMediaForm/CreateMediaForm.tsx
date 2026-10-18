@@ -1,6 +1,10 @@
+"use client";
+
 import { Attribute } from "@/modules/attribute";
 import { createMediaAction } from "@/modules/media/actions";
 import { MediaDetails } from "@/modules/media/types";
+import { useState } from "react";
+import { CharacterInput } from "./CharacterInput";
 
 type Props = {
   attributes: Attribute[];
@@ -8,12 +12,45 @@ type Props = {
   franchises: [];
 };
 
+type CharacterInput = {
+  name: string;
+  codenames: string;
+  status: string;
+  image: File | null;
+};
+
+const initialCharacter: CharacterInput = {
+  name: "",
+  codenames: "",
+  status: "active",
+  image: null,
+};
+
 export function CreateMediaForm({ attributes, medias, franchises }: Props) {
+  const [characters, setCharacters] = useState<CharacterInput[]>([]);
   const languages = attributes.filter(({ type }) => type.field === "languages");
   const themes = attributes.filter(({ type }) => type.field === "themes");
 
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    formData.set(
+      "characters",
+      JSON.stringify(
+        characters.map(({ name, codenames, status, image }) => ({
+          name,
+          codenames,
+          status,
+          image,
+        })),
+      ),
+    );
+
+    await createMediaAction(formData);
+  };
+
   return (
-    <form action={createMediaAction}>
+    <form onSubmit={handleSubmit}>
       <fieldset>
         <legend>Informações Gerais</legend>
 
@@ -37,7 +74,7 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
           <label>Idiomas:</label>
           {languages.map(({ id, label }) => (
             <label key={id}>
-              <input type="checkbox" value={id} name="languages" />
+              <input type="checkbox" value={id} name="languages" required />
               {label}
             </label>
           ))}
@@ -59,7 +96,7 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
             <option value="" hidden>
               Selecione...
             </option>
-            {franchises.map(({ id, title }) => (
+            {[{ id: "1", title: "1" }].map(({ id, title }) => (
               <option key={id} value={id}>
                 {title}
               </option>
@@ -67,6 +104,12 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
           </select>
         </div>
       </fieldset>
+
+      <CharacterInput
+        initialCharacter={initialCharacter}
+        characters={characters}
+        setCharacters={setCharacters}
+      />
 
       <fieldset>
         <legend>Sequência</legend>

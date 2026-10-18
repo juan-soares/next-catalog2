@@ -1,5 +1,15 @@
 import { z } from "zod";
 
+export const characterSchema = z.object({
+  name: z.string().trim().min(1, "O nome é obrigatório."),
+  codename: z.string(),
+  status: z.string().min(1, "O status é obrigatório."),
+  image: z
+    .file()
+    .min(1, "A imagem é obrigatória.")
+    .mime(["image/jpeg", "image/png"], "A imagem deve ser JPEG ou PNG."),
+});
+
 export const createMediaSchema = z.object({
   title: z.string().trim().min(1, "O título é obrigatório"),
   translatedTitle: z.string().trim().optional(),
@@ -32,4 +42,5 @@ export const createMediaSchema = z.object({
         : value,
     z.array(z.file()),
   ),
+  characters: z.array(characterSchema),
 });

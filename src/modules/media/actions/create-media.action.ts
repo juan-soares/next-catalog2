@@ -19,6 +19,7 @@ export async function createMediaAction(formData: FormData) {
     trailer: formData.get("trailer"),
     gallery: formData.getAll("gallery"),
     files: formData.getAll("files"),
+    characters: formData.get("characters"),
   });
 
   if (!result.success) {
