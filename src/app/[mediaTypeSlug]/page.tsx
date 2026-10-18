@@ -3,13 +3,12 @@ import Link from "next/link";
 import {
   getMediaTypeDetailsBySlug,
   getMediaTypeFilters,
-} from "@/modules/media-type";
+} from "@/modules/media-type/services";
 import {
   getMediasDetailsByType,
-  MediaList,
   prepareMediaSearchOptionsFromSearchParams,
-  MediaSidebar,
-} from "@/modules/media";
+} from "@/modules/media/services";
+import { MediaList, MediaSidebar } from "@/modules/media/components";
 
 type Props = {
   params: Promise<{ mediaTypeSlug: string }>;

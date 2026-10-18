@@ -1,7 +1,8 @@
+import { getAttributes } from "@/modules/attribute/services";
+import { getMediaTypeDetailsBySlug } from "@/modules/media-type/services";
+import { CreateMediaForm } from "@/modules/media/components";
+import { getMediasDetailsByType } from "@/modules/media/services";
 import { notFound } from "next/navigation";
-import { getAttributes } from "@/modules/attribute";
-import { CreateMediaForm, getMediasDetailsByType } from "@/modules/media";
-import { getMediaTypeDetailsBySlug } from "@/modules/media-type";
 
 type Props = {
   params: Promise<{ mediaTypeSlug: string }>;

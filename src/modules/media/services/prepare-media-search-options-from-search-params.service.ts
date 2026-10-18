@@ -1,6 +1,6 @@
 import { MediaSearchOptions } from "@/modules/media/types";
 import { getValidMediaSortOptionFromSearchParams } from "@/modules/media/services";
-import { isAttributeTypeFieldCode } from "@/modules/attribute";
+import { isAttributeTypeFieldCode } from "@/modules/attribute/services";
 
 export function prepareMediaSearchOptionsFromSearchParams(
   searchParams: Record<string, string | string[] | undefined>,

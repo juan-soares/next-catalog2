@@ -1,13 +1,10 @@
-import { notFound } from "next/navigation";
 import {
-  getMediaDetailsBySlug,
-  MediaPageContent,
-  MediaPageHero,
-} from "@/modules/media";
-import {
-  getTabsByMediaType,
   getValidMediaTabFromSearchParams,
-} from "@/modules/media-tab";
+  getTabsByMediaType,
+} from "@/modules/media-tab/services";
+import { MediaPageHero, MediaPageContent } from "@/modules/media/components";
+import { getMediaDetailsBySlug } from "@/modules/media/services";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: Promise<{ mediaSlug: string }>;

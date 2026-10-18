@@ -2,8 +2,8 @@
 
 import z from "zod";
 import { redirect } from "next/navigation";
-import { createMediaSchema } from "@/modules/media/schemas";
 import { createMedia } from "@/modules/media/services";
+import { createMediaSchema } from "@/modules/media/schemas";
 
 export async function createMediaAction(formData: FormData) {
   const result = createMediaSchema.safeParse({
@@ -12,19 +12,17 @@ export async function createMediaAction(formData: FormData) {
     releaseDate: formData.get("releaseDate"),
     synopsis: formData.get("synopsis"),
     languages: formData.getAll("languages"),
+    characters: formData.getAll("characters"),
     themes: formData.getAll("themes"),
     franchise: formData.get("franchise"),
     sequel: formData.get("sequel"),
     cover: formData.get("cover"),
     trailer: formData.get("trailer"),
     gallery: formData.getAll("gallery"),
-    files: formData.getAll("files"),
-    characters: formData.get("characters"),
   });
 
   if (!result.success) {
-    const errors = z.treeifyError(result.error);
-    console.error(errors);
+    console.error(z.treeifyError(result.error));
     return;
   }
 

@@ -1,4 +1,4 @@
-import { searchMedias } from "@/modules/media";
+import { searchMedias } from "@/modules/media/services";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {

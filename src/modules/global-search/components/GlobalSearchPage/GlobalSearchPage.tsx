@@ -1,4 +1,4 @@
-import { MediaList, MediaSidebar } from "@/modules/media";
+import { MediaList, MediaSidebar } from "@/modules/media/components";
 import { GlobalSearchResult } from "@/modules/global-search/types";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 export function GlobalSearchPage({ term, results }: Props) {
   return (
     <div>
-      <MediaSidebar typeTitle="Pesquisa" filters={[]} />
+      <MediaSidebar typeTitle="Pesquisa" filters={[]} mediaTypePath="" />
 
       <main>
         <h1>Pesquisar por: {term}</h1>

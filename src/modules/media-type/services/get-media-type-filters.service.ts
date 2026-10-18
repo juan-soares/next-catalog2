@@ -1,9 +1,7 @@
-import {
-  AttributeTypeCode,
-  ATTRIBUTE_TYPE_REGISTRY,
-} from "@/modules/attribute";
-import { getAttributesByType } from "@/modules/attribute";
-import { MediaTypeFilter } from "@/modules/media-type/types";
+import type { AttributeTypeCode } from "@/modules/attribute/types";
+import { ATTRIBUTE_TYPE_REGISTRY } from "@/modules/attribute/consts";
+import { getAttributesByType } from "@/modules/attribute/services";
+import type { MediaTypeFilter } from "@/modules/media-type/types";
 
 export async function getMediaTypeFilters(
   filterCodes: AttributeTypeCode[],

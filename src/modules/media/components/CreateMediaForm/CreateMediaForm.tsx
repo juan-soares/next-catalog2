@@ -1,10 +1,9 @@
 "use client";
 
-import { Attribute } from "@/modules/attribute";
 import { createMediaAction } from "@/modules/media/actions";
 import { MediaDetails } from "@/modules/media/types";
-import { useState } from "react";
-import { CharacterInput } from "./CharacterInput";
+import { CreateCharacterInput } from "@/modules/media/components";
+import { Attribute } from "@/modules/attribute/types";
 
 type Props = {
   attributes: Attribute[];
@@ -12,39 +11,13 @@ type Props = {
   franchises: [];
 };
 
-type CharacterInput = {
-  name: string;
-  codenames: string;
-  status: string;
-  image: File | null;
-};
-
-const initialCharacter: CharacterInput = {
-  name: "",
-  codenames: "",
-  status: "active",
-  image: null,
-};
-
 export function CreateMediaForm({ attributes, medias, franchises }: Props) {
-  const [characters, setCharacters] = useState<CharacterInput[]>([]);
   const languages = attributes.filter(({ type }) => type.field === "languages");
   const themes = attributes.filter(({ type }) => type.field === "themes");
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    formData.set(
-      "characters",
-      JSON.stringify(
-        characters.map(({ name, codenames, status, image }) => ({
-          name,
-          codenames,
-          status,
-          image,
-        })),
-      ),
-    );
 
     await createMediaAction(formData);
   };
@@ -105,11 +78,7 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
         </div>
       </fieldset>
 
-      <CharacterInput
-        initialCharacter={initialCharacter}
-        characters={characters}
-        setCharacters={setCharacters}
-      />
+      <CreateCharacterInput />
 
       <fieldset>
         <legend>Sequência</legend>
@@ -151,9 +120,6 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
           accept="image/jpeg"
           multiple
         />
-
-        <label htmlFor="files">Selecionar arquivos:</label>
-        <input type="file" id="files" name="files" multiple />
       </fieldset>
 
       <button type="submit">Enviar</button>

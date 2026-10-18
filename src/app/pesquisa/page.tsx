@@ -1,8 +1,5 @@
-import {
-  prepareMediaSearchOptionsFromSearchParams,
-  searchMedias,
-} from "@/modules/media";
-import { GlobalSearchPage } from "@/modules/global-search";
+import { GlobalSearchPage } from "@/modules/global-search/components";
+import { prepareMediaSearchOptionsFromSearchParams, searchMedias } from "@/modules/media/services";
 
 type Props = {
   searchParams: Promise<{

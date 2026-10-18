@@ -7,3 +7,4 @@ export type * from "./media-search-options.type";
 export type * from "./media-search-params-filters.type";
 
 export type * from "./create-media-input.type";
+export type * from "./create-media-character-input.type";

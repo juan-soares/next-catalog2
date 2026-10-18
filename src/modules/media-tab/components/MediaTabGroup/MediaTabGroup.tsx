@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { MediaGroup } from "@/modules/media-group";
+import { MediaGroup } from "@/modules/media-group/types";
 import Image from "next/image";
-import { MediaUnitList } from "@/modules/media-unit";
+import { MediaUnitList } from "@/modules/media-unit/components";
 
 type Props = {
   group: MediaGroup[];

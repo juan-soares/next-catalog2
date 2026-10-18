@@ -1,10 +1,7 @@
-import {
-  MEDIA_TABS_REGISTRY,
-  MediaTab,
-  MediaTabCode,
-  MediaTabsNavbar,
-} from "@/modules/media-tab";
-import { MediaDetails } from "@/modules/media/types";
+import { MediaTabsNavbar } from "@/modules/media-tab/components";
+import { MEDIA_TABS_REGISTRY } from "@/modules/media-tab/consts";
+import { MediaTabCode, MediaTab } from "@/modules/media-tab/types";
+import { MediaDetails } from "../../types";
 
 type Props = {
   currentTab: MediaTabCode;
