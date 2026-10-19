@@ -1,7 +1,8 @@
+import type { MediaCharacterStatus } from "@/modules/media-character/types";
+
 export type MediaCharacter = {
-  id: string;
   name: string;
   codenames: string[];
+  status: MediaCharacterStatus;
   image: { url: string; alt: string };
-  status: string;
 };

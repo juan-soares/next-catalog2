@@ -1,7 +1,7 @@
 type Props = {
   fieldName: string;
   label: string;
-  options: { id: string; label: string }[];
+  options: { value: string; label: string }[];
 };
 
 export function FormSelectField({ fieldName, label, options }: Props) {
@@ -14,8 +14,8 @@ export function FormSelectField({ fieldName, label, options }: Props) {
           Selecione...
         </option>
 
-        {options.map(({ id, label }) => (
-          <option key={id} value={id}>
+        {options.map(({ value, label }) => (
+          <option key={value} value={value}>
             {label}
           </option>
         ))}
