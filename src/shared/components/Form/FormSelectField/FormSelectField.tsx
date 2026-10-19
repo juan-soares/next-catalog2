@@ -8,10 +8,12 @@ export function FormSelectField({ fieldName, label, options }: Props) {
   return (
     <div>
       <label htmlFor={fieldName}>{label}</label>
+
       <select id={fieldName} name={fieldName} defaultValue="" required>
         <option value="" hidden>
           Selecione...
         </option>
+
         {options.map(({ id, label }) => (
           <option key={id} value={id}>
             {label}

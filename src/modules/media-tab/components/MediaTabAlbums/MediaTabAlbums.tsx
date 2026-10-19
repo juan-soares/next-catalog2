@@ -1,4 +1,4 @@
-import { MediaDetails } from "@/modules/media";
+import { MediaDetails } from "@/modules/media/types";
 import { MediaTabGroup } from "@/modules/media-tab/components";
 
 type Props = Pick<MediaDetails, "albums" | "type" | "slug">;

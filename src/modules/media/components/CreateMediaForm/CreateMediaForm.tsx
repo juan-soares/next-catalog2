@@ -8,6 +8,8 @@ import {
   FormCheckboxGroupField,
   FormSection,
   FormSelectField,
+  FormFileField,
+  FormTextField,
 } from "@/shared/components/Form";
 
 type Props = {
@@ -30,11 +32,8 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
   return (
     <form onSubmit={handleSubmit}>
       <FormSection title="Informações Gerais">
-        <label htmlFor="title">Título:</label>
-        <input type="text" id="title" name="title" required />
-
-        <label htmlFor="translatedTitle">Título Traduzido:</label>
-        <input type="text" id="translatedTitle" name="translatedTitle" />
+        <FormTextField fieldName="title" label="Título" required />
+        <FormTextField fieldName="translatedTitle" label="Título Traduzido" />
 
         <label htmlFor="releaseDate">Data de Lançamento:</label>
         <input type="date" id="releaseDate" name="releaseDate" required />
@@ -45,63 +44,54 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
 
       <FormSection title="Características">
         <FormCheckboxGroupField
-          label="Idiomas:"
+          label="Idiomas"
           options={languages}
           fieldName="languages"
         />
 
         <FormCheckboxGroupField
-          label="Temas:"
+          label="Temas"
           options={themes}
           fieldName="themes"
         />
 
-        <FormSelectField fieldName="franchise" label="Franquia:" options={[]} />
+        <FormSelectField
+          fieldName="franchise"
+          label="Franquia"
+          options={franchises}
+        />
       </FormSection>
 
       <CreateCharacterInput />
 
-      <fieldset>
-        <legend>Sequência</legend>
-        <div>
-          <label htmlFor="sequel">Continuação:</label>
-          <select id="sequel" name="sequel" defaultValue="">
-            <option value="" hidden>
-              Selecione...
-            </option>
-            {medias.map(({ slug, title }) => (
-              <option key={slug} value={slug}>
-                {title}
-              </option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
+      <FormSection title="Sequência">
+        <FormSelectField
+          fieldName="sequel"
+          label="Continuação"
+          options={medias.map(({ id, title }) => ({ id, label: title }))}
+        />
+      </FormSection>
 
-      <fieldset>
-        <legend>Arquivos</legend>
-
-        <label htmlFor="cover">Capa (JPEG):</label>
-        <input
-          type="file"
-          id="cover"
-          name="cover"
-          accept="image/jpeg"
+      <FormSection title="Arquivos">
+        <FormFileField
+          fieldName="cover"
+          label="Capa"
+          fileType="image/jpeg"
           required
         />
-
-        <label htmlFor="trailer">Trailer (MP4):</label>
-        <input type="file" id="trailer" name="trailer" accept="video/mp4" />
-
-        <label htmlFor="gallery">Galeria (JPEG):</label>
-        <input
-          type="file"
-          id="gallery"
-          name="gallery"
-          accept="image/jpeg"
+        <FormFileField
+          fieldName="trailer"
+          label="Trailer"
+          fileType="video/mp4"
+          required
+        />
+        <FormFileField
+          fieldName="gallery"
+          label="Galeria"
+          fileType="image/jpeg"
           multiple
         />
-      </fieldset>
+      </FormSection>
 
       <button type="submit">Enviar</button>
     </form>

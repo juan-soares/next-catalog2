@@ -3,6 +3,7 @@ import { MediaGroup } from "@/modules/media-group";
 import { MediaTypeCode } from "@/modules/media-type";
 
 export type MediaDetails = {
+  id: string;
   slug: string;
   path: string;
 
