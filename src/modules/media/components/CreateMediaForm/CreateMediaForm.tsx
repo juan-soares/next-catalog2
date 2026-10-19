@@ -1,9 +1,14 @@
 "use client";
 
+import { Attribute } from "@/modules/attribute/types";
 import { createMediaAction } from "@/modules/media/actions";
 import { MediaDetails } from "@/modules/media/types";
 import { CreateCharacterInput } from "@/modules/media/components";
-import { Attribute } from "@/modules/attribute/types";
+import {
+  FormCheckboxGroupField,
+  FormSection,
+  FormSelectField,
+} from "@/shared/components/Form";
 
 type Props = {
   attributes: Attribute[];
@@ -24,9 +29,7 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <fieldset>
-        <legend>Informações Gerais</legend>
-
+      <FormSection title="Informações Gerais">
         <label htmlFor="title">Título:</label>
         <input type="text" id="title" name="title" required />
 
@@ -38,45 +41,23 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
 
         <label htmlFor="synopsis">Sinopse</label>
         <textarea id="synopsis" name="synopsis" required />
-      </fieldset>
+      </FormSection>
 
-      <fieldset>
-        <legend>Características</legend>
+      <FormSection title="Características">
+        <FormCheckboxGroupField
+          label="Idiomas:"
+          options={languages}
+          fieldName="languages"
+        />
 
-        <div>
-          <label>Idiomas:</label>
-          {languages.map(({ id, label }) => (
-            <label key={id}>
-              <input type="checkbox" value={id} name="languages" required />
-              {label}
-            </label>
-          ))}
-        </div>
+        <FormCheckboxGroupField
+          label="Temas:"
+          options={themes}
+          fieldName="themes"
+        />
 
-        <div>
-          <label>Temas:</label>
-          {themes.map(({ id, label }) => (
-            <label key={id}>
-              <input type="checkbox" value={id} name="themes" />
-              {label}
-            </label>
-          ))}
-        </div>
-
-        <div>
-          <label htmlFor="franchise">Franquia:</label>
-          <select id="franchise" name="franchise" defaultValue="" required>
-            <option value="" hidden>
-              Selecione...
-            </option>
-            {[{ id: "1", title: "1" }].map(({ id, title }) => (
-              <option key={id} value={id}>
-                {title}
-              </option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
+        <FormSelectField fieldName="franchise" label="Franquia:" options={[]} />
+      </FormSection>
 
       <CreateCharacterInput />
 
