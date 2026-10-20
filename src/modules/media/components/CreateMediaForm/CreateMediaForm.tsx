@@ -68,7 +68,7 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
         <FormSelectField
           fieldName="sequel"
           label="Continuação"
-          options={medias.map(({ id, title }) => ({ id, label: title }))}
+          options={medias.map(({ id, title }) => ({ value: id, label: title }))}
         />
       </FormSection>
 

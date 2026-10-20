@@ -1,9 +1,10 @@
 type Props = {
   fieldName: string;
-  fileType: "image/jpeg" | "video/mp4";
+  fileType: "image/jpeg" | "image/png" | "video/mp4";
   label: string;
   required?: boolean;
   multiple?: boolean;
+  onChange?: (files: FileList | null) => void;
 };
 
 export function FormFileField({
@@ -12,6 +13,7 @@ export function FormFileField({
   label,
   required = false,
   multiple = false,
+  onChange,
 }: Props) {
   return (
     <>
@@ -23,6 +25,7 @@ export function FormFileField({
         accept={fileType}
         required={required}
         multiple={multiple}
+        onChange={(e) => onChange?.(e.currentTarget.files)}
       />
     </>
   );

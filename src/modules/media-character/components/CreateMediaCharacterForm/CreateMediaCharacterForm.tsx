@@ -3,17 +3,19 @@
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import {
+  FormFileField,
+  FormRadioField,
   FormSection,
-  FormSelectField,
   FormTextField,
 } from "@/shared/components/Form";
+import { CreateMediaCharacterInput } from "@/modules/media-character/types";
 import { MEDIA_CHARACTER_STATUS_LIST } from "@/modules/media-character/consts";
 
 export function CreateMediaCharacterForm() {
-  const initialCharacterInput = {
+  const initialCharacterInput: CreateMediaCharacterInput = {
     name: "",
     codenames: "",
-    status: "active",
+    statusCode: "active",
     image: null,
   };
   const [character, setCharacter] = useState(initialCharacterInput);
@@ -28,72 +30,65 @@ export function CreateMediaCharacterForm() {
     handleCloseForm();
   };
 
+  const handleChange = <K extends keyof CreateMediaCharacterInput>(
+    fieldName: K,
+    value: CreateMediaCharacterInput[K],
+  ) => {
+    setCharacter((prev) => ({
+      ...prev,
+      [fieldName]: value,
+    }));
+  };
+
   return (
     <FormSection title="Personagens">
       <button type="button">Adicionar</button>
 
       {showForm && (
-        <div>
-          <label htmlFor="name">Nome:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
+        <FormSection title="Novo Personagem">
+          <FormTextField
+            fieldName="name"
+            label="Nome"
             value={character.name}
+            onChange={handleChange}
             required
           />
 
-          <label htmlFor="codenames">Codinomes:</label>
-          <input
-            type="text"
-            id="codenames"
-            name="codenames"
+          <FormTextField
+            fieldName="codenames"
+            label="Codinomes"
             value={character.codenames}
-            required
+            onChange={handleChange}
           />
 
-          <label>Status:</label>
-          <label>
-            <input
-              type="radio"
-              id="status"
-              name="status"
-              value={character.codenames}
-              checked={character.status === "active"}
-            />
-            Ativo
-          </label>
-          <label>
-            <input
-              type="radio"
-              id="status"
-              name="status"
-              value={character.codenames}
-              checked={character.status === "dead"}
-            />
-            Morto
-          </label>
-          <label>
-            <input
-              type="radio"
-              id="status"
-              name="status"
-              value={character.codenames}
-              checked={character.status === "unknown"}
-            />
-            Desconhecido
-          </label>
+          <FormRadioField
+            label="Status"
+            fieldName="statusCode"
+            options={MEDIA_CHARACTER_STATUS_LIST.map(({ code, label }) => ({
+              value: code,
+              label,
+            }))}
+            currentValue={character.statusCode}
+            onChange={handleChange}
+          />
+
+          <FormFileField
+            label="Escolher imagem"
+            fieldName="image"
+            fileType="image/jpeg"
+            onChange={(files) => handleChange("image", files?.[0] ?? null)}
+          />
 
           <div>
-            <button type="button" onChange={handleSubmit}>
+            <button type="button" onClick={handleSubmit}>
               <Check />
             </button>
 
-            <button type="button" onChange={handleCloseForm}>
+            <button type="button" onClick={handleCloseForm}>
               <X />
             </button>
           </div>
-        </div>
+        </FormSection>
       )}
     </FormSection>
   );
