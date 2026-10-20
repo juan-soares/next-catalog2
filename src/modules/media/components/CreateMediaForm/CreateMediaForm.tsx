@@ -1,9 +1,9 @@
 "use client";
 
 import { Attribute } from "@/modules/attribute/types";
+import { CreateMediaCharacterForm } from "@/modules/media-character/components";
 import { createMediaAction } from "@/modules/media/actions";
 import { MediaDetails } from "@/modules/media/types";
-import { CreateCharacterInput } from "@/modules/media/components";
 import {
   FormCheckboxGroupField,
   FormSection,
@@ -11,6 +11,7 @@ import {
   FormFileField,
   FormTextField,
 } from "@/shared/components/Form";
+import { useState } from "react";
 
 type Props = {
   attributes: Attribute[];
@@ -21,6 +22,7 @@ type Props = {
 export function CreateMediaForm({ attributes, medias, franchises }: Props) {
   const languages = attributes.filter(({ type }) => type.field === "languages");
   const themes = attributes.filter(({ type }) => type.field === "themes");
+  const [characters, setCharacters] = useState<[]>([]);
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,7 +64,7 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
         />
       </FormSection>
 
-      <CreateCharacterInput />
+      <CreateMediaCharacterForm />
 
       <FormSection title="Sequência">
         <FormSelectField

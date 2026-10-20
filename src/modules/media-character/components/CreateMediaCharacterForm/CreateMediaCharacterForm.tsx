@@ -8,25 +8,30 @@ import {
   FormSection,
   FormTextField,
 } from "@/shared/components/Form";
-import { CreateMediaCharacterInput } from "@/modules/media-character/types";
-import { MEDIA_CHARACTER_STATUS_LIST } from "@/modules/media-character/consts";
+import type { CreateMediaCharacterInput } from "@/modules/media-character/types";
+import {
+  INITIAL_CHARACTER_INPUT,
+  MEDIA_CHARACTER_STATUS_LIST,
+  MEDIA_CHARACTER_STATUS_REGISTRY,
+} from "@/modules/media-character/consts";
+import { MediaCharacterImagePreview } from "@/modules/media-character/components";
 
 export function CreateMediaCharacterForm() {
-  const initialCharacterInput: CreateMediaCharacterInput = {
-    name: "",
-    codenames: "",
-    statusCode: "active",
-    image: null,
-  };
-  const [character, setCharacter] = useState(initialCharacterInput);
+  const [character, setCharacter] = useState(INITIAL_CHARACTER_INPUT);
+  const [selectedCharacters, setSelectedCharacters] = useState<
+    CreateMediaCharacterInput[]
+  >([]);
   const [showForm, setShowForm] = useState<boolean>(false);
 
   const handleCloseForm = () => {
-    setCharacter({ ...initialCharacterInput });
+    setCharacter({ ...INITIAL_CHARACTER_INPUT });
     setShowForm(false);
   };
 
-  const handleSubmit = () => {
+  const handleIncludeCharacter = () => {
+    if (!character.name.trim()) return;
+
+    setSelectedCharacters((prev) => [...prev, character]);
     handleCloseForm();
   };
 
@@ -42,7 +47,27 @@ export function CreateMediaCharacterForm() {
 
   return (
     <FormSection title="Personagens">
-      <button type="button">Adicionar</button>
+      <button type="button" onClick={() => setShowForm(true)}>
+        Adicionar
+      </button>
+
+      <ul>
+        {selectedCharacters.map(
+          ({ statusCode, image, name, codenames }, index) => {
+            const statusLabel =
+              MEDIA_CHARACTER_STATUS_REGISTRY[statusCode].label;
+
+            return (
+              <li key={`${name}-${index}`}>
+                <MediaCharacterImagePreview file={image} name={name} />
+                <strong>{name}</strong>
+                <p>Codinomes: {codenames}</p>
+                <p>Status: {statusLabel}</p>
+              </li>
+            );
+          },
+        )}
+      </ul>
 
       {showForm && (
         <FormSection title="Novo Personagem">
@@ -80,7 +105,7 @@ export function CreateMediaCharacterForm() {
           />
 
           <div>
-            <button type="button" onClick={handleSubmit}>
+            <button type="button" onClick={handleIncludeCharacter}>
               <Check />
             </button>
 
