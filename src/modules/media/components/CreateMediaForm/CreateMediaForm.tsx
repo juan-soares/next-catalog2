@@ -13,7 +13,7 @@ import {
   FormTextField,
 } from "@/shared/components/Form";
 import { INITIAL_MEDIA_INPUT } from "@/modules/media/consts";
-import { CreateMediaCharacterInput } from "@/modules/media-character/types";
+import type { CreateMediaCharacterInput } from "@/modules/media-character/types";
 
 type Props = {
   attributes: Attribute[];
@@ -121,6 +121,7 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
           options={languages}
           fieldName="languages"
           value={mediaInput.languages}
+          onChange={(value) => handleChange("languages", value)}
         />
 
         <FormCheckboxGroupField
@@ -128,6 +129,7 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
           options={themes}
           fieldName="themes"
           value={mediaInput.themes}
+          onChange={(value) => handleChange("themes", value)}
         />
 
         <FormSelectField

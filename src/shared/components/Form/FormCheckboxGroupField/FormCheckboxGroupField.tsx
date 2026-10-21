@@ -3,6 +3,7 @@ type Props = {
   options: { id: string; label: string }[];
   fieldName: string;
   value: string[];
+  onChange: (value: string[]) => void;
 };
 
 export function FormCheckboxGroupField({
@@ -10,7 +11,12 @@ export function FormCheckboxGroupField({
   options,
   fieldName,
   value,
+  onChange,
 }: Props) {
+  const handleChange = (id: string, checked: boolean) => {
+    onChange(checked ? [...value, id] : value.filter((item) => item !== id));
+  };
+
   return (
     <fieldset>
       <legend>{label}</legend>
@@ -22,6 +28,7 @@ export function FormCheckboxGroupField({
             name={fieldName}
             value={id}
             checked={value.includes(id)}
+            onChange={(event) => handleChange(id, event.currentTarget.checked)}
           />
           {label}
         </label>

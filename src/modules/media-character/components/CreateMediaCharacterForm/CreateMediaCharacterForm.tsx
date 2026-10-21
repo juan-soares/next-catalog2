@@ -63,14 +63,12 @@ export function CreateMediaCharacterForm({
 
   return (
     <FormSection title="Personagens">
-      {" "}
       <button
         type="button"
         onClick={() => setShowForm(true)}
         disabled={showForm}
       >
-        {" "}
-        Adicionar{" "}
+        Adicionar
       </button>
       <ul>
         {characters.map((item, index) => {
