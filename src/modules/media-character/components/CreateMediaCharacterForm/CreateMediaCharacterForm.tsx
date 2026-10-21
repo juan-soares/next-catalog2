@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Check, X } from "lucide-react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { Check, Trash, X } from "lucide-react";
 import {
   FormFileField,
   FormRadioField,
@@ -16,11 +16,15 @@ import {
 } from "@/modules/media-character/consts";
 import { MediaCharacterImagePreview } from "@/modules/media-character/components";
 
-export function CreateMediaCharacterForm() {
-  const [character, setCharacter] = useState(INITIAL_CHARACTER_INPUT);
-  const [selectedCharacters, setSelectedCharacters] = useState<
-    CreateMediaCharacterInput[]
-  >([]);
+type Props = {
+  characters: CreateMediaCharacterInput[];
+  setCharacters: Dispatch<SetStateAction<CreateMediaCharacterInput[]>>;
+};
+
+export function CreateMediaCharacterForm({ characters, setCharacters }: Props) {
+  const [character, setCharacter] = useState<CreateMediaCharacterInput>(
+    INITIAL_CHARACTER_INPUT,
+  );
   const [showForm, setShowForm] = useState<boolean>(false);
 
   const handleCloseForm = () => {
@@ -31,7 +35,12 @@ export function CreateMediaCharacterForm() {
   const handleIncludeCharacter = () => {
     if (!character.name.trim()) return;
 
-    setSelectedCharacters((prev) => [...prev, character]);
+    setCharacters((prev) => [...prev, character]);
+    handleCloseForm();
+  };
+
+  const handleRemoveCharacter = (indexToRemove: number) => {
+    setCharacters((prev) => prev.filter((_, index) => index !== indexToRemove));
     handleCloseForm();
   };
 
@@ -52,21 +61,24 @@ export function CreateMediaCharacterForm() {
       </button>
 
       <ul>
-        {selectedCharacters.map(
-          ({ statusCode, image, name, codenames }, index) => {
-            const statusLabel =
-              MEDIA_CHARACTER_STATUS_REGISTRY[statusCode].label;
+        {characters.map(({ statusCode, image, name, codenames }, index) => {
+          const statusLabel = MEDIA_CHARACTER_STATUS_REGISTRY[statusCode].label;
 
-            return (
-              <li key={`${name}-${index}`}>
-                <MediaCharacterImagePreview file={image} name={name} />
-                <strong>{name}</strong>
-                <p>Codinomes: {codenames}</p>
-                <p>Status: {statusLabel}</p>
-              </li>
-            );
-          },
-        )}
+          return (
+            <li key={`${name}-${index}`}>
+              <MediaCharacterImagePreview file={image} name={name} />
+              <strong>{name}</strong>
+              <p>Codinomes: {codenames}</p>
+              <p>Status: {statusLabel}</p>
+              <button
+                type="button"
+                onClick={() => handleRemoveCharacter(index)}
+              >
+                <Trash />
+              </button>
+            </li>
+          );
+        })}
       </ul>
 
       {showForm && (
