@@ -3,9 +3,8 @@
 import { useState } from "react";
 import type { Attribute } from "@/modules/attribute/types";
 import { CreateMediaCharacterForm } from "@/modules/media-character/components";
-import type { CreateMediaCharacterInput } from "@/modules/media-character/types";
-import { createMediaAction } from "@/modules/media/actions";
 import type { CreateMediaInput, MediaDetails } from "@/modules/media/types";
+import { createMediaAction } from "@/modules/media/actions";
 import {
   FormCheckboxGroupField,
   FormSection,
@@ -13,6 +12,8 @@ import {
   FormFileField,
   FormTextField,
 } from "@/shared/components/Form";
+import { INITIAL_MEDIA_INPUT } from "@/modules/media/consts";
+import { CreateMediaCharacterInput } from "@/modules/media-character/types";
 
 type Props = {
   attributes: Attribute[];
@@ -20,25 +21,12 @@ type Props = {
   franchises: [];
 };
 
-const initialMediaInput: CreateMediaInput = {
-  title: "",
-  translatedTitle: "",
-  synopsis: "",
-  languages: [],
-  themes: [],
-  franchise: "",
-  cover: null,
-  files: [],
-  characters: [],
-};
-
 export function CreateMediaForm({ attributes, medias, franchises }: Props) {
   const [mediaInput, setMediaInput] = useState<CreateMediaInput>({
-    ...initialMediaInput,
+    ...INITIAL_MEDIA_INPUT,
   });
   const languages = attributes.filter(({ type }) => type.field === "languages");
   const themes = attributes.filter(({ type }) => type.field === "themes");
-  const [characters, setCharacters] = useState<CreateMediaCharacterInput[]>([]);
 
   const handleChange = <K extends keyof CreateMediaInput>(
     name: K,
@@ -50,6 +38,23 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
     }));
   };
 
+  const handleUpdateCharactersList = (character: CreateMediaCharacterInput) => {
+    setMediaInput((prev) => {
+      const exists = prev.characters.some(
+        (item) => item.name === character.name,
+      );
+
+      return {
+        ...prev,
+        characters: exists
+          ? prev.characters.map((item) =>
+              item.name === character.name ? character : item,
+            )
+          : [...prev.characters, character],
+      };
+    });
+  };
+
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -57,14 +62,14 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
     formData.set(
       "characters",
       JSON.stringify(
-        characters.map(({ image, ...character }) => ({
+        mediaInput.characters.map(({ image, ...character }) => ({
           ...character,
           hasImage: image !== null,
         })),
       ),
     );
 
-    characters.forEach((character, index) => {
+    mediaInput.characters.forEach((character, index) => {
       if (character.image) {
         formData.append(`characterImage_${index}`, character.image);
       }
@@ -136,8 +141,14 @@ export function CreateMediaForm({ attributes, medias, franchises }: Props) {
       </FormSection>
 
       <CreateMediaCharacterForm
-        characters={characters}
-        setCharacters={setCharacters}
+        characters={mediaInput.characters}
+        onConfirm={handleUpdateCharactersList}
+        onRemove={(index) =>
+          setMediaInput((prev) => ({
+            ...prev,
+            characters: prev.characters.filter((_, i) => i !== index),
+          }))
+        }
       />
 
       <FormSection title="Sequência">

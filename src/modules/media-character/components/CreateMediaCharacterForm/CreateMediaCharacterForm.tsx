@@ -1,31 +1,41 @@
 "use client";
 
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { Check, Trash, X } from "lucide-react";
+
 import {
   FormFileField,
   FormRadioField,
   FormSection,
   FormTextField,
 } from "@/shared/components/Form";
+
 import type { CreateMediaCharacterInput } from "@/modules/media-character/types";
+
 import {
   INITIAL_CHARACTER_INPUT,
   MEDIA_CHARACTER_STATUS_LIST,
   MEDIA_CHARACTER_STATUS_REGISTRY,
 } from "@/modules/media-character/consts";
+
 import { MediaCharacterImagePreview } from "@/modules/media-character/components";
 
 type Props = {
   characters: CreateMediaCharacterInput[];
-  setCharacters: Dispatch<SetStateAction<CreateMediaCharacterInput[]>>;
+  onConfirm: (character: CreateMediaCharacterInput) => void;
+  onRemove: (index: number) => void;
 };
 
-export function CreateMediaCharacterForm({ characters, setCharacters }: Props) {
-  const [character, setCharacter] = useState<CreateMediaCharacterInput>(
-    INITIAL_CHARACTER_INPUT,
-  );
-  const [showForm, setShowForm] = useState<boolean>(false);
+export function CreateMediaCharacterForm({
+  characters,
+  onConfirm,
+  onRemove,
+}: Props) {
+  const [character, setCharacter] = useState<CreateMediaCharacterInput>({
+    ...INITIAL_CHARACTER_INPUT,
+  });
+
+  const [showForm, setShowForm] = useState(false);
 
   const handleCloseForm = () => {
     setCharacter({ ...INITIAL_CHARACTER_INPUT });
@@ -35,12 +45,12 @@ export function CreateMediaCharacterForm({ characters, setCharacters }: Props) {
   const handleIncludeCharacter = () => {
     if (!character.name.trim()) return;
 
-    setCharacters((prev) => [...prev, character]);
-    handleCloseForm();
-  };
+    onConfirm({
+      ...character,
+      name: character.name.trim(),
+      codenames: character.codenames.trim(),
+    });
 
-  const handleRemoveCharacter = (indexToRemove: number) => {
-    setCharacters((prev) => prev.filter((_, index) => index !== indexToRemove));
     handleCloseForm();
   };
 
@@ -48,41 +58,47 @@ export function CreateMediaCharacterForm({ characters, setCharacters }: Props) {
     fieldName: K,
     value: CreateMediaCharacterInput[K],
   ) => {
-    setCharacter((prev) => ({
-      ...prev,
-      [fieldName]: value,
-    }));
+    setCharacter((prev) => ({ ...prev, [fieldName]: value }));
   };
 
   return (
     <FormSection title="Personagens">
-      <button type="button" onClick={() => setShowForm(true)}>
-        Adicionar
+      {" "}
+      <button
+        type="button"
+        onClick={() => setShowForm(true)}
+        disabled={showForm}
+      >
+        {" "}
+        Adicionar{" "}
       </button>
-
       <ul>
-        {characters.map(({ statusCode, image, name, codenames }, index) => {
-          const statusLabel = MEDIA_CHARACTER_STATUS_REGISTRY[statusCode].label;
+        {characters.map((item, index) => {
+          const statusLabel =
+            MEDIA_CHARACTER_STATUS_REGISTRY[item.statusCode].label;
 
           return (
-            <li key={`${name}-${index}`}>
-              <MediaCharacterImagePreview file={image} name={name} />
-              <strong>{name}</strong>
-              <p>Codinomes: {codenames}</p>
+            <li key={`${item.name}-${index}`}>
+              <MediaCharacterImagePreview file={item.image} name={item.name} />
+
+              <strong>{item.name}</strong>
+
+              <p>Codinomes: {item.codenames || "Nenhum"}</p>
               <p>Status: {statusLabel}</p>
+
               <button
                 type="button"
-                onClick={() => handleRemoveCharacter(index)}
+                onClick={() => onRemove(index)}
+                aria-label={`Remover ${item.name}`}
               >
-                <Trash />
+                <Trash aria-hidden="true" />
               </button>
             </li>
           );
         })}
       </ul>
-
       {showForm && (
-        <FormSection title="Novo Personagem">
+        <FormSection title="Novo personagem">
           <FormTextField
             fieldName="name"
             label="Nome"
@@ -110,19 +126,28 @@ export function CreateMediaCharacterForm({ characters, setCharacters }: Props) {
           />
 
           <FormFileField
-            label="Escolher imagem"
             fieldName="image"
+            label="Escolher imagem"
             fileType="image/jpeg"
             onChange={(files) => handleChange("image", files?.[0] ?? null)}
           />
 
           <div>
-            <button type="button" onClick={handleIncludeCharacter}>
-              <Check />
+            <button
+              type="button"
+              onClick={handleIncludeCharacter}
+              disabled={!character.name.trim()}
+              aria-label="Confirmar personagem"
+            >
+              <Check aria-hidden="true" />
             </button>
 
-            <button type="button" onClick={handleCloseForm}>
-              <X />
+            <button
+              type="button"
+              onClick={handleCloseForm}
+              aria-label="Cancelar inclusão"
+            >
+              <X aria-hidden="true" />
             </button>
           </div>
         </FormSection>

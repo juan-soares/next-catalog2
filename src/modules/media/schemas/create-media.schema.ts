@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { createMediaCharacterSchema } from "@/modules/media/schemas";
+import { createMediaCharacterSchema } from "@/modules/media-character/schema";
 
 export const createMediaSchema = z.object({
   title: z.string().trim().min(1, "O título é obrigatório"),
@@ -11,9 +11,10 @@ export const createMediaSchema = z.object({
   franchise: z.string().trim().min(1, "Selecione uma franquia."),
   sequel: z.string().optional(),
   cover: z
-    .file("A capa é obrigatória.")
+    .file()
     .min(1, "A capa não pode estar vazia.")
-    .mime(["image/jpeg"], "A capa deve ser uma imagem JPEG."),
+    .mime(["image/jpeg"], "A capa deve ser uma imagem JPEG.")
+    .nullable(),
   trailer: z
     .file()
     .mime(["video/mp4"], "O trailer deve ser um vídeo MP4.")

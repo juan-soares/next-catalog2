@@ -1,8 +1,6 @@
-import { MediaCharacterStatusCode } from "@/modules/media-character/types";
+import z from "zod";
+import { createMediaCharacterSchema } from "@/modules/media-character/schema";
 
-export type CreateMediaCharacterInput = {
-  name: string;
-  codenames: string;
-  statusCode: MediaCharacterStatusCode;
-  image: File | null;
-};
+export type CreateMediaCharacterInput = z.infer<
+  typeof createMediaCharacterSchema
+>;
