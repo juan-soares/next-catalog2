@@ -1,24 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Trash, X } from "lucide-react";
-
+import { Check, X } from "lucide-react";
 import {
   FormFileField,
   FormRadioField,
   FormSection,
   FormTextField,
 } from "@/shared/components/Form";
-
 import type { CreateMediaCharacterInput } from "@/modules/media-character/types";
-
 import {
   INITIAL_CHARACTER_INPUT,
   MEDIA_CHARACTER_STATUS_LIST,
-  MEDIA_CHARACTER_STATUS_REGISTRY,
 } from "@/modules/media-character/consts";
-
-import { MediaCharacterImagePreview } from "@/modules/media-character/components";
+import { SelectedMediaCharactersList } from "../SelectedMediaCharactersList";
 
 type Props = {
   characters: CreateMediaCharacterInput[];
@@ -70,31 +65,14 @@ export function CreateMediaCharacterForm({
       >
         Adicionar
       </button>
-      <ul>
-        {characters.map((item, index) => {
-          const statusLabel =
-            MEDIA_CHARACTER_STATUS_REGISTRY[item.statusCode].label;
 
-          return (
-            <li key={`${item.name}-${index}`}>
-              <MediaCharacterImagePreview file={item.image} name={item.name} />
+      {characters.length > 0 && (
+        <SelectedMediaCharactersList
+          selectedCharacters={characters}
+          onRemove={onRemove}
+        />
+      )}
 
-              <strong>{item.name}</strong>
-
-              <p>Codinomes: {item.codenames || "Nenhum"}</p>
-              <p>Status: {statusLabel}</p>
-
-              <button
-                type="button"
-                onClick={() => onRemove(index)}
-                aria-label={`Remover ${item.name}`}
-              >
-                <Trash aria-hidden="true" />
-              </button>
-            </li>
-          );
-        })}
-      </ul>
       {showForm && (
         <FormSection title="Novo personagem">
           <FormTextField
