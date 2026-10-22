@@ -1,7 +1,7 @@
-import { MediaDetails } from "@/modules/media/types";
 import { File } from "lucide-react";
+import type { MediaView } from "@/modules/media/types";
 
-type Props = Pick<MediaDetails, "files">;
+type Props = Pick<MediaView, "files">;
 
 export function MediaTabFiles({ files }: Props) {
   if (files.length === 0)
@@ -14,10 +14,10 @@ export function MediaTabFiles({ files }: Props) {
   return (
     <section>
       <ul>
-        {files.map(({ fileName, label, fileType, fileSize }) => (
-          <li key={fileName}>
+        {files.map(({ label, fileType, size }) => (
+          <li key={label}>
             <File />
-            <p>{`${label} • ${fileType} • ${fileSize}`}</p>
+            <p>{`${label} • ${fileType} • ${size} KB`}</p>
           </li>
         ))}
       </ul>

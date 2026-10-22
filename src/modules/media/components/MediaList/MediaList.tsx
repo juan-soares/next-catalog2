@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { MediaView, MediaSortOptionKey } from "@/modules/media/types";
-import { MediaSidebar } from "@/modules/media/components";
 
 type Props = {
   currentSort: MediaSortOptionKey;
@@ -21,8 +20,6 @@ export function MediaList({ currentSort, medias }: Props) {
 
   return (
     <div>
-      <MediaSidebar />
-
       <ul>
         {medias.map(({ slug, path, cover, title, releaseYear }) => (
           <li key={slug}>

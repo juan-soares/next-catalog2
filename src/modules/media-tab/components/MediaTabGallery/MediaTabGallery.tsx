@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { MediaDetails } from "@/modules/media/types";
+import type { MediaView } from "@/modules/media/types";
 
-type Props = Pick<MediaDetails, "gallery">;
+type Props = Pick<MediaView, "gallery">;
 
 export function MediaTabGallery({ gallery }: Props) {
   if (gallery.length === 0)
@@ -14,8 +14,8 @@ export function MediaTabGallery({ gallery }: Props) {
   return (
     <section>
       <ul>
-        {gallery.map(({ fileName, url, alt }) => (
-          <li key={fileName}>
+        {gallery.map(({ url, alt }) => (
+          <li key={url}>
             <Image src={url} alt={alt} width={60} height={60} />
           </li>
         ))}

@@ -20,4 +20,8 @@ export type MediaGroupView = {
   cover: MediaImageView;
   trailer?: { url: string; fileType: string };
   status: MediaStatus;
+
+  episodes?: MediaUnitView[];
+  tracks?: MediaUnitView[];
+  volumes?: MediaUnitView[];
 };

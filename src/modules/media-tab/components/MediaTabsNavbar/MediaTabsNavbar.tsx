@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MediaTab } from "@/modules/media-tab/types";
+import type { MediaTab } from "@/modules/media-tab/types";
 
 type Props = {
   tabs: MediaTab[];

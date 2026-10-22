@@ -1,8 +1,8 @@
-import { MediaDetails } from "@/modules/media/types";
 import Image from "next/image";
 import Link from "next/link";
+import type { MediaView } from "@/modules/media/types";
 
-type Props = Pick<MediaDetails, "franchises">;
+type Props = Pick<MediaView, "franchises">;
 
 export function MediaTabFranchises({ franchises }: Props) {
   if (franchises.length === 0)

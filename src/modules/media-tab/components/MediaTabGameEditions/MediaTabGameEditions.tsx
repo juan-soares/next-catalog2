@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MediaDetails } from "@/modules/media/types";
+import type { MediaView } from "@/modules/media/types";
 
-type Props = Pick<MediaDetails, "gameEdition">;
+type Props = Pick<MediaView, "gameEdition">;
 
 export function MediaTabGameEditions({ gameEdition }: Props) {
   if (!gameEdition) return null;

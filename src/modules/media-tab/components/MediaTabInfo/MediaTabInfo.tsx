@@ -1,7 +1,7 @@
-import { MediaDetails } from "@/modules/media/types";
+import type { MediaView } from "@/modules/media/types";
 
 type Props = Pick<
-  MediaDetails,
+  MediaView,
   "title" | "translatedTitle" | "releaseYear" | "gameDetails"
 >;
 
@@ -27,17 +27,21 @@ export function MediaTabInfo({
           <>
             <dt>Plataformas:</dt>
             <dd>
-              {gameDetails.platforms.map((platform) => platform).join(", ")}
+              {gameDetails.platforms
+                .map(({ label }) => {
+                  label;
+                })
+                .join(", ")}
             </dd>
 
             <dt>Gêneros:</dt>
-            <dd>{gameDetails.genres.map((genre) => genre).join(", ")}</dd>
+            <dd>{gameDetails.genres.map(({ label }) => label).join(", ")}</dd>
 
             <dt>Gameplay:</dt>
-            <dd>{gameDetails.gameplay}</dd>
+            <dd>{gameDetails.gameplay.label}</dd>
 
             <dt>Modos:</dt>
-            <dd>{gameDetails.modes.map((mode) => mode).join(", ")}</dd>
+            <dd>{gameDetails.modes.map(({ label }) => label).join(", ")}</dd>
 
             <dt>Jogadores:</dt>
             <dd>{`${gameDetails.players.min} - ${gameDetails.players.max}`}</dd>

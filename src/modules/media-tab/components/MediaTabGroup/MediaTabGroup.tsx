@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { MediaGroup } from "@/modules/media-group/types";
 import Image from "next/image";
+import type { MediaGroupView } from "@/modules/media-group/types";
 import { MediaUnitList } from "@/modules/media-unit/components";
 
 type Props = {
-  group: MediaGroup[];
+  group: MediaGroupView[];
   mediaTypePath: string;
   groupTypeSlug: string;
   mediaSlug: string;
@@ -17,12 +17,13 @@ export function MediaTabGroup({
   mediaSlug,
 }: Props) {
   const createPath = `${mediaTypePath}/${mediaSlug}/adicionar/${groupTypeSlug}`;
-  if (group.length === 0)
+  if (group.length === 0) {
     return (
       <p>
         Sem registros. <Link href={createPath}>Adicionar?</Link>
       </p>
     );
+  }
 
   return (
     <ul>
@@ -30,13 +31,15 @@ export function MediaTabGroup({
         <li key={groupItem.id}>
           <article>
             <aside>
-              <video controls loop muted playsInline preload="metadata">
-                <source
-                  src={groupItem.trailer.url}
-                  type={groupItem.trailer.fileType}
-                />
-                Seu navegador não suporta a reprodução de vídeos.
-              </video>
+              {groupItem.trailer && (
+                <video controls loop muted playsInline preload="metadata">
+                  <source
+                    src={groupItem.trailer.url}
+                    type={groupItem.trailer.fileType}
+                  />
+                  Seu navegador não suporta a reprodução de vídeos.
+                </video>
+              )}
 
               <Image
                 src={groupItem.cover.url}
@@ -47,8 +50,12 @@ export function MediaTabGroup({
             </aside>
 
             <main>
-              <header>{`${groupItem.groupType.label} ${groupItem.number} • ${groupItem.releaseYear} • [${groupItem.resolution}] (${groupItem.language})`}</header>
-
+              <header>
+                {groupItem.groupType.label} {groupItem.number} •{" "}
+                {groupItem.releaseYear} • [
+                {groupItem.resolution?.label ?? "N/A"}] (
+                {groupItem.language.label})
+              </header>
               <h2>
                 {groupItem.title}{" "}
                 {groupItem.translatedTitle && (
@@ -64,7 +71,12 @@ export function MediaTabGroup({
             <div>
               <MediaUnitList
                 createPath={`${createPath}/${groupItem.id}`}
-                mediaUnits={groupItem.units}
+                mediaUnits={
+                  groupItem.episodes ||
+                  groupItem.tracks ||
+                  groupItem.volumes ||
+                  []
+                }
               />
             </div>
           </article>

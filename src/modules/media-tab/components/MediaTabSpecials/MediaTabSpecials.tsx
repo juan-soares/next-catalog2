@@ -1,7 +1,7 @@
-import { MediaDetails } from "@/modules/media";
 import { MediaTabGroup } from "@/modules/media-tab/components";
+import type { MediaView } from "@/modules/media/types";
 
-type Props = Pick<MediaDetails, "specials" | "type" | "slug">;
+type Props = Pick<MediaView, "specials" | "type" | "slug">;
 
 export function MediaTabSpecials({ specials, type, slug }: Props) {
   if (!specials) return null;

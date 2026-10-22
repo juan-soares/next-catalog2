@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { MediaDetails } from "@/modules/media/types";
 import Link from "next/link";
+import type { MediaView } from "@/modules/media/types";
 
-type Props = Pick<MediaDetails, "sequel">;
+type Props = Pick<MediaView, "sequel">;
 
 export function MediaTabSequel({ sequel: { previous, next } }: Props) {
   return (
