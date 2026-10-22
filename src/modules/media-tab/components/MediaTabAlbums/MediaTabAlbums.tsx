@@ -6,12 +6,7 @@ type Props = Pick<MediaView, "albums" | "type" | "slug">;
 export function MediaTabAlbums({ albums, type, slug }: Props) {
   if (!albums) return null;
 
-  return (
-    <MediaTabGroup
-      group={albums}
-      mediaTypePath={type.path}
-      groupTypeSlug="álbuns"
-      mediaSlug={slug}
-    />
-  );
+  const createPath = `/musicas/${slug}/adicionar/albums`;
+
+  return <MediaTabGroup createPath={createPath} group={albums} />;
 }

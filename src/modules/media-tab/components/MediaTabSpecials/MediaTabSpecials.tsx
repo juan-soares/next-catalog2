@@ -6,12 +6,7 @@ type Props = Pick<MediaView, "specials" | "type" | "slug">;
 export function MediaTabSpecials({ specials, type, slug }: Props) {
   if (!specials) return null;
 
-  return (
-    <MediaTabGroup
-      group={specials}
-      mediaTypePath={type.path}
-      groupTypeSlug="temporadas"
-      mediaSlug={slug}
-    />
-  );
+  const createPath = `${typePath}/${slug}/adicionar/especiais`;
+
+  return <MediaTabGroup createPath={createPath} group={specials} />;
 }

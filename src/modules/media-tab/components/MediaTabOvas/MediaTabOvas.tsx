@@ -6,12 +6,7 @@ type Props = Pick<MediaView, "ovas" | "type" | "slug">;
 export function MediaTabOvas({ ovas, type, slug }: Props) {
   if (!ovas) return null;
 
-  return (
-    <MediaTabGroup
-      group={ovas}
-      mediaTypePath={type.path}
-      groupTypeSlug="temporadas"
-      mediaSlug={slug}
-    />
-  );
+  const createPath = `/animes/${slug}/adicionar/ovas`;
+
+  return <MediaTabGroup createPath={createPath} group={ovas} />;
 }

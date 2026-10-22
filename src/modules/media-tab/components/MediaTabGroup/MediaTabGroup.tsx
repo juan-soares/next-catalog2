@@ -5,18 +5,10 @@ import { MediaUnitList } from "@/modules/media-unit/components";
 
 type Props = {
   group: MediaGroupView[];
-  mediaTypePath: string;
-  groupTypeSlug: string;
-  mediaSlug: string;
+  createPath: string;
 };
 
-export function MediaTabGroup({
-  group,
-  mediaTypePath,
-  groupTypeSlug,
-  mediaSlug,
-}: Props) {
-  const createPath = `${mediaTypePath}/${mediaSlug}/adicionar/${groupTypeSlug}`;
+export function MediaTabGroup({ group, createPath }: Props) {
   if (group.length === 0) {
     return (
       <p>
