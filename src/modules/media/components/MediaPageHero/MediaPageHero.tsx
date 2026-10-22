@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { MediaDetails } from "@/modules/media/types";
+import type { MediaView } from "@/modules/media/types";
 
 type Props = Pick<
-  MediaDetails,
+  MediaView,
   | "trailer"
   | "cover"
   | "title"
@@ -30,10 +30,12 @@ export function MediaPageHero({
   return (
     <header>
       <div>
-        <video controls autoPlay loop muted playsInline preload="auto">
-          <source src={trailer.url} type={trailer.fileType} />
-          Seu navegador não suporta a reprodução de vídeos.
-        </video>
+        {trailer && (
+          <video controls autoPlay loop muted playsInline preload="auto">
+            <source src={trailer.url} type={trailer.fileType} />
+            Seu navegador não suporta a reprodução de vídeos.
+          </video>
+        )}
       </div>
 
       <div>

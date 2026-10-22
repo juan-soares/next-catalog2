@@ -1,6 +1,6 @@
 import { MediaTypeCode, MediaTypeDetails } from "@/modules/media-type/types";
 
-export const MEDIA_TYPE_REPOSITORY = {
+export const MEDIA_TYPE_REGISTRY = {
   anime: {
     code: "anime",
     label: "Animes",

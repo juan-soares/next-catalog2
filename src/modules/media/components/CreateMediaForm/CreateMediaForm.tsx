@@ -3,7 +3,8 @@
 import { useState } from "react";
 import type { AttributeView } from "@/modules/attribute/types";
 import { CreateMediaCharacterForm } from "@/modules/media-character/components";
-import type { CreateMediaInput, MediaDetails } from "@/modules/media/types";
+import type { CreateMediaCharacterInput } from "@/modules/media-character/types";
+import type { CreateMediaInput, MediaView } from "@/modules/media/types";
 import { createMediaAction } from "@/modules/media/actions";
 import {
   FormCheckboxGroupField,
@@ -13,13 +14,12 @@ import {
   FormTextField,
 } from "@/shared/components/Form";
 import { INITIAL_MEDIA_INPUT } from "@/modules/media/consts";
-import type { CreateMediaCharacterInput } from "@/modules/media-character/types";
 
 type Props = {
   languages: AttributeView[];
   themes: AttributeView[];
 
-  medias: MediaDetails[];
+  medias: MediaView[];
   franchises: [];
 };
 

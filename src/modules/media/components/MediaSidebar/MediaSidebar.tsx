@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
-import { MediaTypeFilter } from "@/modules/media-type/types";
+import type { MediaTypeFilter } from "@/modules/media-type/types";
 import { MediaTypeFilters } from "@/modules/media-type/components/";
 
 type Props = {

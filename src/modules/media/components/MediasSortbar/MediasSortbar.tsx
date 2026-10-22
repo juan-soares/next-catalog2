@@ -1,5 +1,5 @@
 import { MEDIA_SORT_OPTION_LIST } from "@/modules/media/consts";
-import { MediaSortOptionKey } from "@/modules/media/types";
+import type { MediaSortOptionKey } from "@/modules/media/types";
 
 type Props = {
   currentSort: MediaSortOptionKey;

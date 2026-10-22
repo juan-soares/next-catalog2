@@ -1,12 +1,12 @@
 import { MediaTabsNavbar } from "@/modules/media-tab/components";
 import { MEDIA_TABS_REGISTRY } from "@/modules/media-tab/consts";
-import { MediaTabCode, MediaTab } from "@/modules/media-tab/types";
-import { MediaDetails } from "../../types";
+import type { MediaTabCode, MediaTab } from "@/modules/media-tab/types";
+import type { MediaView } from "@/modules/media/types";
 
 type Props = {
   currentTab: MediaTabCode;
   mediaTypeTabs: MediaTab[];
-  media: MediaDetails;
+  media: MediaView;
 };
 
 export function MediaPageContent({ currentTab, mediaTypeTabs, media }: Props) {
