@@ -1,4 +1,4 @@
-import { AttributeTypeFieldCode } from "@/modules/attribute/types";
+import type { AttributeTypeFieldCode } from "@/modules/attribute/types";
 import { ATTRIBUTE_TYPE_FIELD_CODE_LIST } from "@/modules/attribute/consts";
 
 export function isAttributeTypeFieldCode(

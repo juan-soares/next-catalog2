@@ -3,3 +3,4 @@ export type * from "./attribute-type-field-code.type";
 export type * from "./attribute-type.type";
 
 export type * from "./attribute.type";
+export type * from "./attribute-type-view.type";

@@ -1,5 +1,5 @@
-import { AttributeTypeFieldCode } from "@/modules/attribute";
-import { MediaSortOptionKey } from "@/modules/media/types";
+import type { AttributeTypeFieldCode } from "@/modules/attribute/types";
+import type { MediaSortOptionKey } from "@/modules/media/types";
 
 export type MediaSearchOptions = {
   term?: string;

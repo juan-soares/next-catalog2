@@ -1,4 +1,4 @@
-import { MediaSortOptionKey } from "./media-sort-option-key.type";
+import type { MediaSortOptionKey } from "@/modules/media/types";
 
 type MediaSortByKey = "title" | "updatedAt" | "createdAt";
 type MediaSortOrder = "asc" | "desc";

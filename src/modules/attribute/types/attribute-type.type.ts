@@ -1,4 +1,4 @@
-import { AttributeTypeCode } from "@/modules/attribute/types";
+import type { AttributeTypeCode } from "@/modules/attribute/types";
 
 export type AttributeType = {
   code: AttributeTypeCode;

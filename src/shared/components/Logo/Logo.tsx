@@ -1,6 +1,6 @@
-import { LOGO } from "@/shared/consts";
 import Image from "next/image";
 import Link from "next/link";
+import { LOGO } from "@/shared/consts";
 
 export function Logo() {
   return (

@@ -1,4 +1,7 @@
-import { AttributeType, AttributeTypeCode } from "@/modules/attribute/types";
+import type {
+  AttributeTypeCode,
+  AttributeType,
+} from "@/modules/attribute/types";
 
 export const ATTRIBUTE_TYPE_REGISTRY = {
   language: {

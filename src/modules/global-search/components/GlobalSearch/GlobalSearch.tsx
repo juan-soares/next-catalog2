@@ -1,8 +1,10 @@
 "use client";
 
 import { useGlobalSearch } from "@/modules/global-search/hooks";
-import { GlobalSearchInput } from "@/modules/global-search/components/GlobalSearchInput";
-import { GlobalSearchResults } from "@/modules/global-search/components/GlobalSearchResults";
+import {
+  GlobalSearchInput,
+  GlobalSearchResults,
+} from "@/modules/global-search/components";
 
 export function GlobalSearch() {
   const {

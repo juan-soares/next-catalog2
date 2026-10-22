@@ -1,4 +1,4 @@
-import { MediaSortOptionKey } from "@/modules/media/types";
+import type { MediaSortOptionKey } from "@/modules/media/types";
 import { MEDIA_SORT_OPTIONS_REGISTRY } from "@/modules/media/consts";
 
 export function getValidMediaSortOptionFromSearchParams(

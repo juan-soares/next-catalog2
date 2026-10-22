@@ -1,6 +1,6 @@
-import { MediaDetails } from "@/modules/media";
+import type { MediaView } from "@/modules/media/types";
 
 export type GlobalSearchResult = Pick<
-  MediaDetails,
+  MediaView,
   "slug" | "path" | "cover" | "type" | "releaseYear" | "title" | "synopsis"
 >;

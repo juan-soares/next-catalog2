@@ -1,4 +1,7 @@
-import { MediaSortOption, MediaSortOptionKey } from "@/modules/media/types";
+import type {
+  MediaSortOption,
+  MediaSortOptionKey,
+} from "@/modules/media/types";
 
 export const MEDIA_SORT_OPTIONS_REGISTRY = {
   "title-asc": {

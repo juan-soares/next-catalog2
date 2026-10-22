@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Attribute } from "@/modules/attribute/types";
+import type { AttributeView } from "@/modules/attribute/types";
 import { CreateMediaCharacterForm } from "@/modules/media-character/components";
 import type { CreateMediaInput, MediaDetails } from "@/modules/media/types";
 import { createMediaAction } from "@/modules/media/actions";
@@ -16,17 +16,23 @@ import { INITIAL_MEDIA_INPUT } from "@/modules/media/consts";
 import type { CreateMediaCharacterInput } from "@/modules/media-character/types";
 
 type Props = {
-  attributes: Attribute[];
+  languages: AttributeView[];
+  themes: AttributeView[];
+
   medias: MediaDetails[];
   franchises: [];
 };
 
-export function CreateMediaForm({ attributes, medias, franchises }: Props) {
+export function CreateMediaForm({
+  languages,
+  themes,
+
+  medias,
+  franchises,
+}: Props) {
   const [mediaInput, setMediaInput] = useState<CreateMediaInput>({
     ...INITIAL_MEDIA_INPUT,
   });
-  const languages = attributes.filter(({ type }) => type.field === "languages");
-  const themes = attributes.filter(({ type }) => type.field === "themes");
 
   const handleChange = <K extends keyof CreateMediaInput>(
     name: K,

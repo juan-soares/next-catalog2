@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SEARCH_PATH } from "@/shared/consts";
-import { GlobalSearchResult } from "@/modules/global-search/types";
+import type { GlobalSearchResult } from "@/modules/global-search/types";
 import { searchGlobalMediasFromClientSide } from "@/modules/global-search/services";
 
 export function useGlobalSearch() {

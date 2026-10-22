@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { GlobalSearchResult } from "@/modules/global-search/types";
+import type { GlobalSearchResult } from "@/modules/global-search/types";
 
 type Props = {
   isLoading: boolean;

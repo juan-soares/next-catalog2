@@ -1,9 +1,8 @@
-import { MediaDetails } from "@/modules/media/types";
+import { MEDIA_VIEW_MOCK } from "@/app/mocks";
+import type { MediaView } from "@/modules/media/types";
 
-import { MEDIAS_MOCK } from "../consts/mock.const";
-
-export async function searchMedias(term: string): Promise<MediaDetails[]> {
-  return MEDIAS_MOCK.filter(
+export async function searchMedias(term: string): Promise<MediaView[]> {
+  return MEDIA_VIEW_MOCK.filter(
     (media) =>
       media.title.includes(term) || media.translatedTitle.includes(term),
   );

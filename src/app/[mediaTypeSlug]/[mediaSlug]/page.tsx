@@ -2,25 +2,34 @@ import {
   getValidMediaTabFromSearchParams,
   getTabsByMediaType,
 } from "@/modules/media-tab/services";
+import { getMediaTypeDetailsBySlug } from "@/modules/media-type/services";
 import { MediaPageHero, MediaPageContent } from "@/modules/media/components";
 import { getMediaDetailsBySlug } from "@/modules/media/services";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: Promise<{ mediaSlug: string }>;
+  params: Promise<{ mediaTypeSlug: string; mediaSlug: string }>;
   searchParams: Promise<{ tab?: string | string[] }>;
 };
 
 export default async function MediaPage({ params, searchParams }: Props) {
-  const [{ mediaSlug }, { tab }] = await Promise.all([params, searchParams]);
+  const [{ mediaTypeSlug, mediaSlug }, { tab }] = await Promise.all([
+    params,
+    searchParams,
+  ]);
   const media = await getMediaDetailsBySlug(mediaSlug);
+  const mediaTypeDetails = getMediaTypeDetailsBySlug(mediaTypeSlug);
 
-  if (!media) {
+  if (
+    !media ||
+    !mediaTypeDetails ||
+    media.type.label !== mediaTypeDetails.label
+  ) {
     notFound();
   }
 
   const currentTab = getValidMediaTabFromSearchParams(tab);
-  const mediaTypeTabs = getTabsByMediaType(media.type.code);
+  const mediaTypeTabs = getTabsByMediaType(mediaTypeDetails.code);
 
   return (
     <div>
