@@ -1,109 +1,66 @@
 import type { Media } from "@/modules/media/types";
 
-export const MEDIA_MOCK: Media[] = [
+export const mediaMock: Media[] = [
   {
     id: "media-001",
     slug: "naruto",
-    path: "/animes/naruto",
-
+    path: "/anime/naruto",
     title: "Naruto",
     translatedTitle: "Naruto",
     releaseYear: 2002,
     typeCode: "anime",
     synopsis:
       "Naruto Uzumaki é um jovem ninja que sonha em se tornar Hokage e conquistar o reconhecimento de sua vila.",
-
-    languageIds: ["lang-ja", "lang-pt"],
-    themeIds: ["theme-action", "theme-adventure", "theme-ninja"],
-
-    cover: {
-      url: "https://placehold.co/300x450?text=Naruto",
-      alt: "Capa de Naruto",
-    },
-
-    trailer: {
-      url: "https://example.com/trailers/naruto.mp4",
-      fileType: "video/mp4",
-    },
-
-    characterIds: ["character-naruto", "character-sasuke"],
-
-    seasonIds: ["season-naruto-01"],
-    ovaIds: [],
-    specialIds: [],
-
-    previousMediaId: undefined,
-    nextMediaId: "media-naruto-shippuden",
-
-    galleryAssetIds: [],
-
-    files: [
-      {
-        label: "Guia de episódios",
-        url: "https://example.com/files/naruto-guide.pdf",
-        fileType: ".pdf",
-        size: 102400,
-      },
+    languageIds: ["lang-ja", "lang-pt-br", "lang-en"],
+    themeIds: ["theme-ninja", "theme-adventure", "theme-friendship"],
+    coverAssetId: "asset-cover-naruto",
+    trailerAssetId: "asset-trailer-naruto",
+    characterIds: [
+      "character-naruto",
+      "character-sasuke",
+      "character-sakura",
+      "character-kakashi",
     ],
-
+    seasonIds: ["season-naruto-01"],
+    ovaIds: ["ova-naruto-01"],
+    specialIds: ["special-naruto-01"],
+    galleryAssetIds: ["asset-naruto-gallery-01", "asset-naruto-gallery-02"],
+    fileAssetIds: ["asset-naruto-poster"],
     franchiseIds: ["franchise-naruto"],
-
     status: {
       acquired: true,
-      consumed: false,
+      consumed: true,
     },
   },
 
   {
     id: "media-002",
-    slug: "the-legend-of-zelda-tears-of-the-kingdom",
-    path: "/jogos/the-legend-of-zelda-tears-of-the-kingdom",
-
-    title: "The Legend of Zelda: Tears of the Kingdom",
-    translatedTitle: "A Lenda de Zelda: Lágrimas do Reino",
-    releaseYear: 2023,
-    typeCode: "game",
+    slug: "one-piece",
+    path: "/anime/one-piece",
+    title: "One Piece",
+    translatedTitle: "One Piece",
+    releaseYear: 1999,
+    typeCode: "anime",
     synopsis:
-      "Link explora Hyrule e os céus acima do reino para descobrir a origem de uma nova ameaça.",
-
-    languageIds: ["lang-pt", "lang-en"],
-    themeIds: ["theme-adventure", "theme-fantasy"],
-
-    cover: {
-      url: "https://placehold.co/300x450?text=Zelda",
-      alt: "Capa de The Legend of Zelda: Tears of the Kingdom",
-    },
-
-    characterIds: ["character-link", "character-zelda"],
-
-    gameDetails: {
-      platformIds: ["platform-switch"],
-      genreIds: ["genre-action", "genre-adventure"],
-      gameplayId: "open-world",
-      modeIds: ["mode-single-player"],
-      players: {
-        min: 1,
-        max: 1,
-      },
-    },
-
-    gameEdition: {
-      baseId: null,
-      dlcIds: [],
-      expansionIds: [],
-    },
-
-    gallery: [
-      {
-        url: "https://placehold.co/800x450?text=Hyrule",
-        alt: "Paisagem de Hyrule",
-      },
+      "Monkey D. Luffy parte em uma jornada pelos mares para encontrar o lendário tesouro One Piece e se tornar o Rei dos Piratas.",
+    languageIds: ["lang-ja", "lang-pt-br", "lang-en"],
+    themeIds: ["theme-pirates", "theme-adventure", "theme-friendship"],
+    coverAssetId: "asset-cover-one-piece",
+    trailerAssetId: "asset-trailer-one-piece",
+    characterIds: [
+      "character-luffy",
+      "character-zoro",
+      "character-nami",
+      "character-sanji",
     ],
-
-    files: [],
-
-    franchiseIds: ["franchise-zelda"],
-
+    seasonIds: ["season-one-piece-01"],
+    specialIds: ["special-one-piece-01"],
+    galleryAssetIds: [
+      "asset-one-piece-gallery-01",
+      "asset-one-piece-gallery-02",
+    ],
+    fileAssetIds: ["asset-one-piece-poster"],
+    franchiseIds: ["franchise-one-piece"],
     status: {
       acquired: true,
       consumed: false,
@@ -112,36 +69,275 @@ export const MEDIA_MOCK: Media[] = [
 
   {
     id: "media-003",
-    slug: "discovery",
-    path: "/musicas/discovery",
-
-    title: "Discovery",
-    translatedTitle: "",
-    releaseYear: 2001,
-    typeCode: "music",
-    synopsis: "Álbum de música eletrônica da dupla francesa Daft Punk.",
-
-    languageIds: [],
-    themeIds: ["theme-electronic-music"],
-
-    cover: {
-      url: "https://placehold.co/300x300?text=Discovery",
-      alt: "Capa do álbum Discovery",
+    slug: "one-piece-film-red",
+    path: "/animated-movie/one-piece-film-red",
+    title: "One Piece Film: Red",
+    translatedTitle: "One Piece Film: Red",
+    releaseYear: 2022,
+    typeCode: "animated-movie",
+    synopsis:
+      "Luffy e seus companheiros participam de um evento musical protagonizado por Uta, uma cantora mundialmente famosa ligada a Shanks.",
+    languageIds: ["lang-ja", "lang-pt-br"],
+    themeIds: ["theme-pirates", "theme-music", "theme-adventure"],
+    coverAssetId: "asset-cover-one-piece-red",
+    trailerAssetId: "asset-trailer-one-piece-red",
+    characterIds: ["character-luffy", "character-shanks", "character-uta"],
+    previousMediaId: "media-002",
+    galleryAssetIds: [
+      "asset-one-piece-red-gallery-01",
+      "asset-one-piece-red-gallery-02",
+    ],
+    fileAssetIds: ["asset-one-piece-red-poster"],
+    franchiseIds: ["franchise-one-piece"],
+    status: {
+      acquired: false,
+      consumed: true,
     },
+  },
 
-    characterIds: [],
+  {
+    id: "media-004",
+    slug: "the-legend-of-zelda-breath-of-the-wild",
+    path: "/video-game/the-legend-of-zelda-breath-of-the-wild",
+    title: "The Legend of Zelda: Breath of the Wild",
+    translatedTitle: "A Lenda de Zelda: Breath of the Wild",
+    releaseYear: 2017,
+    typeCode: "video-game",
+    synopsis:
+      "Link desperta após um longo sono e explora Hyrule para recuperar suas memórias e enfrentar Calamity Ganon.",
+    languageIds: ["lang-ja", "lang-en", "lang-pt-br"],
+    themeIds: ["theme-fantasy", "theme-adventure", "theme-exploration"],
+    coverAssetId: "asset-cover-zelda-botw",
+    trailerAssetId: "asset-trailer-zelda-botw",
+    characterIds: ["character-link", "character-zelda", "character-ganon"],
+    gameDetails: {
+      platformIds: ["platform-nintendo-switch", "platform-wii-u"],
+      genreIds: ["genre-action-adventure", "genre-open-world"],
+      gameplayId: "gameplay-real-time",
+      modeIds: ["mode-single-player"],
+      players: {
+        min: 1,
+        max: 1,
+      },
+    },
+    gameEdition: {
+      baseId: null,
+      dlcIds: ["media-005"],
+      expansionIds: [],
+    },
+    galleryAssetIds: [
+      "asset-zelda-botw-gallery-01",
+      "asset-zelda-botw-gallery-02",
+    ],
+    fileAssetIds: ["asset-zelda-botw-poster"],
+    franchiseIds: ["franchise-the-legend-of-zelda"],
+    status: {
+      acquired: true,
+      consumed: false,
+    },
+    nextMediaId: "media-005",
+  },
 
-    albumIds: ["album-discovery"],
-    concertIds: [],
+  {
+    id: "media-005",
+    slug: "zelda-breath-of-the-wild-expansion-pass",
+    path: "/video-game/zelda-breath-of-the-wild-expansion-pass",
+    title: "The Legend of Zelda: Breath of the Wild Expansion Pass",
+    translatedTitle: "Passe de Expansão de Breath of the Wild",
+    releaseYear: 2017,
+    typeCode: "video-game",
+    synopsis:
+      "Conteúdo adicional que inclui novos desafios, equipamentos e a expansão The Champions' Ballad.",
+    languageIds: ["lang-ja", "lang-en"],
+    themeIds: ["theme-fantasy", "theme-adventure"],
+    coverAssetId: "asset-cover-zelda-expansion",
+    trailerAssetId: "asset-trailer-zelda-expansion",
+    characterIds: ["character-link", "character-zelda"],
+    gameDetails: {
+      platformIds: ["platform-nintendo-switch", "platform-wii-u"],
+      genreIds: ["genre-action-adventure"],
+      gameplayId: "gameplay-real-time",
+      modeIds: ["mode-single-player"],
+      players: {
+        min: 1,
+        max: 1,
+      },
+    },
+    gameEdition: {
+      baseId: "media-004",
+      dlcIds: [],
+      expansionIds: [],
+    },
+    previousMediaId: "media-004",
+    galleryAssetIds: ["asset-zelda-expansion-gallery-01"],
+    fileAssetIds: ["asset-zelda-expansion-poster"],
+    franchiseIds: ["franchise-the-legend-of-zelda"],
+    status: {
+      acquired: true,
+      consumed: true,
+    },
+  },
 
-    gallery: [],
-    files: [],
-
-    franchiseIds: [],
-
+  {
+    id: "media-006",
+    slug: "attack-on-titan",
+    path: "/anime/attack-on-titan",
+    title: "Shingeki no Kyojin",
+    translatedTitle: "Attack on Titan",
+    releaseYear: 2013,
+    typeCode: "anime",
+    synopsis:
+      "Em um mundo ameaçado por gigantes humanoides, Eren Yeager e seus companheiros lutam para proteger a humanidade e descobrir a verdade por trás das muralhas.",
+    languageIds: ["lang-ja", "lang-pt-br", "lang-en"],
+    themeIds: ["theme-dark-fantasy", "theme-survival", "theme-mystery"],
+    coverAssetId: "asset-cover-attack-on-titan",
+    trailerAssetId: "asset-trailer-attack-on-titan",
+    characterIds: [
+      "character-eren",
+      "character-mikasa",
+      "character-armin",
+      "character-levi",
+    ],
+    seasonIds: [
+      "season-aot-01",
+      "season-aot-02",
+      "season-aot-03",
+      "season-aot-04",
+    ],
+    galleryAssetIds: ["asset-aot-gallery-01", "asset-aot-gallery-02"],
+    fileAssetIds: ["asset-aot-poster"],
+    franchiseIds: ["franchise-attack-on-titan"],
     status: {
       acquired: false,
       consumed: false,
+    },
+  },
+
+  {
+    id: "media-007",
+    slug: "final-fantasy-vii-remake",
+    path: "/video-game/final-fantasy-vii-remake",
+    title: "Final Fantasy VII Remake",
+    translatedTitle: "Final Fantasy VII Remake",
+    releaseYear: 2020,
+    typeCode: "video-game",
+    synopsis:
+      "Cloud Strife se une a um grupo de resistência para enfrentar a Shinra e desvendar uma conspiração que ameaça o planeta.",
+    languageIds: ["lang-ja", "lang-en", "lang-pt-br"],
+    themeIds: ["theme-fantasy", "theme-science-fiction", "theme-action"],
+    coverAssetId: "asset-cover-ffvii-remake",
+    trailerAssetId: "asset-trailer-ffvii-remake",
+    characterIds: [
+      "character-cloud",
+      "character-tifa",
+      "character-aerith",
+      "character-barret",
+    ],
+    gameDetails: {
+      platformIds: ["platform-ps4", "platform-ps5", "platform-pc"],
+      genreIds: ["genre-action-rpg", "genre-jrpg"],
+      gameplayId: "gameplay-action-combat",
+      modeIds: ["mode-single-player"],
+      players: {
+        min: 1,
+        max: 1,
+      },
+    },
+    gameEdition: {
+      baseId: null,
+      dlcIds: [],
+      expansionIds: [],
+    },
+    galleryAssetIds: ["asset-ffvii-gallery-01", "asset-ffvii-gallery-02"],
+    fileAssetIds: ["asset-ffvii-poster"],
+    franchiseIds: ["franchise-final-fantasy"],
+    status: {
+      acquired: true,
+      consumed: true,
+    },
+  },
+
+  {
+    id: "media-008",
+    slug: "demon-slayer",
+    path: "/anime/demon-slayer",
+    title: "Kimetsu no Yaiba",
+    translatedTitle: "Demon Slayer: Kimetsu no Yaiba",
+    releaseYear: 2019,
+    typeCode: "anime",
+    synopsis:
+      "Tanjiro Kamado inicia uma jornada para vingar sua família e encontrar uma cura para sua irmã Nezuko, transformada em demônio.",
+    languageIds: ["lang-ja", "lang-pt-br"],
+    themeIds: ["theme-supernatural", "theme-action", "theme-family"],
+    coverAssetId: "asset-cover-demon-slayer",
+    trailerAssetId: "asset-trailer-demon-slayer",
+    characterIds: [
+      "character-tanjiro",
+      "character-nezuko",
+      "character-zenitsu",
+      "character-inosuke",
+    ],
+    seasonIds: ["season-ds-01", "season-ds-02", "season-ds-03", "season-ds-04"],
+    volumeIds: ["volume-ds-01", "volume-ds-02"],
+    galleryAssetIds: ["asset-ds-gallery-01"],
+    fileAssetIds: ["asset-ds-poster"],
+    franchiseIds: ["franchise-demon-slayer"],
+    status: {
+      acquired: false,
+      consumed: false,
+    },
+  },
+
+  {
+    id: "media-009",
+    slug: "batman-year-one",
+    path: "/comic-book/batman-year-one",
+    title: "Batman: Year One",
+    translatedTitle: "Batman: Ano Um",
+    releaseYear: 1987,
+    typeCode: "comic-book",
+    synopsis:
+      "A história acompanha os primeiros passos de Bruce Wayne como Batman e de James Gordon em Gotham City.",
+    languageIds: ["lang-en", "lang-pt-br"],
+    themeIds: ["theme-superhero", "theme-crime", "theme-detective"],
+    coverAssetId: "asset-cover-batman-year-one",
+    characterIds: [
+      "character-batman",
+      "character-james-gordon",
+      "character-catwoman",
+    ],
+    volumeIds: ["volume-batman-year-one"],
+    galleryAssetIds: ["asset-batman-gallery-01"],
+    fileAssetIds: ["asset-batman-poster"],
+    franchiseIds: ["franchise-batman"],
+    status: {
+      acquired: true,
+      consumed: false,
+    },
+  },
+
+  {
+    id: "media-010",
+    slug: "random-access-memories",
+    path: "/music/random-access-memories",
+    title: "Random Access Memories",
+    translatedTitle: "Random Access Memories",
+    releaseYear: 2013,
+    typeCode: "music",
+    synopsis:
+      "Álbum do duo Daft Punk que explora sonoridades eletrônicas, disco e música instrumental com colaborações de diversos artistas.",
+    languageIds: ["lang-en"],
+    themeIds: ["theme-electronic", "theme-disco", "theme-funk"],
+    coverAssetId: "asset-cover-random-access-memories",
+    characterIds: [],
+    albumIds: ["album-random-access-memories"],
+    concertIds: ["concert-daft-punk-2013"],
+    galleryAssetIds: ["asset-daft-punk-gallery-01"],
+    fileAssetIds: ["asset-daft-punk-cover"],
+    franchiseIds: ["franchise-daft-punk"],
+    status: {
+      acquired: true,
+      consumed: true,
     },
   },
 ];
