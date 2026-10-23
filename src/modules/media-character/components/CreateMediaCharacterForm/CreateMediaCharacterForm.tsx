@@ -104,7 +104,7 @@ export function CreateMediaCharacterForm({
           <FormFileField
             fieldName="image"
             label="Escolher imagem"
-            fileType="image/jpeg"
+            fileType={["image/jpeg"]}
             onChange={(files) => handleChange("image", files?.[0] ?? null)}
           />
 
