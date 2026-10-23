@@ -1,1 +1,1 @@
-export type * from "./media-unit.type";
+export type * from "./media-unit-view.type";

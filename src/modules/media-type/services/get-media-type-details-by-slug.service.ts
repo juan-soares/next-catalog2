@@ -1,4 +1,4 @@
-import { MediaTypeDetails } from "@/modules/media-type/types";
+import type { MediaTypeDetails } from "@/modules/media-type/types";
 import { MEDIA_TYPES_LIST } from "@/modules/media-type/consts";
 
 export function getMediaTypeDetailsBySlug(

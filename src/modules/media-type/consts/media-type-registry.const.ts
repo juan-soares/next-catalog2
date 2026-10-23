@@ -1,4 +1,7 @@
-import { MediaTypeCode, MediaTypeDetails } from "@/modules/media-type/types";
+import type {
+  MediaTypeCode,
+  MediaTypeDetails,
+} from "@/modules/media-type/types";
 
 export const MEDIA_TYPE_REGISTRY = {
   anime: {

@@ -1,4 +1,4 @@
-import { MediaTypeFilter } from "@/modules/media-type/types";
+import type { MediaTypeFilter } from "@/modules/media-type/types";
 
 type Props = {
   filters: MediaTypeFilter[];

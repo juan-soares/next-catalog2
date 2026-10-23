@@ -3,7 +3,6 @@ export type * from "./media.type";
 export type * from "./media-view.type";
 export type * from "./media-trailer-view.type";
 export type * from "./media-image-view.type";
-export type * from "./media-file-view.type";
 export type * from "./media-related-media-view.type";
 export type * from "./media-status.type";
 

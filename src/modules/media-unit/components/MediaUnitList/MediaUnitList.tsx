@@ -1,9 +1,9 @@
-import { MediaUnit } from "@/modules/media-unit/types";
 import Link from "next/link";
+import type { MediaUnitView } from "@/modules/media-unit/types";
 
 type Props = {
   createPath: string;
-  mediaUnits: MediaUnit[];
+  mediaUnits: MediaUnitView[];
 };
 
 export function MediaUnitList({ createPath, mediaUnits }: Props) {

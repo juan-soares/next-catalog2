@@ -1,7 +1,7 @@
 import type { MediaCharacterView } from "@/modules/media-character/types";
+import type { MediaFileView } from "@/modules/media-file/types";
 import type { FranchiseView } from "@/modules/franchise/types";
 import type {
-  MediaFileView,
   MediaImageView,
   MediaRelatedMediaView,
   MediaStatus,
