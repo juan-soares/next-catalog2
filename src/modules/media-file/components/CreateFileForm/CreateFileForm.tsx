@@ -1,38 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { Check, Cross, File } from "lucide-react";
 import { FormFileField, FormSection } from "@/shared/components/Form";
-import { MediaFileView } from "../../types";
-
-type CreateInputFile = {
-  name: string;
-  file: File | null;
-};
+import { useCreateFileInput } from "@/modules/media-file/hooks";
 
 export function CreateFileForm() {
-  const [showingForm, setShowingForm] = useState<boolean>(false);
-  const [file, setFile] = useState<CreateInputFile>({ name: "", file: null });
-  const files: MediaFileView[] = [];
-
-  const handleChange = <K extends keyof CreateInputFile>(
-    fieldName: K,
-    value: CreateInputFile[K],
-  ) => {
-    setFile((prev) => ({ ...prev, [fieldName]: value }));
-  };
-
-  const handleIncludeFile = () => {
-    handleCloseForm();
-  };
-
-  const handleOpenForm = () => {
-    setShowingForm(true);
-  };
-
-  const handleCloseForm = () => {
-    setShowingForm(false);
-  };
+  const {
+    showingForm,
+    handleOpenForm,
+    handleChange,
+    handleIncludeFile,
+    handleCloseForm,
+  } = useCreateFileInput();
 
   return (
     <FormSection title="Arquivos">
@@ -44,7 +23,7 @@ export function CreateFileForm() {
         {files.map(({ label, fileType, size }, index) => (
           <li key={index}>
             <File />
-            <p>{`${label}.${fileType} - ${size}KB`}</p>
+            <p>{`${label}.${fileType} - ${size} KB`}</p>
           </li>
         ))}
       </ul>
