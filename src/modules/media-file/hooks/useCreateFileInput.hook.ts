@@ -29,5 +29,11 @@ export function useCreateFileInput() {
     setShowingForm(false);
   };
 
-  return { showingForm, handleOpenForm, handleChange, handleIncludeFile, handleCloseForm };
+  return {
+    showingForm,
+    handleOpenForm,
+    handleChange,
+    handleIncludeFile,
+    handleCloseForm,
+  };
 }
