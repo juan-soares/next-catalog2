@@ -2,17 +2,16 @@
 
 import { Check, Cross } from "lucide-react";
 import { FormFileField } from "@/shared/components/Form";
-import { useCreateMediaFileInput } from "@/modules/media-file/hooks";
+import { useMediaFileForm } from "@/modules/media-file/hooks";
 
-type Props = {
-  setShowingForm: (arg: boolean) => void;
-};
-
-export function CreateMediaFileInput({ setShowingForm }: Props) {
-  const { currentFileInput, handleChange, handleCloseForm } =
-    useCreateMediaFileInput({
-      setShowingForm,
-    });
+export function CreateMediaFileInput() {
+  const {
+    filInput,
+    handleChange,
+    handleFileChange,
+    handleIncludeMediaFile,
+    handleCloseMediaFileForm,
+  } = useMediaFileForm();
 
   return (
     <div>
@@ -21,21 +20,21 @@ export function CreateMediaFileInput({ setShowingForm }: Props) {
         id="file-name"
         type="text"
         name="name"
-        value={currentFileInput.name}
-        onChange={(e) => handleChange("name", e.target.value)}
+        value={filInput.name}
+        onChange={handleChange}
       />
 
       <FormFileField
         fieldName="file"
         label="Escolher arquivo"
         fileType={["image/jpeg", "image/png", "video/mp4", ".pdf"]}
-        onChange={(files) => handleChange("file", files?.[0] ?? null)}
+        onChange={handleFileChange}
       />
 
-      <button onClick={handleIncludeFile}>
+      <button onClick={handleIncludeMediaFile}>
         <Check />
       </button>
-      <button onClick={handleCloseForm}>
+      <button onClick={handleCloseMediaFileForm}>
         <Cross />
       </button>
     </div>
