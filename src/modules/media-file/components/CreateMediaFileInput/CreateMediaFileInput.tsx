@@ -12,7 +12,7 @@ type Props = {
 
 export function CreateMediaFileInput({ onAdd, onCancel }: Props) {
   const {
-    filInput,
+    fileInput,
     handleChange,
     handleFileChange,
     handleIncludeMediaFile,
@@ -36,7 +36,7 @@ export function CreateMediaFileInput({ onAdd, onCancel }: Props) {
         id="file-name"
         type="text"
         name="name"
-        value={filInput.name}
+        value={fileInput.name}
         onChange={handleChange}
       />
 

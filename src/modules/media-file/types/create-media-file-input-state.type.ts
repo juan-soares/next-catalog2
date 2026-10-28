@@ -1,4 +1,4 @@
-export type CreateMediaFileInputFormState = {
+export type CreateMediaFileInputState = {
   name: string;
   file: File | null;
 };
