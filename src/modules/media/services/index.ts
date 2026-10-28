@@ -1,6 +1,7 @@
 export * from "./search-medias.service";
 
-export * from "./get-media-view-by-type.service";
+export * from "./get-media-view-by-slug.service";
+export * from "./get-medias-view-by-type.service";
 
 export * from "./create-media.service";
 

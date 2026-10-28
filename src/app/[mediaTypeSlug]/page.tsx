@@ -5,10 +5,10 @@ import {
   getMediaTypeFilters,
 } from "@/modules/media-type/services";
 import {
-  getMediasDetailsByType,
+  getMediasViewByType,
   prepareMediaSearchOptionsFromSearchParams,
 } from "@/modules/media/services";
-import { MediaList, MediaSidebar } from "@/modules/media/components";
+import { MediaList } from "@/modules/media/components";
 
 type Props = {
   params: Promise<{ mediaTypeSlug: string }>;
@@ -30,17 +30,12 @@ export default async function MediaTypePage({ params, searchParams }: Props) {
   const searchOptions =
     prepareMediaSearchOptionsFromSearchParams(rawSearchParams);
 
-  const medias = await getMediasDetailsByType(mediaType.code, searchOptions);
+  const medias = await getMediasViewByType(mediaType.code, searchOptions);
   const mediaFilters = await getMediaTypeFilters(mediaType.filters);
 
   return (
     <div>
       <Link href={`${mediaType.path}/adicionar`}>Adicionar</Link>
-      <MediaSidebar
-        mediaTypePath={mediaType.path}
-        typeTitle={mediaType.label}
-        filters={mediaFilters}
-      />
 
       <main>
         <MediaList currentSort={searchOptions.sort} medias={medias} />

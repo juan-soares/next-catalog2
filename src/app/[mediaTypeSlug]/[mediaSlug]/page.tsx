@@ -1,11 +1,11 @@
+import { notFound } from "next/navigation";
 import {
   getValidMediaTabFromSearchParams,
   getTabsByMediaType,
 } from "@/modules/media-tab/services";
 import { getMediaTypeDetailsBySlug } from "@/modules/media-type/services";
 import { MediaPageHero, MediaPageContent } from "@/modules/media/components";
-import { getMediaDetailsBySlug } from "@/modules/media/services";
-import { notFound } from "next/navigation";
+import { getMediaViewBySlug } from "@/modules/media/services";
 
 type Props = {
   params: Promise<{ mediaTypeSlug: string; mediaSlug: string }>;
@@ -17,19 +17,16 @@ export default async function MediaPage({ params, searchParams }: Props) {
     params,
     searchParams,
   ]);
-  const media = await getMediaDetailsBySlug(mediaSlug);
-  const mediaTypeDetails = getMediaTypeDetailsBySlug(mediaTypeSlug);
 
-  if (
-    !media ||
-    !mediaTypeDetails ||
-    media.type.label !== mediaTypeDetails.label
-  ) {
+  const mediaTypeInfo = getMediaTypeDetailsBySlug(mediaTypeSlug);
+  const media = await getMediaViewBySlug(mediaSlug);
+
+  if (!mediaTypeInfo || !media) {
     notFound();
   }
 
   const currentTab = getValidMediaTabFromSearchParams(tab);
-  const mediaTypeTabs = getTabsByMediaType(mediaTypeDetails.code);
+  const mediaTypeTabs = getTabsByMediaType(mediaTypeInfo.code);
 
   return (
     <div>

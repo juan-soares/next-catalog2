@@ -1,7 +1,8 @@
-import type { CreateMediaInput } from "@/modules/media/types";
+import type { CreateMediaInitialInputState } from "@/modules/media/types";
 
-export const INITIAL_MEDIA_INPUT: CreateMediaInput = {
+export const INITIAL_MEDIA_INPUT_STATE: CreateMediaInitialInputState = {
   title: "",
+  typeCode: "",
   translatedTitle: "",
   releaseDate: "",
   synopsis: "",

@@ -3,14 +3,20 @@
 import { useState } from "react";
 import type { MediaTypeCode } from "@/modules/media-type/types";
 import type { CreateMediaCharacterInput } from "@/modules/media-character/types";
-import type { CreateMediaFileInput } from "@/modules/media-file/types";
-import { INITIAL_MEDIA_INPUT } from "@/modules/media/consts";
+import type {
+  CreateMediaFileInput,
+  CreateMediaFileInputState,
+} from "@/modules/media-file/types";
+import { INITIAL_MEDIA_INPUT_STATE } from "@/modules/media/consts";
 import { createMediaAction } from "@/modules/media/actions";
-import type { CreateMediaInput } from "@/modules/media/types";
+import type {
+  CreateMediaInitialInputState,
+  CreateMediaInput,
+} from "@/modules/media/types";
 
 export function useMediaForm(typeCode: MediaTypeCode) {
-  const [mediaInput, setMediaInput] = useState<CreateMediaInput>({
-    ...INITIAL_MEDIA_INPUT,
+  const [mediaInput, setMediaInput] = useState<CreateMediaInitialInputState>({
+    ...INITIAL_MEDIA_INPUT_STATE,
     typeCode,
   });
 
@@ -87,7 +93,7 @@ export function useMediaForm(typeCode: MediaTypeCode) {
     );
 
     mediaInput.files.forEach(({ file }, index) => {
-      formData.append(`mediaFile_${index}`, file);
+      formData.append(`mediaFile_${index}`, file ?? "");
     });
 
     await createMediaAction(formData);

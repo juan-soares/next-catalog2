@@ -1,4 +1,4 @@
-import "server-only";
+//import "server-only";
 
 export * from "./get-all-attributes-view.service";
 export * from "./get-attributes-view-by-type.service";

@@ -6,6 +6,7 @@ export type * from "./media-image-view.type";
 export type * from "./media-related-media-view.type";
 export type * from "./media-status.type";
 
+export type * from "./create-media-input-initial-state.type";
 export type * from "./create-media-input.type";
 
 export type * from "./media-sort-option-key.type";
