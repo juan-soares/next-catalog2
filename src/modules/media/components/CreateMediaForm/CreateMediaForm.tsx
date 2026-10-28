@@ -14,6 +14,8 @@ import {
   FormTextField,
 } from "@/shared/components/Form";
 import { INITIAL_MEDIA_INPUT } from "@/modules/media/consts";
+import { CreateMediaFileForm } from "@/modules/media-file/components";
+import { CreateMediaFileInput } from "@/modules/media-file/types";
 
 type Props = {
   languages: AttributeView[];
@@ -59,6 +61,20 @@ export function CreateMediaForm({
           : [...prev.characters, character],
       };
     });
+  };
+
+  const handleAddMediaFile = (file: CreateMediaFileInput) => {
+    setMediaInput((prev) => ({
+      ...prev,
+      files: [...prev.files, file],
+    }));
+  };
+
+  const handleRemoveMediaFile = (index: number) => {
+    setMediaInput((prev) => ({
+      ...prev,
+      files: prev.files.filter((_, i) => i !== index),
+    }));
   };
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
@@ -174,20 +190,25 @@ export function CreateMediaForm({
         <FormFileField
           fieldName="cover"
           label="Capa"
-          fileType="image/jpeg"
+          fileType={["image/jpeg"]}
           required
         />
         <FormFileField
           fieldName="trailer"
           label="Trailer"
-          fileType="video/mp4"
+          fileType={["video/mp4"]}
           required
         />
         <FormFileField
           fieldName="gallery"
           label="Galeria"
-          fileType="image/jpeg"
+          fileType={["image/jpeg"]}
           multiple
+        />
+        <CreateMediaFileForm
+          files={mediaInput.files}
+          onAdd={handleAddMediaFile}
+          onRemove={handleRemoveMediaFile}
         />
       </FormSection>
 

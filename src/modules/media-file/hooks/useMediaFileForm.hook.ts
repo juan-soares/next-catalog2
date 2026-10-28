@@ -1,21 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { CreateMediaFileInput } from "../types";
-import { INITIAL_MEDIA_FILE_INPUT } from "../consts";
+import type { CreateMediaFileInput } from "@/modules/media-file/types";
+import { INITIAL_MEDIA_FILE_INPUT } from "@/modules/media-file/consts";
 
 export function useMediaFileForm() {
-  const [showForm, setShowForm] = useState<boolean>(false);
-  const [filInput, setFileInput] = useState<CreateMediaFileInput>(
-    INITIAL_MEDIA_FILE_INPUT,
-  );
+  const [filInput, setFileInput] = useState<CreateMediaFileInput>({
+    ...INITIAL_MEDIA_FILE_INPUT,
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
+    if (name !== "name") return;
+
     setFileInput((prev) => ({
       ...prev,
-      [name]: value,
+      name: value,
     }));
   };
 
@@ -30,26 +31,20 @@ export function useMediaFileForm() {
     setFileInput({ ...INITIAL_MEDIA_FILE_INPUT });
   };
 
-  const handleOpenMediaFileForm = () => {
-    setShowForm(true);
-  };
+  const handleIncludeMediaFile = (): CreateMediaFileInput | null => {
+    const name = filInput.name.trim();
 
-  const handleIncludeMediaFile = () => {
-    handleCloseMediaFileForm();
-  };
-
-  const handleCloseMediaFileForm = () => {
-    setShowForm(false);
-    handleResetMediaFileInput();
+    return {
+      name,
+      file: filInput.file,
+    };
   };
 
   return {
-    showForm,
     filInput,
     handleChange,
     handleFileChange,
     handleIncludeMediaFile,
-    handleOpenMediaFileForm,
-    handleCloseMediaFileForm,
+    handleResetMediaFileInput,
   };
 }

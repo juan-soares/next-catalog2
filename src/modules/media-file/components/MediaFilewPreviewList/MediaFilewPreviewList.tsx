@@ -1,9 +1,8 @@
 import { Cross, File } from "lucide-react";
-import type { CreateMediaFileInput } from "@/modules/media-file/types";
 
 type Props = {
-  files: CreateMediaFileInput[];
-  onRemove: (id: number) => void;
+  files: File[];
+  onRemove: (index: number) => void;
 };
 
 export function MediaFilewPreviewList({ files, onRemove }: Props) {
@@ -14,10 +13,10 @@ export function MediaFilewPreviewList({ files, onRemove }: Props) {
       <strong>Arquivos Selecionados</strong>
 
       <ul>
-        {files.map(({ name, file }, index) => (
+        {files.map(({ name, type, size }, index) => (
           <li key={index}>
             <File />
-            <p>{`${name}.${file?.type} - ${file?.size} KB`}</p>
+            <p>{`${name}.${type} - ${size} KB`}</p>
 
             <button type="button" onClick={() => onRemove(index)}>
               <Cross />
