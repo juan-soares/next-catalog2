@@ -1,1 +1,1 @@
-export * from "./use-create-character-input.hook";
+export * from "./useMediaForm.hook";

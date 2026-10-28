@@ -6,11 +6,11 @@ import { useMediaFileForm } from "@/modules/media-file/hooks";
 import type { CreateMediaFileInput } from "@/modules/media-file/types";
 
 type Props = {
-  onAdd: (file: CreateMediaFileInput) => void;
+  onConfirm: (file: CreateMediaFileInput) => void;
   onCancel: () => void;
 };
 
-export function CreateMediaFileInput({ onAdd, onCancel }: Props) {
+export function CreateMediaFileInput({ onConfirm, onCancel }: Props) {
   const {
     fileInput,
     handleChange,
@@ -24,7 +24,7 @@ export function CreateMediaFileInput({ onAdd, onCancel }: Props) {
 
     if (!file) return;
 
-    onAdd(file);
+    onConfirm(file);
     handleResetMediaFileInput();
   };
 
@@ -44,7 +44,7 @@ export function CreateMediaFileInput({ onAdd, onCancel }: Props) {
         fieldName="file"
         label="Escolher arquivo"
         fileType={["image/jpeg", "image/png", "video/mp4", ".pdf"]}
-        onChange={handleFileChange}
+        onChange={(files) => handleFileChange(files?.item(0) ?? null)}
       />
 
       <button type="button" onClick={handleConfirm}>

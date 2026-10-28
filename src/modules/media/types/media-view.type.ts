@@ -10,7 +10,7 @@ import type {
 import type {
   MediaEpisodeGroupView,
   MediaMusicGroupView,
-  MediaVolumeView,
+  MediaVolumeGroupView,
 } from "@/modules/media-group/types";
 
 export type MediaView = {
@@ -55,7 +55,7 @@ export type MediaView = {
   ovas?: MediaEpisodeGroupView[];
   specials?: MediaEpisodeGroupView[];
 
-  volumes?: MediaVolumeView[];
+  volumes?: MediaVolumeGroupView[];
 
   albums?: MediaMusicGroupView[];
   concerts?: MediaMusicGroupView[];

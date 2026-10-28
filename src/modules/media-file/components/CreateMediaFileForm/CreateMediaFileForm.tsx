@@ -10,29 +10,34 @@ import type { CreateMediaFileInput as TCreateMediaFileInput } from "@/modules/me
 
 type Props = {
   files: TCreateMediaFileInput[];
-  onAdd: (file: TCreateMediaFileInput) => void;
+  onInclude: (file: TCreateMediaFileInput) => void;
   onRemove: (index: number) => void;
 };
 
-export function CreateMediaFileForm({ files, onAdd, onRemove }: Props) {
+export function CreateMediaFileForm({ files, onInclude, onRemove }: Props) {
   const [showForm, setShowForm] = useState(false);
+
+  const handleAdd = (file: TCreateMediaFileInput) => {
+    onInclude(file);
+    setShowForm(false);
+  };
+
+  const handleCancel = () => {
+    setShowForm(false);
+  };
 
   return (
     <FormSection title="Arquivos">
       <MediaFilewPreviewList files={files} onRemove={onRemove} />
 
       {!showForm && (
-        <button onClick={() => setShowForm(true)}>Adicionar Arquivo</button>
+        <button type="button" onClick={() => setShowForm(true)}>
+          Adicionar Arquivo
+        </button>
       )}
 
       {showForm && (
-        <CreateMediaFileInput
-          onAdd={(file) => {
-            onAdd(file);
-            setShowForm(false);
-          }}
-          onCancel={() => setShowForm(false)}
-        />
+        <CreateMediaFileInput onConfirm={handleAdd} onCancel={handleCancel} />
       )}
     </FormSection>
   );
