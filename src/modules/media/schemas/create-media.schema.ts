@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { createMediaCharacterSchema } from "@/modules/media-character/schema";
+import { createMediaFileSchema } from "@/modules/media-file/schemas";
 
 export const createMediaSchema = z.object({
   title: z.string().trim().min(1, "O título é obrigatório"),
@@ -27,12 +28,8 @@ export const createMediaSchema = z.object({
         .mime(["image/jpeg"], "As imagens da galeria devem ser JPEG."),
     )
     .optional(),
-  files: z.preprocess(
-    (value) =>
-      Array.isArray(value)
-        ? value.filter((file) => file instanceof File && file.size > 0)
-        : value,
-    z.array(z.file()),
-  ),
+
+  files: z.array(createMediaFileSchema),
+
   characters: z.array(createMediaCharacterSchema),
 });

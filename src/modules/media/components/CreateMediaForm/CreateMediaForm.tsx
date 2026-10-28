@@ -77,8 +77,9 @@ export function CreateMediaForm({
     }));
   };
 
-  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const formData = new FormData(e.currentTarget);
 
     formData.set(
@@ -95,6 +96,20 @@ export function CreateMediaForm({
       if (character.image) {
         formData.append(`characterImage_${index}`, character.image);
       }
+    });
+
+    formData.set(
+      "files",
+      JSON.stringify(
+        mediaInput.files.map(({ name }, index) => ({
+          name,
+          fieldName: `mediaFile_${index}`,
+        })),
+      ),
+    );
+
+    mediaInput.files.forEach(({ file }, index) => {
+      formData.append(`mediaFile_${index}`, file);
     });
 
     await createMediaAction(formData);

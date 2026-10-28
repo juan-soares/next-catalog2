@@ -2,28 +2,24 @@
 
 import { useState } from "react";
 import type { CreateMediaFileInput } from "@/modules/media-file/types";
-import { INITIAL_MEDIA_FILE_INPUT } from "@/modules/media-file/consts";
+import { CREATE_MEDIA_FILE_INITIAL_INPUT_STATE } from "@/modules/media-file/consts";
 
 export function useMediaFileForm() {
-  const [filInput, setFileInput] = useState<CreateMediaFileInput>({
-    ...INITIAL_MEDIA_FILE_INPUT,
+  const [fileInput, setFileInput] = useState<CreateMediaFileInput>({
+    ...CREATE_MEDIA_FILE_INITIAL_INPUT_STATE,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    if (name !== "name") return;
-
-    setFileInput((prev) => ({
+    setFilInput((prev) => ({
       ...prev,
-      name: value,
+      name: e.target.value,
     }));
   };
 
-  const handleFileChange = (files: FileList | null) => {
-    setFileInput((prev) => ({
+  const handleFileChange = (file: File | null) => {
+    setFilInput((prev) => ({
       ...prev,
-      file: files?.[0] ?? null,
+      file,
     }));
   };
 
