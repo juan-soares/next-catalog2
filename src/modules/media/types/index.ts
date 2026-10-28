@@ -1,5 +1,6 @@
 export type * from "./media.type";
 export type * from "./media-game-edition-code.type";
+export type * from "./media-game-edition.type";
 
 export type * from "./media-view.type";
 export type * from "./media-trailer-view.type";

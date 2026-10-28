@@ -1,3 +1,8 @@
+import type {
+  MediaGameEdition,
+  MediaGameEditionCode,
+} from "@/modules/media/types";
+
 export const MEDIA_GAME_EDITIONS_REGISTRY = {
   base: {
     code: "base",

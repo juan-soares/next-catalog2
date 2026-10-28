@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { MEDIA_GAME_EDITIONS_CODE_LIST } from "@/modules/media/consts";
 
 export const gameInfoSchema = z
   .object({
@@ -6,7 +7,7 @@ export const gameInfoSchema = z
     genres: z.array(z.string()),
     gameplay: z.string(),
     modes: z.array(z.string()),
-    edition: z.string(),
+    edition: z.enum(MEDIA_GAME_EDITIONS_CODE_LIST),
 
     players: z.object({
       min: z.number().int().min(1),

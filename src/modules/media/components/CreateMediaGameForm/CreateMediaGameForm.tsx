@@ -10,6 +10,7 @@ import {
   FormSection,
   FormSelectField,
 } from "@/shared/components/Form";
+import { MEDIA_GAME_EDITIONS_LIST } from "@/modules/media/consts";
 
 type Props = {
   media: CreateMediaInitialInputState;
@@ -77,8 +78,11 @@ export function CreateMediaGameForm({
           fieldName="edition"
           label="Edição"
           currentValue={gameInfo.edition}
-          options={editions.map(({ id, label }) => ({ value: id, label }))}
-          onChange={(value) => onGameInfoChange("edition", value)}
+          options={MEDIA_GAME_EDITIONS_LIST.map(({ code, label }) => ({
+            value: code,
+            label,
+          }))}
+          onChange={(_, value) => onGameInfoChange("edition", value)}
         />
 
         {gameInfo.edition !== "base" && (

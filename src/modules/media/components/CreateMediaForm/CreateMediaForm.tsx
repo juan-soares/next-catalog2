@@ -12,7 +12,7 @@ import { CreateMediaCharacterForm } from "@/modules/media-character/components";
 import { CreateMediaFileForm } from "@/modules/media-file/components";
 import { useMediaForm } from "@/modules/media/hooks";
 import type { MediaView } from "@/modules/media/types";
-import { CreateMediaGameForm } from "../CreateMediaGameForm";
+import { CreateMediaGameForm } from "@/modules/media/components";
 
 type Props = {
   typeCode: MediaTypeCode;

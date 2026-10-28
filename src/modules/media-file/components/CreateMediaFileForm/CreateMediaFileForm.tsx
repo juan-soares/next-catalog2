@@ -6,10 +6,13 @@ import {
   CreateMediaFileInput,
   MediaFilewPreviewList,
 } from "@/modules/media-file/components";
-import type { CreateMediaFileInput as TCreateMediaFileInput } from "@/modules/media-file/types";
+import type {
+  CreateMediaFileInputState,
+  CreateMediaFileInput as TCreateMediaFileInput,
+} from "@/modules/media-file/types";
 
 type Props = {
-  files: TCreateMediaFileInput[];
+  files: CreateMediaFileInputState[];
   onInclude: (file: TCreateMediaFileInput) => void;
   onRemove: (index: number) => void;
 };
