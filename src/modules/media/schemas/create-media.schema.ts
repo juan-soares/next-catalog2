@@ -2,6 +2,7 @@ import { z } from "zod";
 import { createMediaCharacterSchema } from "@/modules/media-character/schema";
 import { createMediaFileSchema } from "@/modules/media-file/schemas";
 import { MEDIA_TYPES_CODE_LIST } from "@/modules/media-type/consts";
+import { gameInfoSchema } from "./create-media-game-info.schema";
 
 export const createMediaSchema = z.object({
   typeCode: z.enum(MEDIA_TYPES_CODE_LIST),
@@ -27,6 +28,8 @@ export const createMediaSchema = z.object({
   characters: z.array(createMediaCharacterSchema),
 
   sequel: z.string().optional(),
+
+  gameInfo: gameInfoSchema.optional(),
 
   gallery: z
     .array(

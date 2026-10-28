@@ -12,11 +12,16 @@ import { CreateMediaCharacterForm } from "@/modules/media-character/components";
 import { CreateMediaFileForm } from "@/modules/media-file/components";
 import { useMediaForm } from "@/modules/media/hooks";
 import type { MediaView } from "@/modules/media/types";
+import { CreateMediaGameForm } from "../CreateMediaGameForm";
 
 type Props = {
   typeCode: MediaTypeCode;
   languages: AttributeView[];
   themes: AttributeView[];
+  platforms: AttributeView[];
+  genres: AttributeView[];
+  gameplays: AttributeView[];
+  modes: AttributeView[];
   medias: MediaView[];
   franchises: [];
 };
@@ -26,12 +31,17 @@ export function CreateMediaForm({
   languages,
   themes,
   medias,
+  platforms,
+  genres,
+  gameplays,
+  modes,
   franchises,
 }: Props) {
   const {
     handleSubmit,
     mediaInput,
     handleChange,
+    handleGameInfoChange,
     handleUpdateCharactersList,
     setMediaInput,
     handleAddMediaFile,
@@ -99,6 +109,17 @@ export function CreateMediaForm({
           onChange={(event) =>
             handleChange("franchise", event.currentTarget.value)
           }
+        />
+      </FormSection>
+
+      <FormSection title="Detalhes do Jogo">
+        <CreateMediaGameForm
+          media={mediaInput}
+          platforms={platforms}
+          genres={genres}
+          gameplays={gameplays}
+          modes={modes}
+          onGameInfoChange={handleGameInfoChange}
         />
       </FormSection>
 

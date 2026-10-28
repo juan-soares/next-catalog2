@@ -3,13 +3,11 @@
 import { useState } from "react";
 import type { MediaTypeCode } from "@/modules/media-type/types";
 import type { CreateMediaCharacterInput } from "@/modules/media-character/types";
-import type {
-  CreateMediaFileInput,
-  CreateMediaFileInputState,
-} from "@/modules/media-file/types";
+import type { CreateMediaFileInput } from "@/modules/media-file/types";
 import { INITIAL_MEDIA_INPUT_STATE } from "@/modules/media/consts";
 import { createMediaAction } from "@/modules/media/actions";
 import type {
+  CreateMediaGameInfoInput,
   CreateMediaInitialInputState,
   CreateMediaInput,
 } from "@/modules/media/types";
@@ -28,6 +26,23 @@ export function useMediaForm(typeCode: MediaTypeCode) {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleGameInfoChange = <K extends keyof CreateMediaGameInfoInput>(
+    field: K,
+    value: CreateMediaGameInfoInput[K],
+  ) => {
+    setMediaInput((prev) => {
+      if (!prev.gameInfo) return prev;
+
+      return {
+        ...prev,
+        gameInfo: {
+          ...prev.gameInfo,
+          [field]: value,
+        },
+      };
+    });
   };
 
   const handleUpdateCharactersList = (character: CreateMediaCharacterInput) => {
@@ -103,6 +118,7 @@ export function useMediaForm(typeCode: MediaTypeCode) {
     handleSubmit,
     mediaInput,
     handleChange,
+    handleGameInfoChange,
     handleUpdateCharactersList,
     setMediaInput,
     handleAddMediaFile,

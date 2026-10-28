@@ -8,6 +8,7 @@ export type * from "./media-status.type";
 
 export type * from "./create-media-input-initial-state.type";
 export type * from "./create-media-input.type";
+export type * from "./create-media-game-info-input.type";
 
 export type * from "./media-sort-option-key.type";
 export type * from "./media-sort-option.type";
