@@ -115,6 +115,7 @@ export function CreateMediaForm({
       <FormSection title="Detalhes do Jogo">
         <CreateMediaGameForm
           media={mediaInput}
+          medias={medias}
           platforms={platforms}
           genres={genres}
           gameplays={gameplays}

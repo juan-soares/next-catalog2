@@ -2,15 +2,18 @@ import type { AttributeView } from "@/modules/attribute/types";
 import type {
   CreateMediaGameInfoInput,
   CreateMediaInitialInputState,
+  MediaView,
 } from "@/modules/media/types";
 import {
   FormCheckboxGroupField,
+  FormRadioField,
   FormSection,
   FormSelectField,
 } from "@/shared/components/Form";
 
 type Props = {
   media: CreateMediaInitialInputState;
+  medias: MediaView[];
   platforms: AttributeView[];
   genres: AttributeView[];
   gameplays: AttributeView[];
@@ -27,6 +30,7 @@ export function CreateMediaGameForm({
   gameplays,
   modes,
   media,
+  medias,
   onGameInfoChange,
 }: Props) {
   const gameInfo = media.gameInfo;
@@ -67,6 +71,29 @@ export function CreateMediaGameForm({
         value={gameInfo.modes}
         onChange={(value) => onGameInfoChange("modes", value)}
       />
+
+      <FormSection title="Edição">
+        <FormRadioField
+          fieldName="edition"
+          label="Edição"
+          currentValue={gameInfo.edition}
+          options={editions.map(({ id, label }) => ({ value: id, label }))}
+          onChange={(value) => onGameInfoChange("edition", value)}
+        />
+
+        {gameInfo.edition !== "base" && (
+          <div>
+            <FormSelectField
+              fieldName="base"
+              label="Base"
+              options={medias.map(({ id, title, releaseYear }) => ({
+                value: id,
+                label: `${title} (${releaseYear})`,
+              }))}
+            />
+          </div>
+        )}
+      </FormSection>
 
       <div>
         <strong>Participantes</strong>

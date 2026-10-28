@@ -6,6 +6,7 @@ export const gameInfoSchema = z
     genres: z.array(z.string()),
     gameplay: z.string(),
     modes: z.array(z.string()),
+    edition: z.string(),
 
     players: z.object({
       min: z.number().int().min(1),
