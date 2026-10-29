@@ -8,6 +8,17 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "100mb",
     },
   },
+
+  images: {
+    localPatterns: [
+      {
+        pathname: "/assets/media/**",
+      },
+      {
+        pathname: "/assets/icons/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

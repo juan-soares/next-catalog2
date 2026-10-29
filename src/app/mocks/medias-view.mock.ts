@@ -16,11 +16,11 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
     languages: [{ label: "Japonês" }, { label: "Português" }],
     themes: [{ label: "Ação" }, { label: "Aventura" }, { label: "Ninjas" }],
     cover: {
-      url: "https://placehold.co/300x450?text=Naruto",
+      url: "/assets/media/300x450?text=Naruto",
       alt: "Capa de Naruto",
     },
     trailer: {
-      url: "https://example.com/trailers/naruto.mp4",
+      url: "/assets/media/naruto.mp4",
       fileType: "video/mp4",
     },
     characters: [
@@ -28,7 +28,7 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
         name: "Naruto Uzumaki",
         codenames: ["Ninja número um em surpreender pessoas"],
         image: {
-          url: "https://placehold.co/200x200?text=Naruto",
+          url: "/assets/media/200x200?text=Naruto",
           alt: "Naruto Uzumaki",
         },
         status: { label: "Principal" },
@@ -37,7 +37,7 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
         name: "Sasuke Uchiha",
         codenames: ["Último sobrevivente do clã Uchiha"],
         image: {
-          url: "https://placehold.co/200x200?text=Sasuke",
+          url: "/assets/media/200x200?text=Sasuke",
           alt: "Sasuke Uchiha",
         },
         status: { label: "Principal" },
@@ -55,11 +55,11 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
         language: { label: "Legendado" },
         synopsis: "A primeira fase da jornada de Naruto como ninja.",
         cover: {
-          url: "https://placehold.co/300x450?text=Season+1",
+          url: "/assets/media/300x450?text=Season+1",
           alt: "Capa da primeira temporada de Naruto",
         },
         trailer: {
-          url: "https://example.com/trailers/naruto-season-1.mp4",
+          url: "/assets/media/naruto-season-1.mp4",
           fileType: "video/mp4",
         },
         status: {
@@ -90,18 +90,18 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
         releaseYear: 2007,
         path: "/animes/naruto-shippuden",
         cover: {
-          url: "https://placehold.co/300x450?text=Shippuden",
+          url: "/assets/media/300x450?text=Shippuden",
           alt: "Capa de Naruto Shippuden",
         },
       },
     },
     gallery: [
       {
-        url: "https://placehold.co/800x450?text=Naruto+Gallery+1",
+        url: "/assets/media/800x450?text=Naruto+Gallery+1",
         alt: "Naruto em uma cena de ação",
       },
       {
-        url: "https://placehold.co/800x450?text=Naruto+Gallery+2",
+        url: "/assets/media/800x450?text=Naruto+Gallery+2",
         alt: "Naruto e seus amigos",
       },
     ],
@@ -119,7 +119,7 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
         slug: "naruto",
         path: "/franquias/naruto",
         logo: {
-          url: "https://placehold.co/300x150?text=Naruto+Logo",
+          url: "/assets/media/300x150?text=Naruto+Logo",
           alt: "Logo da franquia Naruto",
         },
       },
@@ -145,7 +145,7 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
     languages: [{ label: "Português" }, { label: "Inglês" }],
     themes: [{ label: "Aventura" }, { label: "Fantasia" }],
     cover: {
-      url: "https://placehold.co/300x450?text=Zelda",
+      url: "/assets/media/300x450?text=Zelda",
       alt: "Capa de The Legend of Zelda: Tears of the Kingdom",
     },
     characters: [
@@ -153,7 +153,7 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
         name: "Link",
         codenames: ["Herói de Hyrule"],
         image: {
-          url: "https://placehold.co/200x200?text=Link",
+          url: "/assets/media/200x200?text=Link",
           alt: "Link",
         },
         status: { label: "Protagonista" },
@@ -162,7 +162,7 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
         name: "Zelda",
         codenames: ["Princesa de Hyrule"],
         image: {
-          url: "https://placehold.co/200x200?text=Zelda",
+          url: "/assets/media/200x200?text=Zelda",
           alt: "Zelda",
         },
         status: { label: "Principal" },
@@ -189,14 +189,14 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
         releaseYear: 2017,
         path: "/jogos/the-legend-of-zelda-breath-of-the-wild",
         cover: {
-          url: "https://placehold.co/300x450?text=Breath+of+the+Wild",
+          url: "/assets/media/300x450?text=Breath+of+the+Wild",
           alt: "Capa de The Legend of Zelda: Breath of the Wild",
         },
       },
     },
     gallery: [
       {
-        url: "https://placehold.co/800x450?text=Zelda+Gameplay",
+        url: "/assets/media/800x450?text=Zelda+Gameplay",
         alt: "Exploração de Hyrule",
       },
     ],
@@ -207,7 +207,7 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
         slug: "the-legend-of-zelda",
         path: "/franquias/the-legend-of-zelda",
         logo: {
-          url: "https://placehold.co/300x150?text=Zelda+Logo",
+          url: "/assets/media/300x150?text=Zelda+Logo",
           alt: "Logo da franquia The Legend of Zelda",
         },
       },
@@ -233,7 +233,7 @@ export const MEDIA_VIEW_MOCK: MediaView[] = [
     languages: [{ label: "Japonês" }, { label: "Português" }],
     themes: [{ label: "Aventura" }, { label: "Piratas" }, { label: "Ação" }],
     cover: {
-      url: "https://placehold.co/300x450?text=One+Piece",
+      url: "/assets/media/300x450?text=One+Piece",
       alt: "Capa de One Piece",
     },
     characters: [],
