@@ -46,6 +46,10 @@ export default async function CreateMediaPage({ params }: Props) {
         medias={medias}
         languages={attributesByType.languages}
         themes={attributesByType.themes}
+        platforms={attributesByType.platforms}
+        genres={attributesByType.genres}
+        gameplays={attributesByType.gameplays}
+        modes={attributesByType.modes}
         franchises={franchises}
       />
     </div>

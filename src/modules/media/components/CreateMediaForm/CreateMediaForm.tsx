@@ -16,13 +16,13 @@ import { CreateMediaGameForm } from "@/modules/media/components";
 
 type Props = {
   typeCode: MediaTypeCode;
+  medias: MediaView[];
   languages: AttributeView[];
   themes: AttributeView[];
   platforms: AttributeView[];
   genres: AttributeView[];
   gameplays: AttributeView[];
   modes: AttributeView[];
-  medias: MediaView[];
   franchises: [];
 };
 
