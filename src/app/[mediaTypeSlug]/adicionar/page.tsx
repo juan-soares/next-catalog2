@@ -22,14 +22,10 @@ export default async function CreateMediaPage({ params }: Props) {
     notFound();
   }
 
-  const attributesByType = Object.fromEntries(
+  const [languages, themes, platforms, genres, gameplays, modes] =
     await Promise.all(
-      ATTRIBUTE_TYPE_LIST.map(async ({ code, field }) => [
-        field,
-        await getAttributesByType(code),
-      ]),
-    ),
-  ) as Record<AttributeTypeFieldCode, AttributeView[]>;
+      ATTRIBUTE_TYPE_LIST.map(({ code }) => getAttributesByType(code)),
+    );
 
   const medias = await getMediasViewByType(mediaType.code, {
     sort: "created-asc",
@@ -44,12 +40,12 @@ export default async function CreateMediaPage({ params }: Props) {
       <CreateMediaForm
         typeCode={mediaType.code}
         medias={medias}
-        languages={attributesByType.languages}
-        themes={attributesByType.themes}
-        platforms={attributesByType.platforms}
-        genres={attributesByType.genres}
-        gameplays={attributesByType.gameplays}
-        modes={attributesByType.modes}
+        languages={languages}
+        themes={themes}
+        platforms={platforms}
+        genres={genres}
+        gameplays={gameplays}
+        modes={modes}
         franchises={franchises}
       />
     </div>

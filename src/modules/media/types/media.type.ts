@@ -53,3 +53,54 @@ export type Media = {
 
   status: MediaStatus;
 };
+
+export type MediaT = {
+  id: string;
+
+  identifiers: {
+    publicId: string;
+    path: string;
+  };
+
+  info: {
+    title: string;
+    translatedTitle: string;
+    typeCode: MediaTypeCode;
+    releaseYear: number;
+    synopsis: string;
+  };
+
+  attributes: {
+    languageIds: string[];
+    themeIds: string[];
+    franchiseIds: string[];
+  };
+
+  characterIds: string[];
+
+  assets: {
+    coverAssetId: string;
+    trailerAssetId?: string;
+    galleryAssetIds: string[];
+    fileAssetIds: string[];
+  };
+
+  gameDetails?: {
+    platformIds: string[];
+    genreIds: string[];
+    gameplayId: string;
+    modeIds: string[];
+    players: {
+      min: number;
+      max: number;
+    };
+    edition?: {
+      baseMediaId: string;
+      editionTypeCode: "base" | "expansion" | "dlc";
+    };
+  };
+
+  predecessorMediaId: string | null;
+
+  status: MediaStatus;
+};
