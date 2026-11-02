@@ -18,6 +18,12 @@ const nextConfig: NextConfig = {
         pathname: "/assets/icons/**",
       },
     ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
 };
 

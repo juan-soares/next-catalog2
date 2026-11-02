@@ -4,6 +4,7 @@ import { getMediaTypeViewBySlug } from "@/modules/media-type/services";
 
 import { MediaList } from "@/modules/media/components";
 import { getMediasViewByType } from "@/modules/media/services";
+import { MediaTypeAsidebar } from "@/modules/media-type/components";
 
 type Props = {
   params: Promise<{ "media-type": string }>;
@@ -22,6 +23,8 @@ export default async function MediaTypePage({ params }: Props) {
   return (
     <div>
       <h1>{mediaType.label}</h1>
+
+      <MediaTypeAsidebar slug={mediaType.slug} />
 
       <MediaList mediaTypeSlug={mediaType.slug} medias={medias} />
     </div>
