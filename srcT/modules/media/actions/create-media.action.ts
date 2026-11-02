@@ -6,7 +6,6 @@ import { createMedia } from "@/modules/media/services";
 import { createMediaSchema } from "@/modules/media/schemas";
 
 export async function createMediaAction(formData: FormData) {
-  console.log(formData);
   const result = createMediaSchema.safeParse({
     title: formData.get("title"),
 

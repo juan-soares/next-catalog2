@@ -54,9 +54,7 @@ export type Media = {
   status: MediaStatus;
 };
 
-export type MediaT = {
-  id: string;
-
+export type MediaDTO = {
   identifiers: {
     publicId: string;
     path: string;

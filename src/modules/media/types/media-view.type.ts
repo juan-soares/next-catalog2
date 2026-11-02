@@ -1,74 +1,19 @@
-import type { MediaCharacterView } from "@/modules/media-character/types";
-import type { MediaFileView } from "@/modules/media-file/types";
-import type { FranchiseView } from "@/modules/franchise/types";
-import type {
-  MediaImageView,
-  MediaRelatedMediaView,
-  MediaStatus,
-  MediaTrailerView,
-} from "@/modules/media/types";
-import type {
-  MediaEpisodeGroupView,
-  MediaMusicGroupView,
-  MediaVolumeGroupView,
-} from "@/modules/media-group/types";
+import type { MediaImageView, MediaProgress } from "@/modules/media/types";
 
 export type MediaView = {
-  id: string;
-  slug: string;
-  path: string;
-
-  title: string;
-  translatedTitle: string;
-  releaseYear: number;
-  type: {
-    label: string;
-  };
-  synopsis: string;
-
-  languages: { label: string }[];
-  themes: { label: string }[];
-
-  cover: MediaImageView;
-  trailer?: MediaTrailerView;
-
-  characters: MediaCharacterView[];
-
-  gameDetails?: {
-    platforms: { label: string }[];
-    genres: { label: string }[];
-    gameplay: { label: string };
-    modes: { label: string }[];
-    players: {
-      min: number;
-      max: number;
-    };
+  identifiers: {
+    id: string;
+    slug: string;
   };
 
-  gameEdition?: {
-    base: MediaRelatedMediaView | null;
-    dlcs: MediaRelatedMediaView[];
-    expansions: MediaRelatedMediaView[];
+  info: {
+    title: string;
+    releaseYear: number;
   };
 
-  seasons?: MediaEpisodeGroupView[];
-  ovas?: MediaEpisodeGroupView[];
-  specials?: MediaEpisodeGroupView[];
-
-  volumes?: MediaVolumeGroupView[];
-
-  albums?: MediaMusicGroupView[];
-  concerts?: MediaMusicGroupView[];
-
-  sequel: {
-    previous?: MediaRelatedMediaView;
-    next?: MediaRelatedMediaView;
+  assets: {
+    cover: MediaImageView;
   };
 
-  gallery: MediaImageView[];
-  files: MediaFileView[];
-
-  franchises: FranchiseView[];
-
-  status: MediaStatus;
+  progress: MediaProgress;
 };
