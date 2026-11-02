@@ -14,8 +14,11 @@ export function MediaCard({
   return (
     <Link href={`/${slug}`}>
       <Image src={cover.url} alt={cover.alt} width={60} height={60} />
+
       <strong>{title}</strong>
+
       <p>{releaseYear}</p>
+
       <p>
         <span>{progress.acquired ? "Adquirir" : "Adquirido"}</span>
         <span>{progress.consumed ? "Consumir" : "Consumido"}</span>

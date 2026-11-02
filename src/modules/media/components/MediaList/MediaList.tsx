@@ -1,13 +1,21 @@
+import Link from "next/link";
+
 import type { MediaView } from "@/modules/media/types";
 import { MediaCard } from "@/modules/media/components";
 
 type Props = {
+  mediaTypeSlug: string;
   medias: MediaView[];
 };
 
-export function MediaList({ medias }: Props) {
+export function MediaList({ mediaTypeSlug, medias }: Props) {
   if (medias.length === 0) {
-    return <p>Nenhum item encontrado</p>;
+    return (
+      <p>
+        Nenhuma mídia encontrada.{" "}
+        <Link href={`/${mediaTypeSlug}/adicionar`}>Adicionar?</Link>
+      </p>
+    );
   }
 
   return (
