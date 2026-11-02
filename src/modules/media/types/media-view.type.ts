@@ -10,6 +10,7 @@ export type MediaView = {
   info: {
     title: string;
     releaseYear: number;
+    releaseDate: Date;
   };
 
   assets: {
