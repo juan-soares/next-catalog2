@@ -1,3 +1,4 @@
+import { createAsset } from "@/modules/asset/services";
 import { MEDIA_TYPES_REGISTRY } from "@/modules/media-type/consts";
 import type {
   CreateMediaInput,
@@ -17,6 +18,21 @@ export async function createMedia(
   const slug = generateMediaSlug(input.title, releaseYear);
   const path = `/${mediaType.slug}/${slug}`;
 
+  const cover = createAsset({
+    parentLabel: input.title,
+    identifier: slug,
+    type: "cover",
+    file: input.cover,
+  });
+  const trailer = input.trailer
+    ? createAsset({
+        parentLabel: input.title,
+        identifier: slug,
+        type: "trailer",
+        file: input.trailer,
+      })
+    : null;
+
   const mediaData: MediaData = {
     identifiers: {
       slug,
@@ -29,6 +45,11 @@ export async function createMedia(
       releaseYear,
       releaseDate,
       typeCode: mediaType.code,
+    },
+
+    assets: {
+      cover,
+      trailer,
     },
   };
 

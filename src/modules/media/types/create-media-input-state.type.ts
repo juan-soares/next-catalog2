@@ -5,4 +5,6 @@ export type CreateMediaInputState = {
   translatedTitle: string;
   releaseDate: string;
   mediaTypeCode: MediaTypeCode | null;
+  cover: File | null;
+  trailer: File | null;
 };

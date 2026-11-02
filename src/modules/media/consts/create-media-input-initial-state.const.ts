@@ -5,4 +5,6 @@ export const CREATE_MEDIA_INPUT_INITIAL_STATE: CreateMediaInputState = {
   translatedTitle: "",
   releaseDate: "",
   mediaTypeCode: null,
+  cover: null,
+  trailer: null,
 };

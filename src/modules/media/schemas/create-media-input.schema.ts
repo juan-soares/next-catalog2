@@ -12,4 +12,19 @@ export const createMediaSchema = z.object({
       "Data de lançamento inválida.",
     ),
   mediaTypeCode: z.enum(MEDIA_TYPE_CODE_LIST),
+
+  cover: z
+    .instanceof(File, { message: "A capa é obrigatória." })
+    .refine(
+      (file) => file.type === "image/jpeg",
+      "A capa deve estar no formato JPEG.",
+    ),
+
+  trailer: z
+    .instanceof(File)
+    .refine(
+      (file) => file.type === "video/mp4",
+      "O trailer deve estar no formato MP4.",
+    )
+    .nullable(),
 });

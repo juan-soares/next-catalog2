@@ -1,4 +1,5 @@
 import type { MediaTypeCode } from "@/modules/media-type/types";
+import type { AssetData } from "@/modules/asset/types";
 
 export type MediaData = {
   identifiers: {
@@ -12,5 +13,10 @@ export type MediaData = {
     releaseYear: number;
     releaseDate: Date;
     typeCode: MediaTypeCode;
+  };
+
+  assets: {
+    cover: AssetData;
+    trailer: AssetData | null;
   };
 };

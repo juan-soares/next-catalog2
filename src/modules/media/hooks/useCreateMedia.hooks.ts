@@ -21,10 +21,21 @@ export function useCreateMedia({ mediaTypeCode }: Props) {
     setMediaInputs((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, files } = e.target;
+
+    const file = files?.[0] ?? null;
+
+    setMediaInputs((prev) => ({
+      ...prev,
+      [name]: file,
+    }));
+  };
+
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     await createMediaAction(mediaInputs);
   };
 
-  return { mediaInputs, handleChange, handleSubmit };
+  return { mediaInputs, handleChange, handleFileChange, handleSubmit };
 }
