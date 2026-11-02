@@ -4,6 +4,7 @@ export type MediaView = {
   identifiers: {
     id: string;
     slug: string;
+    path: string;
   };
 
   info: {

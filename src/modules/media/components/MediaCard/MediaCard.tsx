@@ -6,13 +6,13 @@ import type { MediaView } from "@/modules/media/types";
 type Props = Pick<MediaView, "identifiers" | "info" | "assets" | "progress">;
 
 export function MediaCard({
-  identifiers: { slug },
+  identifiers: { path },
   assets: { cover },
   info: { title, releaseYear },
   progress,
 }: Props) {
   return (
-    <Link href={`/${slug}`}>
+    <Link href={path}>
       <Image src={cover.url} alt={cover.alt} width={60} height={60} />
 
       <strong>{title}</strong>
