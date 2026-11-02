@@ -1,9 +1,8 @@
-import { Dispatch } from "react";
-
 type Props = {
   fieldName: string;
   label: string;
   options: { value: string; label: string }[];
+  required?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
@@ -11,6 +10,7 @@ export function FormSelectField({
   fieldName,
   label,
   options,
+  required = false,
   onChange,
 }: Props) {
   return (
@@ -21,7 +21,7 @@ export function FormSelectField({
         id={fieldName}
         name={fieldName}
         defaultValue=""
-        required
+        required={required}
         onChange={onChange}
       >
         <option value="" hidden>

@@ -1,4 +1,4 @@
-import { Cross, File } from "lucide-react";
+import { File, Trash } from "lucide-react";
 import type { CreateMediaFileInputState } from "@/modules/media-file/types";
 
 type Props = {
@@ -26,7 +26,7 @@ export function MediaFilewPreviewList({ files, onRemove }: Props) {
               </p>
 
               <button type="button" onClick={() => onRemove(index)}>
-                <Cross />
+                <Trash />
               </button>
             </li>
           );

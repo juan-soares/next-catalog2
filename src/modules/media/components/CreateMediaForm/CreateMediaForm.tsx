@@ -13,6 +13,7 @@ import { CreateMediaFileForm } from "@/modules/media-file/components";
 import { useMediaForm } from "@/modules/media/hooks";
 import type { MediaView } from "@/modules/media/types";
 import { CreateMediaGameForm } from "@/modules/media/components";
+import type { FranchiseView } from "@/modules/franchise/types";
 
 type Props = {
   typeCode: MediaTypeCode;
@@ -23,7 +24,7 @@ type Props = {
   genres: AttributeView[];
   gameplays: AttributeView[];
   modes: AttributeView[];
-  franchises: [];
+  franchises: FranchiseView[];
 };
 
 export function CreateMediaForm({
@@ -105,7 +106,10 @@ export function CreateMediaForm({
         <FormSelectField
           fieldName="franchise"
           label="Franquia"
-          options={franchises}
+          options={franchises.map(({ id, title }) => ({
+            value: id,
+            label: title,
+          }))}
           onChange={(event) =>
             handleChange("franchise", event.currentTarget.value)
           }

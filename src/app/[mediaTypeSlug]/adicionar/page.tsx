@@ -3,12 +3,8 @@ import { ATTRIBUTE_TYPE_LIST } from "@/modules/attribute/consts";
 import { getAttributesByType } from "@/modules/attribute/services";
 import { getMediaTypeDetailsBySlug } from "@/modules/media-type/services";
 import { CreateMediaForm } from "@/modules/media/components";
-
-import {
-  AttributeTypeFieldCode,
-  AttributeView,
-} from "@/modules/attribute/types";
 import { getMediasViewByType } from "@/modules/media/services";
+import type { FranchiseView } from "@/modules/franchise/types";
 
 type Props = {
   params: Promise<{ mediaTypeSlug: string }>;
@@ -32,7 +28,15 @@ export default async function CreateMediaPage({ params }: Props) {
     filters: {},
   });
 
-  const franchises: any = [];
+  const franchises: FranchiseView[] = [
+    {
+      id: "1",
+      title: "teste",
+      slug: "teste",
+      path: "/teste",
+      logo: { url: "/logo.png", alt: "Logo da franquia" },
+    },
+  ];
 
   return (
     <div>
