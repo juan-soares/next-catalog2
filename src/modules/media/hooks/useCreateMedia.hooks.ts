@@ -3,20 +3,27 @@
 import { useState } from "react";
 import type { CreateMediaInputState } from "@/modules/media/types";
 import { CREATE_MEDIA_INPUT_INITIAL_STATE } from "@/modules/media/consts";
+import { createMediaAction } from "@/modules/media/actions";
+import type { MediaTypeCode } from "@/modules/media-type/types";
 
-export function useCreateMedia() {
-  const [mediaInputs, setMediaInputs] = useState<CreateMediaInputState>(
-    CREATE_MEDIA_INPUT_INITIAL_STATE,
-  );
+type Props = {
+  mediaTypeCode: MediaTypeCode | null;
+};
+
+export function useCreateMedia({ mediaTypeCode }: Props) {
+  const [mediaInputs, setMediaInputs] = useState<CreateMediaInputState>({
+    ...CREATE_MEDIA_INPUT_INITIAL_STATE,
+    mediaTypeCode,
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setMediaInputs((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(mediaInputs);
+    await createMediaAction(mediaInputs);
   };
 
   return { mediaInputs, handleChange, handleSubmit };

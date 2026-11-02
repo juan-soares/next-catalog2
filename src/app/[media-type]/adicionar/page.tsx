@@ -18,7 +18,7 @@ export default async function MediaTypeAddPage({ params }: Props) {
     <div>
       <h1>Adicionar {mediaType.label}</h1>
 
-      <MediaCreateForm />
+      <MediaCreateForm mediaTypeCode={mediaType.code} />
     </div>
   );
 }

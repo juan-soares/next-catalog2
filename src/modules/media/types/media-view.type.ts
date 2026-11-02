@@ -1,4 +1,4 @@
-import type { MediaTypeCode, MediaTypeView } from "@/modules/media-type/types";
+import type { MediaTypeView } from "@/modules/media-type/types";
 import type { MediaImageView, MediaProgress } from "@/modules/media/types";
 
 export type MediaView = {
