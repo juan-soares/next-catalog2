@@ -1,4 +1,5 @@
 import type { AssetData, AssetTypeCode } from "@/modules/asset/types";
+import { ASSET_REGISTRY } from "../consts/asset-type-registry.const";
 
 type Props = {
   parentLabel: string;
@@ -14,20 +15,13 @@ export function createAsset({
   file,
 }: Props): AssetData {
   const extension = file.name.split(".").pop()?.toLowerCase();
-  const labels: Record<AssetTypeCode, string> = {
-    cover: `Capa da mídia ${parentLabel}.`,
-    trailer: `Trailer da mídia ${parentLabel}.`,
-    file: `Arquivo da mídia ${parentLabel}.`,
-    image: `Imagem da mídia ${parentLabel}.`,
-    logo: `Logo da franquia ${parentLabel}.`,
-  };
 
   const filename = `${identifier}-${type}.${extension}`;
 
   return {
-    label: labels[type],
+    label: `${ASSET_REGISTRY[type].label} ${parentLabel}`,
     filename,
-    path: `/${filename}`,
+    path: `${ASSET_REGISTRY[type].storage}/${filename}`,
     mimeType: file.type,
     size: file.size,
   };
