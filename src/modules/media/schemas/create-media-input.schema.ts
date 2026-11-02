@@ -27,4 +27,9 @@ export const createMediaSchema = z.object({
       "O trailer deve estar no formato MP4.",
     )
     .nullable(),
+
+  progress: z.object({
+    acquired: z.boolean(),
+    consumed: z.boolean(),
+  }),
 });

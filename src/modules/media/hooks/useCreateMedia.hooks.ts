@@ -4,21 +4,37 @@ import { useState } from "react";
 import type { CreateMediaInputState } from "@/modules/media/types";
 import { CREATE_MEDIA_INPUT_INITIAL_STATE } from "@/modules/media/consts";
 import { createMediaAction } from "@/modules/media/actions";
-import type { MediaTypeCode } from "@/modules/media-type/types";
+import type { MediaTypeView } from "@/modules/media-type/types";
 
 type Props = {
-  mediaTypeCode: MediaTypeCode | null;
+  mediaType: MediaTypeView;
 };
 
-export function useCreateMedia({ mediaTypeCode }: Props) {
+export function useCreateMedia({ mediaType }: Props) {
   const [mediaInputs, setMediaInputs] = useState<CreateMediaInputState>({
     ...CREATE_MEDIA_INPUT_INITIAL_STATE,
-    mediaTypeCode,
+    mediaTypeCode: mediaType.code,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setMediaInputs((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type } = e.target;
+
+    if (type === "radio") {
+      setMediaInputs((prev) => ({
+        ...prev,
+        progress: {
+          ...prev.progress,
+          [name]: value === "true",
+        },
+      }));
+
+      return;
+    }
+
+    setMediaInputs((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

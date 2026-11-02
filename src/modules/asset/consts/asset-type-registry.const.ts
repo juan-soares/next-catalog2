@@ -1,7 +1,7 @@
 import { PATHS } from "@/shared/consts";
 import type { AssetType, AssetTypeCode } from "@/modules/asset/types";
 
-export const ASSET_REGISTRY = {
+export const ASSET_TYPE_REGISTRY = {
   cover: {
     code: "cover",
     label: "Capa da mídia",

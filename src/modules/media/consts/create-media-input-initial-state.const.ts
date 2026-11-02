@@ -7,4 +7,8 @@ export const CREATE_MEDIA_INPUT_INITIAL_STATE: CreateMediaInputState = {
   mediaTypeCode: null,
   cover: null,
   trailer: null,
+  progress: {
+    acquired: false,
+    consumed: false,
+  },
 };

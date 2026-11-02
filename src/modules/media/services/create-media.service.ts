@@ -1,3 +1,5 @@
+"use server";
+
 import { createAsset } from "@/modules/asset/services";
 import { MEDIA_TYPES_REGISTRY } from "@/modules/media-type/consts";
 import type {
@@ -18,14 +20,14 @@ export async function createMedia(
   const slug = generateMediaSlug(input.title, releaseYear);
   const path = `/${mediaType.slug}/${slug}`;
 
-  const cover = createAsset({
+  const cover = await createAsset({
     parentLabel: input.title,
     identifier: slug,
     type: "cover",
     file: input.cover,
   });
   const trailer = input.trailer
-    ? createAsset({
+    ? await createAsset({
         parentLabel: input.title,
         identifier: slug,
         type: "trailer",
@@ -51,6 +53,8 @@ export async function createMedia(
       cover,
       trailer,
     },
+
+    progress: input.progress,
   };
 
   console.log(mediaData);

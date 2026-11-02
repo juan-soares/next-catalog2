@@ -1,3 +1,5 @@
+"use server";
+
 import z from "zod";
 import { redirect } from "next/navigation";
 import { createMediaSchema } from "@/modules/media/schemas";
@@ -14,5 +16,5 @@ export async function createMediaAction(mediaInputs: CreateMediaInputState) {
 
   await createMedia(result.data);
 
-  //return redirect("/board-games/catan");
+  return redirect("/");
 }

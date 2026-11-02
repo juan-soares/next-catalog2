@@ -1,4 +1,5 @@
 import type { MediaTypeCode } from "@/modules/media-type/types";
+import type { MediaProgress } from "@/modules/media/types";
 
 export type CreateMediaInputState = {
   title: string;
@@ -7,4 +8,5 @@ export type CreateMediaInputState = {
   mediaTypeCode: MediaTypeCode | null;
   cover: File | null;
   trailer: File | null;
+  progress: MediaProgress;
 };

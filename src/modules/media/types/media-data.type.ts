@@ -1,5 +1,6 @@
 import type { MediaTypeCode } from "@/modules/media-type/types";
 import type { AssetData } from "@/modules/asset/types";
+import type { MediaProgress } from "@/modules/media/types";
 
 export type MediaData = {
   identifiers: {
@@ -19,4 +20,6 @@ export type MediaData = {
     cover: AssetData;
     trailer: AssetData | null;
   };
+
+  progress: MediaProgress;
 };
