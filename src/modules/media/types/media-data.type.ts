@@ -11,7 +11,6 @@ export type MediaData = {
   info: {
     title: string;
     translatedTitle: string;
-    releaseYear: number;
     releaseDate: Date;
     typeCode: MediaTypeCode;
   };

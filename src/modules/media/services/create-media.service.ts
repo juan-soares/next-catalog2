@@ -8,6 +8,7 @@ import type {
   MediaView,
 } from "@/modules/media/types";
 import { generateMediaSlug } from "@/modules/media/utils";
+import { mediaRepository } from "@/modules/media/repository";
 
 export async function createMedia(
   input: CreateMediaInput,
@@ -44,7 +45,6 @@ export async function createMedia(
     info: {
       title: input.title,
       translatedTitle: input.translatedTitle,
-      releaseYear,
       releaseDate,
       typeCode: mediaType.code,
     },
@@ -57,6 +57,5 @@ export async function createMedia(
     progress: input.progress,
   };
 
-  console.log(mediaData);
-  return null;
+  return mediaRepository.createOne(mediaData);
 }

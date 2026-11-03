@@ -14,7 +14,11 @@ export async function createMediaAction(mediaInputs: CreateMediaInputState) {
     return;
   }
 
-  await createMedia(result.data);
+  const createdMedia = await createMedia(result.data);
 
-  return redirect("/");
+  if (!createdMedia) {
+    return console.error("Algo deu errado.");
+  }
+
+  return redirect(createdMedia.identifiers.path);
 }

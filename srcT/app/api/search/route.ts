@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
   const term = request.nextUrl.searchParams.get("term")?.trim();
-  console.log(term);
 
   if (!term) {
     return NextResponse.json([]);
