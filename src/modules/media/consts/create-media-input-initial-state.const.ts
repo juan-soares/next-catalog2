@@ -6,8 +6,13 @@ export const CREATE_MEDIA_INPUT_INITIAL_STATE: CreateMediaInputState = {
   releaseDate: "",
   mediaTypeCode: null,
   synopsis: "",
+
   cover: null,
   trailer: null,
+
+  languageIds: [],
+  themeIds: [],
+
   progress: {
     acquired: false,
     consumed: false,

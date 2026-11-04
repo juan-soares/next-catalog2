@@ -16,10 +16,15 @@ type Props = {
 };
 
 export function MediaCreateForm({ mediaType, attributes }: Props) {
-  const { mediaInputs, handleChange, handleFileChange, handleSubmit } =
-    useCreateMedia({
-      mediaType,
-    });
+  const {
+    mediaInputs,
+    handleChange,
+    handleCheckboxChange,
+    handleFileChange,
+    handleSubmit,
+  } = useCreateMedia({
+    mediaType,
+  });
 
   return (
     <form onSubmit={handleSubmit}>
@@ -27,7 +32,14 @@ export function MediaCreateForm({ mediaType, attributes }: Props) {
 
       <AssetFields onChange={handleFileChange} />
 
-      <AttributesFields {...attributes} />
+      <AttributesFields
+        {...attributes}
+        onChange={handleCheckboxChange}
+        currentAttributes={{
+          languageIds: mediaInputs.languageIds,
+          themeIds: mediaInputs.themeIds,
+        }}
+      />
 
       <ProgressFields
         currentValue={mediaInputs.progress}

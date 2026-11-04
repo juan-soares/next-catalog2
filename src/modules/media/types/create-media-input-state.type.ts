@@ -7,7 +7,12 @@ export type CreateMediaInputState = {
   releaseDate: string;
   mediaTypeCode: MediaTypeCode | null;
   synopsis: string;
+
   cover: File | null;
   trailer: File | null;
+
+  languageIds: string[];
+  themeIds: string[];
+
   progress: MediaProgress;
 };

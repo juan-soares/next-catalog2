@@ -29,6 +29,9 @@ export const createMediaSchema = z.object({
     )
     .nullable(),
 
+  languageIds: z.array(z.string()),
+  themeIds: z.array(z.string()),
+
   progress: z.object({
     acquired: z.boolean(),
     consumed: z.boolean(),

@@ -1,4 +1,4 @@
-import { Schema, model, models, type Model } from "mongoose";
+import mongoose, { Schema, model, models, type Model } from "mongoose";
 import { MEDIA_TYPE_CODE_LIST } from "@/modules/media-type/consts";
 import { assetSchema } from "@/modules/asset/models";
 import type { MediaData } from "@/modules/media/types";
@@ -37,6 +37,21 @@ const mediaSchema = new Schema<MediaData>(
         enum: MEDIA_TYPE_CODE_LIST,
         required: true,
       },
+    },
+
+    attributes: {
+      languageIds: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Attribute",
+        },
+      ],
+      themeIds: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Attribute",
+        },
+      ],
     },
 
     assets: {

@@ -50,6 +50,11 @@ export async function createMedia(
       synopsis: input.synopsis,
     },
 
+    attributes: {
+      languageIds: input.languageIds,
+      themeIds: input.themeIds,
+    },
+
     assets: {
       cover,
       trailer,

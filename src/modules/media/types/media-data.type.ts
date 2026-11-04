@@ -16,6 +16,11 @@ export type MediaData = {
     synopsis: string;
   };
 
+  attributes: {
+    languageIds: string[];
+    themeIds: string[];
+  };
+
   assets: {
     cover: AssetData;
     trailer: AssetData | null;

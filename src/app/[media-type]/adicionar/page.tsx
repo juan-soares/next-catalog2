@@ -15,8 +15,8 @@ export default async function MediaTypeAddPage({ params }: Props) {
   }
 
   const attributes = {
-    languages: [],
-    themes: [],
+    languages: [{ id: "1", label: "porotuges" }],
+    themes: [{ id: "2", label: "acao" }],
   };
 
   return (

@@ -50,10 +50,31 @@ export function useCreateMedia({ mediaType }: Props) {
     }));
   };
 
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, checked } = e.target;
+
+    setMediaInputs((prev) => {
+      const currentValues = prev[name as "languageIds" | "themeIds"];
+
+      return {
+        ...prev,
+        [name]: checked
+          ? [...currentValues, value]
+          : currentValues.filter((item) => item !== value),
+      };
+    });
+  };
+
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     await createMediaAction(mediaInputs);
   };
 
-  return { mediaInputs, handleChange, handleFileChange, handleSubmit };
+  return {
+    mediaInputs,
+    handleChange,
+    handleCheckboxChange,
+    handleFileChange,
+    handleSubmit,
+  };
 }
