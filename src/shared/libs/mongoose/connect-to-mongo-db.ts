@@ -42,3 +42,5 @@ export async function connectToMongoDB(): Promise<typeof mongoose> {
 
   return cache.conn;
 }
+
+//MONGODB_URI=mongodb+srv://juancss013_db_user:wmv9MTJ2O9trLqwt@nextcatalog.gvyxzab.mongodb.net/
