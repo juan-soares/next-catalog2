@@ -1,5 +1,10 @@
 import type { MediaTypeView } from "@/modules/media-type/types";
-import type { MediaImageView, MediaProgress } from "@/modules/media/types";
+import type {
+  MediaImageView,
+  MediaProgress,
+  MediaFileView,
+  MediaAttributeView,
+} from "@/modules/media/types";
 
 export type MediaView = {
   identifiers: {
@@ -14,11 +19,17 @@ export type MediaView = {
     releaseYear: number;
     releaseDate: Date;
     type: MediaTypeView;
+    synopsis: string;
+  };
+
+  attributes: {
+    languages: MediaAttributeView[];
+    themes: MediaAttributeView[];
   };
 
   assets: {
     cover: MediaImageView;
-    trailer: MediaImageView | null;
+    trailer: MediaFileView | null;
   };
 
   progress: MediaProgress;

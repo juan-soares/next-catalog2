@@ -13,6 +13,7 @@ export type MediaData = {
     translatedTitle: string;
     releaseDate: Date;
     typeCode: MediaTypeCode;
+    synopsis: string;
   };
 
   assets: {

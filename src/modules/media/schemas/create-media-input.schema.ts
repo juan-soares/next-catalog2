@@ -12,6 +12,7 @@ export const createMediaSchema = z.object({
       "Data de lançamento inválida.",
     ),
   mediaTypeCode: z.enum(MEDIA_TYPE_CODE_LIST),
+  synopsis: z.string().min(1, "A sinópse é obrigatória."),
 
   cover: z
     .instanceof(File, { message: "A capa é obrigatória." })

@@ -14,11 +14,16 @@ export default async function MediaTypeAddPage({ params }: Props) {
     notFound();
   }
 
+  const attributes = {
+    languages: [],
+    themes: [],
+  };
+
   return (
     <div>
       <h1>Adicionar {mediaType.label}</h1>
 
-      <MediaCreateForm mediaType={mediaType} />
+      <MediaCreateForm mediaType={mediaType} attributes={attributes} />
     </div>
   );
 }

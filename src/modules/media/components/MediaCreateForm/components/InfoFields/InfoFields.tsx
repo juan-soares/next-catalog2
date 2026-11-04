@@ -2,7 +2,9 @@ import type { CreateMediaInputState } from "@/modules/media/types";
 
 type Props = {
   mediaInputs: CreateMediaInputState;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
 };
 
 export function InfoFields({ mediaInputs, onChange }: Props) {
@@ -40,6 +42,17 @@ export function InfoFields({ mediaInputs, onChange }: Props) {
           name="releaseDate"
           required
           value={mediaInputs.releaseDate}
+          onChange={onChange}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="synopsis">Sinopse:</label>
+        <textarea
+          id="synopsis"
+          name="synopsis"
+          required
+          value={mediaInputs.synopsis}
           onChange={onChange}
         />
       </div>

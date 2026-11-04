@@ -16,7 +16,9 @@ export function useCreateMedia({ mediaType }: Props) {
     mediaTypeCode: mediaType.code,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value, type } = e.target;
 
     if (type === "radio") {

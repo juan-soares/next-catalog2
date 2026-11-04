@@ -47,6 +47,7 @@ export async function createMedia(
       translatedTitle: input.translatedTitle,
       releaseDate,
       typeCode: mediaType.code,
+      synopsis: input.synopsis,
     },
 
     assets: {

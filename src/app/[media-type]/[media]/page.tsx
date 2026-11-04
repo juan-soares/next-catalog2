@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getMediaViewBySlug } from "@/modules/media/services";
+import { MediaHero } from "@/modules/media/components";
 
 type Props = {
   params: Promise<{ media: string }>;
@@ -14,7 +15,9 @@ export default async function MediaPage({ params }: Props) {
     notFound();
   }
 
-  const { identifiers, info } = mediaView;
-
-  return <div>{info.title}</div>;
+  return (
+    <div>
+      <MediaHero {...mediaView} />
+    </div>
+  );
 }
