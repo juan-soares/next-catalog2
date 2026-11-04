@@ -1,16 +1,12 @@
-import type { MediaView } from "@/modules/media/types";
+import type { FindMediaDataParams, MediaView } from "@/modules/media/types";
 import { MediaModel } from "@/modules/media/models";
 import { mapMediaDataToMediaView } from "@/modules/media/mappers";
 
 export async function findMedia({
-  slug,
-}: {
-  slug: string;
-}): Promise<MediaView | null> {
+  fields = {},
+}: FindMediaDataParams = {}): Promise<MediaView | null> {
   try {
-    const mediaData = await MediaModel.findOne({
-      "identifiers.slug": slug,
-    }).lean();
+    const mediaData = await MediaModel.findOne(fields).lean();
 
     if (!mediaData) return null;
 

@@ -1,5 +1,5 @@
-import { getMediaViewBySlug } from "@/modules/media/services";
 import { notFound } from "next/navigation";
+import { getMediaViewBySlug } from "@/modules/media/services";
 
 type Props = {
   params: Promise<{ media: string }>;

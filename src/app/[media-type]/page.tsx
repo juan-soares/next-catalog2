@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 
 import { getMediaTypeViewBySlug } from "@/modules/media-type/services";
-
 import { MediaList } from "@/modules/media/components";
 import { getMediasViewByType } from "@/modules/media/services";
 import { MediaTypeAsidebar } from "@/modules/media-type/components";
