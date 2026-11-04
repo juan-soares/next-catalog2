@@ -26,7 +26,6 @@ const mediaSchema = new Schema<MediaData>(
       },
       translatedTitle: {
         type: String,
-        required: true,
         trim: true,
       },
       releaseDate: {

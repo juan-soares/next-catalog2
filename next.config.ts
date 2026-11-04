@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   images: {
     localPatterns: [
       {
-        pathname: "/assets/media/**",
+        pathname: "/assets/medias/**",
       },
       {
         pathname: "/assets/icons/**",

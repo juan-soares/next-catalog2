@@ -16,15 +16,19 @@ export async function createAsset({
   file,
 }: Props): Promise<AssetData> {
   const extension = file.name.split(".").pop()?.toLowerCase();
-
   const filename = `${identifier}-${type}.${extension}`;
+  const storage = ASSET_TYPE_REGISTRY[type].storage;
 
-  // await storeFile({file,filename,type,});
+  await storeFile({ file, filename, type });
+
+  const publicPath = `/${storage
+    .replace(/^public[\\/]/, "")
+    .replace(/\\/g, "/")}/${filename}`;
 
   return {
     label: `${ASSET_TYPE_REGISTRY[type].label} ${parentLabel}`,
     filename,
-    path: `${ASSET_TYPE_REGISTRY[type].storage}/${filename}`,
+    path: publicPath,
     mimeType: file.type,
     size: file.size,
   };

@@ -10,6 +10,7 @@ export type MediaView = {
 
   info: {
     title: string;
+    translatedTitle: string;
     releaseYear: number;
     releaseDate: Date;
     type: MediaTypeView;
@@ -17,6 +18,7 @@ export type MediaView = {
 
   assets: {
     cover: MediaImageView;
+    trailer: MediaImageView | null;
   };
 
   progress: MediaProgress;

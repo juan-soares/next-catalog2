@@ -1,9 +1,9 @@
 export const PATHS = {
   MEDIA: {
-    ASSETS: "/public/assets/medias",
+    ASSETS: "public/assets/medias",
   },
 
   FRANCHISE: {
-    ASSETS: "/public/assets/franchises/",
+    ASSETS: "public/assets/franchises/",
   },
 };
