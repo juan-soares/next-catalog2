@@ -1,9 +1,9 @@
+import type { AttributeView } from "@/modules/attribute/types";
 import type { MediaTypeView } from "@/modules/media-type/types";
 import type {
   MediaImageView,
   MediaProgress,
   MediaFileView,
-  MediaAttributeView,
 } from "@/modules/media/types";
 
 export type MediaView = {
@@ -23,8 +23,8 @@ export type MediaView = {
   };
 
   attributes: {
-    languages: MediaAttributeView[];
-    themes: MediaAttributeView[];
+    languages: AttributeView[];
+    themes: AttributeView[];
   };
 
   assets: {

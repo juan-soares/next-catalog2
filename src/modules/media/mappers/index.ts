@@ -1,1 +1,1 @@
-export * from "./map-media-data-to-media-view.mapper";
+export * from "./map-media-doc-to-media-view.mapper";

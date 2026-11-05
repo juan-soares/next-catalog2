@@ -1,29 +1,23 @@
 import type {
   FindMediaDataParams,
-  MediaDataPopulated,
+  MediaDoc,
   MediaView,
 } from "@/modules/media/types";
 import { MediaModel } from "@/modules/media/models";
-import { mapMediaDataToMediaView } from "@/modules/media/mappers";
-import type { AttributeData } from "@/modules/attribute/types";
-
-type MediaPopulate = {
-  "attributes.languageIds": AttributeData[];
-  "attributes.themeIds": AttributeData[];
-};
+import { mapMediaDocToMediaView } from "@/modules/media/mappers";
 
 export async function findMedia({
   fields = {},
 }: FindMediaDataParams = {}): Promise<MediaView | null> {
   try {
-    const mediaData = await MediaModel.findOne(fields)
-      .populate<MediaPopulate>("attributes.languageIds")
-      .populate<MediaPopulate>("attributes.themeIds")
-      .lean<MediaDataPopulated>();
+    const mediaDoc = await MediaModel.findOne(fields)
+      .populate("attributes.languageIds")
+      .populate("attributes.themeIds")
+      .lean<MediaDoc>();
 
-    if (!mediaData) return null;
+    if (!mediaDoc) return null;
 
-    return mapMediaDataToMediaView(mediaData._id.toString(), mediaData);
+    return mapMediaDocToMediaView(mediaDoc);
   } catch (error) {
     console.error("Ocorreu um erro ao buscar midia", error);
     return null;

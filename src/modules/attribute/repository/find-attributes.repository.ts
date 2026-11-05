@@ -1,10 +1,11 @@
 import { connectToMongoDB } from "@/shared/libs/mongoose";
 import type {
+  AttributeDoc,
   AttributeView,
   FindAttributeDataParams,
 } from "@/modules/attribute/types";
 import { AttributeModel } from "@/modules/attribute/model";
-import { mapAttributeDataToAttributeView } from "@/modules/attribute/mappers";
+import { mapAttributeDocToAttributeView } from "@/modules/attribute/mappers";
 
 export async function findAttributes(
   findParams: FindAttributeDataParams,
@@ -21,12 +22,9 @@ export async function findAttributes(
       }),
     })
       .sort(sort)
-      .lean();
+      .lean<AttributeDoc[]>();
 
-    return attributeDocs.map((doc) => {
-      const id = doc._id.toString();
-      return mapAttributeDataToAttributeView(id, doc);
-    });
+    return attributeDocs.map(mapAttributeDocToAttributeView);
   } catch (error) {
     console.error("Ocorreu um erro ao buscar atributos", error);
     return [];

@@ -1,7 +1,7 @@
 import { connectToMongoDB } from "@/shared/libs/mongoose";
 import type { AttributeData, AttributeView } from "@/modules/attribute/types";
 import { AttributeModel } from "@/modules/attribute/model";
-import { mapAttributeDataToAttributeView } from "@/modules/attribute/mappers";
+import { mapAttributeDocToAttributeView } from "@/modules/attribute/mappers";
 
 export async function createAttribute(
   data: AttributeData,
@@ -9,13 +9,9 @@ export async function createAttribute(
   try {
     await connectToMongoDB();
 
-    const attributeData = await AttributeModel.create(data);
+    const attributeDoc = await AttributeModel.create(data);
 
-    if (!attributeData) return null;
-
-    const id = attributeData._id.toString();
-
-    return mapAttributeDataToAttributeView(id, attributeData);
+    return mapAttributeDocToAttributeView(attributeDoc);
   } catch (error) {
     console.error("Erro ao salvar atributo:", error);
     return null;
