@@ -1,4 +1,6 @@
 import type { MediaAttributeView } from "@/modules/media/types";
+import { PUBLIC_URLS } from "@/shared/consts";
+import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 
 type Props = {
@@ -20,7 +22,9 @@ export function AttributesFields({
 
       <div>
         <label>Idiomas</label>
-        <Link href="/atributos/novo?type=language">+</Link>
+        <Link href={`${PUBLIC_URLS.ATTRIBUTES.CREATE}?type=language`}>
+          <PlusCircle />
+        </Link>
         {languages.map(({ id, label }) => (
           <label htmlFor={id} key={id}>
             <input
@@ -38,7 +42,9 @@ export function AttributesFields({
 
       <div>
         <label>Temas</label>
-        <Link href="/atributos/novo?type=theme">+</Link>
+        <Link href={`${PUBLIC_URLS.ATTRIBUTES.CREATE}?type=theme`}>
+          <PlusCircle />
+        </Link>
         {themes.map(({ id, label }) => (
           <label htmlFor={id} key={id}>
             <input
