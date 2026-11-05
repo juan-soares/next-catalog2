@@ -44,14 +44,16 @@ export function MediaHero({ info, assets, attributes, progress }: Props) {
             ))}
           </div>
 
-          <div>
-            {franchises.map(({ logo, title }) => (
-              <span key={title}>
-                <Image src={logo.url} alt={logo.alt} width={60} height={60} />
-                <strong>{title}</strong>
-              </span>
-            ))}
-          </div>
+          {/*
+<div>
+  {franchises.map(({ logo, title }) => (
+    <span key={title}>
+      <Image src={logo.url} alt={logo.alt} width={60} height={60} />
+      <strong>{title}</strong>
+    </span>
+  ))}
+</div>
+*/}
 
           <p>{info.synopsis}</p>
 
