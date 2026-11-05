@@ -1,9 +1,9 @@
 import { MEDIA_TYPES_REGISTRY } from "@/modules/media-type/consts";
-import type { MediaData, MediaView } from "@/modules/media/types";
+import type { MediaDataPopulated, MediaView } from "@/modules/media/types";
 
 export function mapMediaDataToMediaView(
   id: string,
-  mediaData: MediaData,
+  mediaData: MediaDataPopulated,
 ): MediaView {
   return {
     identifiers: {
@@ -17,6 +17,12 @@ export function mapMediaDataToMediaView(
       releaseYear: new Date(mediaData.info.releaseDate).getFullYear(),
       releaseDate: mediaData.info.releaseDate,
       type: MEDIA_TYPES_REGISTRY[mediaData.info.typeCode],
+      synopsis: mediaData.info.synopsis,
+    },
+
+    attributes: {
+      languages: mediaData.attributes.languageIds,
+      themes: mediaData.attributes.themeIds,
     },
 
     assets: {
@@ -27,7 +33,7 @@ export function mapMediaDataToMediaView(
       trailer: mediaData.assets.trailer
         ? {
             url: mediaData.assets.trailer.path,
-            alt: mediaData.assets.trailer.label,
+            fileType: mediaData.assets.trailer.mimeType,
           }
         : null,
     },
