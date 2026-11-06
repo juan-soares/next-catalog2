@@ -2,6 +2,9 @@ import mongoose, { Schema, model, models, type Model } from "mongoose";
 import { MEDIA_TYPE_CODE_LIST } from "@/modules/media-type/consts";
 import { assetSchema } from "@/modules/asset/models";
 import type { MediaData } from "@/modules/media/types";
+import { AttributeModel } from "@/modules/attribute/model";
+
+void AttributeModel;
 
 const mediaSchema = new Schema<MediaData>(
   {
@@ -87,5 +90,5 @@ const mediaSchema = new Schema<MediaData>(
 
 mediaSchema.index({ "identifiers.slug": 1 }, { unique: true });
 
-export const MediaModel: Model<MediaData> =
-  (models.Media as Model<MediaData>) || model<MediaData>("Media", mediaSchema);
+export const MediaModel =
+  (models.Media as Model<MediaData>) ?? model<MediaData>("Media", mediaSchema);

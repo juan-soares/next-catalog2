@@ -24,6 +24,6 @@ const attributeSchema = new Schema<AttributeData>(
   },
 );
 
-export const AttributeModel: Model<AttributeData> =
-  (models.Attribute as Model<AttributeData>) ||
+export const AttributeModel =
+  (models.Attribute as Model<AttributeData>) ??
   model<AttributeData>("Attribute", attributeSchema);

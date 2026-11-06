@@ -1,12 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Pencil, Trash } from "lucide-react";
 import type { MediaView } from "@/modules/media/types";
+import { deleteMediaAction } from "@/modules/media/actions";
 
 export type Props = Pick<
   MediaView,
-  "info" | "assets" | "attributes" | "progress"
+  "identifiers" | "info" | "assets" | "attributes" | "progress"
 >;
 
-export function MediaHero({ info, assets, attributes, progress }: Props) {
+export function MediaHero({
+  identifiers,
+  info,
+  assets,
+  attributes,
+  progress,
+}: Props) {
   return (
     <header>
       <div>
@@ -34,6 +43,21 @@ export function MediaHero({ info, assets, attributes, progress }: Props) {
             {info.translatedTitle && <span>{`(${info.translatedTitle})`}</span>}
           </h1>
 
+          <div>
+            <Link href={`${identifiers.path}/editar`}>
+              <Pencil />
+            </Link>
+
+            <form action={deleteMediaAction}>
+              <input type="hidden" name="id" value={identifiers.id} />
+              <input type="hidden" name="typeSlug" value={info.type.slug} />
+
+              <button type="submit">
+                <Trash />
+              </button>
+            </form>
+          </div>
+
           <p>
             {info.releaseYear} | {info.type.label}
           </p>
@@ -57,10 +81,33 @@ export function MediaHero({ info, assets, attributes, progress }: Props) {
 
           <p>{info.synopsis}</p>
 
-          <div>
-            <span>{progress.acquired ? "Adquirido" : "Adquirir"}</span>
-            <span>{progress.consumed ? "Consumido" : "Consumir"}</span>
-          </div>
+          <form>
+            <div>
+              <input type="hidden" name="id" value={identifiers.id} />
+
+              <input
+                type="hidden"
+                name="acquired"
+                value={String(progress.acquired)}
+              />
+
+              <input
+                type="hidden"
+                name="consumed"
+                value={String(progress.consumed)}
+              />
+            </div>
+
+            <div>
+              <button type="submit">
+                {progress.acquired ? "Adquirido" : "Adquirir"}
+              </button>
+
+              <button type="submit">
+                {progress.consumed ? "Consumido" : "Consumir"}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </header>
