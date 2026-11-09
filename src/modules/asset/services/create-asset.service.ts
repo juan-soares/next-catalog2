@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { AssetData, AssetTypeCode } from "@/modules/asset/types";
 import { ASSET_TYPE_REGISTRY } from "@/modules/asset/consts";
 import { storeFile } from "@/modules/asset/services";
@@ -15,15 +16,14 @@ export async function createAsset({
   type,
   file,
 }: Props): Promise<AssetData> {
-  const extension = file.name.split(".").pop()?.toLowerCase();
-  const filename = `${identifier}-${type}.${extension}`;
+  const filename = path.basename(file.name);
   const storage = ASSET_TYPE_REGISTRY[type].storage;
 
-  await storeFile({ file, filename, type });
+  await storeFile({ file, filename, identifier, type });
 
   const publicPath = `/${storage
     .replace(/^public[\\/]/, "")
-    .replace(/\\/g, "/")}/${filename}`;
+    .replace(/\\/g, "/")}/${identifier}/${filename}`;
 
   return {
     label: `${ASSET_TYPE_REGISTRY[type].label} ${parentLabel}`,
