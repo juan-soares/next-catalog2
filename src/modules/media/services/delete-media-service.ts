@@ -1,6 +1,6 @@
 "use server";
 
-import { deleteAsset } from "@/modules/asset/services";
+import { deleteAssetFolder } from "@/modules/asset/services";
 import { mediaRepository } from "@/modules/media/repository";
 
 export async function deleteMedia(id: string) {
@@ -9,9 +9,9 @@ export async function deleteMedia(id: string) {
 
     if (!deletedMedia) throw new Error("Operação falhou no banco de dados");
 
-    const { assets } = deletedMedia;
+    const { identifiers } = deletedMedia;
 
-    console.log(assets);
+    await deleteAssetFolder({ foldername: identifiers.slug, type: "media" });
 
     return {
       success: true,
