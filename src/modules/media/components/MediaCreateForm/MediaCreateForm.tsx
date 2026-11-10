@@ -8,11 +8,16 @@ import {
   ProgressFields,
 } from "@/modules/media/components/MediaCreateForm/components";
 import type { MediaTypeView } from "@/modules/media-type/types";
-import type { MediaAttributeView } from "@/modules/media/types";
+import type { AttributeView } from "@/modules/attribute/types";
+import type { FranchiseView } from "@/modules/franchise/types";
 
 type Props = {
   mediaType: MediaTypeView;
-  attributes: { languages: MediaAttributeView[]; themes: MediaAttributeView[] };
+  attributes: {
+    languages: AttributeView[];
+    themes: AttributeView[];
+    childlessFranchises: FranchiseView[];
+  };
 };
 
 export function MediaCreateForm({ mediaType, attributes }: Props) {

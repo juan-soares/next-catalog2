@@ -3,4 +3,9 @@ export const PUBLIC_URLS = {
     LIST: "/atributos",
     CREATE: "/atributos/adicionar",
   },
-};
+
+  FRANCHISES: {
+    LIST: "/franquias",
+    CREATE: "/franquias/adicionar",
+  },
+} as const;
