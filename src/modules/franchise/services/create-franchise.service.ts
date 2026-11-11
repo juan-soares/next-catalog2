@@ -35,7 +35,7 @@ export async function createFranchise(
       translatedTitle: input.translatedTitle,
       slug,
       logo,
-      parentFranchiseId: input.parentFranchiseId ?? null,
+      parentFranchiseId: input.parentFranchiseId.trim() || null,
     };
 
     const createdFranchise = franchiseRepository.createOne(data);

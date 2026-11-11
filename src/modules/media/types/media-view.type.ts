@@ -1,4 +1,5 @@
 import type { AttributeView } from "@/modules/attribute/types";
+import { FranchiseView } from "@/modules/franchise/types";
 import type { MediaTypeView } from "@/modules/media-type/types";
 import type {
   MediaImageView,
@@ -25,6 +26,7 @@ export type MediaView = {
   attributes: {
     languages: AttributeView[];
     themes: AttributeView[];
+    franchises: FranchiseView[];
   };
 
   assets: {

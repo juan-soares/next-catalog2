@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Pencil, Trash } from "lucide-react";
 import type { MediaView } from "@/modules/media/types";
 import { deleteMediaAction } from "@/modules/media/actions";
+import { FranchiseLogo } from "@/modules/franchise/components";
 
 export type Props = Pick<
   MediaView,
@@ -68,16 +69,16 @@ export function MediaHero({
             ))}
           </div>
 
-          {/*
-<div>
-  {franchises.map(({ logo, title }) => (
-    <span key={title}>
-      <Image src={logo.url} alt={logo.alt} width={60} height={60} />
-      <strong>{title}</strong>
-    </span>
-  ))}
-</div>
-*/}
+          <div>
+            {attributes.franchises.map((franchise) => (
+              <FranchiseLogo
+                key={franchise.id}
+                {...franchise}
+                width={60}
+                height={60}
+              />
+            ))}
+          </div>
 
           <p>{info.synopsis}</p>
 

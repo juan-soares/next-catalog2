@@ -13,10 +13,5 @@ export async function createFranchise(
 
   const doc = await FranchiseModel.create(data);
 
-  const ancestors = await franchiseRepository.findAncestors(doc._id);
-
-  return {
-    ...mapFranchiseDocToFranchiseView(doc),
-    ancestors,
-  };
+  return mapFranchiseDocToFranchiseView(doc);
 }

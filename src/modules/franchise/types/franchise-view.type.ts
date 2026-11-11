@@ -1,7 +1,6 @@
 export type FranchiseView = {
   id: string;
   slug: string;
-
   title: string;
   translatedTitle: string;
 
@@ -10,5 +9,5 @@ export type FranchiseView = {
     alt: string;
   };
 
-  ancestors: FranchiseView[];
+  parentFranchiseId: string | null;
 };

@@ -16,6 +16,6 @@ export function mapFranchiseDocToFranchiseView(
       alt: `Logotipo da franquia ${doc.title}`,
     },
 
-    ancestors: [],
+    parentFranchiseId: doc.parentFranchiseId?._id.toString() ?? null,
   };
 }
