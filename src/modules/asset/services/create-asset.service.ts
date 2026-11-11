@@ -17,7 +17,7 @@ export async function createAsset({
   file,
 }: Props): Promise<AssetData> {
   const filename = path.basename(file.name);
-  const storage = ASSET_TYPE_REGISTRY[type].storage;
+  const { storage, code } = ASSET_TYPE_REGISTRY[type];
 
   await storeFile({ file, filename, identifier, type });
 

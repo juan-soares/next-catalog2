@@ -11,6 +11,6 @@ export const PUBLIC_URLS = {
   },
 
   MEDIAS: {
-    ASSETS: "/assets/midias",
+    ASSETS: "/assets/medias",
   },
 } as const;
