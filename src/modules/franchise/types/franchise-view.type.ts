@@ -5,5 +5,10 @@ export type FranchiseView = {
   title: string;
   translatedTitle: string;
 
-  logo: string;
+  logo: {
+    url: string;
+    alt: string;
+  };
+
+  ancestors: FranchiseView[];
 };

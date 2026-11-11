@@ -1,12 +1,10 @@
 "use server";
 
 import { connectToMongoDB } from "@/shared/libs/mongoose";
-import type {
-  FranchiseData,
-  FranchiseView,
-  FranchiseDoc,
-} from "@/modules/franchise/types";
+import type { FranchiseData, FranchiseView } from "@/modules/franchise/types";
 import { FranchiseModel } from "@/modules/franchise/models";
+import { franchiseRepository } from "@/modules/franchise/repository";
+import { mapFranchiseDocToFranchiseView } from "@/modules/franchise/mappers";
 
 export async function createFranchise(
   data: FranchiseData,
@@ -15,9 +13,10 @@ export async function createFranchise(
 
   const doc = await FranchiseModel.create(data);
 
-  const populatedDoc = await doc.populate<FranchiseDoc>([
-    { path: "parentFranchiseId" },
-  ]);
+  const ancestors = await franchiseRepository.findAncestors(doc._id);
 
-  return mapFranchiseDocToFranchiseView(populatedDoc);
+  return {
+    ...mapFranchiseDocToFranchiseView(doc),
+    ancestors,
+  };
 }

@@ -7,5 +7,6 @@ export const PUBLIC_URLS = {
   FRANCHISES: {
     LIST: "/franquias",
     CREATE: "/franquias/adicionar",
+    ASSETS: "/assets/franchises/",
   },
 } as const;
