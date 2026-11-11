@@ -1,8 +1,12 @@
 import { mapAttributeDocToAttributeView } from "@/modules/attribute/mappers";
+import type { FranchiseView } from "@/modules/franchise/types";
 import { MEDIA_TYPES_REGISTRY } from "@/modules/media-type/consts";
 import type { MediaDoc, MediaView } from "@/modules/media/types";
 
-export function mapMediaDocToMediaView(doc: MediaDoc): MediaView {
+export function mapMediaDocToMediaView(
+  doc: MediaDoc,
+  franchises: FranchiseView[],
+): MediaView {
   return {
     identifiers: {
       id: doc._id.toString(),
@@ -21,6 +25,7 @@ export function mapMediaDocToMediaView(doc: MediaDoc): MediaView {
     attributes: {
       languages: doc.attributes.languageIds.map(mapAttributeDocToAttributeView),
       themes: doc.attributes.themeIds.map(mapAttributeDocToAttributeView),
+      franchises,
     },
 
     assets: {

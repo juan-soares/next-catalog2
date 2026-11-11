@@ -55,6 +55,10 @@ const mediaSchema = new Schema<MediaData>(
           ref: "Attribute",
         },
       ],
+      franchiseId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Franchise",
+      },
     },
 
     assets: {

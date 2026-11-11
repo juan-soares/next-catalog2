@@ -5,6 +5,7 @@ import type {
 } from "@/modules/media/types";
 import { MediaModel } from "@/modules/media/models";
 import { mapMediaDocToMediaView } from "@/modules/media/mappers";
+import { franchiseRepository } from "@/modules/franchise/repository";
 
 export async function findMedia({
   fields = {},
@@ -17,7 +18,11 @@ export async function findMedia({
 
     if (!mediaDoc) return null;
 
-    return mapMediaDocToMediaView(mediaDoc);
+    const franchises = await franchiseRepository.findAncestors(
+      mediaDoc.attributes.franchiseId,
+    );
+
+    return mapMediaDocToMediaView(mediaDoc, franchises);
   } catch (error) {
     console.error("Ocorreu um erro ao buscar midia", error);
     return null;

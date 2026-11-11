@@ -39,7 +39,8 @@ export function MediaCreateForm({ mediaType, attributes }: Props) {
 
       <AttributesFields
         {...attributes}
-        onChange={handleCheckboxChange}
+        onCheckboxChange={handleCheckboxChange}
+        onSelectChange={handleChange}
         currentAttributes={{
           languageIds: mediaInputs.languageIds,
           themeIds: mediaInputs.themeIds,

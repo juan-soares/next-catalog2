@@ -12,6 +12,7 @@ export const CREATE_MEDIA_INPUT_INITIAL_STATE: CreateMediaInputState = {
 
   languageIds: [],
   themeIds: [],
+  franchiseId: "",
 
   progress: {
     acquired: false,

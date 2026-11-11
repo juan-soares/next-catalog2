@@ -8,5 +8,6 @@ export type MediaDoc = Omit<MediaData, "attributes"> & {
   attributes: {
     languageIds: AttributeDoc[];
     themeIds: AttributeDoc[];
+    franchiseId: Types.ObjectId;
   };
 };

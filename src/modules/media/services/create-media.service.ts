@@ -53,6 +53,7 @@ export async function createMedia(
     attributes: {
       languageIds: input.languageIds,
       themeIds: input.themeIds,
+      franchiseId: input.franchiseId,
     },
 
     assets: {

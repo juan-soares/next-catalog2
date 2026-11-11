@@ -21,6 +21,7 @@ export type MediaData = {
   attributes: {
     languageIds: string[];
     themeIds: string[];
+    franchiseId: string;
   };
 
   assets: {

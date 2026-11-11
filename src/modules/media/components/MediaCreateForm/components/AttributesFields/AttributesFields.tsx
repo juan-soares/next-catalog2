@@ -9,7 +9,8 @@ type Props = {
   themes: AttributeView[];
   childlessFranchises: FranchiseView[];
   currentAttributes: { languageIds: string[]; themeIds: string[] };
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export function AttributesFields({
@@ -17,7 +18,8 @@ export function AttributesFields({
   themes,
   childlessFranchises,
   currentAttributes,
-  onChange,
+  onCheckboxChange,
+  onSelectChange,
 }: Props) {
   return (
     <fieldset>
@@ -36,7 +38,7 @@ export function AttributesFields({
               name="languageIds"
               value={id}
               checked={currentAttributes.languageIds.includes(id)}
-              onChange={onChange}
+              onChange={onCheckboxChange}
             />
             {label}
           </label>
@@ -56,7 +58,7 @@ export function AttributesFields({
               name="themeIds"
               value={id}
               checked={currentAttributes.themeIds.includes(id)}
-              onChange={onChange}
+              onChange={onCheckboxChange}
             />
             {label}
           </label>
@@ -69,7 +71,12 @@ export function AttributesFields({
           <PlusCircle />
         </Link>
 
-        <select id="franchiseId" name="franchiseId" required>
+        <select
+          id="franchiseId"
+          name="franchiseId"
+          required
+          onChange={onSelectChange}
+        >
           <option value="" hidden>
             Selecione...
           </option>

@@ -31,6 +31,7 @@ export const createMediaSchema = z.object({
 
   languageIds: z.array(z.string()),
   themeIds: z.array(z.string()),
+  franchiseId: z.string().min(1, "O id da franquia é obrigatório."),
 
   progress: z.object({
     acquired: z.boolean(),

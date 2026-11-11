@@ -10,6 +10,7 @@ export type CreateMediaInputState = {
 
   cover: File | null;
   trailer: File | null;
+  franchiseId: string;
 
   languageIds: string[];
   themeIds: string[];
