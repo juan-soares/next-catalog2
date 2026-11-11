@@ -2,6 +2,7 @@ import { mapAttributeDocToAttributeView } from "@/modules/attribute/mappers";
 import type { FranchiseView } from "@/modules/franchise/types";
 import { MEDIA_TYPES_REGISTRY } from "@/modules/media-type/consts";
 import type { MediaDoc, MediaView } from "@/modules/media/types";
+import { PUBLIC_URLS } from "@/shared/consts";
 
 export function mapMediaDocToMediaView(
   doc: MediaDoc,
@@ -30,12 +31,12 @@ export function mapMediaDocToMediaView(
 
     assets: {
       cover: {
-        url: doc.assets.cover.path,
-        alt: doc.assets.cover.label,
+        url: `${PUBLIC_URLS.MEDIAS.ASSETS}/${doc.identifiers.slug}/cover.png`,
+        alt: `Capa da mídia ${doc.info.title}`,
       },
       trailer: doc.assets.trailer
         ? {
-            url: doc.assets.trailer.path,
+            url: `${PUBLIC_URLS.MEDIAS.ASSETS}/${doc.identifiers.slug}/trailer.mp4`,
             fileType: doc.assets.trailer.mimeType,
           }
         : null,

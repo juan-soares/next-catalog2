@@ -7,6 +7,10 @@ export const PUBLIC_URLS = {
   FRANCHISES: {
     LIST: "/franquias",
     CREATE: "/franquias/adicionar",
-    ASSETS: "/assets/franchises/",
+    ASSETS: "/assets/franchises",
+  },
+
+  MEDIAS: {
+    ASSETS: "/assets/midias",
   },
 } as const;
