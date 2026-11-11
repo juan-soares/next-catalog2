@@ -1,6 +1,5 @@
 import { createFranchiseAction } from "@/modules/franchise/actions";
 import type { FranchiseView } from "@/modules/franchise/types";
-import { MEDIA_TYPE_LIST } from "@/modules/media-type/consts";
 
 type Props = {
   franchises: FranchiseView[];
@@ -25,25 +24,10 @@ export function CreateFranchiseForm({ franchises }: Props) {
       </label>
 
       <label>
-        Tipo:
-        <select name="type">
-          <option value="" hidden>
-            Selecione...
-          </option>
-
-          {MEDIA_TYPE_LIST.map(({ code, label }) => (
-            <option key={code} value={code}>
-              {label}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <label>
-        Pertence a:
+        Franquia Pai:
         <select name="parentFranchiseId">
           <option value="" hidden>
-            Selecione...
+            Nenhuma (franquia principal)
           </option>
 
           {franchises.map(({ id, title }) => (
