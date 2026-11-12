@@ -1,8 +1,8 @@
 import mongoose, { Schema, model, models, type Model } from "mongoose";
 import { MEDIA_TYPE_CODE_LIST } from "@/modules/media-type/consts";
-import { assetSchema } from "@/modules/asset/models";
 import type { MediaData } from "@/modules/media/types";
 import { AttributeModel } from "@/modules/attribute/model";
+import { assetSchema } from "@/modules/asset/models";
 
 void AttributeModel;
 

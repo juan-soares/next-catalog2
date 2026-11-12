@@ -31,7 +31,7 @@ export function mapMediaDocToMediaView(
 
     assets: {
       cover: {
-        url: `${PUBLIC_URLS.MEDIAS.ASSETS}/${doc.identifiers.slug}/cover.png`,
+        url: `${PUBLIC_URLS.MEDIAS.ASSETS}/${doc.identifiers.slug}/cover.jpg`,
         alt: `Capa da mídia ${doc.info.title}`,
       },
       trailer: doc.assets.trailer

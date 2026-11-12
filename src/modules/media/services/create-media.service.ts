@@ -22,16 +22,18 @@ export async function createMedia(
   const path = `/${mediaType.slug}/${slug}`;
 
   const cover = await createAsset({
-    parentLabel: input.title,
-    identifier: slug,
-    type: "cover",
+    fileAlias: "cover",
+    label: `Capa da mídia ${input.title}.`,
+    identifier: "MEDIA",
+    folder: slug,
     file: input.cover,
   });
   const trailer = input.trailer
     ? await createAsset({
-        parentLabel: input.title,
-        identifier: slug,
-        type: "trailer",
+        fileAlias: "trailer",
+        label: `Trailer da mídia ${input.title}.`,
+        identifier: "MEDIA",
+        folder: slug,
         file: input.trailer,
       })
     : null;

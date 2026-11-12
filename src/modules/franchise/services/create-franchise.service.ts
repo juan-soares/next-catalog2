@@ -18,7 +18,11 @@ export async function createFranchise(
 
   try {
     const logo = await createAsset({
-     
+      fileAlias: "logo",
+      label: `Logo da franquia ${input.title}.`,
+      identifier: "FRANCHISE",
+      file: input.logo,
+      folder: slug,
     });
 
     const data: FranchiseData = {

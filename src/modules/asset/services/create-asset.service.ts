@@ -4,25 +4,25 @@ import type { AssetData } from "@/modules/asset/types";
 import { storeFile } from "@/modules/asset/services";
 
 type Props = {
-  alias: string;
+  fileAlias: string;
   label: string;
   identifier: "MEDIA" | "FRANCHISE";
+  folder: string;
   file: File;
 };
 
 export async function createAsset({
-  alias,
+  fileAlias,
   label,
   identifier,
+  folder,
   file,
 }: Props): Promise<AssetData> {
   const extension = path.extname(file.name);
-  const filename = `${alias}${extension}`;
+  const filename = `${fileAlias}${extension}`;
 
   const basePath = PATHS[identifier].ASSETS;
-
-  const storagePath =
-    identifier === "MEDIA" ? path.join(basePath, alias) : basePath;
+  const storagePath = path.join(basePath, folder);
 
   await storeFile({ storagePath, filename, file });
 

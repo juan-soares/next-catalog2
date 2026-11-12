@@ -12,11 +12,6 @@ export const assetSchema = new Schema<AssetData>({
     required: true,
     trim: true,
   },
-  path: {
-    type: String,
-    required: true,
-    trim: true,
-  },
   mimeType: {
     type: String,
     required: true,
