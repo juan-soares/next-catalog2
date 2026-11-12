@@ -1,34 +1,34 @@
 import path from "node:path";
-import type { AssetData, AssetTypeCode } from "@/modules/asset/types";
-import { ASSET_TYPE_REGISTRY } from "@/modules/asset/consts";
+import { PATHS } from "@/shared/consts";
+import type { AssetData } from "@/modules/asset/types";
 import { storeFile } from "@/modules/asset/services";
 
 type Props = {
-  parentLabel: string;
-  identifier: string;
-  type: AssetTypeCode;
+  alias: string;
+  label: string;
+  identifier: "MEDIA" | "FRANCHISE";
   file: File;
 };
 
 export async function createAsset({
-  parentLabel,
+  alias,
+  label,
   identifier,
-  type,
   file,
 }: Props): Promise<AssetData> {
-  const filename = path.basename(file.name);
-  const { storage, code } = ASSET_TYPE_REGISTRY[type];
+  const extension = path.extname(file.name);
+  const filename = `${alias}${extension}`;
 
-  await storeFile({ file, filename, identifier, type });
+  const basePath = PATHS[identifier].ASSETS;
 
-  const publicPath = `/${storage
-    .replace(/^public[\\/]/, "")
-    .replace(/\\/g, "/")}/${identifier}/${filename}`;
+  const storagePath =
+    identifier === "MEDIA" ? path.join(basePath, alias) : basePath;
+
+  await storeFile({ storagePath, filename, file });
 
   return {
-    label: `${ASSET_TYPE_REGISTRY[type].label} ${parentLabel}`,
     filename,
-    path: publicPath,
+    label,
     mimeType: file.type,
     size: file.size,
   };

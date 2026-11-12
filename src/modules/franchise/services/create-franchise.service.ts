@@ -1,5 +1,6 @@
 "use server";
 
+import { createHash, slugfy } from "@/shared/utils";
 import { createAsset } from "@/modules/asset/services";
 import type {
   FranchiseData,
@@ -11,23 +12,13 @@ import { franchiseRepository } from "@/modules/franchise/repository";
 export async function createFranchise(
   input: FranchiseInput,
 ): Promise<FranchiseView | null> {
-  const slugfied = input.title
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-
-  const hash = crypto.randomUUID().replace(/-/g, "").slice(0, 6);
-
-  const slug = `${slugfied}-${hash}`;
+  const slugfiedTitle = slugfy(input.title);
+  const hash = createHash();
+  const slug = `${slugfiedTitle}-${hash}`;
 
   try {
     const logo = await createAsset({
-      parentLabel: input.title,
-      identifier: slug,
-      type: "logo",
-      file: input.logo,
+     
     });
 
     const data: FranchiseData = {

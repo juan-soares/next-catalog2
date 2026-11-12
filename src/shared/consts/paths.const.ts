@@ -6,4 +6,4 @@ export const PATHS = {
   FRANCHISE: {
     ASSETS: "public/assets/franchises/",
   },
-};
+} as const;
