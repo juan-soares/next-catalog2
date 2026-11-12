@@ -21,6 +21,17 @@ export type MediaView = {
     releaseDate: Date;
     type: MediaTypeView;
     synopsis: string;
+
+    gameDetails?: {
+      platforms: AttributeView[];
+      genres: AttributeView[];
+      gameplays: AttributeView[];
+      modes: AttributeView[];
+      players: {
+        min: number;
+        max: number;
+      };
+    };
   };
 
   attributes: {

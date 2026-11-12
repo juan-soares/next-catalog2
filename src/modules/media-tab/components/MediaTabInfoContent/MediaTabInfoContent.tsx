@@ -1,12 +1,10 @@
-import { FranchiseLogo } from "@/modules/franchise/components";
 import type { MediaView } from "@/modules/media/types";
 
-type Props = Pick<MediaView, "info" | "attributes">;
+type Props = Pick<MediaView, "info">;
 
-export function MediaTabInfoContent({ info, attributes }: Props) {
+export function MediaTabInfoContent({ info }: Props) {
   const date = info.releaseDate.toLocaleDateString("pt-BR");
-  const languages = attributes.languages.map(({ label }) => label).join(", ");
-  const themes = attributes.themes.map(({ label }) => label).join(", ");
+  const gameDetails = info.gameDetails;
 
   return (
     <section>
@@ -28,29 +26,48 @@ export function MediaTabInfoContent({ info, attributes }: Props) {
           <dd>{date}</dd>
         </div>
 
-        <div>
-          <dt>Idiomas:</dt>
-          <dd>{languages}</dd>
-        </div>
+        {gameDetails && (
+          <>
+            <div>
+              <dt>Plataformas:</dt>
+              <dd>
+                {gameDetails.platforms.map(({ label }) => label).join(", ") ||
+                  "N/A"}
+              </dd>
+            </div>
 
-        <div>
-          <dt>Temáticas:</dt>
-          <dd>{themes}</dd>
-        </div>
+            <div>
+              <dt>Gêneros:</dt>
+              <dd>
+                {gameDetails.genres.map(({ label }) => label).join(", ") ||
+                  "N/A"}
+              </dd>
+            </div>
 
-        <div>
-          <dt>Franquias:</dt>
-          <dd>
-            {attributes.franchises.map((franchise) => (
-              <FranchiseLogo
-                key={franchise.id}
-                {...franchise}
-                width={60}
-                height={60}
-              />
-            ))}
-          </dd>
-        </div>
+            <div>
+              <dt>Gameplays:</dt>
+              <dd>
+                {gameDetails.gameplays.map(({ label }) => label).join(", ") ||
+                  "N/A"}
+              </dd>
+            </div>
+
+            <div>
+              <dt>Modos:</dt>
+              <dd>
+                {gameDetails.modes.map(({ label }) => label).join(", ") ||
+                  "N/A"}
+              </dd>
+            </div>
+
+            <div>
+              <dt>Jogadores:</dt>
+              <dd>
+                {gameDetails.players.min} - {gameDetails.players.max}
+              </dd>
+            </div>
+          </>
+        )}
       </dl>
     </section>
   );
