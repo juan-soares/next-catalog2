@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Pencil, Trash } from "lucide-react";
+import { Globe, Pencil, Shapes, Trash } from "lucide-react";
 import type { MediaView } from "@/modules/media/types";
 import { deleteMediaAction } from "@/modules/media/actions";
 import { FranchiseLogo } from "@/modules/franchise/components";
@@ -64,6 +64,14 @@ export function MediaHero({
           </p>
 
           <div>
+            <Globe />
+            {attributes.languages.map(({ label }) => (
+              <span key={label}>{label}</span>
+            ))}
+          </div>
+
+          <div>
+            <Shapes />
             {attributes.themes.map(({ label }) => (
               <span key={label}>{label}</span>
             ))}
