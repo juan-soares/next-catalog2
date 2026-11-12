@@ -11,6 +11,6 @@ export const ATTRIBUTE_TYPE_REGISTRY = {
 
   theme: {
     code: "theme",
-    label: "Temas",
+    label: "Temáticas",
   },
 } satisfies Record<AttributeTypeCode, AttributeTypeView>;

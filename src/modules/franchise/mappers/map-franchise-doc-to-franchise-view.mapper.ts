@@ -12,7 +12,7 @@ export function mapFranchiseDocToFranchiseView(
     translatedTitle: doc.translatedTitle,
 
     logo: {
-      url: `${PUBLIC_URLS.FRANCHISES.ASSETS}/${doc.logo.filename}`,
+      url: `${PUBLIC_URLS.FRANCHISES.ASSETS}/${doc.slug}/${doc.logo.filename}`,
       alt: `Logotipo da franquia ${doc.title}`,
     },
 

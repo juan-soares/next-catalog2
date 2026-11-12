@@ -97,7 +97,7 @@ export function CreateMediaForm({
         />
 
         <FormCheckboxGroupField
-          label="Temas"
+          label="Temáticas"
           options={themes}
           fieldName="themes"
           value={mediaInput.themes}
