@@ -3,24 +3,55 @@ import { PlusCircle } from "lucide-react";
 import { PUBLIC_URLS } from "@/shared/consts";
 import type { AttributeView } from "@/modules/attribute/types";
 import type { FranchiseView } from "@/modules/franchise/types";
+import { GameAttributesFields } from "@/modules/media/components/MediaCreateForm/components";
 
 type Props = {
+  isGame: boolean;
   languages: AttributeView[];
   themes: AttributeView[];
+  platforms: AttributeView[];
+  genres: AttributeView[];
+  gameplays: AttributeView[];
+  modes: AttributeView[];
   childlessFranchises: FranchiseView[];
-  currentAttributes: { languageIds: string[]; themeIds: string[] };
+  currentAttributes: {
+    languageIds: string[];
+    themeIds: string[];
+    platformIds: string[];
+    genreIds: string[];
+    gameplayIds: string[];
+    modeIds: string[];
+    players: {
+      min: number;
+      max: number;
+    };
+  };
   onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export function AttributesFields({
+  isGame,
   languages,
   themes,
+  platforms,
+  genres,
+  gameplays,
+  modes,
   childlessFranchises,
   currentAttributes,
   onCheckboxChange,
+  onChange,
   onSelectChange,
 }: Props) {
+  const gameAttributes = {
+    platforms,
+    genres,
+    gameplays,
+    modes,
+  };
+
   return (
     <fieldset>
       <legend>Atributos:</legend>
@@ -64,6 +95,15 @@ export function AttributesFields({
           </label>
         ))}
       </div>
+
+      {isGame && (
+        <GameAttributesFields
+          {...gameAttributes}
+          currentAttributes={currentAttributes}
+          onCheckboxChange={onCheckboxChange}
+          onChange={onChange}
+        />
+      )}
 
       <div>
         <label htmlFor="franchiseId">Franquias</label>

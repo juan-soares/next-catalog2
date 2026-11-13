@@ -14,6 +14,12 @@ export type CreateMediaInputState = {
 
   languageIds: string[];
   themeIds: string[];
+  platformIds: string[];
+  genreIds: string[];
+  gameplayIds: string[];
+  modeIds: string[];
+  playersMin: number;
+  playersMax: number;
 
   progress: MediaProgress;
 };

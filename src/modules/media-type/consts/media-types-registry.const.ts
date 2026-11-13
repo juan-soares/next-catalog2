@@ -5,5 +5,6 @@ export const MEDIA_TYPES_REGISTRY = {
     code: "board-game",
     slug: "jogos-de-tabuleiro",
     label: "Jogos de Tabuleiro",
+    group: "game",
   },
 } satisfies Record<MediaTypeCode, MediaTypeView>;

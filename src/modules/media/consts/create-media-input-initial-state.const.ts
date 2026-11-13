@@ -12,6 +12,12 @@ export const CREATE_MEDIA_INPUT_INITIAL_STATE: CreateMediaInputState = {
 
   languageIds: [],
   themeIds: [],
+  platformIds: [],
+  genreIds: [],
+  gameplayIds: [],
+  modeIds: [],
+  playersMin: 1,
+  playersMax: 1,
   franchiseId: "",
 
   progress: {

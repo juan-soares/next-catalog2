@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getMediaTypeViewBySlug } from "@/modules/media-type/services";
-import { MediaCreateForm } from "@/modules/media/components/MediaCreateForm";
+import { MediaCreateForm } from "@/modules/media/components";
 import { ATTRIBUTE_TYPE_CODE_LIST } from "@/modules/attribute/consts";
 import { getAttributesViewByType } from "@/modules/attribute/services";
 import { getChildlessFranchises } from "@/modules/franchise/services";
@@ -16,7 +16,10 @@ export default async function MediaTypeAddPage({ params }: Props) {
   if (!mediaType) {
     notFound();
   }
-  const [[languages, themes], childlessFranchises] = await Promise.all([
+  const [
+    [languages, themes, platforms, genres, gameplays, modes],
+    childlessFranchises,
+  ] = await Promise.all([
     Promise.all(
       ATTRIBUTE_TYPE_CODE_LIST.map((code) => getAttributesViewByType(code)),
     ),
@@ -26,6 +29,10 @@ export default async function MediaTypeAddPage({ params }: Props) {
   const attributes = {
     languages,
     themes,
+    platforms,
+    genres,
+    gameplays,
+    modes,
     childlessFranchises,
   };
 
