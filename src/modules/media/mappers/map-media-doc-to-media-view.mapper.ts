@@ -27,6 +27,24 @@ export function mapMediaDocToMediaView(
       languages: doc.attributes.languageIds.map(mapAttributeDocToAttributeView),
       themes: doc.attributes.themeIds.map(mapAttributeDocToAttributeView),
       franchises,
+
+      ...(doc.attributes.gameDetails && {
+        gameDetails: {
+          platforms: doc.attributes.gameDetails.platformIds.map(
+            mapAttributeDocToAttributeView,
+          ),
+          genres: doc.attributes.gameDetails.genreIds.map(
+            mapAttributeDocToAttributeView,
+          ),
+          gameplays: doc.attributes.gameDetails.gameplayIds.map(
+            mapAttributeDocToAttributeView,
+          ),
+          modes: doc.attributes.gameDetails.modeIds.map(
+            mapAttributeDocToAttributeView,
+          ),
+          players: doc.attributes.gameDetails.players,
+        },
+      }),
     },
 
     assets: {

@@ -9,6 +9,7 @@ import type {
 } from "@/modules/media/types";
 import { generateMediaSlug } from "@/modules/media/utils";
 import { mediaRepository } from "@/modules/media/repository";
+import { verifyIfMediaTypeIsAGame } from "@/modules/media-type-group/services";
 
 export async function createMedia(
   input: CreateMediaInput,
@@ -38,6 +39,25 @@ export async function createMedia(
       })
     : null;
 
+  const attributes: MediaData["attributes"] = {
+    languageIds: input.languageIds,
+    themeIds: input.themeIds,
+    franchiseId: input.franchiseId,
+  };
+
+  if (verifyIfMediaTypeIsAGame(mediaType.code)) {
+    attributes.gameDetails = {
+      platformIds: input.platformIds,
+      genreIds: input.genreIds,
+      gameplayIds: input.gameplayIds,
+      modeIds: input.modeIds,
+      players: {
+        min: input.playersMin,
+        max: input.playersMax,
+      },
+    };
+  }
+
   const mediaData: MediaData = {
     identifiers: {
       slug,
@@ -52,11 +72,7 @@ export async function createMedia(
       synopsis: input.synopsis,
     },
 
-    attributes: {
-      languageIds: input.languageIds,
-      themeIds: input.themeIds,
-      franchiseId: input.franchiseId,
-    },
+    attributes,
 
     assets: {
       cover,

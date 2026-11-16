@@ -10,6 +10,7 @@ import {
 import type { MediaTypeView } from "@/modules/media-type/types";
 import type { AttributeView } from "@/modules/attribute/types";
 import type { FranchiseView } from "@/modules/franchise/types";
+import { verifyIfMediaTypeIsAGame } from "@/modules/media-type-group/services";
 
 type Props = {
   mediaType: MediaTypeView;
@@ -42,12 +43,13 @@ export function MediaCreateForm({ mediaType, attributes }: Props) {
       <AssetFields onChange={handleFileChange} />
 
       <AttributesFields
-        isGame={mediaType.group === "game"}
+        isGame={verifyIfMediaTypeIsAGame(mediaType.code)}
         {...attributes}
         onCheckboxChange={handleCheckboxChange}
         onChange={handleChange}
         onSelectChange={handleChange}
         currentAttributes={{
+          franchiseId: mediaInputs.franchiseId,
           languageIds: mediaInputs.languageIds,
           themeIds: mediaInputs.themeIds,
           platformIds: mediaInputs.platformIds,

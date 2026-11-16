@@ -31,6 +31,13 @@ export const createMediaSchema = z.object({
 
   languageIds: z.array(z.string()),
   themeIds: z.array(z.string()),
+  platformIds: z.array(z.string()),
+  genreIds: z.array(z.string()),
+  gameplayIds: z.array(z.string()),
+  modeIds: z.array(z.string()),
+  playersMin: z.number(),
+  playersMax: z.number(),
+
   franchiseId: z.string().min(1, "O id da franquia é obrigatório."),
 
   progress: z.object({

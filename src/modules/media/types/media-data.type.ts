@@ -1,8 +1,8 @@
+import { Types } from "mongoose";
 import type { MediaTypeCode } from "@/modules/media-type/types";
 import type { AssetData } from "@/modules/asset/types";
 import type { MediaProgress } from "@/modules/media/types";
 import type { AttributeData } from "@/modules/attribute/types";
-import { Types } from "mongoose";
 
 export type MediaData = {
   identifiers: {
@@ -22,6 +22,16 @@ export type MediaData = {
     languageIds: string[];
     themeIds: string[];
     franchiseId: string;
+    gameDetails?: {
+      platformIds: string[];
+      genreIds: string[];
+      gameplayIds: string[];
+      modeIds: string[];
+      players: {
+        min: number;
+        max: number;
+      };
+    };
   };
 
   assets: {
@@ -30,13 +40,4 @@ export type MediaData = {
   };
 
   progress: MediaProgress;
-};
-
-export type MediaDataPopulated = Omit<MediaData, "attributes"> & {
-  _id: Types.ObjectId;
-
-  attributes: {
-    languageIds: AttributeData[];
-    themeIds: AttributeData[];
-  };
 };

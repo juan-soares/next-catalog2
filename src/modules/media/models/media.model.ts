@@ -59,6 +59,45 @@ const mediaSchema = new Schema<MediaData>(
         type: mongoose.Schema.Types.ObjectId,
         ref: "Franchise",
       },
+
+      gameDetails: {
+        platformIds: [
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Attribute",
+          },
+        ],
+        genreIds: [
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Attribute",
+          },
+        ],
+        gameplayIds: [
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Attribute",
+          },
+        ],
+        modeIds: [
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Attribute",
+          },
+        ],
+        players: {
+          min: {
+            type: Number,
+            required: true,
+            min: 1,
+          },
+          max: {
+            type: Number,
+            required: true,
+            min: 1,
+          },
+        },
+      },
     },
 
     assets: {

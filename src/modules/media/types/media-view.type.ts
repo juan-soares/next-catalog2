@@ -21,6 +21,12 @@ export type MediaView = {
     releaseDate: Date;
     type: MediaTypeView;
     synopsis: string;
+  };
+
+  attributes: {
+    languages: AttributeView[];
+    themes: AttributeView[];
+    franchises: FranchiseView[];
 
     gameDetails?: {
       platforms: AttributeView[];
@@ -32,12 +38,6 @@ export type MediaView = {
         max: number;
       };
     };
-  };
-
-  attributes: {
-    languages: AttributeView[];
-    themes: AttributeView[];
-    franchises: FranchiseView[];
   };
 
   assets: {

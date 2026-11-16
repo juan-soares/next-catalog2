@@ -9,5 +9,15 @@ export type MediaDoc = Omit<MediaData, "attributes"> & {
     languageIds: AttributeDoc[];
     themeIds: AttributeDoc[];
     franchiseId: Types.ObjectId;
+    gameDetails?: {
+      platformIds: AttributeDoc[];
+      genreIds: AttributeDoc[];
+      gameplayIds: AttributeDoc[];
+      modeIds: AttributeDoc[];
+      players: {
+        min: number;
+        max: number;
+      };
+    };
   };
 };

@@ -15,6 +15,7 @@ type Props = {
   modes: AttributeView[];
   childlessFranchises: FranchiseView[];
   currentAttributes: {
+    franchiseId: string;
     languageIds: string[];
     themeIds: string[];
     platformIds: string[];
@@ -115,6 +116,7 @@ export function AttributesFields({
           id="franchiseId"
           name="franchiseId"
           required
+          value={currentAttributes.franchiseId}
           onChange={onSelectChange}
         >
           <option value="" hidden>

@@ -10,6 +10,14 @@ type Props = {
   mediaType: MediaTypeView;
 };
 
+type AttributeArrayField =
+  | "languageIds"
+  | "themeIds"
+  | "platformIds"
+  | "genreIds"
+  | "gameplayIds"
+  | "modeIds";
+
 export function useCreateMedia({ mediaType }: Props) {
   const [mediaInputs, setMediaInputs] = useState<CreateMediaInputState>({
     ...CREATE_MEDIA_INPUT_INITIAL_STATE,
@@ -35,6 +43,15 @@ export function useCreateMedia({ mediaType }: Props) {
       return;
     }
 
+    if (type === "number") {
+      setMediaInputs((prev) => ({
+        ...prev,
+        [name]: value === "" ? "" : Number(value),
+      }));
+
+      return;
+    }
+
     setMediaInputs((prev) => ({
       ...prev,
       [name]: value,
@@ -55,12 +72,14 @@ export function useCreateMedia({ mediaType }: Props) {
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
 
+    const field = name as AttributeArrayField;
+
     setMediaInputs((prev) => {
-      const currentValues = prev[name as "languageIds" | "themeIds"];
+      const currentValues = prev[field];
 
       return {
         ...prev,
-        [name]: checked
+        [field]: checked
           ? [...currentValues, value]
           : currentValues.filter((item) => item !== value),
       };
