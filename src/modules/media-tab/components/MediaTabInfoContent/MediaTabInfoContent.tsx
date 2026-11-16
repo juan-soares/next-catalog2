@@ -1,10 +1,10 @@
 import type { MediaView } from "@/modules/media/types";
 
-type Props = Pick<MediaView, "info">;
+type Props = Pick<MediaView, "info" | "attributes">;
 
-export function MediaTabInfoContent({ info }: Props) {
+export function MediaTabInfoContent({ info, attributes }: Props) {
   const date = info.releaseDate.toLocaleDateString("pt-BR");
-  const gameDetails = info.gameDetails;
+  const { gameDetails } = attributes;
 
   return (
     <section>

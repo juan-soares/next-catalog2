@@ -6,6 +6,7 @@ import type {
   MediaDoc,
   MediaView,
 } from "@/modules/media/types";
+import { franchiseRepository } from "@/modules/franchise/repository";
 
 export async function findMedias({
   fields = {},
@@ -16,9 +17,23 @@ export async function findMedias({
     const mediaDocs = await MediaModel.find(fields)
       .populate("attributes.languageIds")
       .populate("attributes.themeIds")
+      .populate("attributes.gameDetails.platformIds")
+      .populate("attributes.gameDetails.genreIds")
+      .populate("attributes.gameDetails.gameplayIds")
+      .populate("attributes.gameDetails.modeIds")
       .lean<MediaDoc[]>();
 
-    return mediaDocs.map(mapMediaDocToMediaView);
+    const medias = await Promise.all(
+      mediaDocs.map(async (doc) => {
+        const franchises = await franchiseRepository.findAncestors(
+          doc.attributes.franchiseId,
+        );
+
+        return mapMediaDocToMediaView(doc, franchises);
+      }),
+    );
+
+    return medias;
   } catch (error) {
     console.error("Erro ao consultar mídia", error);
     return [];

@@ -14,6 +14,10 @@ export async function findMedia({
     const mediaDoc = await MediaModel.findOne(fields)
       .populate("attributes.languageIds")
       .populate("attributes.themeIds")
+      .populate("attributes.gameDetails.platformIds")
+      .populate("attributes.gameDetails.genreIds")
+      .populate("attributes.gameDetails.gameplayIds")
+      .populate("attributes.gameDetails.modeIds")
       .lean<MediaDoc>();
 
     if (!mediaDoc) return null;
