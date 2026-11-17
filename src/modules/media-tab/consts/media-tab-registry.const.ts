@@ -6,4 +6,10 @@ export const MEDIA_TAB_REGISTRY = {
     label: "Informações",
     slug: "informacoes",
   },
+
+  sequel: {
+    code: "sequel",
+    label: "Sequência",
+    slug: "sequencia",
+  },
 } satisfies Record<MediaTabCode, MediaTab>;

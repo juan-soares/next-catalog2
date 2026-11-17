@@ -2,7 +2,7 @@ import { Types } from "mongoose";
 import { AttributeDoc } from "@/modules/attribute/types";
 import type { MediaData } from "@/modules/media/types";
 
-export type MediaDoc = Omit<MediaData, "attributes"> & {
+export type MediaDoc = Omit<MediaData, "attributes" | "sequel"> & {
   _id: Types.ObjectId;
 
   attributes: {
@@ -19,5 +19,9 @@ export type MediaDoc = Omit<MediaData, "attributes"> & {
         max: number;
       };
     };
+  };
+
+  sequel: {
+    previousMediaId: MediaDoc | null;
   };
 };

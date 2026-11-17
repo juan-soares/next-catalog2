@@ -1,8 +1,6 @@
-import { Types } from "mongoose";
 import type { MediaTypeCode } from "@/modules/media-type/types";
 import type { AssetData } from "@/modules/asset/types";
 import type { MediaProgress } from "@/modules/media/types";
-import type { AttributeData } from "@/modules/attribute/types";
 
 export type MediaData = {
   identifiers: {
@@ -37,6 +35,10 @@ export type MediaData = {
   assets: {
     cover: AssetData;
     trailer: AssetData | null;
+  };
+
+  sequel: {
+    previousMediaId: string | null;
   };
 
   progress: MediaProgress;

@@ -6,14 +6,17 @@ import {
   AttributesFields,
   InfoFields,
   ProgressFields,
+  SequelFields,
 } from "@/modules/media/components/MediaCreateForm/components";
 import type { MediaTypeView } from "@/modules/media-type/types";
 import type { AttributeView } from "@/modules/attribute/types";
 import type { FranchiseView } from "@/modules/franchise/types";
 import { verifyIfMediaTypeIsAGame } from "@/modules/media-type-group/services";
+import type { MediaView } from "@/modules/media/types";
 
 type Props = {
   mediaType: MediaTypeView;
+  medias: MediaView[];
   attributes: {
     languages: AttributeView[];
     themes: AttributeView[];
@@ -25,7 +28,7 @@ type Props = {
   };
 };
 
-export function MediaCreateForm({ mediaType, attributes }: Props) {
+export function MediaCreateForm({ mediaType, medias, attributes }: Props) {
   const {
     mediaInputs,
     handleChange,
@@ -62,6 +65,8 @@ export function MediaCreateForm({ mediaType, attributes }: Props) {
           },
         }}
       />
+
+      <SequelFields medias={medias} />
 
       <ProgressFields
         currentValue={mediaInputs.progress}

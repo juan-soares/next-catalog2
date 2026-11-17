@@ -45,5 +45,10 @@ export type MediaView = {
     trailer: MediaFileView | null;
   };
 
+  sequel: {
+    previous: MediaView | null;
+    next: MediaView | null;
+  };
+
   progress: MediaProgress;
 };

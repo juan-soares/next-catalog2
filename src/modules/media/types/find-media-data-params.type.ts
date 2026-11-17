@@ -23,6 +23,7 @@ type MediaDataFindFields = Extract<
   | "info.translatedTitle"
   | "identifiers.slug"
   | "info.title"
+  | "sequel.previousMediaId"
 >;
 
 export type FindMediaDataParams = {

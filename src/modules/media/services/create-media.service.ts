@@ -79,6 +79,10 @@ export async function createMedia(
       trailer,
     },
 
+    sequel: {
+      previousMediaId: input.previousMediaId || null,
+    },
+
     progress: input.progress,
   };
 

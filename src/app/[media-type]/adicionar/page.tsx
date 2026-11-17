@@ -4,6 +4,7 @@ import { MediaCreateForm } from "@/modules/media/components";
 import { ATTRIBUTE_TYPE_CODE_LIST } from "@/modules/attribute/consts";
 import { getAttributesViewByType } from "@/modules/attribute/services";
 import { getChildlessFranchises } from "@/modules/franchise/services";
+import { getMediasViewByType } from "@/modules/media/services";
 
 export type Props = {
   params: Promise<{ "media-type": string }>;
@@ -36,11 +37,17 @@ export default async function MediaTypeAddPage({ params }: Props) {
     childlessFranchises,
   };
 
+  const medias = await getMediasViewByType(mediaType.code);
+
   return (
     <div>
       <h1>Adicionar {mediaType.label}</h1>
 
-      <MediaCreateForm mediaType={mediaType} attributes={attributes} />
+      <MediaCreateForm
+        mediaType={mediaType}
+        attributes={attributes}
+        medias={medias}
+      />
     </div>
   );
 }

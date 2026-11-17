@@ -40,6 +40,8 @@ export const createMediaSchema = z.object({
 
   franchiseId: z.string().min(1, "O id da franquia é obrigatório."),
 
+  previousMediaId: z.string(),
+
   progress: z.object({
     acquired: z.boolean(),
     consumed: z.boolean(),

@@ -7,6 +7,7 @@ import { PUBLIC_URLS } from "@/shared/consts";
 export function mapMediaDocToMediaView(
   doc: MediaDoc,
   franchises: FranchiseView[],
+  next: MediaView | null,
 ): MediaView {
   return {
     identifiers: {
@@ -58,6 +59,13 @@ export function mapMediaDocToMediaView(
             fileType: doc.assets.trailer.mimeType,
           }
         : null,
+    },
+
+    sequel: {
+      previous: doc.sequel.previousMediaId
+        ? mapMediaDocToMediaView(doc.sequel.previousMediaId, [], null)
+        : null,
+      next,
     },
 
     progress: {
