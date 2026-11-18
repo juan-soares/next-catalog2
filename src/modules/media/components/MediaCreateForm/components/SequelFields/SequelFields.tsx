@@ -16,7 +16,9 @@ export function SequelFields({ medias }: Props) {
           <option value="">Sem antecessor...</option>
           {medias.map(
             ({ identifiers: { id }, info: { title, releaseYear } }) => (
-              <option key={id}>{`${title} (${releaseYear})`}</option>
+              <option key={id} value={id}>
+                {`${title} (${releaseYear})`}
+              </option>
             ),
           )}
         </select>

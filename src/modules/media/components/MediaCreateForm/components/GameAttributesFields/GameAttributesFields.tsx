@@ -18,7 +18,7 @@ export function GameAttributesFields({
 }: Props) {
   return (
     <fieldset>
-      <legend>Detalhes de Jogos</legend>s
+      <legend>Detalhes de Jogos</legend>
       <div>
         <label>Plataformas</label>
         <Link href={`${PUBLIC_URLS.ATTRIBUTES.CREATE}?type=platform`}>

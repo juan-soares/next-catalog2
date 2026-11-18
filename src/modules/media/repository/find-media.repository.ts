@@ -26,8 +26,6 @@ export async function findMedia({
       })
       .lean<MediaPopulatedDoc | null>();
 
-    console.log(mediaDoc);
-
     if (!mediaDoc) return null;
 
     const [franchises, nextMediaDoc] = await Promise.all([

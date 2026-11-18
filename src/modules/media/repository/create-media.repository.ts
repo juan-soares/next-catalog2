@@ -12,6 +12,7 @@ import type {
 export async function createMedia(data: MediaData): Promise<MediaView | null> {
   try {
     await connectToMongoDB();
+    console.log(data);
 
     const doc = await MediaModel.create(data);
 
