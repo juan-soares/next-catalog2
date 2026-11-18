@@ -1,12 +1,12 @@
 import mongoose, { Schema, model, models, type Model } from "mongoose";
 import { MEDIA_TYPE_CODE_LIST } from "@/modules/media-type/consts";
-import type { MediaData } from "@/modules/media/types";
+import type { MediaDoc } from "@/modules/media/types";
 import { AttributeModel } from "@/modules/attribute/model";
 import { assetSchema } from "@/modules/asset/models";
 
 void AttributeModel;
 
-const mediaSchema = new Schema<MediaData>(
+const mediaSchema = new Schema<MediaDoc>(
   {
     identifiers: {
       slug: {
@@ -111,6 +111,14 @@ const mediaSchema = new Schema<MediaData>(
       },
     },
 
+    sequel: {
+      previousMediaId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Media",
+        default: null,
+      },
+    },
+
     progress: {
       acquired: {
         type: Boolean,
@@ -134,4 +142,4 @@ const mediaSchema = new Schema<MediaData>(
 mediaSchema.index({ "identifiers.slug": 1 }, { unique: true });
 
 export const MediaModel =
-  (models.Media as Model<MediaData>) ?? model<MediaData>("Media", mediaSchema);
+  (models.Media as Model<MediaDoc>) ?? model<MediaDoc>("Media", mediaSchema);

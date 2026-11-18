@@ -5,6 +5,7 @@ import type {
   MediaImageView,
   MediaProgress,
   MediaFileView,
+  MediaCardView,
 } from "@/modules/media/types";
 
 export type MediaView = {
@@ -46,8 +47,8 @@ export type MediaView = {
   };
 
   sequel: {
-    previous: MediaView | null;
-    next: MediaView | null;
+    previous: MediaCardView | null;
+    next: MediaCardView | null;
   };
 
   progress: MediaProgress;

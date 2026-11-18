@@ -1,11 +1,14 @@
 import { connectToMongoDB } from "@/shared/libs/mongoose";
 import { mapMediaDocToMediaView } from "@/modules/media/mappers";
 import { MediaModel } from "@/modules/media/models";
+
 import type {
   FindMediaDataParams,
-  MediaDoc,
+  MediaPopulatedDoc,
+  RelatedMediaDoc,
   MediaView,
 } from "@/modules/media/types";
+
 import { franchiseRepository } from "@/modules/franchise/repository";
 
 export async function findMedias({
@@ -21,21 +24,31 @@ export async function findMedias({
       .populate("attributes.gameDetails.genreIds")
       .populate("attributes.gameDetails.gameplayIds")
       .populate("attributes.gameDetails.modeIds")
-      .lean<MediaDoc[]>();
+      .populate({
+        path: "sequel.previousMediaId",
+        select: "identifiers info assets progress",
+      })
+      .lean<MediaPopulatedDoc[]>();
 
     const medias = await Promise.all(
       mediaDocs.map(async (doc) => {
-        const franchises = await franchiseRepository.findAncestors(
-          doc.attributes.franchiseId,
-        );
+        const [franchises, nextMediaDoc] = await Promise.all([
+          franchiseRepository.findAncestors(doc.attributes.franchiseId),
 
-        return mapMediaDocToMediaView(doc, franchises);
+          MediaModel.findOne({
+            "sequel.previousMediaId": doc._id,
+          })
+            .select("identifiers info assets progress")
+            .lean<RelatedMediaDoc | null>(),
+        ]);
+
+        return mapMediaDocToMediaView(doc, franchises, nextMediaDoc);
       }),
     );
 
     return medias;
   } catch (error) {
-    console.error("Erro ao consultar mídia", error);
+    console.error("Erro ao consultar mídias", error);
     return [];
   }
 }

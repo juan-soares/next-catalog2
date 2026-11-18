@@ -1,8 +1,10 @@
 import type {
   FindMediaDataParams,
-  MediaDoc,
+  MediaPopulatedDoc,
+  RelatedMediaDoc,
   MediaView,
 } from "@/modules/media/types";
+
 import { MediaModel } from "@/modules/media/models";
 import { mapMediaDocToMediaView } from "@/modules/media/mappers";
 import { franchiseRepository } from "@/modules/franchise/repository";
@@ -18,17 +20,29 @@ export async function findMedia({
       .populate("attributes.gameDetails.genreIds")
       .populate("attributes.gameDetails.gameplayIds")
       .populate("attributes.gameDetails.modeIds")
-      .lean<MediaDoc>();
+      .populate({
+        path: "sequel.previousMediaId",
+        select: "identifiers info assets progress",
+      })
+      .lean<MediaPopulatedDoc | null>();
+
+    console.log(mediaDoc);
 
     if (!mediaDoc) return null;
 
-    const franchises = await franchiseRepository.findAncestors(
-      mediaDoc.attributes.franchiseId,
-    );
+    const [franchises, nextMediaDoc] = await Promise.all([
+      franchiseRepository.findAncestors(mediaDoc.attributes.franchiseId),
 
-    return mapMediaDocToMediaView(mediaDoc, franchises);
+      MediaModel.findOne({
+        "sequel.previousMediaId": mediaDoc._id,
+      })
+        .select("identifiers info assets progress")
+        .lean<RelatedMediaDoc | null>(),
+    ]);
+
+    return mapMediaDocToMediaView(mediaDoc, franchises, nextMediaDoc);
   } catch (error) {
-    console.error("Ocorreu um erro ao buscar midia", error);
+    console.error("Ocorreu um erro ao buscar mídia", error);
     return null;
   }
 }

@@ -1,11 +1,4 @@
-import type { MediaProgress } from "@/modules/media/types";
-
-type Props = {
-  currentValue: MediaProgress;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-};
-
-export function ProgressFields({ currentValue, onChange }: Props) {
+export function ProgressFields() {
   return (
     <fieldset>
       <legend>Progresso</legend>
@@ -20,8 +13,7 @@ export function ProgressFields({ currentValue, onChange }: Props) {
             name="acquired"
             required
             value="false"
-            checked={currentValue.acquired === false}
-            onChange={onChange}
+            defaultChecked
           />
           Não
         </label>
@@ -33,8 +25,6 @@ export function ProgressFields({ currentValue, onChange }: Props) {
             name="acquired"
             required
             value="true"
-            checked={currentValue.acquired === true}
-            onChange={onChange}
           />
           Sim
         </label>
@@ -50,8 +40,7 @@ export function ProgressFields({ currentValue, onChange }: Props) {
             name="consumed"
             required
             value="false"
-            checked={currentValue.consumed === false}
-            onChange={onChange}
+            defaultChecked
           />
           Não
         </label>
@@ -63,8 +52,6 @@ export function ProgressFields({ currentValue, onChange }: Props) {
             name="consumed"
             required
             value="true"
-            checked={currentValue.consumed === true}
-            onChange={onChange}
           />
           Sim
         </label>

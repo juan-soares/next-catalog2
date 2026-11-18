@@ -1,16 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import type { MediaView } from "@/modules/media/types";
-
-type Props = Pick<MediaView, "identifiers" | "info" | "assets" | "progress">;
+import type { MediaCardView } from "@/modules/media/types";
 
 export function MediaCard({
-  identifiers: { path },
-  assets: { cover },
-  info: { title, releaseYear },
+  identifiers,
+  info,
+  assets,
   progress,
-}: Props) {
+}: MediaCardView) {
+  const { path } = identifiers;
+  const { title, releaseYear } = info;
+  const { cover } = assets;
+
   return (
     <Link href={path}>
       <Image src={cover.url} alt={cover.alt} width={60} height={60} />

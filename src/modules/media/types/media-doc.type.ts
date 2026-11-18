@@ -1,19 +1,18 @@
 import { Types } from "mongoose";
-import { AttributeDoc } from "@/modules/attribute/types";
 import type { MediaData } from "@/modules/media/types";
 
 export type MediaDoc = Omit<MediaData, "attributes" | "sequel"> & {
   _id: Types.ObjectId;
 
   attributes: {
-    languageIds: AttributeDoc[];
-    themeIds: AttributeDoc[];
+    languageIds: Types.ObjectId[];
+    themeIds: Types.ObjectId[];
     franchiseId: Types.ObjectId;
     gameDetails?: {
-      platformIds: AttributeDoc[];
-      genreIds: AttributeDoc[];
-      gameplayIds: AttributeDoc[];
-      modeIds: AttributeDoc[];
+      platformIds: Types.ObjectId[];
+      genreIds: Types.ObjectId[];
+      gameplayIds: Types.ObjectId[];
+      modeIds: Types.ObjectId[];
       players: {
         min: number;
         max: number;
@@ -22,6 +21,6 @@ export type MediaDoc = Omit<MediaData, "attributes" | "sequel"> & {
   };
 
   sequel: {
-    previousMediaId: MediaDoc | null;
+    previousMediaId: Types.ObjectId | null;
   };
 };

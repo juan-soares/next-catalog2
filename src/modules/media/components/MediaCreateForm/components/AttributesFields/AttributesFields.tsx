@@ -14,22 +14,6 @@ type Props = {
   gameplays: AttributeView[];
   modes: AttributeView[];
   childlessFranchises: FranchiseView[];
-  currentAttributes: {
-    franchiseId: string;
-    languageIds: string[];
-    themeIds: string[];
-    platformIds: string[];
-    genreIds: string[];
-    gameplayIds: string[];
-    modeIds: string[];
-    players: {
-      min: number;
-      max: number;
-    };
-  };
-  onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 export function AttributesFields({
@@ -41,10 +25,6 @@ export function AttributesFields({
   gameplays,
   modes,
   childlessFranchises,
-  currentAttributes,
-  onCheckboxChange,
-  onChange,
-  onSelectChange,
 }: Props) {
   const gameAttributes = {
     platforms,
@@ -64,14 +44,7 @@ export function AttributesFields({
         </Link>
         {languages.map(({ id, label }) => (
           <label htmlFor={id} key={id}>
-            <input
-              id={id}
-              type="checkbox"
-              name="languageIds"
-              value={id}
-              checked={currentAttributes.languageIds.includes(id)}
-              onChange={onCheckboxChange}
-            />
+            <input id={id} type="checkbox" name="languageIds" value={id} />
             {label}
           </label>
         ))}
@@ -84,27 +57,13 @@ export function AttributesFields({
         </Link>
         {themes.map(({ id, label }) => (
           <label htmlFor={id} key={id}>
-            <input
-              id={id}
-              type="checkbox"
-              name="themeIds"
-              value={id}
-              checked={currentAttributes.themeIds.includes(id)}
-              onChange={onCheckboxChange}
-            />
+            <input id={id} type="checkbox" name="themeIds" value={id} />
             {label}
           </label>
         ))}
       </div>
 
-      {isGame && (
-        <GameAttributesFields
-          {...gameAttributes}
-          currentAttributes={currentAttributes}
-          onCheckboxChange={onCheckboxChange}
-          onChange={onChange}
-        />
-      )}
+      {isGame && <GameAttributesFields {...gameAttributes} />}
 
       <div>
         <label htmlFor="franchiseId">Franquias</label>
@@ -112,13 +71,7 @@ export function AttributesFields({
           <PlusCircle />
         </Link>
 
-        <select
-          id="franchiseId"
-          name="franchiseId"
-          required
-          value={currentAttributes.franchiseId}
-          onChange={onSelectChange}
-        >
+        <select id="franchiseId" name="franchiseId" required defaultValue="">
           <option value="" hidden>
             Selecione...
           </option>

@@ -5,8 +5,6 @@ import {
   MediaTabCurrentContent,
   MediaTabsNavbar,
 } from "@/modules/media-tab/components";
-import { MEDIA_TAB_REGISTRY } from "@/modules/media-tab/consts";
-import { MediaTabCode } from "@/modules/media-tab/types";
 import { getMediaTabInfoBySlug } from "@/modules/media-tab/services";
 
 type Props = {

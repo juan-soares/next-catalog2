@@ -12,12 +12,7 @@ export function SequelFields({ medias }: Props) {
       <div>
         <label htmlFor="previousMediaId">Sequência de:</label>
 
-        <select
-          id="previousMediaId"
-          name="previousMediaId"
-          defaultValue=""
-          required
-        >
+        <select id="previousMediaId" name="previousMediaId" defaultValue="">
           <option value="">Sem antecessor...</option>
           {medias.map(
             ({ identifiers: { id }, info: { title, releaseYear } }) => (

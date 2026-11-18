@@ -10,12 +10,12 @@ export function MediaTabSequelContent({ sequel: { previous, next } }: Props) {
 
       <article>
         <strong>Anterior</strong>
-        {previous ? <MediaCard {...previous} /> : <span>"N/A"</span>}
+        {previous ? <MediaCard {...previous} /> : <span>N/A</span>}
       </article>
 
       <article>
         <strong>Sequência</strong>
-        {next ? <MediaCard {...next} /> : <span>"N/A"</span>}
+        {next ? <MediaCard {...next} /> : <span>N/A</span>}
       </article>
     </section>
   );

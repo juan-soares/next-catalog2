@@ -1,8 +1,4 @@
-type Props = {
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
-
-export function AssetFields({ onChange }: Props) {
+export function AssetFields() {
   return (
     <fieldset>
       <legend>Arquivos</legend>
@@ -14,20 +10,13 @@ export function AssetFields({ onChange }: Props) {
           id="cover"
           name="cover"
           accept="image/jpeg"
-          onChange={onChange}
           required
         />
       </div>
 
       <div>
         <label htmlFor="trailer">Trailer:</label>
-        <input
-          type="file"
-          id="trailer"
-          name="trailer"
-          accept="video/mp4"
-          onChange={onChange}
-        />
+        <input type="file" id="trailer" name="trailer" accept="video/mp4" />
       </div>
     </fieldset>
   );

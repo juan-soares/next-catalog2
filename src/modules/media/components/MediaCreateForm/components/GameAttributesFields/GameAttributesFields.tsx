@@ -8,33 +8,17 @@ type Props = {
   genres: AttributeView[];
   gameplays: AttributeView[];
   modes: AttributeView[];
-  currentAttributes: {
-    platformIds: string[];
-    genreIds: string[];
-    gameplayIds: string[];
-    modeIds: string[];
-    players: {
-      min: number;
-      max: number;
-    };
-  };
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export function GameAttributesFields({
   platforms,
   genres,
   gameplays,
-  currentAttributes,
   modes,
-  onChange,
-  onCheckboxChange,
 }: Props) {
   return (
     <fieldset>
-      <legend>Detalhes de Jogos</legend>
-
+      <legend>Detalhes de Jogos</legend>s
       <div>
         <label>Plataformas</label>
         <Link href={`${PUBLIC_URLS.ATTRIBUTES.CREATE}?type=platform`}>
@@ -42,19 +26,11 @@ export function GameAttributesFields({
         </Link>
         {platforms.map(({ id, label }) => (
           <label htmlFor={id} key={id}>
-            <input
-              id={id}
-              type="checkbox"
-              name="platformIds"
-              value={id}
-              checked={currentAttributes.platformIds.includes(id)}
-              onChange={onCheckboxChange}
-            />
+            <input id={id} type="checkbox" name="platformIds" value={id} />
             {label}
           </label>
         ))}
       </div>
-
       <div>
         <label>Gêneros</label>
         <Link href={`${PUBLIC_URLS.ATTRIBUTES.CREATE}?type=genre`}>
@@ -62,19 +38,11 @@ export function GameAttributesFields({
         </Link>
         {genres.map(({ id, label }) => (
           <label htmlFor={id} key={id}>
-            <input
-              id={id}
-              type="checkbox"
-              name="genreIds"
-              value={id}
-              checked={currentAttributes.genreIds.includes(id)}
-              onChange={onCheckboxChange}
-            />
+            <input id={id} type="checkbox" name="genreIds" value={id} />
             {label}
           </label>
         ))}
       </div>
-
       <div>
         <label>Gameplays</label>
         <Link href={`${PUBLIC_URLS.ATTRIBUTES.CREATE}?type=gameplay`}>
@@ -82,19 +50,11 @@ export function GameAttributesFields({
         </Link>
         {gameplays.map(({ id, label }) => (
           <label htmlFor={id} key={id}>
-            <input
-              id={id}
-              type="checkbox"
-              name="gameplayIds"
-              value={id}
-              checked={currentAttributes.gameplayIds.includes(id)}
-              onChange={onCheckboxChange}
-            />
+            <input id={id} type="checkbox" name="gameplayIds" value={id} />
             {label}
           </label>
         ))}
       </div>
-
       <div>
         <label>Modos</label>
         <Link href={`${PUBLIC_URLS.ATTRIBUTES.CREATE}?type=mode`}>
@@ -102,19 +62,11 @@ export function GameAttributesFields({
         </Link>
         {modes.map(({ id, label }) => (
           <label htmlFor={id} key={id}>
-            <input
-              id={id}
-              type="checkbox"
-              name="modeIds"
-              value={id}
-              checked={currentAttributes.modeIds.includes(id)}
-              onChange={onCheckboxChange}
-            />
+            <input id={id} type="checkbox" name="modeIds" value={id} />
             {label}
           </label>
         ))}
       </div>
-
       <div>
         <label>Jogadores</label>
 
@@ -125,8 +77,7 @@ export function GameAttributesFields({
             id="playersMin"
             name="playersMin"
             min={1}
-            value={currentAttributes.players.min}
-            onChange={onChange}
+            defaultValue="1"
             required
           />
         </div>
@@ -138,8 +89,7 @@ export function GameAttributesFields({
             id="playersMax"
             name="playersMax"
             min={1}
-            value={currentAttributes.players.max}
-            onChange={onChange}
+            defaultValue="1"
             required
           />
         </div>

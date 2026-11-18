@@ -1,13 +1,18 @@
 import { mapAttributeDocToAttributeView } from "@/modules/attribute/mappers";
 import type { FranchiseView } from "@/modules/franchise/types";
 import { MEDIA_TYPES_REGISTRY } from "@/modules/media-type/consts";
-import type { MediaDoc, MediaView } from "@/modules/media/types";
+import type {
+  MediaPopulatedDoc,
+  MediaView,
+  RelatedMediaDoc,
+} from "@/modules/media/types";
 import { PUBLIC_URLS } from "@/shared/consts";
+import { mapMediaDocToMediaCardView } from "@/modules/media/mappers";
 
 export function mapMediaDocToMediaView(
-  doc: MediaDoc,
+  doc: MediaPopulatedDoc,
   franchises: FranchiseView[],
-  next: MediaView | null,
+  nextMediaDoc: RelatedMediaDoc | null,
 ): MediaView {
   return {
     identifiers: {
@@ -63,9 +68,10 @@ export function mapMediaDocToMediaView(
 
     sequel: {
       previous: doc.sequel.previousMediaId
-        ? mapMediaDocToMediaView(doc.sequel.previousMediaId, [], null)
+        ? mapMediaDocToMediaCardView(doc.sequel.previousMediaId)
         : null,
-      next,
+
+      next: nextMediaDoc ? mapMediaDocToMediaCardView(nextMediaDoc) : null,
     },
 
     progress: {
