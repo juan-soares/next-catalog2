@@ -25,6 +25,10 @@ export async function findMedias({
       .populate("attributes.gameDetails.gameplayIds")
       .populate("attributes.gameDetails.modeIds")
       .populate({
+        path: "gameExpansions.baseMediaId",
+        select: "identifiers info assets progress",
+      })
+      .populate({
         path: "sequel.previousMediaId",
         select: "identifiers info assets progress",
       })
