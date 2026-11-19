@@ -111,6 +111,19 @@ const mediaSchema = new Schema<MediaDoc>(
       },
     },
 
+    gameExpansions: {
+      type: {
+        type: String,
+        enum: ["dlc", "expansion"],
+        required: true,
+      },
+      baseMediaId: {
+        type: Schema.Types.ObjectId,
+        ref: "Media",
+        required: true,
+      },
+    },
+
     sequel: {
       previousMediaId: {
         type: mongoose.Schema.Types.ObjectId,

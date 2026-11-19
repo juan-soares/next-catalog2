@@ -40,6 +40,9 @@ export const createMediaSchema = z.object({
 
   franchiseId: z.string().min(1, "O id da franquia é obrigatório."),
 
+  expansionType: z.enum(["expansion", "dlc"]).optional(),
+  baseMediaId: z.string(),
+
   previousMediaId: z.string(),
 
   progress: z.object({

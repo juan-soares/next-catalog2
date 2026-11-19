@@ -4,6 +4,7 @@ import {
   MediaTabSequelContent,
 } from "@/modules/media-tab/components";
 import type { MediaView } from "@/modules/media/types";
+import { MediaTabGameExpansions } from "../MediaTabGameExpansions";
 
 type Props = {
   currentTabCode: MediaTabCode;
@@ -14,6 +15,9 @@ export function MediaTabCurrentContent({ currentTabCode, media }: Props) {
   switch (currentTabCode) {
     case "info":
       return <MediaTabInfoContent {...media} />;
+
+    case "expansion":
+      return <MediaTabGameExpansions {...media} />;
 
     case "sequel":
       return <MediaTabSequelContent {...media} />;

@@ -38,7 +38,30 @@ export async function findMedia({
         .lean<RelatedMediaDoc | null>(),
     ]);
 
-    return mapMediaDocToMediaView(mediaDoc, franchises, nextMediaDoc);
+    const [dlcs, expansions] = await Promise.all([
+      MediaModel.find({
+        "gameExpansions.baseMediaId": mediaDoc._id,
+        "gameExpansions.type": "dlc",
+      })
+        .select("identifiers info assets progress")
+        .lean<RelatedMediaDoc[]>(),
+
+      MediaModel.find({
+        "gameExpansions.baseMediaId": mediaDoc._id,
+        "gameExpansions.type": "expansion",
+      })
+        .select("identifiers info assets progress")
+        .lean<RelatedMediaDoc[]>(),
+    ]);
+
+    const gameExpansions = { dlcs, expansions };
+
+    return mapMediaDocToMediaView(
+      mediaDoc,
+      franchises,
+      nextMediaDoc,
+      gameExpansions,
+    );
   } catch (error) {
     console.error("Ocorreu um erro ao buscar mídia", error);
     return null;

@@ -13,6 +13,10 @@ export function mapMediaDocToMediaView(
   doc: MediaPopulatedDoc,
   franchises: FranchiseView[],
   nextMediaDoc: RelatedMediaDoc | null,
+  gameExpansions: {
+    dlcs: RelatedMediaDoc[];
+    expansions: RelatedMediaDoc[];
+  },
 ): MediaView {
   return {
     identifiers: {
@@ -64,6 +68,18 @@ export function mapMediaDocToMediaView(
             fileType: doc.assets.trailer.mimeType,
           }
         : null,
+    },
+
+    gameExpansions: {
+      type: doc.gameExpansions?.type ?? null,
+
+      baseMedia: doc.gameExpansions?.baseMediaId
+        ? mapMediaDocToMediaCardView(doc.gameExpansions.baseMediaId)
+        : null,
+
+      dlcs: gameExpansions.dlcs.map(mapMediaDocToMediaCardView),
+
+      expansions: gameExpansions.expansions.map(mapMediaDocToMediaCardView),
     },
 
     sequel: {

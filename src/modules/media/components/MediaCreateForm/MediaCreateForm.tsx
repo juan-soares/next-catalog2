@@ -3,6 +3,7 @@
 import {
   AssetFields,
   AttributesFields,
+  GameExpansionsFields,
   InfoFields,
   ProgressFields,
   SequelFields,
@@ -29,6 +30,8 @@ type Props = {
 };
 
 export function MediaCreateForm({ mediaType, medias, attributes }: Props) {
+  const isGame = verifyIfMediaTypeIsAGame(mediaType.code);
+
   return (
     <form action={createMediaAction}>
       <input
@@ -42,10 +45,9 @@ export function MediaCreateForm({ mediaType, medias, attributes }: Props) {
 
       <AssetFields />
 
-      <AttributesFields
-        isGame={verifyIfMediaTypeIsAGame(mediaType.code)}
-        {...attributes}
-      />
+      <AttributesFields isGame={isGame} {...attributes} />
+
+      {isGame && <GameExpansionsFields medias={medias} />}
 
       <SequelFields medias={medias} />
 

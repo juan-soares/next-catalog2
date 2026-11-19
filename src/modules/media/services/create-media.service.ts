@@ -58,6 +58,15 @@ export async function createMedia(
     };
   }
 
+  let gameExpansions: MediaData["gameExpansions"] = undefined;
+
+  if (input.expansionType) {
+    gameExpansions = {
+      type: input.expansionType,
+      baseMediaId: input.baseMediaId,
+    };
+  }
+
   const mediaData: MediaData = {
     identifiers: {
       slug,
@@ -78,6 +87,8 @@ export async function createMedia(
       cover,
       trailer,
     },
+
+    gameExpansions,
 
     sequel: {
       previousMediaId: input.previousMediaId || null,

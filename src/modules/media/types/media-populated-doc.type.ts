@@ -2,7 +2,10 @@ import { Types } from "mongoose";
 import type { AttributeDoc } from "@/modules/attribute/types";
 import type { MediaDoc, RelatedMediaDoc } from "@/modules/media/types";
 
-export type MediaPopulatedDoc = Omit<MediaDoc, "attributes" | "sequel"> & {
+export type MediaPopulatedDoc = Omit<
+  MediaDoc,
+  "attributes" | "gameExpansions" | "sequel"
+> & {
   attributes: {
     languageIds: AttributeDoc[];
     themeIds: AttributeDoc[];
@@ -17,6 +20,11 @@ export type MediaPopulatedDoc = Omit<MediaDoc, "attributes" | "sequel"> & {
         max: number;
       };
     };
+  };
+
+  gameExpansions?: {
+    type: "dlc" | "expansion";
+    baseMediaId: RelatedMediaDoc | null;
   };
 
   sequel: {

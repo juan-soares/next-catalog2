@@ -42,7 +42,30 @@ export async function findMedias({
             .lean<RelatedMediaDoc | null>(),
         ]);
 
-        return mapMediaDocToMediaView(doc, franchises, nextMediaDoc);
+        const [dlcs, expansions] = await Promise.all([
+          MediaModel.find({
+            "gameExpansions.baseMediaId": doc._id,
+            "gameExpansions.type": "dlc",
+          })
+            .select("identifiers info assets progress")
+            .lean<RelatedMediaDoc[]>(),
+
+          MediaModel.find({
+            "gameExpansions.baseMediaId": doc._id,
+            "gameExpansions.type": "expansion",
+          })
+            .select("identifiers info assets progress")
+            .lean<RelatedMediaDoc[]>(),
+        ]);
+
+        const gameExpansions = { dlcs, expansions };
+
+        return mapMediaDocToMediaView(
+          doc,
+          franchises,
+          nextMediaDoc,
+          gameExpansions,
+        );
       }),
     );
 

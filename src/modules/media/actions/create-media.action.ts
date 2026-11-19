@@ -28,6 +28,9 @@ export async function createMediaAction(formData: FormData) {
     playersMin: Number(formData.get("playersMin")),
     playersMax: Number(formData.get("playersMax")),
 
+    expansionType: formData.get("expansionType"),
+    baseMediaId: formData.get("baseMediaId"),
+
     franchiseId: formData.get("franchiseId"),
     previousMediaId: formData.get("previousMediaId") ?? "",
 

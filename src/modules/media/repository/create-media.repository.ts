@@ -12,7 +12,6 @@ import type {
 export async function createMedia(data: MediaData): Promise<MediaView | null> {
   try {
     await connectToMongoDB();
-    console.log(data);
 
     const doc = await MediaModel.create(data);
 
@@ -23,6 +22,10 @@ export async function createMedia(data: MediaData): Promise<MediaView | null> {
       { path: "attributes.gameDetails.genreIds" },
       { path: "attributes.gameDetails.gameplayIds" },
       { path: "attributes.gameDetails.modeIds" },
+      {
+        path: "gameExpansions.baseMediaId",
+        select: "identifiers info assets progress",
+      },
       {
         path: "sequel.previousMediaId",
         select: "identifiers info assets progress",
@@ -39,7 +42,30 @@ export async function createMedia(data: MediaData): Promise<MediaView | null> {
         .lean<RelatedMediaDoc>(),
     ]);
 
-    return mapMediaDocToMediaView(populatedDoc, franchises, nextDoc);
+    const [dlcs, expansions] = await Promise.all([
+      MediaModel.find({
+        "gameExpansions.baseMediaId": populatedDoc._id,
+        "gameExpansions.type": "dlc",
+      })
+        .select("identifiers info assets progress")
+        .lean<RelatedMediaDoc[]>(),
+
+      MediaModel.find({
+        "gameExpansions.baseMediaId": populatedDoc._id,
+        "gameExpansions.type": "expansion",
+      })
+        .select("identifiers info assets progress")
+        .lean<RelatedMediaDoc[]>(),
+    ]);
+
+    const gameExpansions = { dlcs, expansions };
+
+    return mapMediaDocToMediaView(
+      populatedDoc,
+      franchises,
+      nextDoc,
+      gameExpansions,
+    );
   } catch (error) {
     console.error("Erro ao criar mídia.", error);
     return null;

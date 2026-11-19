@@ -6,6 +6,7 @@ export function mapMediaDocToMediaCardView(
 ): MediaCardView {
   return {
     identifiers: {
+      id: doc._id.toString(),
       path: doc.identifiers.path,
     },
 

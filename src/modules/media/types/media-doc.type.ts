@@ -1,7 +1,10 @@
 import { Types } from "mongoose";
 import type { MediaData } from "@/modules/media/types";
 
-export type MediaDoc = Omit<MediaData, "attributes" | "sequel"> & {
+export type MediaDoc = Omit<
+  MediaData,
+  "attributes" | "gameExpansions" | "sequel"
+> & {
   _id: Types.ObjectId;
 
   attributes: {
@@ -18,6 +21,11 @@ export type MediaDoc = Omit<MediaData, "attributes" | "sequel"> & {
         max: number;
       };
     };
+  };
+
+  gameExpansions?: {
+    type: "dlc" | "expansion";
+    baseMediaId: Types.ObjectId;
   };
 
   sequel: {

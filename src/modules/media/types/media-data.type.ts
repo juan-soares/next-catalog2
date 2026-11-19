@@ -37,6 +37,11 @@ export type MediaData = {
     trailer: AssetData | null;
   };
 
+  gameExpansions?: {
+    type: "dlc" | "expansion";
+    baseMediaId: string;
+  };
+
   sequel: {
     previousMediaId: string | null;
   };

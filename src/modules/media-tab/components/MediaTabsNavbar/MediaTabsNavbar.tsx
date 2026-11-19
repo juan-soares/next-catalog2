@@ -1,9 +1,16 @@
 import { MEDIA_TAB_LIST } from "@/modules/media-tab/consts";
+import type { MediaTypeGroupCode } from "@/modules/media-type-group/types";
 
-export function MediaTabsNavbar() {
+type Props = {
+  currentMediaGroup: MediaTypeGroupCode;
+};
+
+export function MediaTabsNavbar({ currentMediaGroup }: Props) {
   return (
     <form method="GET">
-      {MEDIA_TAB_LIST.map(({ slug, label }) => (
+      {MEDIA_TAB_LIST.filter((tab) =>
+        tab.group.includes(currentMediaGroup),
+      ).map(({ slug, label }) => (
         <button key={slug} type="submit" name="tab" value={slug}>
           {label}
         </button>

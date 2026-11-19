@@ -46,6 +46,13 @@ export type MediaView = {
     trailer: MediaFileView | null;
   };
 
+  gameExpansions: {
+    type: "dlc" | "expansion" | null;
+    baseMedia: MediaCardView | null;
+    dlcs: MediaCardView[];
+    expansions: MediaCardView[];
+  };
+
   sequel: {
     previous: MediaCardView | null;
     next: MediaCardView | null;
