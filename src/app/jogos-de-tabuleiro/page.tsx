@@ -1,7 +1,6 @@
 import {
   CalendarDays,
   Gamepad2Icon,
-  GlobeIcon,
   Joystick,
   Languages,
   LanguagesIcon,
