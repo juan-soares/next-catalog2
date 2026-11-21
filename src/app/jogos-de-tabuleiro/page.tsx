@@ -70,6 +70,23 @@ export default function BoardGamePage() {
         src: "/assets/medias/dungeons-of-tanares-2026-ff185f/trailer.mp4",
         type: "video/mp4",
       },
+      gallery: [
+        {
+          id: "aslasoas",
+          src: "/assets/medias/dungeons-of-tanares-2026-ff185f/gallery-1.jpg",
+          alt: "Imagem jogo de tabuleiro Dungeons of Tanares.",
+        },
+        {
+          id: "aslzzsoas",
+          src: "/assets/medias/dungeons-of-tanares-2026-ff185f/gallery-2.jpg",
+          alt: "Imagem jogo de tabuleiro Dungeons of Tanares.",
+        },
+        {
+          id: "asEEas",
+          src: "/assets/medias/dungeons-of-tanares-2026-ff185f/gallery-3.jpg",
+          alt: "Imagem jogo de tabuleiro Dungeons of Tanares.",
+        },
+      ],
     },
 
     franchises: {
@@ -306,6 +323,20 @@ export default function BoardGamePage() {
               </div>
             </>
           )}
+        </section>
+
+        <section>
+          <h2>Galeria</h2>
+
+          {assets.gallery.map((image) => (
+            <Image
+              key={image.id}
+              src={image.src}
+              alt={image.alt}
+              width={60}
+              height={60}
+            />
+          ))}
         </section>
 
         <section>
