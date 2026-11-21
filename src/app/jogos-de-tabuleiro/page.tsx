@@ -1,6 +1,9 @@
+import Image from "next/image";
+import Link from "next/link";
 import {
   CalendarDays,
   Gamepad2Icon,
+  Layers,
   Joystick,
   Languages,
   LanguagesIcon,
@@ -8,8 +11,6 @@ import {
   TagsIcon,
   Users,
 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function BoardGamePage() {
   const midia = {
@@ -27,11 +28,37 @@ export default function BoardGamePage() {
     },
 
     attributes: {
-      languages: ["Português"],
-      genres: ["Dungeon Crown", "RPG Tático"],
-      gameplays: ["Tabuleiro"],
-      modes: ["Campanha Solo", "Campanha Co-Op", "Partida Vs."],
-      themes: ["RPG Fantasia", "Sombrio"],
+      languages: [{ id: "asasa", label: "Português" }],
+      genres: [
+        { id: "asasasas", label: "Dungeon Crown" },
+        { id: "aCCssasa", label: "RPG Tático" },
+      ],
+      gameplays: [{ id: "asasa", label: "Tabuleiro" }],
+      modes: [
+        { id: "asasa", label: "Campanha Solo" },
+        { id: "asasVVa", label: "Campanha Co-Op" },
+        { id: "asBBsasa", label: "Partida Vs." },
+      ],
+      themes: [
+        { id: "asbRaasa", label: "RPG Fantasia" },
+        { id: "asasa", label: "Sombrio" },
+      ],
+    },
+
+    edition: {
+      type: { id: "Easasa", label: "Expansão" },
+      base: {
+        id: "aksakska",
+        path: "/jogos-de-tabuleiro/tanares-rise-of-tanares-2026-asres",
+        cover: {
+          src: "/assets/media/tanares-rise-of-dragons-2026-asres/cover.jpg",
+          alt: "Capa do jogo de tabuleiro Tanares: Rise of Dragons",
+        },
+        title: "Tanares: Rise of Dragons",
+        releaseYear: 2026,
+      },
+      dlcs: [],
+      expansions: [],
     },
 
     assets: {
@@ -65,7 +92,7 @@ export default function BoardGamePage() {
     },
   };
 
-  const { assets, info, attributes, franchises, status } = midia;
+  const { assets, info, attributes, edition, franchises, status } = midia;
 
   return (
     <div>
@@ -97,18 +124,23 @@ export default function BoardGamePage() {
 
           <div>
             <div>
+              <Layers />
+              {edition.type.label}
+            </div>
+
+            <div>
               <LanguagesIcon />
-              {attributes.languages.join(", ")}
+              {attributes.languages.map(({ label }) => label).join(", ")}
             </div>
 
             <div>
               <Gamepad2Icon />
-              {attributes.genres.join(", ")}
+              {attributes.genres.map(({ label }) => label).join(", ")}
             </div>
 
             <div>
               <TagsIcon />
-              {attributes.themes.join(", ")}
+              {attributes.themes.map(({ label }) => label).join(", ")}
             </div>
           </div>
 
@@ -132,10 +164,7 @@ export default function BoardGamePage() {
 
       <nav>
         <button>Informações</button>
-        <button>Informações</button>
-        <button>Expansões</button>
-        <button>Galeria</button>
-        <button>Arquivos</button>
+        <button>Edições</button>
         <button>Franquias</button>
       </nav>
 
@@ -164,9 +193,17 @@ export default function BoardGamePage() {
             </div>
             <div>
               <dt>
+                <Layers /> Edição:
+              </dt>
+              <dd>{edition.type.label}</dd>
+            </div>
+            <div>
+              <dt>
                 <Languages /> Idiomas:
               </dt>
-              <dd>{attributes.languages.join(", ")}</dd>
+              <dd>
+                {attributes.languages.map(({ label }) => label).join(", ")}
+              </dd>
             </div>
             <div>
               <dt>
@@ -178,27 +215,133 @@ export default function BoardGamePage() {
               <dt>
                 <Users /> Modos:
               </dt>
-              <dd>{attributes.modes.join(", ")}</dd>
+              <dd>{attributes.modes.map(({ label }) => label).join(", ")}</dd>
             </div>
             <div>
               <dt>
                 <Joystick /> Gameplays:
               </dt>
-              <dd>{attributes.gameplays.join(", ")}</dd>
+              <dd>
+                {attributes.gameplays.map(({ label }) => label).join(", ")}
+              </dd>
             </div>
             <div>
               <dt>
                 <Gamepad2Icon /> Gêneros:
               </dt>
-              <dd>{attributes.genres.join(", ")}</dd>
+              <dd>{attributes.genres.map(({ label }) => label).join(", ")}</dd>
             </div>
             <div>
               <dt>
                 <TagsIcon /> Temáticas:
               </dt>
-              <dd>{attributes.themes.join(", ")}</dd>
+              <dd>{attributes.themes.map(({ label }) => label).join(", ")}</dd>
             </div>
           </dl>
+        </section>
+
+        <section>
+          <h2>Edições</h2>
+
+          {edition.base && (
+            <div>
+              <h3>Base</h3>
+
+              <article>
+                <Link href={edition.base.path}>
+                  <Image
+                    src={edition.base.cover.src}
+                    alt={edition.base.cover.alt}
+                    width={60}
+                    height={60}
+                  />
+
+                  <h2>{edition.base.title}</h2>
+                  <p>{edition.base.releaseYear}</p>
+                </Link>
+              </article>
+            </div>
+          )}
+
+          {!edition.base && (
+            <>
+              <div>
+                <h3>Expansões</h3>
+
+                {edition.expansions.map((media) => (
+                  <article key={media.id}>
+                    <Link href={media.path}>
+                      <Image
+                        src={media.cover.src}
+                        alt={media.cover.alt}
+                        width={60}
+                        height={60}
+                      />
+
+                      <h2>{media.title}</h2>
+                      <p>{media.releaseYear}</p>
+                    </Link>
+                  </article>
+                ))}
+              </div>
+
+              <div>
+                <h3>DLCs</h3>
+
+                {edition.expansions.map((media) => (
+                  <article key={media.id}>
+                    <Link href={media.path}>
+                      <Image
+                        src={media.cover.src}
+                        alt={media.cover.alt}
+                        width={60}
+                        height={60}
+                      />
+
+                      <h2>{edition.base.title}</h2>
+                      <p>{edition.base.releaseYear}</p>
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </>
+          )}
+        </section>
+
+        <section>
+          <h2>Franquias</h2>
+
+          <div>
+            <h3>Principal:</h3>
+
+            <article>
+              <Link href={`/franquias/${franchises.main.slug}`}>
+                <Image
+                  src={franchises.main.logo.src}
+                  alt={franchises.main.logo.alt}
+                  width={60}
+                  height={60}
+                />
+              </Link>
+            </article>
+          </div>
+
+          <div>
+            <h3>Sub-Franquias:</h3>
+
+            {franchises.subs.map((franchise) => (
+              <article key={franchise.id}>
+                <Link href={`/franquias/${franchise.slug}`}>
+                  <Image
+                    src={franchise.logo.src}
+                    alt={franchise.logo.alt}
+                    width={60}
+                    height={60}
+                  />
+                </Link>
+              </article>
+            ))}
+          </div>
         </section>
       </main>
     </div>
