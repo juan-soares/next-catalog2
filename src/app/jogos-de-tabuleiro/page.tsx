@@ -21,9 +21,19 @@ export default function BoardGamePage() {
       releaseDate: "01/10/2026",
       synopsis:
         "Tanares is a narrative dungeon crawler for 1-4 players, where you explore a living world, build a powerful hero, and adapt to unpredictable enemies.",
+
       players: {
         min: 1,
         max: 4,
+      },
+
+      cover: {
+        src: "/assets/medias/dungeons-of-tanares-2026-ff185f/cover.jpg",
+        alt: "Capa do jogo de tabuleiro Dungeons of Tanares.",
+      },
+      trailer: {
+        src: "/assets/medias/dungeons-of-tanares-2026-ff185f/trailer.mp4",
+        type: "video/mp4",
       },
     },
 
@@ -61,33 +71,25 @@ export default function BoardGamePage() {
       expansions: [],
     },
 
-    assets: {
-      cover: {
-        src: "/assets/medias/dungeons-of-tanares-2026-ff185f/cover.jpg",
-        alt: "Capa do jogo de tabuleiro Dungeons of Tanares.",
+    gallery: [
+      {
+        id: "aslasoas",
+        src: "/assets/medias/dungeons-of-tanares-2026-ff185f/gallery-1.jpg",
+        alt: "Imagem jogo de tabuleiro Dungeons of Tanares.",
       },
-      trailer: {
-        src: "/assets/medias/dungeons-of-tanares-2026-ff185f/trailer.mp4",
-        type: "video/mp4",
+      {
+        id: "aslzzsoas",
+        src: "/assets/medias/dungeons-of-tanares-2026-ff185f/gallery-2.jpg",
+        alt: "Imagem jogo de tabuleiro Dungeons of Tanares.",
       },
-      gallery: [
-        {
-          id: "aslasoas",
-          src: "/assets/medias/dungeons-of-tanares-2026-ff185f/gallery-1.jpg",
-          alt: "Imagem jogo de tabuleiro Dungeons of Tanares.",
-        },
-        {
-          id: "aslzzsoas",
-          src: "/assets/medias/dungeons-of-tanares-2026-ff185f/gallery-2.jpg",
-          alt: "Imagem jogo de tabuleiro Dungeons of Tanares.",
-        },
-        {
-          id: "asEEas",
-          src: "/assets/medias/dungeons-of-tanares-2026-ff185f/gallery-3.jpg",
-          alt: "Imagem jogo de tabuleiro Dungeons of Tanares.",
-        },
-      ],
-    },
+      {
+        id: "asEEas",
+        src: "/assets/medias/dungeons-of-tanares-2026-ff185f/gallery-3.jpg",
+        alt: "Imagem jogo de tabuleiro Dungeons of Tanares.",
+      },
+    ],
+
+    files: [],
 
     franchises: {
       main: {
@@ -109,21 +111,22 @@ export default function BoardGamePage() {
     },
   };
 
-  const { assets, info, attributes, edition, franchises, status } = midia;
+  const { info, attributes, edition, gallery, files, franchises, status } =
+    midia;
 
   return (
     <div>
       <header>
         <div>
           <video autoPlay loop muted playsInline>
-            <source src={assets.trailer.src} type={assets.trailer.type} />
+            <source src={info.trailer.src} type={info.trailer.type} />
           </video>
         </div>
 
         <div>
           <Image
-            src={assets.cover.src}
-            alt={assets.cover.alt}
+            src={info.cover.src}
+            alt={info.cover.alt}
             width={60}
             height={60}
           />
@@ -328,7 +331,7 @@ export default function BoardGamePage() {
         <section>
           <h2>Galeria</h2>
 
-          {assets.gallery.map((image) => (
+          {gallery.map((image) => (
             <Image
               key={image.id}
               src={image.src}
@@ -336,6 +339,16 @@ export default function BoardGamePage() {
               width={60}
               height={60}
             />
+          ))}
+        </section>
+
+        <section>
+          <h2>Arquivos</h2>
+
+          {files.map((file) => (
+            <li key={file.id}>
+              <Link>Do</Link>
+            </li>
           ))}
         </section>
 
