@@ -73,7 +73,7 @@ export default function BoardGamePage() {
           alt: "Capa do jogo de tabuleiro Tanares: Rise of Dragons",
         },
         title: "Tanares: Rise of Dragons",
-        releaseYear: 2026,
+        release: { year: 2026 },
       },
       dlcs: [],
       expansions: [],
@@ -89,7 +89,7 @@ export default function BoardGamePage() {
           alt: "Capa do jogo de tabuleiro Dungeons of Tanares: Old Depths",
         },
         title: "Dungeons of Tanares: Old Depths",
-        releaseYear: 2026,
+        release: { year: 2026 },
       },
     },
 
@@ -317,7 +317,7 @@ export default function BoardGamePage() {
                   />
 
                   <h2>{edition.base.title}</h2>
-                  <p>{edition.base.releaseYear}</p>
+                  <p>{edition.base.release.year}</p>
                 </Link>
               </article>
             </div>
@@ -339,7 +339,7 @@ export default function BoardGamePage() {
                       />
 
                       <h2>{media.title}</h2>
-                      <p>{media.releaseYear}</p>
+                      <p>{media.release.year}</p>
                     </Link>
                   </article>
                 ))}
@@ -359,7 +359,7 @@ export default function BoardGamePage() {
                       />
 
                       <h2>{edition.base.title}</h2>
-                      <p>{edition.base.releaseYear}</p>
+                      <p>{edition.base.release.year}</p>
                     </Link>
                   </article>
                 ))}
@@ -385,7 +385,7 @@ export default function BoardGamePage() {
                   />
 
                   <h2>{continuity.previous.title}</h2>
-                  <p>{continuity.previous.releaseYear}</p>
+                  <p>{continuity.previous.release.year}</p>
                 </Link>
               </article>
             )}
@@ -405,7 +405,7 @@ export default function BoardGamePage() {
                   />
 
                   <h2>{continuity.next.title}</h2>
-                  <p>{continuity.next.releaseYear}</p>
+                  <p>{continuity.next.release.year}</p>
                 </Link>
               </article>
             )}
