@@ -10,15 +10,23 @@ import {
   Tag,
   TagsIcon,
   Users,
+  FileIcon,
 } from "lucide-react";
 
 export default function BoardGamePage() {
   const midia = {
+    id: "asasa",
+    url: "/jogos-de-tabuleiro/dungeons-of-tanares",
+
     info: {
       title: "Dungeons of Tanares",
       translatedTitle: "",
-      releaseYear: 2026,
-      releaseDate: "01/10/2026",
+
+      release: {
+        date: "01/10/2026",
+        year: 2026,
+      },
+
       synopsis:
         "Tanares is a narrative dungeon crawler for 1-4 players, where you explore a living world, build a powerful hero, and adapt to unpredictable enemies.",
 
@@ -59,7 +67,7 @@ export default function BoardGamePage() {
       type: { id: "Easasa", label: "Expansão" },
       base: {
         id: "aksakska",
-        path: "/jogos-de-tabuleiro/tanares-rise-of-tanares-2026-asres",
+        url: "/jogos-de-tabuleiro/tanares-rise-of-tanares-2026-asres",
         cover: {
           src: "/assets/media/tanares-rise-of-dragons-2026-asres/cover.jpg",
           alt: "Capa do jogo de tabuleiro Tanares: Rise of Dragons",
@@ -69,6 +77,20 @@ export default function BoardGamePage() {
       },
       dlcs: [],
       expansions: [],
+    },
+
+    continuity: {
+      previous: null,
+      next: {
+        id: "akassakska",
+        url: "/jogos-de-tabuleiro/dungeons-of-tanares-old-depths-2026-asres",
+        cover: {
+          src: "/assets/media/dungeons-of-tanares-old-depths-2026-asres/cover.jpg",
+          alt: "Capa do jogo de tabuleiro Dungeons of Tanares: Old Depths",
+        },
+        title: "Dungeons of Tanares: Old Depths",
+        releaseYear: 2026,
+      },
     },
 
     gallery: [
@@ -89,13 +111,20 @@ export default function BoardGamePage() {
       },
     ],
 
-    files: [],
+    files: [
+      {
+        id: "asat",
+        title: "Manual de Regras",
+        src: "/assets/medias/dungeons-of-tanares-2026-ff185f/manual-de-regras.pdf",
+        extension: "pdf",
+      },
+    ],
 
     franchises: {
       main: {
         id: "312asase",
         title: "Dungeons of Tanares",
-        slug: "dungeons-of-tanares-2026-ff198",
+        url: "/jogos-de-tabuleiro/dungeons-of-tanares-2026-ff198",
         logo: {
           src: "/assets/franchises/dungeons-of-tanares-2026-ff198/logo.png",
           alt: "Logotipo da franquia Dungeons of Tanares",
@@ -111,8 +140,16 @@ export default function BoardGamePage() {
     },
   };
 
-  const { info, attributes, edition, gallery, files, franchises, status } =
-    midia;
+  const {
+    info,
+    attributes,
+    edition,
+    continuity,
+    gallery,
+    files,
+    franchises,
+    status,
+  } = midia;
 
   return (
     <div>
@@ -133,7 +170,7 @@ export default function BoardGamePage() {
 
           <div>
             <h1>
-              {info.title} <span>{`(${info.releaseYear})`}</span>
+              {info.title} <span>{`(${info.release.year})`}</span>
             </h1>
             <h2>{info.translatedTitle}</h2>
           </div>
@@ -165,7 +202,7 @@ export default function BoardGamePage() {
           </div>
 
           <div>
-            <Link href={`/franquias/${franchises.main.slug}`}>
+            <Link href={`/franquias/${franchises.main.url}`}>
               <Image
                 src={franchises.main.logo.src}
                 alt={franchises.main.logo.alt}
@@ -185,6 +222,9 @@ export default function BoardGamePage() {
       <nav>
         <button>Informações</button>
         <button>Edições</button>
+        <button>Continuidade</button>
+        <button>Galeria</button>
+        <button>Arquivos</button>
         <button>Franquias</button>
       </nav>
 
@@ -209,7 +249,7 @@ export default function BoardGamePage() {
               <dt>
                 <CalendarDays /> Lançamento:
               </dt>
-              <dd>{info.releaseDate}</dd>
+              <dd>{info.release.date}</dd>
             </div>
             <div>
               <dt>
@@ -268,7 +308,7 @@ export default function BoardGamePage() {
               <h3>Base</h3>
 
               <article>
-                <Link href={edition.base.path}>
+                <Link href={edition.base.url}>
                   <Image
                     src={edition.base.cover.src}
                     alt={edition.base.cover.alt}
@@ -290,7 +330,7 @@ export default function BoardGamePage() {
 
                 {edition.expansions.map((media) => (
                   <article key={media.id}>
-                    <Link href={media.path}>
+                    <Link href={media.url}>
                       <Image
                         src={media.cover.src}
                         alt={media.cover.alt}
@@ -310,7 +350,7 @@ export default function BoardGamePage() {
 
                 {edition.expansions.map((media) => (
                   <article key={media.id}>
-                    <Link href={media.path}>
+                    <Link href={media.url}>
                       <Image
                         src={media.cover.src}
                         alt={media.cover.alt}
@@ -326,6 +366,50 @@ export default function BoardGamePage() {
               </div>
             </>
           )}
+        </section>
+
+        <section>
+          <h2>Continuidade</h2>
+
+          <div>
+            <h3>Anterior</h3>
+
+            {continuity.previous && (
+              <article>
+                <Link href={continuity.previous.url}>
+                  <Image
+                    src={continuity.previous.cover.src}
+                    alt={continuity.previous.cover.alt}
+                    width={60}
+                    height={60}
+                  />
+
+                  <h2>{continuity.previous.title}</h2>
+                  <p>{continuity.previous.releaseYear}</p>
+                </Link>
+              </article>
+            )}
+          </div>
+
+          <div>
+            <h3>Sequência</h3>
+
+            {continuity.next && (
+              <article>
+                <Link href={continuity.next.url}>
+                  <Image
+                    src={continuity.next.cover.src}
+                    alt={continuity.next.cover.alt}
+                    width={60}
+                    height={60}
+                  />
+
+                  <h2>{continuity.next.title}</h2>
+                  <p>{continuity.next.releaseYear}</p>
+                </Link>
+              </article>
+            )}
+          </div>
         </section>
 
         <section>
@@ -345,11 +429,16 @@ export default function BoardGamePage() {
         <section>
           <h2>Arquivos</h2>
 
-          {files.map((file) => (
-            <li key={file.id}>
-              <Link>Do</Link>
-            </li>
-          ))}
+          <ul>
+            {files.map((file) => (
+              <li key={file.id}>
+                <Link href={file.src}>
+                  <FileIcon />
+                  <span>{`${file.title} (${file.extension})`}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section>
@@ -359,7 +448,7 @@ export default function BoardGamePage() {
             <h3>Principal:</h3>
 
             <article>
-              <Link href={`/franquias/${franchises.main.slug}`}>
+              <Link href={franchises.main.url}>
                 <Image
                   src={franchises.main.logo.src}
                   alt={franchises.main.logo.alt}
@@ -375,7 +464,7 @@ export default function BoardGamePage() {
 
             {franchises.subs.map((franchise) => (
               <article key={franchise.id}>
-                <Link href={`/franquias/${franchise.slug}`}>
+                <Link href={franchise.url}>
                   <Image
                     src={franchise.logo.src}
                     alt={franchise.logo.alt}
