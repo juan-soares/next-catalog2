@@ -11,12 +11,15 @@ import {
   TagsIcon,
   Users,
   FileIcon,
+  PlusCircleIcon,
+  DotIcon,
 } from "lucide-react";
 
 export default function BoardGamePage() {
   const midia = {
     id: "asasa",
-    url: "/jogos-de-tabuleiro/dungeons-of-tanares",
+    slug: "dungeons-of-tanares-2026-aHaH",
+    url: "/jogos-de-tabuleiro/dungeons-of-tanares-2026-aHaH",
 
     info: {
       title: "Dungeons of Tanares",
@@ -78,6 +81,20 @@ export default function BoardGamePage() {
       dlcs: [],
       expansions: [],
     },
+
+    characters: [
+      {
+        id: "asasax",
+        url: "/personagens/johana-universe-3312",
+        name: "Johana",
+        codenames: [{ id: "asasa", label: "Amazona" }],
+        avatar: {
+          src: "/assets/characters/johana-universe-3312.png",
+          alt: "Avatar do personagem Johana.",
+        },
+        status: { id: "acE", label: "Ativo" },
+      },
+    ],
 
     continuity: {
       previous: null,
@@ -141,9 +158,11 @@ export default function BoardGamePage() {
   };
 
   const {
+    id,
     info,
     attributes,
     edition,
+    characters,
     continuity,
     gallery,
     files,
@@ -222,6 +241,7 @@ export default function BoardGamePage() {
       <nav>
         <button>Informações</button>
         <button>Edições</button>
+        <button>Personagens</button>
         <button>Continuidade</button>
         <button>Galeria</button>
         <button>Arquivos</button>
@@ -366,6 +386,40 @@ export default function BoardGamePage() {
               </div>
             </>
           )}
+        </section>
+
+        <section>
+          <h2>Personagens</h2>
+
+          <Link href={`/personagens/adicionar?media=${id}`}>
+            <PlusCircleIcon />
+          </Link>
+
+          {!characters.length && <p>Sem registros.</p>}
+
+          <ul>
+            {characters.map(({ id, url, avatar, name, codenames, status }) => (
+              <li key={id}>
+                <Link href={url}>
+                  <Image
+                    src={avatar.src}
+                    alt={avatar.alt}
+                    width={60}
+                    height={60}
+                  />
+
+                  <div>
+                    <strong>{name}</strong>
+                    <p>{codenames.map(({ label }) => label).join(", ")}</p>
+                    <div>
+                      <DotIcon />
+                      {status.label}
+                    </div>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section>
