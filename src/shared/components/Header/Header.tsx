@@ -1,9 +1,9 @@
-import { MediaTypesNavbar } from "@/modules/media-type/components";
+import { MediaCategoriesNavbar } from "@/modules/media-category/components";
 
 export function Header() {
   return (
     <header>
-      <MediaTypesNavbar />
+      <MediaCategoriesNavbar />
     </header>
   );
 }
