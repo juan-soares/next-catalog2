@@ -1,3 +1,4 @@
+import { isGameMedia } from "@/modules/media/guards";
 import type { MediaView } from "@/modules/media/types";
 import {
   Tag,
@@ -15,9 +16,6 @@ type Props = {
 };
 
 export function MediaTabInfo({ media }: Props) {
-  const isGame =
-    media.categoryCode === "video-game" || media.categoryCode === "board-game";
-
   return (
     <section>
       <h2>Informações</h2>
@@ -74,7 +72,7 @@ export function MediaTabInfo({ media }: Props) {
           </dd>
         </div>
 
-        {isGame && (
+        {isGameMedia(media) && (
           <>
             <div>
               <dt>

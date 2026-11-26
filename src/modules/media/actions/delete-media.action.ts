@@ -35,6 +35,6 @@ export async function deleteMediaAction(
   return {
     status: "success",
     message: "Mídia removida com sucesso!",
-    redirectTo: `/${MEDIA_CATEGORIES_CONFIG[categoryCode].slug}`,
+    redirectTo: MEDIA_CATEGORIES_CONFIG[categoryCode].url,
   };
 }

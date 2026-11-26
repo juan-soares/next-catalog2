@@ -32,10 +32,10 @@ export default async function AnimePage({ params, searchParams }: Props) {
       <MediaTabsNavbar familyCode={familyCode} currentTab={currentTab} />
 
       <MediaTabContent
+        media={media}
         familyCode={familyCode}
         currentTab={currentTab}
-        media={media}
-        currentCollectionNumber={currentCollectionNumber}
+        currentNumber={currentCollectionNumber}
       />
     </div>
   );

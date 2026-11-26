@@ -5,61 +5,61 @@ import type {
 
 export const MEDIA_CATEGORIES_CONFIG = {
   anime: {
-    slug: "animes",
+    url: "/animes",
     label: "Animes",
     familyCode: "episodic",
   },
   serie: {
-    slug: "series",
+    url: "/series",
     label: "Séries",
     familyCode: "episodic",
   },
   cartoon: {
-    slug: "desenhos-animados",
+    url: "/desenhos-animados",
     label: "Desenhos Animados",
     familyCode: "episodic",
   },
 
   "animated-movie": {
-    slug: "filmes-animados",
+    url: "/filmes-animados",
     label: "Filmes Animados",
     familyCode: "movie",
   },
   "live-action-movie": {
-    slug: "files-live-action",
+    url: "/files-live-action",
     label: "Filmes Live-Action",
     familyCode: "movie",
   },
   book: {
-    slug: "livros",
+    url: "/livros",
     label: "Livros",
     familyCode: "book",
   },
 
   "video-game": {
-    slug: "jogos-eletronicos",
+    url: "/jogos-eletronicos",
     label: "Jogos Eletrônicos",
     familyCode: "game",
   },
   "board-game": {
-    slug: "jogos-de-tabuleiro",
+    url: "/jogos-de-tabuleiro",
     label: "Jogos de Tabuleiro",
     familyCode: "game",
   },
 
   comic: {
-    slug: "comics",
+    url: "/comics",
     label: "Comics",
     familyCode: "volumes",
   },
   manga: {
-    slug: "mangas",
+    url: "/mangas",
     label: "Mangás",
     familyCode: "volumes",
   },
 
   music: {
-    slug: "musicas",
+    url: "/musicas",
     label: "Músicas",
     familyCode: "music",
   },

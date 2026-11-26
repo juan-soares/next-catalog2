@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { Link, PlusCircleIcon, LanguagesIcon, Tv2Icon } from "lucide-react";
+import { PlusCircleIcon, LanguagesIcon, Tv2Icon } from "lucide-react";
 import type { MediaViewEpisodicFamily } from "@/modules/media/types";
+import Link from "next/link";
 
 type Props = {
   url: string;
@@ -8,13 +9,13 @@ type Props = {
   currentNumber: number | null;
 };
 
-export function MediaTabSeasons({ seasons, currentNumber }: Props) {
+export function MediaTabSeasons({ url, seasons, currentNumber }: Props) {
   return (
     <section>
       <div>
         <h2>Temporadas</h2>
 
-        <Link href={`/animes/${mediaSlug}/temporadas/adicionar`}>
+        <Link href={`${url}/temporadas/adicionar`}>
           <PlusCircleIcon />
         </Link>
       </div>
@@ -36,7 +37,7 @@ export function MediaTabSeasons({ seasons, currentNumber }: Props) {
             units,
           }) => (
             <li key={id}>
-              <Image src={cover.url} alt={cover.alt} width={60} height={60} />
+              <Image src={cover.src} alt={cover.alt} width={60} height={60} />
 
               <div>
                 <h3>{`(${releaseYear}) ${number}ª Temporada ${title && `: ${title}`}`}</h3>
@@ -66,9 +67,7 @@ export function MediaTabSeasons({ seasons, currentNumber }: Props) {
 
                 {currentNumber === number && (
                   <div>
-                    <Link
-                      href={`/animes/${mediaSlug}/temporadas/${id}/episodios/adicionar`}
-                    >
+                    <Link href={`${url}/temporadas/${id}/episodios/adicionar`}>
                       <PlusCircleIcon />
                     </Link>
 

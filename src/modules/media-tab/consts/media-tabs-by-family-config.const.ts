@@ -2,7 +2,7 @@ import type { MediaFamilyCode } from "@/modules/media-family/types";
 import type { MediaTabCode } from "@/modules/media-tab/types";
 
 export const MEDIA_TABS_BY_FAMILY_CONFIG = {
-  episodic: ["info"],
+  episodic: ["info", "temporadas"],
   game: ["info"],
   movie: ["info"],
   book: ["info"],
