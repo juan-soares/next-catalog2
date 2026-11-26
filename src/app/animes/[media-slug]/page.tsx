@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
-import type { MediaTabCode } from "@/modules/media-tab/types";
 import { getMediaViewBySlug } from "@/modules/media/services";
 import { getCurrentTabBySearchParam } from "@/modules/media-tab/services";
+import { MediaHeader } from "@/modules/media/components";
 
 type Props = {
   params: Promise<{ "media-slug": string }>;
@@ -22,5 +22,9 @@ export default async function AnimePage({ params, searchParams }: Props) {
   const currentTab = getCurrentTabBySearchParam(tab);
   const currentCollectionNumber = n ? Number(n) : null;
 
-  return <div>oi</div>;
+  return (
+    <div>
+      <MediaHeader {...media} />
+    </div>
+  );
 }

@@ -1,46 +1,5 @@
 //base
 
-export type MediaLabel = {
-  id: string;
-  label: string;
-};
-
-export type MediaImage = {
-  src: string;
-  alt: string;
-};
-
-export type MediaVideo = {
-  src: string;
-  type: string;
-};
-
-export type MediaRelease = {
-  date: string;
-  year: number;
-};
-
-export type MediaStatus = {
-  acquired: boolean;
-  consumed: boolean;
-};
-
-export type MediaInfo = {
-  title: string;
-  translatedTitle: string | null;
-  release: MediaRelease;
-  synopsis: string;
-  cover: MediaImage;
-  trailer: MediaVideo | null;
-};
-
-export type MediaAttributes = {
-  languages: MediaLabel[];
-  genres: MediaLabel[];
-  themes: MediaLabel[];
-  universes: MediaLabel[];
-};
-
 export type MediaUnit = {
   id: string;
   number: number;
@@ -100,19 +59,6 @@ export type MediaFile = {
   src: string;
   extension: string;
 };
-
-export type MediaReferenceWithLogo = {
-  id: string;
-  slug: string;
-  url: string;
-  title: string;
-  logo: MediaImage;
-};
-
-export type MediaFranchises = {
-  main: MediaReferenceWithLogo;
-  subs: MediaReferenceWithLogo[];
-} | null;
 
 //base
 export type MediaBase = {

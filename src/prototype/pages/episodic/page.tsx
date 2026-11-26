@@ -239,67 +239,6 @@ export default async function AnimePage({ searchParams }: Props) {
   return (
     <div>
       <div>
-        <header>
-          <div>
-            <video autoPlay loop muted playsInline>
-              <source src={info.trailer.src} type={info.trailer.type} />
-            </video>
-          </div>
-
-          <div>
-            <Image
-              src={info.cover.src}
-              alt={info.cover.alt}
-              width={60}
-              height={60}
-            />
-
-            <div>
-              <h1>
-                {info.title} <span>{`(${info.release.year})`}</span>
-              </h1>
-              <h2>{info.translatedTitle}</h2>
-            </div>
-
-            <div>
-              <p>{info.synopsis}</p>
-            </div>
-
-            <div>
-              <div>
-                <LanguagesIcon />
-                {attributes.languages.map(({ label }) => label).join(", ")}
-              </div>
-
-              <div>
-                <Gamepad2Icon />
-                {attributes.genres.map(({ label }) => label).join(", ")}
-              </div>
-
-              <div>
-                <TagsIcon />
-                {attributes.themes.map(({ label }) => label).join(", ")}
-              </div>
-            </div>
-
-            <div>
-              <Link href={`/franquias/${franchises.main.url}`}>
-                <Image
-                  src={franchises.main.logo.src}
-                  alt={franchises.main.logo.alt}
-                  width={60}
-                  height={60}
-                />
-              </Link>
-            </div>
-
-            <div>
-              <button>{status.acquired ? "Adquirido" : "Adquirir"}</button>
-              <button>{status.consumed ? "Consumido" : "Consumir"}</button>
-            </div>
-          </div>
-        </header>
-
         <nav>
           <Link href="?tab=info">Informações</Link>
           <Link href="?tab=temporadas">Temporadas</Link>
