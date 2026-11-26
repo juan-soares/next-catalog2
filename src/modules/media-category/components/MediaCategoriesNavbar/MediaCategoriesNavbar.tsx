@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { MEDIA_CATEGORIES_INFO_LIST } from "@/modules/media-category/consts";
 import { MEDIA_FAMILY_CONFIG } from "@/modules/media-family/consts";
 
