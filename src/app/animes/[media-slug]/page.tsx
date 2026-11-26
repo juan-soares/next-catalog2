@@ -1,8 +1,11 @@
 import { notFound } from "next/navigation";
 
 import { getMediaViewBySlug } from "@/modules/media/services";
-import { getCurrentTabBySearchParam } from "@/modules/media-tab/services";
+import { getCurrentTabByFamily } from "@/modules/media-tab/services";
 import { MediaHeader } from "@/modules/media/components";
+import { MediaTabsNavbar } from "@/modules/media-tab/components/MediaTabsNavbar";
+import { MEDIA_CATEGORIES_CONFIG } from "@/modules/media-category/consts";
+import { MediaTabContent } from "@/modules/media-tab/components";
 
 type Props = {
   params: Promise<{ "media-slug": string }>;
@@ -19,12 +22,19 @@ export default async function AnimePage({ params, searchParams }: Props) {
     notFound();
   }
 
-  const currentTab = getCurrentTabBySearchParam(tab);
+  const familyCode = MEDIA_CATEGORIES_CONFIG[media.categoryCode].familyCode;
+  const currentTab = getCurrentTabByFamily(familyCode, tab);
   const currentCollectionNumber = n ? Number(n) : null;
 
   return (
     <div>
       <MediaHeader {...media} />
+      <MediaTabsNavbar familyCode={familyCode} currentTab={currentTab} />
+      <MediaTabContent
+        familyCode={familyCode}
+        currentTab={currentTab}
+        media={media}
+      />
     </div>
   );
 }

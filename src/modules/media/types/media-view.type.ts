@@ -1,23 +1,16 @@
-import type { MediaCategoryCode } from "@/modules/media-category/types";
 import type {
-  MediaViewAttributes,
-  MediaViewFranchise,
-  MediaViewInfo,
-  MediaViewStatus,
+  MediaViewBookFamily,
+  MediaViewEpisodicFamily,
+  MediaViewGameFamily,
+  MediaViewMovieFamily,
+  MediaViewMusicFamily,
+  MediaViewReadingFamily,
 } from "@/modules/media/types";
 
-export type MediaView = {
-  id: string;
-  slug: string;
-  categoryCode: MediaCategoryCode;
-
-  info: MediaViewInfo;
-  attributes: MediaViewAttributes;
-
-  franchises: {
-    main: MediaViewFranchise | null;
-    subs: MediaViewFranchise[];
-  };
-
-  status: MediaViewStatus;
-};
+export type MediaView =
+  | MediaViewEpisodicFamily
+  | MediaViewReadingFamily
+  | MediaViewMusicFamily
+  | MediaViewMovieFamily
+  | MediaViewBookFamily
+  | MediaViewGameFamily;

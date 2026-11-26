@@ -1,3 +1,3 @@
 import "server-only";
 
-export * from "./get-current-tab-by-search-params.service";
+export * from "./get-current-tab-by-family.service";

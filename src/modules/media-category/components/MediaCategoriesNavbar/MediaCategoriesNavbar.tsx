@@ -7,11 +7,11 @@ export function MediaCategoriesNavbar() {
   return (
     <nav>
       {MEDIA_CATEGORIES_INFO_LIST.sort().map(({ slug, familyCode, label }) => {
-        const IconComponent = MEDIA_FAMILY_CONFIG[familyCode].icon;
+        const Icon = MEDIA_FAMILY_CONFIG[familyCode].icon;
 
         return (
           <Link key={slug} href={slug}>
-            <IconComponent />
+            <Icon />
             {label}
           </Link>
         );
