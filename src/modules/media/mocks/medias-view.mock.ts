@@ -5,6 +5,7 @@ export const mediasViewMock: MediaView[] = [
     id: "1235",
     categoryCode: "anime",
     slug: "naruto-2020-HeHe",
+    url: "/animes/naruto-202-HeHe",
 
     info: {
       title: "Naruto",
@@ -43,6 +44,12 @@ export const mediasViewMock: MediaView[] = [
       genres: [{ id: "123", label: "Ação" }],
       themes: [{ id: "123", label: "Ninja" }],
       universes: [{ id: "123", label: "Naruto Anime 2020" }],
+    },
+
+    collections: {
+      seasons: [],
+      ovas: [],
+      specials: [],
     },
 
     status: {

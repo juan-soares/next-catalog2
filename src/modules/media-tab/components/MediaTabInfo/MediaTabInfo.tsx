@@ -1,4 +1,3 @@
-import type { MediaFamilyCode } from "@/modules/media-family/types";
 import type { MediaView } from "@/modules/media/types";
 import {
   Tag,
@@ -11,11 +10,14 @@ import {
   Joystick,
 } from "lucide-react";
 
-type Props = Pick<MediaView, "info" | "attributes" | "edition"> & {
-  familyCode: MediaFamilyCode;
+type Props = {
+  media: MediaView;
 };
 
-export function MediaTabInfo({ info, attributes, edition, familyCode }: Props) {
+export function MediaTabInfo({ media }: Props) {
+  const isGame =
+    media.categoryCode === "video-game" || media.categoryCode === "board-game";
+
   return (
     <section>
       <h2>Informações</h2>
@@ -25,21 +27,21 @@ export function MediaTabInfo({ info, attributes, edition, familyCode }: Props) {
           <dt>
             <Tag /> Título:
           </dt>
-          <dd>{info.title}</dd>
+          <dd>{media.info.title}</dd>
         </div>
 
         <div>
           <dt>
             <Tag /> Título Traduzido:
           </dt>
-          <dd>{info.translatedTitle || "N/A"}</dd>
+          <dd>{media.info.translatedTitle || "N/A"}</dd>
         </div>
 
         <div>
           <dt>
             <CalendarDays /> Lançamento:
           </dt>
-          <dd>{info.release.date}</dd>
+          <dd>{media.info.release.date}</dd>
         </div>
 
         <div>
@@ -47,7 +49,8 @@ export function MediaTabInfo({ info, attributes, edition, familyCode }: Props) {
             <LanguagesIcon /> Idiomas:
           </dt>
           <dd>
-            {attributes.languages.map(({ label }) => label).join(", ") || "N/A"}
+            {media.attributes.languages.map(({ label }) => label).join(", ") ||
+              "N/A"}
           </dd>
         </div>
 
@@ -56,7 +59,8 @@ export function MediaTabInfo({ info, attributes, edition, familyCode }: Props) {
             <Gamepad2Icon /> Gêneros:
           </dt>
           <dd>
-            {attributes.genres.map(({ label }) => label).join(", ") || "N/A"}
+            {media.attributes.genres.map(({ label }) => label).join(", ") ||
+              "N/A"}
           </dd>
         </div>
 
@@ -65,17 +69,18 @@ export function MediaTabInfo({ info, attributes, edition, familyCode }: Props) {
             <TagsIcon /> Temáticas:
           </dt>
           <dd>
-            {attributes.themes.map(({ label }) => label).join(", ") || "N/A"}
+            {media.attributes.themes.map(({ label }) => label).join(", ") ||
+              "N/A"}
           </dd>
         </div>
 
-        {familyCode === "game" && (
+        {isGame && (
           <>
             <div>
               <dt>
                 <Layers /> Edição:
               </dt>
-              <dd>{edition.type.label}</dd>
+              <dd>{media.edition.type.label}</dd>
             </div>
 
             <div>
@@ -83,7 +88,7 @@ export function MediaTabInfo({ info, attributes, edition, familyCode }: Props) {
                 <Users /> Jogadores:
               </dt>
               <dd>
-                {info.players.min} - {info.players.max}
+                {media.info.players.min} - {media.info.players.max}
               </dd>
             </div>
 
@@ -92,7 +97,8 @@ export function MediaTabInfo({ info, attributes, edition, familyCode }: Props) {
                 <Users /> Modos:
               </dt>
               <dd>
-                {attributes.modes.map(({ label }) => label).join(", ") || "N/A"}
+                {media.attributes.modes.map(({ label }) => label).join(", ") ||
+                  "N/A"}
               </dd>
             </div>
 
@@ -101,8 +107,9 @@ export function MediaTabInfo({ info, attributes, edition, familyCode }: Props) {
                 <Joystick /> Gameplays:
               </dt>
               <dd>
-                {attributes.gameplays.map(({ label }) => label).join(", ") ||
-                  "N/A"}
+                {media.attributes.gameplays
+                  .map(({ label }) => label)
+                  .join(", ") || "N/A"}
               </dd>
             </div>
           </>

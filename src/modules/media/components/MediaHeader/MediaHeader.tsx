@@ -1,12 +1,24 @@
 import Image from "next/image";
-import { LanguagesIcon, Gamepad2Icon, TagsIcon } from "lucide-react";
-
-import type { MediaView } from "@/modules/media/types";
 import Link from "next/link";
+import { LanguagesIcon, Gamepad2Icon, TagsIcon } from "lucide-react";
+import type { MediaView } from "@/modules/media/types";
+import { FormEditBtn } from "@/shared/components";
+import { FormDeleteBtn } from "@/shared/components";
+import { deleteMediaAction } from "@/modules/media/actions";
 
-type Props = Pick<MediaView, "info" | "attributes" | "franchises" | "status">;
+type Props = Pick<
+  MediaView,
+  "id" | "url" | "info" | "attributes" | "franchises" | "status"
+>;
 
-export function MediaHeader({ info, attributes, franchises, status }: Props) {
+export function MediaHeader({
+  id,
+  url,
+  info,
+  attributes,
+  franchises,
+  status,
+}: Props) {
   return (
     <header>
       <div>
@@ -24,6 +36,11 @@ export function MediaHeader({ info, attributes, franchises, status }: Props) {
           width={60}
           height={60}
         />
+
+        <div>
+          <FormEditBtn url={url} />
+          <FormDeleteBtn id={id} deleteAction={deleteMediaAction} />
+        </div>
 
         <div>
           <h1>

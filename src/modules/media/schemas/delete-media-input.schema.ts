@@ -1,0 +1,5 @@
+import z from "zod";
+
+export const deleteMediaSchema = z.object({
+  id: z.string().min(4, "O id é obrigatório."),
+});

@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-
 import { getMediaViewBySlug } from "@/modules/media/services";
 import { getCurrentTabByFamily } from "@/modules/media-tab/services";
 import { MediaHeader } from "@/modules/media/components";
@@ -29,7 +28,9 @@ export default async function AnimePage({ params, searchParams }: Props) {
   return (
     <div>
       <MediaHeader {...media} />
+
       <MediaTabsNavbar familyCode={familyCode} currentTab={currentTab} />
+
       <MediaTabContent
         familyCode={familyCode}
         currentTab={currentTab}

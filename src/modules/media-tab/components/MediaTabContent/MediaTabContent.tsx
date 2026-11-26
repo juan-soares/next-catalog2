@@ -9,12 +9,12 @@ type Props = {
   media: MediaView;
 };
 
-export function MediaTabContent({ familyCode, currentTab, media }: Props) {
+export function MediaTabContent({ currentTab, media }: Props) {
   switch (currentTab) {
     case "info":
-      return <MediaTabInfo familyCode={familyCode} {...media} />;
+      return <MediaTabInfo media={media} />;
 
     default:
-      return <MediaTabInfo familyCode={familyCode} {...media} />;
+      return <MediaTabInfo media={media} />;
   }
 }

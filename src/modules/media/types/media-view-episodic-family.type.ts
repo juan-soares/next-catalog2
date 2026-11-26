@@ -1,7 +1,8 @@
+import type { MediaCategoryCode } from "@/modules/media-category/types";
 import type { MediaViewBase, MediaViewCollection } from "@/modules/media/types";
 
 export type MediaViewEpisodicFamily = MediaViewBase & {
-  categoryCode: "anime" | "series" | "cartoon";
+  categoryCode: Extract<MediaCategoryCode, "anime" | "series" | "cartoon">;
 
   collections: {
     seasons: MediaViewCollection[];
