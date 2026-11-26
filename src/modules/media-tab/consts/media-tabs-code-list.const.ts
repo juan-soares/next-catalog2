@@ -1,1 +1,1 @@
-export const MEDIA_TABS_CODE_LIST = ["info"] as const;
+export const MEDIA_TABS_CODE_LIST = ["info", "temporadas"] as const;

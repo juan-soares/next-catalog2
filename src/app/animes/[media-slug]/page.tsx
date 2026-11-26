@@ -35,6 +35,7 @@ export default async function AnimePage({ params, searchParams }: Props) {
         familyCode={familyCode}
         currentTab={currentTab}
         media={media}
+        currentCollectionNumber={currentCollectionNumber}
       />
     </div>
   );
