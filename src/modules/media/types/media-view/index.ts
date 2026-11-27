@@ -17,3 +17,5 @@ export type * from "./media-view-base.type";
 
 export type * from "./media-view-unit.type";
 export type * from "./media-view-collection.type";
+
+export type * from "./media-view.type";
