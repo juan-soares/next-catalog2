@@ -2,7 +2,7 @@ import type {
   MediaViewImage,
   MediaViewRelease,
   MediaViewVideo,
-} from "@/modules/media/types";
+} from "@/modules/media/types/media-view";
 
 export type MediaViewInfo = {
   title: string;

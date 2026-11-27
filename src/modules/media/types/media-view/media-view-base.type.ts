@@ -1,9 +1,12 @@
 import type {
   MediaViewAttributes,
+  MediaViewContinuity,
+  MediaViewFile,
   MediaViewFranchise,
+  MediaViewGalleryItem,
   MediaViewInfo,
   MediaViewStatus,
-} from "@/modules/media/types";
+} from "@/modules/media/types/media-view";
 
 export type MediaViewBase = {
   id: string;
@@ -14,10 +17,9 @@ export type MediaViewBase = {
   attributes: MediaViewAttributes;
 
   //characters: MediaCharacter[];
-  //continuity: MediaContinuity;
-
-  //gallery: MediaGalleryItem[];
-  //files: MediaFile[];
+  continuity: MediaViewContinuity;
+  gallery: MediaViewGalleryItem[];
+  files: MediaViewFile[];
 
   franchises: {
     main: MediaViewFranchise | null;

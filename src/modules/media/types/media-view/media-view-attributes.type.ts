@@ -1,4 +1,4 @@
-import type { MediaViewLabel } from "@/modules/media/types";
+import type { MediaViewLabel } from "@/modules/media/types/media-view";
 
 export type MediaViewAttributes = {
   languages: MediaViewLabel[];

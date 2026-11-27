@@ -1,4 +1,4 @@
-import type { MediaViewImage } from "@/modules/media/types";
+import type { MediaViewImage } from "@/modules/media/types/media-view";
 
 export type MediaViewFranchise = {
   id: string;

@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LanguagesIcon, Gamepad2Icon, TagsIcon } from "lucide-react";
-import type { MediaView } from "@/modules/media/types";
+import type { MediaViewBase } from "@/modules/media/types";
 import { FormEditBtn } from "@/shared/components";
 import { FormDeleteBtn } from "@/shared/components";
 import { deleteMediaAction } from "@/modules/media/actions";
 
 type Props = Pick<
-  MediaView,
+  MediaViewBase,
   "id" | "url" | "info" | "attributes" | "franchises" | "status"
 >;
 

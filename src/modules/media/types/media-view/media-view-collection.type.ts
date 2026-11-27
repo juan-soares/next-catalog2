@@ -3,7 +3,7 @@ import type {
   MediaViewLabel,
   MediaViewStatus,
   MediaViewUnit,
-} from "@/modules/media/types";
+} from "@/modules/media/types/media-view";
 
 export type MediaViewCollection = {
   id: string;
