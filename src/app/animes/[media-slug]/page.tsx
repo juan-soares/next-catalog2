@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { getMediaViewBySlug } from "@/modules/media/services";
 import { getCurrentTabByCategoryStructure } from "@/modules/media-category-structure/services";
+import { getMediaViewBySlug } from "@/modules/media/services";
 import { MediaHeader } from "@/modules/media/components";
 import {
   MediaTabContent,

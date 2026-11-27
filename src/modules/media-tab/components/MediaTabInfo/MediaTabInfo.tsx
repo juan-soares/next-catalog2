@@ -1,4 +1,3 @@
-import { isGameMedia } from "@/modules/media/guards";
 import type { MediaView } from "@/modules/media/types";
 import {
   Tag,
@@ -72,13 +71,13 @@ export function MediaTabInfo({ media }: Props) {
           </dd>
         </div>
 
-        {isGameMedia(media) && (
+        {media.categoryStructure === "game" && (
           <>
             <div>
               <dt>
                 <Layers /> Edição:
               </dt>
-              <dd>{media.edition.type.label}</dd>
+              <dd>{media.details.edition.type.label}</dd>
             </div>
 
             <div>

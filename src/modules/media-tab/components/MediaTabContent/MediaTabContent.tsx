@@ -19,7 +19,7 @@ export function MediaTabContent({ media, currentTab, currentNumber }: Props) {
       return (
         <MediaTabSeasons
           url={media.url}
-          seasons={media.collections.seasons ?? []}
+          seasons={media.details.collections.seasons}
           currentNumber={currentNumber}
         />
       );

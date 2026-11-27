@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { PlusCircleIcon, LanguagesIcon, Tv2Icon } from "lucide-react";
-import type { MediaViewEpisodicFamily } from "@/modules/media/types";
 import Link from "next/link";
+import { PlusCircleIcon, LanguagesIcon, Tv2Icon } from "lucide-react";
+import type { MediaViewCollection } from "@/modules/media/types";
+import { MediaUnitList } from "../MediaUnitList";
 
 type Props = {
   url: string;
-  seasons: MediaViewEpisodicFamily["collections"]["seasons"];
+  seasons: MediaViewCollection[];
   currentNumber: number | null;
 };
 
@@ -71,31 +72,7 @@ export function MediaTabSeasons({ url, seasons, currentNumber }: Props) {
                       <PlusCircleIcon />
                     </Link>
 
-                    {!units.length && <p>Sem registros.</p>}
-
-                    <ul>
-                      {units.map(
-                        ({
-                          id,
-                          number: epNumber,
-                          title: epTitle,
-                          status: epStatus,
-                        }) => (
-                          <li key={id}>
-                            <p>{`${epNumber} - ${epTitle}.`}</p>
-
-                            <div>
-                              <button>
-                                {epStatus.acquired ? "Adquirido" : "Adquirir"}
-                              </button>
-                              <button>
-                                {epStatus.consumed ? "Visto" : "Ver"}
-                              </button>
-                            </div>
-                          </li>
-                        ),
-                      )}
-                    </ul>
+                    <MediaUnitList units={units} structure="episodic" />
                   </div>
                 )}
               </div>

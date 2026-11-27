@@ -7,7 +7,7 @@ export async function getMediaViewBySlug(
   slug: string,
 ): Promise<MediaView | null> {
   try {
-    return mediaRepository.findOne({ fields: { slug } });
+    return await mediaRepository.findOne({ fields: { slug } });
   } catch (error) {
     console.error("Erro ao consultar mídia:", error);
 

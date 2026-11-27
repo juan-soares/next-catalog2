@@ -3,9 +3,11 @@ import { MediaView } from "../types";
 export const mediasViewMock: MediaView[] = [
   {
     id: "1235",
-    categoryCode: "anime",
     slug: "naruto-2020-HeHe",
     url: "/animes/naruto-202-HeHe",
+
+    categoryCode: "anime",
+    categoryStructure: "episodic",
 
     info: {
       title: "Naruto",
@@ -46,10 +48,21 @@ export const mediasViewMock: MediaView[] = [
       universes: [{ id: "123", label: "Naruto Anime 2020" }],
     },
 
-    collections: {
-      seasons: [],
-      ovas: [],
-      specials: [],
+    continuity: {
+      previous: null,
+      next: null,
+    },
+
+    gallery: [],
+
+    files: [],
+
+    details: {
+      collections: {
+        seasons: [],
+        ovas: [],
+        specials: [],
+      },
     },
 
     status: {
